@@ -299,6 +299,12 @@ function App() {
                     </div>
                   )}
                 </div>
+                {answer.explanation && (
+                  <div className="explanation">
+                    <strong>Giải thích:</strong>
+                    <p>{answer.explanation}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
