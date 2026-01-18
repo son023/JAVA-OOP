@@ -6,10 +6,7 @@ function App() {
   const [view, setView] = useState('home'); // 'home', 'quiz', 'result', 'history', 'history-detail'
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentSet, setCurrentSet] = useState(1);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [score, setScore] = useState(0);
-  const [answeredQuestions, setAnsweredQuestions] = useState([]);
+  const [answeredQuestions, setAnsweredQuestions] = useState({}); // Changed to object: { questionIndex: answerData }
   const [quizHistory, setQuizHistory] = useState([]);
   const [selectedHistoryItem, setSelectedHistoryItem] = useState(null);
   const [showFinishConfirm, setShowFinishConfirm] = useState(false);
@@ -22,70 +19,45 @@ function App() {
     }
   }, []);
 
-  // Update selected answer when navigating between questions
-  useEffect(() => {
-    if (view === 'quiz' && quizQuestions.length > 0) {
-      const answer = answeredQuestions.find(a => a.questionIndex === currentQuestion);
-      setSelectedAnswer(answer ? answer.selected : null);
-    }
-  }, [currentQuestion, answeredQuestions, view, quizQuestions.length]);
 
   const startQuiz = (setNumber) => {
-    // Calculate question range: Set 1 = 1-50, Set 2 = 51-100, Set 3 = 101-150, Set 4 = 151-200
+    // Calculate question range: Set 1 = 1-50, Set 2 = 51-100, Set 3 = 101-150, Set 4 = 151-200, Set 5 = 201-250, Set 6 = 251-300, Set 7 = 301-350, Set 8 = 351-400
     const startIndex = (setNumber - 1) * 50;
     const endIndex = startIndex + 50;
     const selected = questions.slice(startIndex, endIndex);
     
     setQuizQuestions(selected);
     setCurrentSet(setNumber);
-    setCurrentQuestion(0);
-    setSelectedAnswer(null);
-    setScore(0);
-    setAnsweredQuestions([]);
+    setAnsweredQuestions({});
     setView('quiz');
   };
 
-  const handleAnswerClick = (option) => {
-    if (selectedAnswer !== null) return;
-
-    setSelectedAnswer(option);
-    const isCorrect = option === quizQuestions[currentQuestion].correctAnswer;
+  const handleAnswerClick = (questionIndex, option) => {
+    const question = quizQuestions[questionIndex];
+    const isCorrect = option === question.correctAnswer;
     
-    if (isCorrect) {
-      setScore(score + 1);
-    }
-
-    setAnsweredQuestions([...answeredQuestions, {
-      questionIndex: currentQuestion,
-      questionNumber: (currentSet - 1) * 50 + currentQuestion + 1, // Actual question number from 1-200
-      question: quizQuestions[currentQuestion].question,
-      selected: option,
-      correct: quizQuestions[currentQuestion].correctAnswer,
-      isCorrect: isCorrect,
-      options: quizQuestions[currentQuestion].options,
-      code: quizQuestions[currentQuestion].code,
-      explanation: quizQuestions[currentQuestion].explanation || null
-    }]);
+    setAnsweredQuestions({
+      ...answeredQuestions,
+      [questionIndex]: {
+        questionIndex: questionIndex,
+        questionNumber: (currentSet - 1) * 50 + questionIndex + 1,
+        question: question.question,
+        selected: option,
+        correct: question.correctAnswer,
+        isCorrect: isCorrect,
+        options: question.options,
+        code: question.code,
+        explanation: question.explanation || null
+      }
+    });
   };
 
-  const handleNextQuestion = () => {
-    const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < quizQuestions.length) {
-      setCurrentQuestion(nextQuestion);
-      setSelectedAnswer(null);
-    } else {
-      finishQuiz();
-    }
-  };
-
-  const handlePreviousQuestion = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-    }
-  };
 
   const finishQuiz = () => {
-    const answeredCount = answeredQuestions.length;
+    const answeredArray = Object.values(answeredQuestions);
+    const answeredCount = answeredArray.length;
+    const score = answeredArray.filter(a => a.isCorrect).length;
+    
     const quizResult = {
       id: Date.now(),
       date: new Date().toLocaleString('vi-VN'),
@@ -94,8 +66,8 @@ function App() {
       totalQuestions: quizQuestions.length,
       answeredQuestions: answeredCount,
       score: score,
-      percentage: answeredCount > 0 ? ((score / answeredCount) * 100).toFixed(1) : '0.0',
-      answers: answeredQuestions
+      percentage: ((score / quizQuestions.length) * 100).toFixed(1),
+      answers: answeredArray
     };
 
     // Save to history
@@ -128,20 +100,29 @@ function App() {
     setView('history-detail');
   };
 
-  const getButtonClass = (option) => {
-    if (selectedAnswer === null) {
+  const getButtonClass = (questionIndex, option) => {
+    const answer = answeredQuestions[questionIndex];
+    if (!answer) {
       return 'option-button';
     }
     
-    if (option === quizQuestions[currentQuestion].correctAnswer) {
+    if (option === quizQuestions[questionIndex].correctAnswer) {
       return 'option-button correct';
     }
     
-    if (option === selectedAnswer && option !== quizQuestions[currentQuestion].correctAnswer) {
+    if (option === answer.selected && option !== quizQuestions[questionIndex].correctAnswer) {
       return 'option-button incorrect';
     }
     
     return 'option-button disabled';
+  };
+
+  const getAnsweredCount = () => {
+    return Object.keys(answeredQuestions).length;
+  };
+
+  const getScore = () => {
+    return Object.values(answeredQuestions).filter(a => a.isCorrect).length;
   };
 
   // Home Screen
@@ -150,38 +131,58 @@ function App() {
       <div className="app">
         <div className="quiz-container home-container">
           <div className="home-header">
-            <h1>🎯 OOP Java Quiz</h1>
-            <p className="home-subtitle">Test your knowledge with 200 challenging OOP questions</p>
+            <h1>OOP Java Quiz</h1>
+            <p className="home-subtitle">Test your knowledge with 400 challenging OOP questions</p>
           </div>
 
           <div className="quiz-options">
             <h2>Choose Question Set (50 questions each)</h2>
             <div className="quiz-set-buttons">
               <button className="set-button" onClick={() => startQuiz(1)}>
-                <span className="set-icon">📝</span>
+                <span className="set-icon">1</span>
                 <span className="set-title">Set 1</span>
                 <span className="set-desc">Questions 1-50</span>
               </button>
               <button className="set-button" onClick={() => startQuiz(2)}>
-                <span className="set-icon">📚</span>
+                <span className="set-icon">2</span>
                 <span className="set-title">Set 2</span>
                 <span className="set-desc">Questions 51-100</span>
               </button>
               <button className="set-button" onClick={() => startQuiz(3)}>
-                <span className="set-icon">📖</span>
+                <span className="set-icon">3</span>
                 <span className="set-title">Set 3</span>
                 <span className="set-desc">Questions 101-150</span>
               </button>
               <button className="set-button" onClick={() => startQuiz(4)}>
-                <span className="set-icon">🏆</span>
+                <span className="set-icon">4</span>
                 <span className="set-title">Set 4</span>
                 <span className="set-desc">Questions 151-200</span>
+              </button>
+              <button className="set-button" onClick={() => startQuiz(5)}>
+                <span className="set-icon">5</span>
+                <span className="set-title">Set 5</span>
+                <span className="set-desc">Questions 201-250</span>
+              </button>
+              <button className="set-button" onClick={() => startQuiz(6)}>
+                <span className="set-icon">6</span>
+                <span className="set-title">Set 6</span>
+                <span className="set-desc">Questions 251-300</span>
+              </button>
+              <button className="set-button" onClick={() => startQuiz(7)}>
+                <span className="set-icon">7</span>
+                <span className="set-title">Set 7</span>
+                <span className="set-desc">Questions 301-350</span>
+              </button>
+              <button className="set-button" onClick={() => startQuiz(8)}>
+                <span className="set-icon">8</span>
+                <span className="set-title">Set 8</span>
+                <span className="set-desc">Questions 351-400</span>
               </button>
             </div>
           </div>
 
           <div className="history-dashboard">
-            <h2>📊 Quiz History Dashboard</h2>
+            <h2>Quiz History</h2>
             {quizHistory.length === 0 ? (
               <div className="no-history-message">
                 <p>No quiz history yet. Complete a quiz to see your results here!</p>
@@ -309,19 +310,21 @@ function App() {
   // Result Screen
   if (view === 'result') {
     const lastQuiz = quizHistory[0];
-    const answeredCount = answeredQuestions.length;
+    const answeredArray = Object.values(answeredQuestions);
+    const answeredCount = answeredArray.length;
+    const score = answeredArray.filter(a => a.isCorrect).length;
     const incorrectCount = answeredCount - score;
-    const percentage = answeredCount > 0 ? ((score / answeredCount) * 100).toFixed(1) : '0.0';
+    const percentage = ((score / quizQuestions.length) * 100).toFixed(1);
     
     return (
       <div className="app">
         <div className="quiz-container result-container">
           <div className="result-header">
-            <h1>🎉 Quiz Completed!</h1>
+            <h1>Quiz Completed</h1>
             <div className="score-display">
               <div className="score-circle">
                 <span className="score-number">{score}</span>
-                <span className="score-total">/ {answeredCount}</span>
+                <span className="score-total">/ {quizQuestions.length}</span>
               </div>
               <p className="score-percentage">
                 {percentage}%
@@ -353,10 +356,10 @@ function App() {
 
           <div className="result-actions">
             <button className="restart-button" onClick={handleRestart}>
-              🏠 Back to Home
+              Back to Home
             </button>
             <button className="view-history-button" onClick={() => viewHistoryDetail(lastQuiz)}>
-              📊 View Details
+              View Details
             </button>
           </div>
         </div>
@@ -365,26 +368,29 @@ function App() {
   }
 
   // Quiz Screen
+  const answeredCount = getAnsweredCount();
+  const currentScore = getScore();
+
   return (
     <div className="app">
-      <div className="quiz-container">
+      <div className="quiz-container quiz-view">
         <div className="quiz-header">
           <div className="quiz-header-top">
             <h1>OOP Java Quiz - Set {currentSet}</h1>
             <button className="finish-quiz-button" onClick={handleFinishQuizClick}>
-              ⏹️ Kết thúc bài
+              Kết thúc bài
             </button>
           </div>
           <div className="progress-info">
             <span className="question-counter">
-              Question {currentQuestion + 1} of {quizQuestions.length} (Q{(currentSet - 1) * 50 + currentQuestion + 1})
+              Đã làm: {answeredCount} / {quizQuestions.length} câu
             </span>
-            <span className="current-score">Score: {score}</span>
+            <span className="current-score">Điểm: {currentScore} / {answeredCount || 1}</span>
           </div>
           <div className="progress-bar">
             <div 
               className="progress-fill" 
-              style={{ width: `${((currentQuestion + 1) / quizQuestions.length) * 100}%` }}
+              style={{ width: `${(answeredCount / quizQuestions.length) * 100}%` }}
             ></div>
           </div>
         </div>
@@ -395,8 +401,8 @@ function App() {
               <h3>Xác nhận kết thúc bài</h3>
               <p>Bạn có chắc chắn muốn kết thúc bài làm ngay bây giờ?</p>
               <p className="confirm-info">
-                Đã làm: {answeredQuestions.length} / {quizQuestions.length} câu<br/>
-                Điểm hiện tại: {score} / {answeredQuestions.length || 1}
+                Đã làm: {answeredCount} / {quizQuestions.length} câu<br/>
+                Điểm hiện tại: {currentScore} / {answeredCount || 1}
               </p>
               <div className="confirm-buttons">
                 <button className="confirm-button cancel-button" onClick={handleCancelFinish}>
@@ -410,81 +416,76 @@ function App() {
           </div>
         )}
 
-        <div className="question-section">
-          <h2 className="question-text">
-            {quizQuestions[currentQuestion].question}
-          </h2>
-          
-          {quizQuestions[currentQuestion].code && (
-            <pre className="code-block">
-              <code>{quizQuestions[currentQuestion].code}</code>
-            </pre>
-          )}
-        </div>
+        <div className="all-questions-container">
+          {quizQuestions.map((question, questionIndex) => {
+            const answer = answeredQuestions[questionIndex];
+            const questionNumber = (currentSet - 1) * 50 + questionIndex + 1;
+            
+            return (
+              <div key={questionIndex} className="question-item">
+                <div className="question-header">
+                  <span className="question-number">Câu {questionNumber}</span>
+                  {answer && (
+                    <span className={`answer-status ${answer.isCorrect ? 'status-correct' : 'status-incorrect'}`}>
+                      {answer.isCorrect ? '✓ Đúng' : '✗ Sai'}
+                    </span>
+                  )}
+                </div>
+                
+                <div className="question-section">
+                  <h2 className="question-text">{question.question}</h2>
+                  
+                  {question.code && (
+                    <pre className="code-block">
+                      <code>{question.code}</code>
+                    </pre>
+                  )}
+                </div>
 
-        <div className="options-section">
-          {['A', 'B', 'C', 'D'].map((option) => (
-            <button
-              key={option}
-              className={getButtonClass(option)}
-              onClick={() => handleAnswerClick(option)}
-              disabled={selectedAnswer !== null}
-            >
-              <span className="option-letter">{option}</span>
-              <span className="option-text">
-                {quizQuestions[currentQuestion].options[option]}
-              </span>
-              {selectedAnswer !== null && option === quizQuestions[currentQuestion].correctAnswer && (
-                <span className="check-icon">✓</span>
-              )}
-              {selectedAnswer !== null && option === selectedAnswer && option !== quizQuestions[currentQuestion].correctAnswer && (
-                <span className="cross-icon">✗</span>
-              )}
-            </button>
-          ))}
-        </div>
+                <div className="options-section">
+                  {['A', 'B', 'C', 'D'].map((option) => (
+                    <button
+                      key={option}
+                      className={getButtonClass(questionIndex, option)}
+                      onClick={() => handleAnswerClick(questionIndex, option)}
+                      disabled={answer !== undefined}
+                    >
+                      <span className="option-letter">{option}</span>
+                      <span className="option-text">
+                        {question.options[option]}
+                      </span>
+                      {answer && option === question.correctAnswer && (
+                        <span className="check-icon">✓</span>
+                      )}
+                      {answer && option === answer.selected && option !== question.correctAnswer && (
+                        <span className="cross-icon">✗</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
 
-        {selectedAnswer !== null && (
-          <div className={`feedback ${selectedAnswer === quizQuestions[currentQuestion].correctAnswer ? 'feedback-correct' : 'feedback-incorrect'}`}>
-            <div className="feedback-header">
-              {selectedAnswer === quizQuestions[currentQuestion].correctAnswer ? (
-                <>
-                  <span className="feedback-icon">🎉</span>
-                  <span className="feedback-text">Chính xác! Bạn đã trả lời đúng!</span>
-                </>
-              ) : (
-                <>
-                  <span className="feedback-icon">💡</span>
-                  <span className="feedback-text">
-                    Sai rồi! Đáp án đúng là <strong>{quizQuestions[currentQuestion].correctAnswer}</strong>
-                  </span>
-                </>
-              )}
-            </div>
-            {quizQuestions[currentQuestion].explanation && (
-              <div className="explanation">
-                <strong>Giải thích:</strong>
-                <p>{quizQuestions[currentQuestion].explanation}</p>
+                {answer && (
+                  <div className={`feedback ${answer.isCorrect ? 'feedback-correct' : 'feedback-incorrect'}`}>
+                    <div className="feedback-header">
+                      {answer.isCorrect ? (
+                        <span className="feedback-text">Chính xác! Bạn đã trả lời đúng.</span>
+                      ) : (
+                        <span className="feedback-text">
+                          Sai rồi! Đáp án đúng là <strong>{question.correctAnswer}</strong>
+                        </span>
+                      )}
+                    </div>
+                    {question.explanation && (
+                      <div className="explanation">
+                        <strong>Giải thích:</strong>
+                        <p>{question.explanation}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        )}
-
-        <div className="navigation-buttons">
-          <button 
-            className="nav-button prev-button"
-            onClick={handlePreviousQuestion}
-            disabled={currentQuestion === 0}
-          >
-            ← Previous
-          </button>
-          <button 
-            className="nav-button next-button"
-            onClick={handleNextQuestion}
-            disabled={selectedAnswer === null}
-          >
-            {currentQuestion === quizQuestions.length - 1 ? 'Finish' : 'Next →'}
-          </button>
+            );
+          })}
         </div>
       </div>
     </div>

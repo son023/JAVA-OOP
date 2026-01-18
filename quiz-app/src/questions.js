@@ -6143,5 +6143,1305 @@ public class Main {
     }
 }`,
     explanation: "Output là 20. Private variable x được đóng gói, chỉ có thể truy cập qua public methods. Method setX(20) thay đổi x từ 10 thành 20. Method getX() trả về giá trị hiện tại của x là 20. Đây là cách đóng gói đúng: private variable + public getter/setter để kiểm soát truy cập dữ liệu."
+  },
+  // Question 301
+  {
+    question: "In the context of Object-Oriented Programming, what is the fundamental philosophical difference between encapsulation as a data-hiding mechanism and encapsulation as a bundling mechanism, and how does this distinction impact the design of class hierarchies in complex software systems?",
+    options: {
+      A: "Data-hiding encapsulation focuses solely on access modifiers, while bundling encapsulation emphasizes the logical grouping of related data and methods, with the latter being more critical for maintaining system integrity in large-scale applications",
+      B: "Data-hiding and bundling are identical concepts in OOP, both implemented through the same mechanisms without any meaningful distinction in practice",
+      C: "Bundling encapsulation is a compile-time concept while data-hiding is a runtime concept, making them fundamentally incompatible in object-oriented design",
+      D: "Data-hiding encapsulation is primarily concerned with preventing unauthorized access, whereas bundling encapsulation is about organizing code structure, and neither significantly impacts class hierarchy design"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation có hai khía cạnh quan trọng: data-hiding (ẩn dữ liệu) và bundling (gói gọn). Data-hiding sử dụng access modifiers để kiểm soát truy cập, trong khi bundling nhấn mạnh việc nhóm logic các dữ liệu và phương thức liên quan lại với nhau. Trong các hệ thống phức tạp, bundling quan trọng hơn vì nó đảm bảo tính toàn vẹn của hệ thống bằng cách đảm bảo các thành phần liên quan được quản lý cùng nhau. Cả hai khía cạnh đều ảnh hưởng đến thiết kế class hierarchy, nhưng bundling có tác động lớn hơn đến việc duy trì tính nhất quán và dễ bảo trì trong các ứng dụng quy mô lớn."
+  },
+  // Question 302
+  {
+    question: "When designing an inheritance hierarchy, what are the critical considerations regarding the Liskov Substitution Principle's relationship with polymorphism, and how does method overriding interact with the contract established by the parent class?",
+    options: {
+      A: "The Liskov Substitution Principle requires that derived classes must be substitutable for their base classes without altering the correctness of the program, and method overriding must maintain the behavioral contract while allowing implementation flexibility",
+      B: "Method overriding can completely change the behavior of inherited methods without any constraints, as polymorphism allows any implementation in derived classes",
+      C: "The Liskov Substitution Principle only applies to abstract classes and interfaces, not to concrete inheritance relationships",
+      D: "Polymorphism and the Liskov Substitution Principle are unrelated concepts, with polymorphism focusing on method resolution and LSP focusing on type compatibility"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Nguyên tắc Liskov Substitution (LSP) yêu cầu các lớp dẫn xuất phải có thể thay thế lớp cơ sở mà không làm thay đổi tính đúng đắn của chương trình. Khi override method, ta phải duy trì hợp đồng hành vi (behavioral contract) của lớp cha - nghĩa là method phải thực hiện đúng mục đích và không vi phạm các giả định mà code sử dụng lớp cha đã đặt ra. Polymorphism cho phép linh hoạt trong implementation nhưng không được phá vỡ contract. Vi phạm LSP sẽ dẫn đến các lỗi logic khó phát hiện trong runtime."
+  },
+  // Question 303
+  {
+    question: "What is the theoretical foundation of abstraction in object-oriented programming, and how does the distinction between interface abstraction and implementation abstraction contribute to the design of maintainable and extensible software architectures?",
+    options: {
+      A: "Abstraction separates 'what' (interface) from 'how' (implementation), allowing clients to depend on stable interfaces while implementations can evolve independently, which is fundamental to creating flexible and maintainable architectures",
+      B: "Abstraction is merely a code organization technique with no significant impact on software architecture or maintainability",
+      C: "Interface abstraction and implementation abstraction are the same concept, both referring to hiding implementation details",
+      D: "Abstraction only applies to abstract classes and cannot be used with concrete classes or interfaces"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction (trừu tượng hóa) là nền tảng lý thuyết của OOP, tách biệt 'what' (giao diện - interface) khỏi 'how' (triển khai - implementation). Interface abstraction định nghĩa contract mà client code phụ thuộc vào, trong khi implementation abstraction ẩn chi tiết triển khai. Sự phân biệt này cho phép client code phụ thuộc vào interface ổn định, còn implementation có thể thay đổi và mở rộng độc lập mà không ảnh hưởng đến client. Điều này là nền tảng cho việc tạo ra các kiến trúc phần mềm linh hoạt, dễ bảo trì và mở rộng. Abstraction có thể áp dụng qua abstract classes, interfaces, hoặc thậm chí concrete classes với proper encapsulation."
+  },
+  // Question 304
+  {
+    question: "In the context of polymorphism, explain the theoretical differences between compile-time polymorphism (method overloading) and runtime polymorphism (method overriding), and discuss how the Java Virtual Machine resolves method calls in each scenario.",
+    options: {
+      A: "Compile-time polymorphism uses static binding based on method signature and argument types determined at compile time, while runtime polymorphism uses dynamic binding where the JVM determines the actual method to call based on the object's runtime type, with method resolution occurring through the virtual method table",
+      B: "Both compile-time and runtime polymorphism use the same binding mechanism, with the only difference being when the binding occurs",
+      C: "Compile-time polymorphism is more efficient than runtime polymorphism because it doesn't require method lookup, but both resolve methods identically",
+      D: "Runtime polymorphism can only occur with abstract methods, while compile-time polymorphism applies to all methods"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Compile-time polymorphism (đa hình compile-time) sử dụng static binding - compiler quyết định method nào được gọi dựa trên method signature và kiểu tham số tại thời điểm biên dịch. Runtime polymorphism (đa hình runtime) sử dụng dynamic binding - JVM quyết định method nào được gọi dựa trên kiểu thực tế của object tại runtime. JVM sử dụng virtual method table (vtable) để resolve method calls trong runtime polymorphism, cho phép gọi đúng method của subclass ngay cả khi reference có kiểu của superclass. Static binding hiệu quả hơn nhưng kém linh hoạt, dynamic binding linh hoạt hơn nhưng có overhead nhỏ."
+  },
+  // Question 305
+  {
+    question: "What are the fundamental theoretical principles underlying inheritance in object-oriented programming, and how does the 'is-a' relationship differ from the 'has-a' relationship in terms of design semantics and implementation implications?",
+    options: {
+      A: "Inheritance establishes an 'is-a' relationship representing specialization where a derived class is a specialized version of the base class, inheriting all members and behaviors, while 'has-a' represents composition where objects contain other objects, with inheritance creating tighter coupling and composition providing more flexibility",
+      B: "'Is-a' and 'has-a' relationships are identical in OOP, both implemented through inheritance mechanisms",
+      C: "Inheritance only applies to 'has-a' relationships, while 'is-a' relationships must use composition",
+      D: "The distinction between 'is-a' and 'has-a' is purely semantic with no implementation differences"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) thiết lập quan hệ 'is-a' (là một), biểu thị sự chuyên biệt hóa - lớp dẫn xuất là phiên bản chuyên biệt của lớp cơ sở, kế thừa tất cả members và behaviors. 'Has-a' (có một) biểu thị composition (tổng hợp) - object chứa các object khác. Inheritance tạo tight coupling (liên kết chặt) vì subclass phụ thuộc trực tiếp vào implementation của superclass. Composition tạo loose coupling (liên kết lỏng) và linh hoạt hơn vì có thể thay đổi implementation mà không ảnh hưởng đến class chứa. Chọn inheritance khi có quan hệ 'is-a' thực sự, chọn composition khi cần flexibility và loose coupling."
+  },
+  // Question 306
+  {
+    question: "Explain the theoretical concept of information hiding in encapsulation, and discuss how access modifiers (private, protected, public, package-private) implement different levels of visibility and their implications for class design and system architecture.",
+    options: {
+      A: "Information hiding restricts access to internal implementation details, with private providing class-level encapsulation, protected enabling inheritance-based access, public exposing the interface, and package-private creating module-level boundaries, each serving different architectural needs in system design",
+      B: "All access modifiers provide identical levels of information hiding, with the choice being purely stylistic",
+      C: "Information hiding is only achieved through private modifiers, with other modifiers providing no encapsulation benefits",
+      D: "Access modifiers are compile-time constructs with no runtime implications for information hiding"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Information hiding (ẩn thông tin) là khái niệm lý thuyết cốt lõi của encapsulation, hạn chế truy cập vào chi tiết implementation bên trong. Private cung cấp class-level encapsulation - chỉ truy cập trong cùng class. Protected cho phép truy cập trong cùng package và subclass - phù hợp cho inheritance hierarchy. Public expose interface - cho phép truy cập từ mọi nơi. Package-private (default) tạo module-level boundaries - truy cập trong cùng package. Mỗi mức độ visibility phục vụ nhu cầu kiến trúc khác nhau: private cho internal implementation, protected cho inheritance, public cho API, package-private cho module organization. Việc chọn đúng access modifier ảnh hưởng đến tính bảo mật, khả năng bảo trì và flexibility của hệ thống."
+  },
+  // Question 307
+  {
+    question: "What is the theoretical relationship between abstraction and encapsulation in object-oriented design, and how do these two principles work together to create well-designed classes that balance flexibility with implementation stability?",
+    options: {
+      A: "Abstraction defines the 'what' by exposing a simplified interface, while encapsulation provides the 'how' by hiding implementation details, and together they create classes where clients depend on stable abstractions while implementations can evolve independently",
+      B: "Abstraction and encapsulation are competing principles that cannot be used together in the same class design",
+      C: "Abstraction is a subset of encapsulation, with encapsulation being the only principle needed for good design",
+      D: "Abstraction and encapsulation are identical concepts, both referring to the same design mechanism"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction và Encapsulation là hai nguyên tắc bổ sung cho nhau trong OOP. Abstraction định nghĩa 'what' (cái gì) bằng cách expose một interface đơn giản hóa, tập trung vào behavior và contract mà class cung cấp. Encapsulation cung cấp 'how' (như thế nào) bằng cách ẩn implementation details, bảo vệ dữ liệu và logic bên trong. Khi kết hợp, chúng tạo ra các class mà client code phụ thuộc vào abstraction ổn định (interface), trong khi implementation có thể thay đổi và phát triển độc lập mà không ảnh hưởng đến client. Sự kết hợp này tạo ra sự cân bằng giữa flexibility (linh hoạt) và stability (ổn định), cho phép hệ thống dễ bảo trì và mở rộng."
+  },
+  // Question 308
+  {
+    question: "In the theoretical framework of object-oriented programming, how does polymorphism enable the Open-Closed Principle, and what are the mechanisms by which polymorphism allows systems to be open for extension while closed for modification?",
+    options: {
+      A: "Polymorphism allows new functionality to be added through new classes that implement existing interfaces or extend base classes, enabling extension without modifying existing code, thus achieving the Open-Closed Principle where systems are open for extension but closed for modification",
+      B: "Polymorphism requires modifying existing classes to add new behavior, which contradicts the Open-Closed Principle",
+      C: "The Open-Closed Principle can only be achieved through inheritance, with polymorphism playing no role",
+      D: "Polymorphism and the Open-Closed Principle are unrelated concepts in object-oriented design"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) cho phép Open-Closed Principle bằng cách cho phép thêm functionality mới thông qua các class mới implement existing interfaces hoặc extend base classes, mà không cần modify code hiện có. Khi có interface hoặc base class ổn định, ta có thể tạo các implementation mới (extension) mà không thay đổi code đã tồn tại (closed for modification). Client code phụ thuộc vào abstraction (interface/base class) và sử dụng polymorphism để làm việc với các implementation khác nhau. Điều này cho phép hệ thống mở rộng (open for extension) mà không cần sửa đổi code cũ (closed for modification), giảm rủi ro và tăng tính ổn định của hệ thống."
+  },
+  // Question 309
+  {
+    question: "What are the theoretical foundations of method overriding in inheritance hierarchies, and how do the concepts of method signature, return type covariance, and exception handling interact to define the contract between base and derived classes?",
+    options: {
+      A: "Method overriding requires identical method signatures, allows covariant return types where the derived method can return a subtype, and exception handling must follow the rule that derived methods cannot throw broader checked exceptions than the base method, establishing a contract that maintains substitutability",
+      B: "Method overriding allows complete freedom in changing method signatures, return types, and exceptions without any constraints",
+      C: "Method overriding only applies to methods with identical implementations, not to methods with different behaviors",
+      D: "Return type covariance and exception handling rules are optional guidelines with no enforcement in Java"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Method overriding có các quy tắc lý thuyết nghiêm ngặt. Method signature phải giống hệt (tên, tham số, kiểu tham số). Return type có thể là covariant - derived method có thể return subtype của return type trong base method (ví dụ: base return Animal, derived return Dog extends Animal). Exception handling phải tuân theo quy tắc: derived method không thể throw checked exception rộng hơn base method (có thể throw cùng hoặc narrower exception, hoặc không throw). Các quy tắc này thiết lập contract đảm bảo substitutability - derived class có thể thay thế base class mà không vi phạm expectations của client code. Vi phạm các quy tắc này sẽ gây lỗi compile-time hoặc runtime."
+  },
+  // Question 310
+  {
+    question: "Explain the theoretical concept of dynamic method dispatch in polymorphism, and discuss how the Java Virtual Machine's method resolution mechanism works at runtime to determine which method implementation to execute when multiple inheritance levels are involved.",
+    options: {
+      A: "Dynamic method dispatch uses the actual object type at runtime rather than the reference type to determine which method to call, with the JVM traversing the inheritance hierarchy from the actual object's class upward to find the most specific override, using virtual method tables for efficient lookup",
+      B: "Dynamic method dispatch uses the reference type to determine method calls, making it identical to static binding",
+      C: "The JVM always calls the method from the reference type's class, ignoring the actual object type",
+      D: "Dynamic method dispatch only works with single-level inheritance and fails with multiple inheritance levels"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Dynamic method dispatch (phân phối method động) sử dụng kiểu thực tế của object tại runtime (không phải kiểu reference) để quyết định method nào được gọi. JVM duyệt inheritance hierarchy từ class của object thực tế lên trên để tìm override cụ thể nhất. JVM sử dụng virtual method table (vtable) để lookup hiệu quả - mỗi class có bảng chứa pointers đến các method implementations. Khi có nhiều cấp inheritance, JVM tìm method từ subclass cụ thể nhất lên parent class cho đến khi tìm thấy implementation. Cơ chế này cho phép runtime polymorphism hoạt động chính xác ngay cả với deep inheritance hierarchies, đảm bảo method của subclass được gọi thay vì method của superclass."
+  },
+  // Question 311
+  {
+    question: "What is the theoretical distinction between concrete inheritance and interface inheritance in object-oriented design, and how do these different inheritance mechanisms serve distinct purposes in creating flexible and maintainable software architectures?",
+    options: {
+      A: "Concrete inheritance provides code reuse and implementation sharing through class extension, while interface inheritance defines contracts and enables polymorphism without implementation coupling, with interface inheritance providing better abstraction and flexibility for system design",
+      B: "Concrete inheritance and interface inheritance are identical mechanisms with no meaningful differences in their application or benefits",
+      C: "Interface inheritance can only be used with abstract classes, not with Java interfaces",
+      D: "Concrete inheritance is always preferable to interface inheritance because it provides more functionality"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Concrete inheritance (kế thừa cụ thể) cung cấp code reuse và chia sẻ implementation thông qua class extension - subclass kế thừa cả structure và behavior từ superclass. Interface inheritance (kế thừa interface) định nghĩa contract và cho phép polymorphism mà không có implementation coupling - class implement interface phải cung cấp implementation riêng. Interface inheritance cung cấp abstraction tốt hơn và flexibility cao hơn vì không tạo dependency vào implementation cụ thể. Concrete inheritance phù hợp khi có quan hệ 'is-a' mạnh và muốn chia sẻ code, interface inheritance phù hợp khi cần định nghĩa contract mà nhiều class khác nhau có thể implement theo cách riêng."
+  },
+  // Question 312
+  {
+    question: "In the theoretical framework of encapsulation, what is the relationship between data encapsulation and behavioral encapsulation, and how do getter/setter methods contribute to maintaining the integrity of an object's internal state while providing controlled access?",
+    options: {
+      A: "Data encapsulation protects instance variables, while behavioral encapsulation protects methods, and getter/setter methods provide controlled access points that can enforce validation, maintain invariants, and hide implementation details while allowing external interaction with object state",
+      B: "Data and behavioral encapsulation are the same concept, both implemented identically through access modifiers",
+      C: "Getter/setter methods break encapsulation by exposing internal state, making them anti-patterns in object-oriented design",
+      D: "Encapsulation only applies to data, with behavioral encapsulation being a separate unrelated concept"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Data encapsulation (đóng gói dữ liệu) bảo vệ instance variables bằng cách hạn chế truy cập trực tiếp. Behavioral encapsulation (đóng gói hành vi) bảo vệ methods và logic bên trong. Getter/setter methods cung cấp controlled access points - không chỉ đơn giản là expose data, mà có thể enforce validation (kiểm tra tính hợp lệ), maintain invariants (duy trì bất biến), và hide implementation details (ẩn chi tiết triển khai). Ví dụ: setter có thể validate input, getter có thể tính toán giá trị thay vì return trực tiếp. Điều này cho phép external interaction với object state mà vẫn duy trì integrity và encapsulation. Getter/setter không phải anti-pattern nếu được thiết kế đúng với validation và logic phù hợp."
+  },
+  // Question 313
+  {
+    question: "What are the theoretical foundations of abstract classes versus interfaces in Java, and how do the concepts of single inheritance, multiple interface implementation, and the diamond problem influence the choice between these abstraction mechanisms?",
+    options: {
+      A: "Abstract classes support single inheritance with shared implementation, while interfaces support multiple implementation with contract definition only, and Java's single inheritance prevents the diamond problem with classes while multiple interface implementation avoids it because interfaces contain no implementation to conflict",
+      B: "Abstract classes and interfaces are functionally identical in Java, with the choice being purely stylistic",
+      C: "Java supports multiple inheritance for both abstract classes and interfaces, making the diamond problem a concern for both",
+      D: "Interfaces can contain implementation in Java, making them equivalent to abstract classes"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstract classes (lớp trừu tượng) hỗ trợ single inheritance với shared implementation - một class chỉ extend một abstract class nhưng có thể có implementation chung. Interfaces hỗ trợ multiple implementation với contract definition only - một class có thể implement nhiều interfaces nhưng interfaces chỉ định nghĩa contract, không có implementation (trước Java 8). Java's single inheritance ngăn diamond problem với classes vì một class chỉ có một parent class. Multiple interface implementation tránh diamond problem vì interfaces không chứa implementation để conflict - nếu hai interfaces có method signature giống nhau, class implement chỉ cần provide một implementation. Từ Java 8, interfaces có thể có default methods, nhưng nếu conflict xảy ra, class phải override explicitly. Chọn abstract class khi cần shared implementation và 'is-a' relationship, chọn interface khi cần multiple contracts và 'can-do' relationship."
+  },
+  // Question 314
+  {
+    question: "Explain the theoretical concept of method overloading as a form of compile-time polymorphism, and discuss how the compiler resolves overloaded method calls based on method signature matching, type promotion, and ambiguity resolution rules.",
+    options: {
+      A: "Method overloading is compile-time polymorphism where methods with the same name but different signatures are resolved at compile time based on exact match, type promotion hierarchy, and varargs, with compilation errors occurring when ambiguity cannot be resolved through these rules",
+      B: "Method overloading is resolved at runtime based on the actual argument types, making it identical to method overriding",
+      C: "The compiler randomly selects which overloaded method to call when multiple matches exist",
+      D: "Method overloading only works with primitive types and cannot be used with object types"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Method overloading (nạp chồng method) là compile-time polymorphism - methods cùng tên nhưng khác signature được resolve tại compile-time. Compiler resolve dựa trên: exact match (khớp chính xác), type promotion hierarchy (byte→short→int→long→float→double, char→int), và varargs. Nếu không có exact match, compiler tìm match thông qua promotion. Nếu có nhiều matches có thể, compiler báo ambiguity error. Overloading khác overriding ở chỗ: overloading là compile-time (dựa trên signature), overriding là runtime (dựa trên object type). Overloading có thể dùng với cả primitive và object types, nhưng với object types, exact match được ưu tiên hơn inheritance hierarchy."
+  },
+  // Question 315
+  {
+    question: "What is the theoretical relationship between inheritance and code reuse in object-oriented programming, and what are the potential pitfalls of using inheritance primarily for code reuse rather than for modeling true 'is-a' relationships?",
+    options: {
+      A: "While inheritance enables code reuse, using it primarily for code reuse without a true 'is-a' relationship leads to fragile base class problems, tight coupling, and violation of the Liskov Substitution Principle, making composition a better choice for code reuse in such scenarios",
+      B: "Inheritance should always be used for code reuse regardless of the relationship type, as it is the most efficient mechanism",
+      C: "Code reuse is the only valid reason to use inheritance, with 'is-a' relationships being irrelevant",
+      D: "Inheritance and code reuse are unrelated concepts that cannot be used together"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) cho phép code reuse, nhưng sử dụng nó chủ yếu cho code reuse mà không có quan hệ 'is-a' thực sự dẫn đến các vấn đề: fragile base class problem (thay đổi base class có thể break subclass), tight coupling (subclass phụ thuộc chặt vào implementation của superclass), và violation Liskov Substitution Principle (subclass không thể thay thế superclass đúng cách). Composition (tổng hợp) là lựa chọn tốt hơn cho code reuse trong các trường hợp này vì nó tạo loose coupling và flexibility. Inheritance nên được dùng khi có quan hệ 'is-a' thực sự và muốn polymorphism, không chỉ đơn giản là code reuse. 'Favor composition over inheritance' là nguyên tắc quan trọng trong OOP design."
+  },
+  // Question 316
+  {
+    question: "In the context of abstraction, what is the theoretical difference between interface abstraction and implementation abstraction, and how do abstract classes and concrete classes contribute differently to these abstraction levels in a software system?",
+    options: {
+      A: "Interface abstraction defines the contract and public API that clients depend on, while implementation abstraction hides the internal details of how that contract is fulfilled, with abstract classes providing partial implementation abstraction and concrete classes providing complete implementation abstraction",
+      B: "Interface abstraction and implementation abstraction are identical concepts with no distinction",
+      C: "Abstract classes cannot provide any form of abstraction, only concrete classes can",
+      D: "Abstraction only applies to interfaces, not to classes"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Interface abstraction (trừu tượng hóa giao diện) định nghĩa contract và public API mà clients phụ thuộc vào - 'what' mà class cung cấp. Implementation abstraction (trừu tượng hóa triển khai) ẩn chi tiết bên trong về cách contract được thực hiện - 'how' được implement. Abstract classes cung cấp partial implementation abstraction - có thể có một số implementation chung và một số abstract methods. Concrete classes cung cấp complete implementation abstraction - có implementation đầy đủ nhưng vẫn ẩn chi tiết bên trong thông qua encapsulation. Cả hai mức abstraction đều quan trọng: interface abstraction cho phép clients phụ thuộc vào contract ổn định, implementation abstraction cho phép thay đổi implementation mà không ảnh hưởng đến clients."
+  },
+  // Question 317
+  {
+    question: "What are the theoretical mechanisms by which polymorphism enables the design of extensible systems, and how does the combination of inheritance, method overriding, and dynamic binding create a foundation for building software that can accommodate new requirements without modifying existing code?",
+    options: {
+      A: "Polymorphism enables extensibility by allowing new classes to be added that implement existing interfaces or extend base classes, with method overriding providing specialized behavior and dynamic binding ensuring the correct method is called at runtime, creating a system where new functionality can be added through new classes without changing existing code",
+      B: "Polymorphism requires modifying existing classes to add new behavior, preventing true extensibility",
+      C: "Extensibility can only be achieved through inheritance, with polymorphism playing no role",
+      D: "Dynamic binding and method overriding are unrelated to system extensibility"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) cho phép extensibility (khả năng mở rộng) bằng cách cho phép thêm các class mới implement existing interfaces hoặc extend base classes. Method overriding cung cấp specialized behavior - mỗi subclass có thể override method để cung cấp behavior riêng. Dynamic binding đảm bảo method đúng được gọi tại runtime dựa trên object type thực tế. Sự kết hợp này tạo nền tảng cho việc xây dựng software có thể accommodate requirements mới mà không cần modify existing code - ta chỉ cần tạo class mới implement/extend, và existing code sử dụng polymorphism sẽ tự động làm việc với class mới. Đây là cơ chế cốt lõi của Open-Closed Principle và là nền tảng cho design patterns như Strategy, Factory, v.v."
+  },
+  // Question 318
+  {
+    question: "Explain the theoretical concept of encapsulation boundaries in object-oriented design, and discuss how the proper use of access modifiers creates layers of abstraction that protect implementation details while exposing necessary interfaces for object interaction.",
+    options: {
+      A: "Encapsulation boundaries define the scope of visibility for class members, with access modifiers creating concentric layers of abstraction where private members form the innermost protected core, protected members extend to inheritance hierarchy, package-private creates module boundaries, and public members form the external interface, each layer serving specific architectural purposes",
+      B: "All access modifiers create identical boundaries with no architectural implications",
+      C: "Encapsulation boundaries are only relevant for data members, not for methods",
+      D: "Public access should always be used to maximize flexibility and code reuse"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation boundaries (ranh giới đóng gói) định nghĩa scope of visibility cho class members. Access modifiers tạo các lớp trừu tượng đồng tâm: private members tạo innermost protected core - chỉ truy cập trong cùng class, bảo vệ implementation details cốt lõi. Protected members mở rộng đến inheritance hierarchy - truy cập trong cùng package và subclass, cho phép inheritance nhưng vẫn bảo vệ khỏi external access. Package-private (default) tạo module boundaries - truy cập trong cùng package, cho phép module-level organization. Public members tạo external interface - truy cập từ mọi nơi, expose API cần thiết. Mỗi lớp phục vụ mục đích kiến trúc cụ thể: private cho internal implementation, protected cho inheritance, package-private cho module organization, public cho API. Việc sử dụng đúng các lớp này tạo ra architecture rõ ràng, dễ bảo trì và bảo mật."
+  },
+  // Question 319
+  {
+    question: "What is the theoretical foundation of the 'has-a' relationship in object composition versus the 'is-a' relationship in inheritance, and how do these relationships differ in terms of coupling, flexibility, and their suitability for different design scenarios?",
+    options: {
+      A: "The 'has-a' relationship represents composition where objects contain other objects, creating loose coupling and high flexibility, while the 'is-a' relationship represents inheritance creating tight coupling through implementation dependency, with composition being preferable when flexibility and loose coupling are priorities",
+      B: "'Has-a' and 'is-a' relationships are identical in terms of coupling and flexibility",
+      C: "Inheritance always provides better flexibility than composition",
+      D: "Composition cannot be used to model relationships between objects"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "'Has-a' relationship (có một) biểu thị composition - object chứa các object khác, tạo loose coupling (liên kết lỏng) và high flexibility (linh hoạt cao) vì có thể thay đổi implementation của object được chứa mà không ảnh hưởng đến object chứa. 'Is-a' relationship (là một) biểu thị inheritance - tạo tight coupling (liên kết chặt) thông qua implementation dependency vì subclass phụ thuộc trực tiếp vào implementation của superclass. Composition phù hợp hơn khi cần flexibility và loose coupling - có thể thay đổi behavior bằng cách thay đổi object được chứa, không cần modify class chứa. Inheritance phù hợp khi có quan hệ 'is-a' thực sự và cần polymorphism. Nguyên tắc 'Favor composition over inheritance' khuyến khích sử dụng composition khi có thể để tránh tight coupling và fragile base class problems."
+  },
+  // Question 320
+  {
+    question: "In the theoretical framework of polymorphism, how do covariant return types and contravariant parameter types relate to method overriding, and what are the type safety implications of these variance concepts in inheritance hierarchies?",
+    options: {
+      A: "Covariant return types allow a derived method to return a subtype of the base method's return type, maintaining type safety, while contravariant parameters would allow a derived method to accept a supertype, but Java does not support contravariant parameters in overriding, requiring exact parameter type matching to ensure type safety",
+      B: "Both covariant return types and contravariant parameters are fully supported in Java method overriding",
+      C: "Java does not support any form of variance in method overriding, requiring exact type matching for both return types and parameters",
+      D: "Variance concepts only apply to generic types, not to method overriding"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Covariant return types (kiểu trả về hiệp biến) cho phép derived method return subtype của return type trong base method (ví dụ: base return Animal, derived return Dog extends Animal), vẫn maintain type safety vì Dog là Animal. Contravariant parameters (tham số nghịch biến) sẽ cho phép derived method accept supertype của parameter type trong base method, nhưng Java không hỗ trợ contravariant parameters trong overriding - phải match exact parameter types để ensure type safety. Nếu cho phép contravariant parameters, có thể dẫn đến type safety issues khi client code pass subtype nhưng method expect supertype. Java's design choice đảm bảo type safety: covariant return types an toàn vì return value có thể được treat như supertype, nhưng contravariant parameters không an toàn vì có thể pass type không tương thích."
+  },
+  // Question 321
+  {
+    question: "What is the theoretical relationship between encapsulation and data integrity in object-oriented programming, and how do encapsulation mechanisms prevent invalid state transitions and maintain object invariants throughout an object's lifecycle?",
+    options: {
+      A: "Encapsulation protects data integrity by controlling access to internal state through access modifiers and methods, allowing validation logic in setters to prevent invalid state transitions and ensuring object invariants are maintained through controlled state changes",
+      B: "Encapsulation has no relationship to data integrity, which is handled separately through validation frameworks",
+      C: "Data integrity can only be maintained through public access to all fields, allowing external validation",
+      D: "Encapsulation prevents all state changes, making objects immutable by default"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) bảo vệ data integrity (tính toàn vẹn dữ liệu) bằng cách kiểm soát truy cập vào internal state thông qua access modifiers và methods. Validation logic trong setters có thể prevent invalid state transitions - kiểm tra giá trị trước khi gán, reject giá trị không hợp lệ. Object invariants (bất biến) được maintain thông qua controlled state changes - chỉ cho phép thay đổi state thông qua methods có validation, không cho phép direct access. Ví dụ: setter có thể validate age >= 0, balance >= 0, v.v. Điều này đảm bảo object luôn ở trạng thái hợp lệ trong suốt lifecycle, ngăn chặn corruption và invalid states. Public access sẽ phá vỡ encapsulation và không thể đảm bảo integrity."
+  },
+  // Question 322
+  {
+    question: "Explain the theoretical concept of inheritance hierarchies and their depth, and discuss the trade-offs between deep inheritance hierarchies versus shallow hierarchies in terms of code reuse, maintainability, and the potential for fragile base class problems.",
+    options: {
+      A: "Deep inheritance hierarchies provide extensive code reuse but increase coupling and fragile base class risks, while shallow hierarchies reduce these risks but may require more code duplication, with optimal design balancing hierarchy depth against maintainability and coupling concerns",
+      B: "Deeper inheritance hierarchies are always better, providing maximum code reuse with no drawbacks",
+      C: "Shallow hierarchies are always preferable, with deep hierarchies being an anti-pattern in all cases",
+      D: "Inheritance hierarchy depth has no impact on code quality or maintainability"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Deep inheritance hierarchies (hệ thống kế thừa sâu) cung cấp extensive code reuse nhưng tăng coupling và fragile base class risks - thay đổi ở base class có thể ảnh hưởng đến nhiều subclasses. Shallow hierarchies (hệ thống nông) giảm risks này nhưng có thể require more code duplication. Optimal design cân bằng hierarchy depth với maintainability và coupling concerns. Quy tắc chung: giữ hierarchy càng nông càng tốt (thường 2-3 levels), tránh deep hierarchies (>4-5 levels) vì chúng khó maintain, test, và debug. Khi cần deep hierarchy, consider composition hoặc mixins. Fragile base class problem xảy ra khi base class changes break subclasses unexpectedly, đặc biệt nguy hiểm với deep hierarchies vì impact lan rộng."
+  },
+  // Question 323
+  {
+    question: "What is the theoretical foundation of method hiding versus method overriding in Java, and how does the distinction between static methods and instance methods affect polymorphism and method resolution in inheritance hierarchies?",
+    options: {
+      A: "Method hiding occurs with static methods where a subclass defines a static method with the same signature, resolved at compile-time based on reference type, while method overriding occurs with instance methods, resolved at runtime based on object type, with only instance method overriding supporting true polymorphism",
+      B: "Method hiding and method overriding work identically for both static and instance methods",
+      C: "Static methods support runtime polymorphism just like instance methods",
+      D: "Method hiding is not possible in Java, only method overriding exists"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Method hiding (ẩn method) xảy ra với static methods - subclass define static method cùng signature với superclass, resolved tại compile-time dựa trên reference type (không phải object type). Method overriding (ghi đè method) xảy ra với instance methods - resolved tại runtime dựa trên object type. Chỉ instance method overriding support true polymorphism (đa hình thực sự) vì method được chọn dựa trên object type thực tế. Static methods không có polymorphism - method được chọn dựa trên reference type tại compile-time. Đây là lý do tại sao static methods không nên được gọi qua instance reference (nên dùng ClassName.method()). Method hiding với static methods là compile-time polymorphism, method overriding với instance methods là runtime polymorphism."
+  },
+  // Question 324
+  {
+    question: "In the context of abstraction, what is the theoretical difference between procedural abstraction and data abstraction, and how do these concepts manifest in object-oriented programming through methods and classes respectively?",
+    options: {
+      A: "Procedural abstraction hides the implementation details of operations or algorithms, manifesting as methods in OOP, while data abstraction hides the internal representation and structure of data, manifesting as classes that encapsulate data with associated operations, with both working together to create complete abstractions",
+      B: "Procedural and data abstraction are identical concepts with no distinction",
+      C: "Data abstraction only applies to primitive types, not to classes",
+      D: "Procedural abstraction cannot be achieved in object-oriented programming"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Procedural abstraction (trừu tượng hóa thủ tục) ẩn implementation details của operations hoặc algorithms, manifesting như methods trong OOP - client chỉ cần biết method làm gì, không cần biết làm như thế nào. Data abstraction (trừu tượng hóa dữ liệu) ẩn internal representation và structure của data, manifesting như classes encapsulate data với associated operations - client chỉ cần biết interface, không cần biết data được store như thế nào. Cả hai làm việc cùng nhau để tạo complete abstractions - methods (procedural) operate on data (data abstraction) được encapsulate trong classes. Ví dụ: Stack class ẩn cách implement (array/list), và push/pop methods ẩn algorithm details. Sự kết hợp này tạo ra abstraction mạnh mẽ và flexible."
+  },
+  // Question 325
+  {
+    question: "What are the theoretical mechanisms by which encapsulation enables information hiding, and how does the principle of least privilege apply to access modifier selection in designing secure and maintainable object-oriented systems?",
+    options: {
+      A: "Encapsulation enables information hiding by restricting access through modifiers, and the principle of least privilege requires granting minimum necessary access, meaning members should be private by default and elevated to protected or public only when external access is genuinely required, minimizing attack surface and coupling",
+      B: "All members should be public to maximize flexibility and ease of use",
+      C: "The principle of least privilege does not apply to object-oriented programming",
+      D: "Information hiding and least privilege are conflicting principles that cannot be used together"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) enable information hiding (ẩn thông tin) bằng cách restrict access thông qua modifiers. Principle of least privilege (nguyên tắc đặc quyền tối thiểu) yêu cầu grant minimum necessary access - members nên là private by default và chỉ elevate lên protected hoặc public khi external access thực sự cần thiết. Điều này minimize attack surface (bề mặt tấn công) và coupling (liên kết). Private by default đảm bảo chỉ expose những gì cần thiết, giảm risk của unauthorized access và unintended dependencies. Protected chỉ khi cần inheritance, public chỉ khi cần external API. Approach này tạo ra systems an toàn hơn, dễ maintain hơn, và có clear boundaries. Vi phạm principle này (public everything) tạo tight coupling và security risks."
+  },
+  // Question 326
+  {
+    question: "Explain the theoretical relationship between inheritance and specialization in object-oriented design, and how does the concept of substitutability ensure that specialized classes can be used wherever their base classes are expected without breaking client code expectations?",
+    options: {
+      A: "Inheritance enables specialization where derived classes are specialized versions of base classes, and substitutability requires that specialized classes maintain the behavioral contract of base classes, allowing them to be used interchangeably with base classes while potentially providing enhanced or specialized behavior",
+      B: "Specialization and substitutability are unrelated concepts in inheritance",
+      C: "Specialized classes cannot be used as substitutes for base classes under any circumstances",
+      D: "Substitutability only applies to interfaces, not to class inheritance"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) enable specialization (chuyên biệt hóa) - derived classes là specialized versions của base classes, có thể có thêm features hoặc behavior đặc biệt. Substitutability (khả năng thay thế) yêu cầu specialized classes maintain behavioral contract của base classes - có thể được dùng interchangeably với base classes mà không break client code expectations. Điều này đảm bảo Liskov Substitution Principle - subclass có thể thay thế superclass mà không thay đổi correctness của program. Specialized classes có thể provide enhanced behavior (behavior tốt hơn) hoặc specialized behavior (behavior đặc biệt) nhưng không được violate contract. Ví dụ: Dog extends Animal, có thể thêm behavior như bark() nhưng phải maintain contract của Animal (eat(), sleep()). Client code expecting Animal có thể dùng Dog mà không có vấn đề."
+  },
+  // Question 327
+  {
+    question: "What is the theoretical foundation of polymorphism as it relates to the concept of 'one interface, multiple implementations,' and how does this principle enable the design of flexible systems that can work with different implementations without knowing their specific types?",
+    options: {
+      A: "Polymorphism enables 'one interface, multiple implementations' where client code depends on an interface or base class, and different classes provide different implementations of that interface, allowing the system to work with any implementation without knowing the specific type, creating flexibility and extensibility",
+      B: "Polymorphism requires knowing the specific type of each object to function correctly",
+      C: "'One interface, multiple implementations' can only be achieved through inheritance, not through interfaces",
+      D: "Polymorphism and multiple implementations are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable 'one interface, multiple implementations' (một giao diện, nhiều triển khai) - client code phụ thuộc vào interface hoặc base class, và different classes provide different implementations của interface đó. System có thể work với any implementation mà không cần biết specific type, tạo flexibility và extensibility. Client code chỉ cần biết interface, không cần biết implementation cụ thể. Ví dụ: List interface có ArrayList, LinkedList implementations - client code dùng List interface có thể work với cả hai mà không cần biết loại nào. Điều này cho phép swap implementations, add new implementations, mà không cần modify client code. Đây là foundation của nhiều design patterns (Strategy, Factory, v.v.) và là core principle của flexible, maintainable software design."
+  },
+  // Question 328
+  {
+    question: "In the theoretical framework of encapsulation, how do getter and setter methods serve as accessor and mutator patterns, and what are the design considerations for when to provide read-only access, write-only access, or read-write access to encapsulated data?",
+    options: {
+      A: "Getters provide read access (accessors) and setters provide write access (mutators), with design considerations including: read-only access (only getter) for immutable or computed values, write-only access (only setter) for configuration that doesn't need reading, and read-write access (both) for mutable state, with the choice depending on the data's role and mutability requirements",
+      B: "All encapsulated data must have both getters and setters without exception",
+      C: "Getters and setters are optional and provide no real benefit over direct field access",
+      D: "Read-only and write-only access patterns are not possible in object-oriented programming"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Getters (accessors) provide read access, setters (mutators) provide write access. Design considerations: read-only access (chỉ getter) cho immutable values (final fields) hoặc computed values (calculated từ other fields) - không cần setter vì giá trị không thay đổi hoặc được tính toán. Write-only access (chỉ setter) cho configuration không cần đọc - hiếm khi dùng. Read-write access (cả hai) cho mutable state cần cả đọc và ghi. Choice phụ thuộc vào role và mutability requirements của data. Ví dụ: ID field có thể read-only (chỉ getter), password có thể write-only trong một số cases, name có thể read-write. Không phải tất cả data đều cần cả getter và setter - chỉ provide những gì cần thiết theo principle of least privilege. Điều này tạo ra better encapsulation và prevent unintended modifications."
+  },
+  // Question 329
+  {
+    question: "What is the theoretical relationship between abstract classes and concrete classes in terms of their roles in inheritance hierarchies, and how do abstract methods versus concrete methods contribute to the balance between providing common implementation and requiring specialized implementation in derived classes?",
+    options: {
+      A: "Abstract classes provide a partial implementation with some concrete methods for shared behavior and abstract methods that must be implemented by derived classes, while concrete classes provide complete implementation, with abstract methods forcing specialization and concrete methods enabling code reuse",
+      B: "Abstract classes and concrete classes are functionally identical with no meaningful differences",
+      C: "Abstract classes cannot contain any concrete methods, only abstract methods",
+      D: "Concrete classes cannot be used in inheritance hierarchies"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstract classes (lớp trừu tượng) provide partial implementation - có một số concrete methods cho shared behavior và abstract methods phải được implement bởi derived classes. Concrete classes (lớp cụ thể) provide complete implementation. Abstract methods force specialization - derived classes phải provide implementation riêng, đảm bảo mỗi subclass có behavior đặc biệt. Concrete methods enable code reuse - shared behavior được implement một lần trong abstract class, tất cả subclasses inherit. Sự cân bằng này cho phép: code reuse thông qua concrete methods, và forced specialization thông qua abstract methods. Ví dụ: Animal abstract class có concrete method breathe() (shared) và abstract method makeSound() (specialized). Điều này tạo ra inheritance hierarchy linh hoạt - vừa reuse code, vừa đảm bảo specialization."
+  },
+  // Question 330
+  {
+    question: "Explain the theoretical concept of method resolution order in polymorphism, and how does the Java Virtual Machine determine which method implementation to execute when dealing with method overriding across multiple levels of inheritance, including the role of virtual method tables.",
+    options: {
+      A: "Method resolution in polymorphism follows the inheritance hierarchy from the actual object's class upward to parent classes, with the JVM using virtual method tables (vtables) that store method pointers for each class, allowing efficient lookup of the most specific override at runtime based on the object's actual type",
+      B: "Method resolution always uses the reference type, ignoring the actual object type completely",
+      C: "The JVM randomly selects which method to call when multiple overrides exist",
+      D: "Virtual method tables are not used in Java, with method resolution being purely compile-time"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Method resolution trong polymorphism follow inheritance hierarchy từ actual object's class lên parent classes. JVM sử dụng virtual method tables (vtables) - mỗi class có bảng chứa pointers đến method implementations. JVM lookup method từ class của object thực tế, nếu không tìm thấy thì lên parent class, cho đến khi tìm thấy implementation. Vtable cho phép efficient lookup - O(1) complexity thay vì traverse hierarchy mỗi lần. Method được chọn là most specific override - implementation từ class cụ thể nhất trong hierarchy. Điều này đảm bảo runtime polymorphism hoạt động chính xác - method của subclass được gọi thay vì method của superclass, ngay cả khi reference có kiểu superclass. Vtable là implementation detail của JVM để optimize performance của dynamic dispatch."
+  },
+  // Question 331
+  {
+    question: "What is the theoretical foundation of the relationship between encapsulation and modularity in object-oriented design, and how does proper encapsulation contribute to creating modular systems where components can be developed, tested, and maintained independently?",
+    options: {
+      A: "Encapsulation creates clear boundaries between components by hiding implementation details and exposing only necessary interfaces, enabling modularity where each module (class) is self-contained with well-defined interfaces, allowing independent development, testing, and maintenance without affecting other modules",
+      B: "Encapsulation and modularity are unrelated concepts that cannot work together",
+      C: "Modularity requires all components to expose all their internal details for maximum flexibility",
+      D: "Encapsulation prevents modularity by hiding information needed by other modules"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) tạo clear boundaries giữa components bằng cách ẩn implementation details và chỉ expose necessary interfaces. Điều này enable modularity (tính mô-đun) - mỗi module (class) là self-contained với well-defined interfaces. Modules có thể được develop, test, và maintain independently mà không affect other modules vì chúng chỉ depend vào interfaces, không phải implementations. Clear boundaries ngăn chặn tight coupling và cho phép thay đổi implementation bên trong module mà không ảnh hưởng đến modules khác. Đây là foundation của modular architecture - systems được chia thành independent, interchangeable modules với clear contracts. Encapsulation không prevent modularity mà enable nó bằng cách tạo boundaries rõ ràng."
+  },
+  // Question 332
+  {
+    question: "In the theoretical framework of inheritance, what is the concept of the inheritance chain and method lookup, and how does the depth of the inheritance chain impact performance, maintainability, and the complexity of understanding the class hierarchy?",
+    options: {
+      A: "The inheritance chain represents the path from a class to its root ancestor, and method lookup traverses this chain to find method implementations, with deeper chains increasing lookup complexity, making code harder to understand and maintain, and potentially impacting performance, though modern JVMs optimize this through vtables",
+      B: "Inheritance chain depth has no impact on any aspect of system design or performance",
+      C: "Deeper inheritance chains always improve performance and maintainability",
+      D: "Method lookup does not traverse the inheritance chain, always using the immediate class"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance chain (chuỗi kế thừa) là path từ một class đến root ancestor (Object trong Java). Method lookup traverse chain này để tìm method implementations - bắt đầu từ class hiện tại, nếu không tìm thấy thì lên parent class, tiếp tục đến root. Deeper chains (chuỗi sâu hơn) increase lookup complexity - phải traverse nhiều levels, làm code khó understand và maintain hơn vì phải trace qua nhiều classes. Performance có thể bị impact mặc dù modern JVMs optimize thông qua vtables (O(1) lookup). Deep chains cũng tăng risk của fragile base class problem - thay đổi ở base class ảnh hưởng đến nhiều subclasses. Shallow chains (2-3 levels) thường tốt hơn cho maintainability và clarity. Optimal design balance giữa code reuse và chain depth."
+  },
+  // Question 333
+  {
+    question: "What is the theoretical relationship between abstraction levels and system complexity in object-oriented design, and how do appropriate abstraction levels help manage complexity by hiding unnecessary details while exposing essential information for system interaction?",
+    options: {
+      A: "Appropriate abstraction levels manage complexity by presenting simplified views that hide implementation details while exposing essential interfaces, with each abstraction level serving a specific purpose and audience, reducing cognitive load and enabling developers to work at appropriate levels of detail",
+      B: "Higher abstraction levels always increase complexity by adding layers",
+      C: "Abstraction has no relationship to complexity management",
+      D: "All abstraction levels should expose all details for maximum transparency"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Appropriate abstraction levels (mức trừu tượng phù hợp) manage complexity bằng cách present simplified views ẩn implementation details nhưng expose essential interfaces. Mỗi abstraction level serve specific purpose và audience - high-level abstractions cho architects và designers, low-level cho implementers. Điều này reduce cognitive load (tải nhận thức) và enable developers work at appropriate levels of detail - không cần biết tất cả chi tiết, chỉ cần biết những gì cần thiết cho task hiện tại. Abstraction levels tạo hierarchy of understanding - từ general đến specific. Ví dụ: interface abstraction cho client code, class abstraction cho implementation, method abstraction cho algorithms. Quá nhiều hoặc quá ít abstraction đều có vấn đề - cần balance để manage complexity effectively."
+  },
+  // Question 334
+  {
+    question: "Explain the theoretical concept of encapsulation as a mechanism for achieving information hiding, and how does the principle of 'need-to-know' apply to determining what information should be exposed versus hidden in a well-designed class interface?",
+    options: {
+      A: "Encapsulation achieves information hiding by restricting access to internal details, and the 'need-to-know' principle requires exposing only information necessary for clients to use the class effectively, hiding all implementation details and internal state that clients don't need to know, creating clean and stable interfaces",
+      B: "The 'need-to-know' principle requires exposing all information for maximum transparency",
+      C: "Information hiding and 'need-to-know' are conflicting principles",
+      D: "All class members should be hidden, with no public interface needed"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) achieve information hiding (ẩn thông tin) bằng cách restrict access đến internal details. 'Need-to-know' principle (nguyên tắc cần biết) yêu cầu expose chỉ information cần thiết cho clients sử dụng class effectively, ẩn tất cả implementation details và internal state mà clients không cần biết. Điều này tạo clean và stable interfaces - clients chỉ depend vào những gì cần thiết, không depend vào implementation details có thể thay đổi. Public interface nên minimal và focused - chỉ expose methods cần thiết cho intended use cases. Internal state, helper methods, và implementation details nên private. Approach này tạo loose coupling, dễ maintain, và stable APIs. Vi phạm principle này (expose quá nhiều) tạo tight coupling và fragile dependencies."
+  },
+  // Question 335
+  {
+    question: "What is the theoretical foundation of polymorphism as it enables the design of extensible and maintainable systems, and how does the combination of late binding and interface-based programming create systems that can evolve without breaking existing code?",
+    options: {
+      A: "Polymorphism enables extensibility through late binding where method calls are resolved at runtime, combined with interface-based programming where code depends on abstractions rather than concrete types, allowing new implementations to be added without modifying existing code that depends on the abstraction",
+      B: "Polymorphism requires early binding and concrete type dependencies for proper functionality",
+      C: "Late binding and interface-based programming are unrelated to system extensibility",
+      D: "Extensible systems cannot be achieved through polymorphism, requiring code modification for all changes"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable extensibility (khả năng mở rộng) thông qua late binding (liên kết muộn) - method calls được resolve tại runtime dựa trên object type thực tế. Kết hợp với interface-based programming (lập trình dựa trên giao diện) - code depend vào abstractions (interfaces/base classes) thay vì concrete types. Điều này allow new implementations được add mà không cần modify existing code depend vào abstraction. Client code depend vào interface, không biết implementation cụ thể, nên có thể work với bất kỳ implementation nào. Khi add implementation mới, chỉ cần implement interface, existing code tự động work với nó. Đây là foundation của Open-Closed Principle và nhiều design patterns. Systems có thể evolve (phát triển) mà không break existing code vì dependencies dựa trên stable abstractions."
+  },
+  // Question 336
+  {
+    question: "In the context of inheritance hierarchies, what is the theoretical concept of the inheritance diamond problem, and how does Java's single inheritance model prevent this problem while still allowing multiple interface implementation to achieve similar flexibility?",
+    options: {
+      A: "The diamond problem occurs when a class inherits from two classes that share a common ancestor, creating ambiguity about which implementation to use, and Java's single inheritance prevents this by allowing only one parent class, while multiple interface implementation provides flexibility without the diamond problem since interfaces contain no implementation to conflict",
+      B: "Java supports multiple inheritance for classes, making the diamond problem a common issue",
+      C: "The diamond problem only occurs with interfaces, not with classes",
+      D: "Java's single inheritance model prevents all forms of code reuse and flexibility"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Diamond problem (vấn đề kim cương) xảy ra khi một class inherit từ hai classes có common ancestor, tạo ambiguity về implementation nào được dùng. Java's single inheritance prevent vấn đề này bằng cách chỉ allow một parent class - một class chỉ extend một class, không có multiple inheritance. Multiple interface implementation provide flexibility mà không có diamond problem vì interfaces không chứa implementation để conflict - nếu hai interfaces có method signature giống nhau, class chỉ cần provide một implementation. Từ Java 8, interfaces có default methods, nhưng nếu conflict xảy ra, class phải override explicitly. Single inheritance trade-off: prevent diamond problem nhưng limit flexibility so với multiple inheritance. Multiple interface implementation compensate bằng cách allow 'can-do' relationships (một class có thể implement nhiều interfaces) mà không có implementation conflicts."
+  },
+  // Question 337
+  {
+    question: "What is the theoretical relationship between encapsulation and the concept of object state, and how do encapsulation mechanisms ensure that object state transitions occur only through controlled, validated pathways that maintain object invariants?",
+    options: {
+      A: "Encapsulation protects object state by restricting direct access to state variables, requiring all state changes to occur through controlled methods (like setters) that can validate inputs and enforce invariants, ensuring state transitions are always valid and object integrity is maintained",
+      B: "Encapsulation prevents all state changes, making objects completely immutable",
+      C: "State changes should always occur through direct field access for maximum performance",
+      D: "Object state and encapsulation are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) protect object state bằng cách restrict direct access đến state variables. Tất cả state changes phải occur through controlled methods (như setters) có thể validate inputs và enforce invariants (bất biến). Điều này ensure state transitions luôn valid và object integrity được maintain. Setters có thể check preconditions (điều kiện tiên quyết), validate values, và maintain invariants trước khi thay đổi state. Ví dụ: setAge() có thể validate age >= 0, setBalance() có thể check balance >= 0. Direct field access sẽ bypass validation và có thể tạo invalid states. Encapsulation không prevent state changes mà control chúng - chỉ allow valid changes. Điều này đảm bảo objects luôn ở valid states và invariants được preserve."
+  },
+  // Question 338
+  {
+    question: "Explain the theoretical concept of method overriding contracts in inheritance, and how do the rules regarding method signatures, return types, access modifiers, and exceptions create a contract that ensures substitutability while allowing specialized implementations?",
+    options: {
+      A: "Method overriding contracts require identical method signatures, allow covariant return types, require equal or broader access (derived method cannot be more restrictive), and require equal or narrower exceptions (derived cannot throw broader checked exceptions), creating a contract that ensures derived classes can substitute base classes while providing specialized behavior",
+      B: "Method overriding allows complete freedom to change signatures, return types, access modifiers, and exceptions without any constraints",
+      C: "Overriding contracts only apply to method names, with all other aspects being freely changeable",
+      D: "Method overriding contracts prevent any form of specialization, requiring identical implementations"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Method overriding contracts (hợp đồng ghi đè method) yêu cầu: identical method signatures (tên, parameters, parameter types), allow covariant return types (derived có thể return subtype), require equal or broader access (derived method không thể restrictive hơn - public method không thể override thành private), và require equal or narrower exceptions (derived không thể throw broader checked exceptions). Contract này ensure derived classes có thể substitute base classes (Liskov Substitution) trong khi provide specialized behavior. Vi phạm contract sẽ break substitutability - client code expect behavior từ base class có thể không work với derived class. Contract balance giữa flexibility (cho phép specialization) và safety (đảm bảo substitutability). Đây là foundation của polymorphism và inheritance design."
+  },
+  // Question 339
+  {
+    question: "What are the theoretical mechanisms by which abstraction reduces cognitive complexity in software design, and how do different levels of abstraction (class, method, system) work together to create comprehensible and maintainable software architectures?",
+    options: {
+      A: "Abstraction reduces cognitive complexity by hiding irrelevant details at each level, with class-level abstraction hiding implementation details, method-level abstraction hiding algorithmic details, and system-level abstraction hiding component interactions, working together to allow developers to understand and work with appropriate levels of detail without being overwhelmed by complexity",
+      B: "Abstraction increases complexity by adding layers that must be understood",
+      C: "Only one level of abstraction can exist in a system, with other levels being unnecessary",
+      D: "Cognitive complexity and abstraction are unrelated concepts in software design"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction (trừu tượng hóa) reduce cognitive complexity (độ phức tạp nhận thức) bằng cách ẩn irrelevant details ở mỗi level. Class-level abstraction ẩn implementation details - developers chỉ cần biết interface, không cần biết implementation. Method-level abstraction ẩn algorithmic details - chỉ cần biết method làm gì, không cần biết làm như thế nào. System-level abstraction ẩn component interactions - chỉ cần biết components communicate như thế nào, không cần biết chi tiết internal. Các levels work together để allow developers understand và work với appropriate levels of detail mà không bị overwhelmed bởi complexity. Developers có thể focus vào level relevant cho task hiện tại, ignore details ở other levels. Điều này tạo comprehensible và maintainable architectures - dễ understand, dễ modify, dễ extend."
+  },
+  // Question 340
+  {
+    question: "In the theoretical framework of object-oriented programming, what is the relationship between encapsulation and the principle of least knowledge (Law of Demeter), and how do these concepts work together to minimize coupling between objects?",
+    options: {
+      A: "Encapsulation provides the mechanism for information hiding, while the Law of Demeter restricts how objects can access other objects' internals, requiring objects to only talk to their immediate friends (direct collaborators), and together they minimize coupling by limiting knowledge of other objects' structures and reducing dependencies",
+      B: "Encapsulation and the Law of Demeter are conflicting principles that cannot be used together",
+      C: "The Law of Demeter requires objects to have full knowledge of all related objects' internals",
+      D: "Encapsulation prevents the Law of Demeter from being applied effectively"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) provide mechanism cho information hiding (ẩn thông tin). Law of Demeter (Luật Demeter) restrict cách objects access other objects' internals - objects chỉ nên talk to immediate friends (direct collaborators), không nên navigate qua chains of method calls (a.getB().getC().doSomething()). Together, chúng minimize coupling bằng cách limit knowledge của other objects' structures và reduce dependencies. Encapsulation ẩn internal structure, Law of Demeter prevent deep navigation vào structure đó. Ví dụ: thay vì a.getB().getC().doSomething(), nên có a.doSomething() delegate đến appropriate object. Điều này tạo loose coupling - objects chỉ depend vào direct collaborators, không depend vào internal structure của distant objects. Kết quả: systems dễ maintain, test, và modify vì changes ít propagate."
+  },
+  // Question 341
+  {
+    question: "What is the theoretical foundation of the relationship between inheritance and code organization in object-oriented systems, and how does inheritance hierarchy structure contribute to organizing related classes and managing their relationships in large-scale software projects?",
+    options: {
+      A: "Inheritance organizes code by creating hierarchical relationships that group related classes, with the hierarchy structure reflecting specialization relationships and shared characteristics, enabling systematic organization of classes and clear management of their relationships in large systems",
+      B: "Inheritance has no relationship to code organization, which is handled separately through package structures",
+      C: "Inheritance always makes code organization more difficult by creating complex dependencies",
+      D: "Code organization can only be achieved through composition, not through inheritance"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) organize code bằng cách tạo hierarchical relationships nhóm related classes lại với nhau. Hierarchy structure reflect specialization relationships và shared characteristics - classes có đặc điểm chung được group trong cùng hierarchy, classes specialized được organize như subclasses. Điều này enable systematic organization của classes và clear management của relationships trong large systems. Inheritance hierarchy tạo structure rõ ràng - từ general (base classes) đến specific (derived classes), giúp developers understand relationships và locate classes. Trong large-scale projects, inheritance hierarchy giúp organize hundreds hoặc thousands of classes theo logical structure. Tuy nhiên, cần balance - hierarchy quá sâu hoặc quá phẳng đều có vấn đề. Optimal organization combine inheritance hierarchy với package structure để tạo clear, maintainable codebase."
+  },
+  // Question 342
+  {
+    question: "Explain the theoretical concept of abstraction layers in object-oriented design, and how do different abstraction layers (high-level interfaces, mid-level classes, low-level implementations) work together to create systems that are both flexible and comprehensible?",
+    options: {
+      A: "Abstraction layers create levels of detail from high-level interfaces defining contracts, through mid-level classes providing structure, to low-level implementations providing details, with each layer serving different purposes and audiences, working together to create systems that balance flexibility through stable high-level abstractions with comprehensibility through appropriate detail exposure",
+      B: "All abstraction layers should expose the same level of detail for consistency",
+      C: "Abstraction layers are unnecessary and add complexity without benefits",
+      D: "Only one abstraction layer can exist in a system"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction layers (lớp trừu tượng) tạo levels of detail từ high-level interfaces định nghĩa contracts, qua mid-level classes provide structure, đến low-level implementations provide details. Mỗi layer serve different purposes và audiences - high-level cho architects và designers, mid-level cho developers, low-level cho implementers. Together, chúng create systems balance flexibility (thông qua stable high-level abstractions) với comprehensibility (thông qua appropriate detail exposure). High-level abstractions stable và flexible - clients depend vào chúng, implementations có thể change. Low-level implementations có thể optimize và change mà không affect high-level. Mid-level provide structure và organization. Developers có thể work ở appropriate layer - không cần biết tất cả details, chỉ cần biết layer relevant. Điều này tạo systems vừa flexible vừa comprehensible."
+  },
+  // Question 343
+  {
+    question: "What is the theoretical relationship between polymorphism and the concept of behavioral variation in object-oriented systems, and how does polymorphism enable objects of different types to respond differently to the same method call while maintaining a uniform interface?",
+    options: {
+      A: "Polymorphism enables behavioral variation where different classes implement the same interface or extend the same base class, each providing different implementations of methods, allowing objects of different types to respond differently to identical method calls while clients interact through a uniform interface, creating flexibility and extensibility",
+      B: "Polymorphism requires all objects to behave identically, preventing any behavioral variation",
+      C: "Behavioral variation can only be achieved through conditional statements, not through polymorphism",
+      D: "Polymorphism and behavioral variation are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable behavioral variation (biến đổi hành vi) - different classes implement same interface hoặc extend same base class, mỗi class provide different implementations của methods. Objects của different types có thể respond differently đến identical method calls trong khi clients interact through uniform interface. Ví dụ: Animal interface có makeSound() method, Dog và Cat implement khác nhau - dog.bark(), cat.meow(), nhưng client code gọi animal.makeSound() với uniform interface. Điều này create flexibility và extensibility - có thể add new types (new implementations) mà không modify client code. Client code depend vào interface, không biết implementation cụ thể, nên có thể work với any implementation. Đây là core mechanism của many design patterns và flexible system design."
+  },
+  // Question 344
+  {
+    question: "In the theoretical framework of encapsulation, what is the concept of access control and how do access modifiers create a security model for class members that protects internal implementation while allowing necessary external interaction?",
+    options: {
+      A: "Access control restricts visibility and modification of class members through access modifiers, creating a security model where private members are protected from external access, protected members allow inheritance-based access, and public members form the controlled interface, balancing protection of implementation with necessary external interaction",
+      B: "Access control prevents all external interaction, making classes completely isolated",
+      C: "Access modifiers have no security implications and are purely organizational",
+      D: "All members should be public to maximize accessibility and code reuse"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Access control (kiểm soát truy cập) restrict visibility và modification của class members thông qua access modifiers, tạo security model. Private members protected từ external access - chỉ truy cập trong cùng class, bảo vệ implementation details. Protected members allow inheritance-based access - truy cập trong cùng package và subclass, cho phép inheritance nhưng vẫn protect. Public members form controlled interface - truy cập từ mọi nơi, expose API cần thiết. Model này balance protection của implementation với necessary external interaction. Security model này prevent unauthorized access và unintended modifications, maintain data integrity, và create clear boundaries. Không phải tất cả members đều nên public - chỉ expose những gì cần thiết theo principle of least privilege. Điều này tạo secure, maintainable classes với clear interfaces."
+  },
+  // Question 345
+  {
+    question: "What are the theoretical foundations of the relationship between inheritance and the concept of code reuse, and what are the trade-offs between using inheritance for code reuse versus using composition, delegation, or other mechanisms?",
+    options: {
+      A: "Inheritance enables code reuse through the inheritance of methods and fields from parent classes, but creates tight coupling and fragile base class problems, while composition and delegation provide code reuse with loose coupling and greater flexibility, with the choice depending on whether a true 'is-a' relationship exists versus a 'has-a' or 'uses-a' relationship",
+      B: "Inheritance is the only mechanism for code reuse in object-oriented programming",
+      C: "Composition and delegation cannot provide code reuse, only inheritance can",
+      D: "Code reuse has no relationship to inheritance or composition"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) enable code reuse thông qua inheritance của methods và fields từ parent classes. Tuy nhiên, nó tạo tight coupling và fragile base class problems - subclass phụ thuộc chặt vào implementation của superclass, thay đổi ở superclass có thể break subclasses. Composition và delegation provide code reuse với loose coupling và greater flexibility - object chứa other objects và delegate tasks đến chúng, có thể thay đổi implementation mà không affect containing object. Choice phụ thuộc vào relationship type: 'is-a' relationship (thực sự) → inheritance, 'has-a' hoặc 'uses-a' relationship → composition/delegation. 'Favor composition over inheritance' là nguyên tắc quan trọng - chỉ dùng inheritance khi có 'is-a' relationship thực sự, không chỉ để code reuse. Composition provide better flexibility, testability, và maintainability trong nhiều cases."
+  },
+  // Question 346
+  {
+    question: "Explain the theoretical concept of method binding in polymorphism, and how do the differences between early binding (static binding) and late binding (dynamic binding) impact system design, performance, and flexibility?",
+    options: {
+      A: "Method binding determines when and how method calls are resolved, with early binding resolving at compile-time based on reference types providing performance benefits but less flexibility, while late binding resolves at runtime based on object types providing flexibility and extensibility with slight performance overhead, with the choice impacting system design trade-offs between performance and flexibility",
+      B: "Early and late binding are identical mechanisms with no differences",
+      C: "Late binding always provides better performance than early binding",
+      D: "Method binding has no impact on system design or performance"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Method binding (liên kết method) determine khi nào và như thế nào method calls được resolve. Early binding (static binding) resolve tại compile-time dựa trên reference types - compiler biết method nào được gọi, provide performance benefits (không cần lookup) nhưng less flexibility (không thể change behavior tại runtime). Late binding (dynamic binding) resolve tại runtime dựa trên object types - JVM determine method tại runtime, provide flexibility và extensibility (có thể change behavior) với slight performance overhead (cần lookup trong vtable). Choice impact system design trade-offs giữa performance và flexibility. Overloaded methods use early binding, overridden methods use late binding. Design decisions: cần flexibility và extensibility → late binding (polymorphism), cần performance → early binding (overloading). Modern JVMs optimize late binding through vtables, minimizing overhead."
+  },
+  // Question 347
+  {
+    question: "What is the theoretical relationship between abstraction and the concept of generalization in object-oriented design, and how does abstraction enable the creation of general solutions that can be specialized for specific use cases?",
+    options: {
+      A: "Abstraction enables generalization by identifying common characteristics and behaviors shared across multiple specific cases, creating general abstractions (interfaces or base classes) that capture essential features, which can then be specialized through inheritance or implementation to create specific solutions for particular use cases",
+      B: "Abstraction prevents generalization by focusing only on specific details",
+      C: "Generalization and specialization are unrelated to abstraction",
+      D: "Abstraction can only work with specific implementations, not with general solutions"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction (trừu tượng hóa) enable generalization (tổng quát hóa) bằng cách identify common characteristics và behaviors shared across multiple specific cases. Tạo general abstractions (interfaces hoặc base classes) capture essential features - những gì common và important, ignore specific details. Abstractions này có thể được specialized thông qua inheritance hoặc implementation để create specific solutions cho particular use cases. Process: identify commonalities → create abstraction → specialize for specific cases. Ví dụ: Vehicle abstraction (general) có Car, Truck, Motorcycle implementations (specific). Generalization tạo reusable abstractions, specialization tạo concrete solutions. Abstraction balance giữa general (reusable) và specific (useful) - quá general thì không useful, quá specific thì không reusable. Optimal abstraction level capture essential features mà vẫn allow meaningful specialization."
+  },
+  // Question 348
+  {
+    question: "In the context of encapsulation, what is the theoretical concept of data integrity and how do encapsulation mechanisms ensure that objects maintain valid states throughout their lifecycle by controlling how state can be accessed and modified?",
+    options: {
+      A: "Data integrity ensures objects remain in valid states, and encapsulation mechanisms protect integrity by controlling access through access modifiers and validation in methods, ensuring state changes occur only through controlled pathways that validate inputs and maintain invariants, preventing invalid states from being created",
+      B: "Data integrity can only be maintained through immutable objects that never change state",
+      C: "Encapsulation has no relationship to data integrity, which is handled by external validation",
+      D: "Data integrity requires all fields to be public for maximum transparency and validation"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Data integrity (tính toàn vẹn dữ liệu) ensure objects remain trong valid states. Encapsulation mechanisms protect integrity bằng cách control access thông qua access modifiers và validation trong methods. State changes chỉ occur through controlled pathways validate inputs và maintain invariants (bất biến), prevent invalid states được tạo. Private fields không thể access trực tiếp, chỉ thông qua methods có validation. Setters có thể check preconditions, validate values, reject invalid inputs. Getters có thể return computed values hoặc validated data. Điều này ensure objects luôn ở valid states - không thể set age = -5, balance < 0, v.v. Invalid states không thể được tạo vì không có pathway để tạo chúng. Encapsulation không require immutability - mutable objects vẫn có thể maintain integrity thông qua controlled modifications. Public fields sẽ break integrity vì không có control."
+  },
+  // Question 349
+  {
+    question: "What is the theoretical foundation of the relationship between polymorphism and the design of pluggable, extensible architectures, and how does polymorphism enable systems where new components can be added without modifying existing code?",
+    options: {
+      A: "Polymorphism enables pluggable architectures by allowing code to depend on abstractions rather than concrete types, so new components implementing those abstractions can be plugged in without modifying existing code that depends on the abstraction, creating extensible systems where functionality can be added through new implementations rather than code changes",
+      B: "Polymorphism requires modifying existing code to add new components",
+      C: "Pluggable architectures can only be achieved through configuration, not through polymorphism",
+      D: "Polymorphism and extensibility are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable pluggable architectures (kiến trúc có thể cắm) bằng cách allow code depend vào abstractions thay vì concrete types. New components implement những abstractions đó có thể được plug in mà không cần modify existing code depend vào abstraction. Điều này create extensible systems - functionality có thể được add thông qua new implementations thay vì code changes. Process: define abstraction (interface/base class) → existing code depend vào abstraction → new components implement abstraction → plug in without modification. Ví dụ: Plugin architecture - define Plugin interface, existing system depend vào Plugin, new plugins implement interface và plug in. Đây là foundation của Open-Closed Principle và many design patterns (Strategy, Factory, Plugin, v.v.). Systems có thể evolve và extend mà không break existing functionality, tạo maintainable và flexible architectures."
+  },
+  // Question 350
+  {
+    question: "Explain the theoretical concept of inheritance as a mechanism for specialization and generalization in object-oriented design, and how does the inheritance hierarchy reflect both the generalization of common features in base classes and the specialization of unique features in derived classes?",
+    options: {
+      A: "Inheritance enables both generalization by extracting common features into base classes that represent shared characteristics, and specialization by allowing derived classes to add unique features and override behaviors, with the inheritance hierarchy reflecting this dual nature where base classes generalize and derived classes specialize",
+      B: "Inheritance only supports generalization, with specialization being impossible",
+      C: "Inheritance only supports specialization, with generalization being handled separately",
+      D: "Generalization and specialization are conflicting goals that cannot be achieved through inheritance"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) enable cả generalization (tổng quát hóa) và specialization (chuyên biệt hóa). Generalization: extract common features vào base classes represent shared characteristics - những gì common across multiple classes được move lên base class. Specialization: derived classes add unique features và override behaviors - những gì specific cho mỗi class được implement trong derived class. Inheritance hierarchy reflect dual nature này: base classes generalize (chứa common features), derived classes specialize (chứa unique features). Ví dụ: Animal base class generalize common features (breathe, eat), Dog và Cat specialize với unique features (bark, meow). Hierarchy tạo structure từ general đến specific, enable code reuse (generalization) và flexibility (specialization). Đây là core mechanism của inheritance - vừa reuse code, vừa allow customization."
+  },
+  // Question 351
+  {
+    question: "What is the theoretical relationship between encapsulation and the concept of interface stability in object-oriented design, and how does proper encapsulation contribute to creating stable interfaces that can evolve without breaking client code?",
+    options: {
+      A: "Encapsulation creates stable interfaces by hiding implementation details, allowing the internal implementation to change without affecting the public interface, so client code depending on the interface remains unaffected by implementation changes, enabling evolution and maintenance without breaking existing functionality",
+      B: "Encapsulation prevents interface evolution by locking implementations in place",
+      C: "Interface stability requires exposing all implementation details for maximum transparency",
+      D: "Encapsulation and interface stability are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) tạo stable interfaces bằng cách ẩn implementation details. Internal implementation có thể change mà không affect public interface, nên client code depend vào interface remain unaffected bởi implementation changes. Điều này enable evolution và maintenance mà không break existing functionality. Stable interface là contract giữa class và clients - clients depend vào interface, không phải implementation. Khi implementation change (optimize, refactor, fix bugs), interface vẫn giữ nguyên, clients không cần change. Đây là foundation của backward compatibility và maintainable systems. Encapsulation không prevent evolution mà enable nó - implementation có thể evolve freely trong boundaries của interface. Public interface nên minimal và stable, implementation có thể change để improve performance, fix bugs, hoặc add features."
+  },
+  // Question 352
+  {
+    question: "In the theoretical framework of polymorphism, what is the concept of type substitutability and how does it ensure that objects of derived types can be used wherever objects of base types are expected, maintaining system correctness while enabling flexibility?",
+    options: {
+      A: "Type substitutability means derived types can replace base types in any context where the base type is expected, requiring that derived types maintain the behavioral contract of base types (Liskov Substitution Principle), ensuring system correctness while allowing specialized implementations that enhance or extend base behavior",
+      B: "Type substitutability allows any type to replace any other type without constraints",
+      C: "Derived types can never substitute base types, requiring explicit type conversion",
+      D: "Substitutability only applies to interfaces, not to class inheritance"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Type substitutability (khả năng thay thế kiểu) có nghĩa derived types có thể replace base types trong any context mà base type được expect. Điều này require derived types maintain behavioral contract của base types (Liskov Substitution Principle) - derived class phải có thể thay thế base class mà không thay đổi correctness của program. Điều này ensure system correctness trong khi allow specialized implementations enhance hoặc extend base behavior. Ví dụ: List<Animal> có thể chứa Dog và Cat objects vì chúng là Animal. Client code expect Animal có thể work với Dog hoặc Cat. Substitutability enable polymorphism - code depend vào base type có thể work với any derived type. Violation của substitutability (derived class break contract) sẽ cause bugs và unexpected behavior. Đây là core principle của inheritance design."
+  },
+  // Question 353
+  {
+    question: "What are the theoretical foundations of the relationship between abstraction and complexity management in software engineering, and how do different levels of abstraction help developers manage the cognitive load associated with understanding and working with complex systems?",
+    options: {
+      A: "Abstraction manages complexity by presenting simplified views that hide irrelevant details at each level, with different abstraction levels allowing developers to focus on relevant information for their current task, reducing cognitive load by enabling developers to work at appropriate levels of detail without being overwhelmed by the full system complexity",
+      B: "Abstraction increases complexity by adding layers that must be understood",
+      C: "Complexity management requires understanding all details at all levels simultaneously",
+      D: "Abstraction and complexity management are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction (trừu tượng hóa) manage complexity bằng cách present simplified views ẩn irrelevant details ở mỗi level. Different abstraction levels allow developers focus vào relevant information cho current task, reduce cognitive load (tải nhận thức) bằng cách enable developers work ở appropriate levels of detail mà không bị overwhelmed bởi full system complexity. Developers không cần biết tất cả details - chỉ cần biết level relevant cho task. High-level abstraction cho architects (system design), mid-level cho developers (component design), low-level cho implementers (algorithm details). Mỗi level hide complexity của levels below, expose only what's needed. Điều này tạo manageable complexity - systems có thể complex nhưng vẫn comprehensible vì complexity được organize vào layers. Without abstraction, developers phải understand everything simultaneously, tạo overwhelming cognitive load."
+  },
+  // Question 354
+  {
+    question: "Explain the theoretical concept of method resolution in polymorphism, specifically how the Java Virtual Machine handles method calls when multiple inheritance levels and method overriding are involved, including the role of the virtual method table in efficient method dispatch.",
+    options: {
+      A: "Method resolution in polymorphism involves the JVM determining which method implementation to call based on the actual object type at runtime, traversing the inheritance hierarchy from the object's class upward to find the most specific override, with virtual method tables (vtables) providing efficient O(1) lookup by storing method pointers for each class, enabling fast method dispatch even in deep inheritance hierarchies",
+      B: "Method resolution always uses the reference type, making it identical to compile-time resolution",
+      C: "The JVM randomly selects methods when multiple overrides exist",
+      D: "Virtual method tables are not used in Java, with method resolution being purely sequential"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Method resolution trong polymorphism involve JVM determine method implementation nào được gọi dựa trên actual object type tại runtime. JVM traverse inheritance hierarchy từ object's class lên trên để tìm most specific override - method từ class cụ thể nhất trong hierarchy. Virtual method tables (vtables) provide efficient O(1) lookup bằng cách store method pointers cho mỗi class - mỗi class có bảng chứa pointers đến method implementations. Khi call method, JVM lookup trong vtable của object's class, không cần traverse hierarchy mỗi lần. Điều này enable fast method dispatch ngay cả trong deep inheritance hierarchies. Vtable là optimization của JVM để minimize overhead của dynamic dispatch. Process: get object's class → lookup vtable → get method pointer → call method. Đây là mechanism cho phép runtime polymorphism hoạt động efficiently."
+  },
+  // Question 355
+  {
+    question: "What is the theoretical relationship between inheritance and the concept of code sharing in object-oriented programming, and what are the advantages and disadvantages of using inheritance as a mechanism for sharing code across related classes?",
+    options: {
+      A: "Inheritance enables code sharing by allowing derived classes to inherit methods and fields from base classes, providing advantages like reduced duplication and centralized maintenance, but creating disadvantages like tight coupling, fragile base class problems, and reduced flexibility, making inheritance suitable for code sharing only when a true 'is-a' relationship exists",
+      B: "Inheritance is always the best mechanism for code sharing with no disadvantages",
+      C: "Inheritance cannot be used for code sharing, only for type relationships",
+      D: "Code sharing through inheritance has no impact on system design or maintainability"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) enable code sharing bằng cách allow derived classes inherit methods và fields từ base classes. Advantages: reduced duplication (giảm trùng lặp) - common code chỉ viết một lần, centralized maintenance (bảo trì tập trung) - sửa một chỗ affect tất cả subclasses. Disadvantages: tight coupling (liên kết chặt) - subclass phụ thuộc chặt vào superclass, fragile base class problems - thay đổi ở base class có thể break subclasses, reduced flexibility - khó thay đổi behavior. Inheritance suitable cho code sharing chỉ khi có true 'is-a' relationship. Nếu chỉ để code reuse mà không có 'is-a' relationship, composition tốt hơn. 'Favor composition over inheritance' khi cần code reuse mà không có 'is-a' relationship. Trade-off: inheritance provide code reuse nhưng tạo dependencies, composition provide flexibility nhưng có thể có duplication."
+  },
+  // Question 356
+  {
+    question: "In the context of encapsulation, what is the theoretical concept of controlled access and how do accessor and mutator methods (getters and setters) provide controlled access points that can enforce business rules, maintain data integrity, and hide implementation details?",
+    options: {
+      A: "Controlled access restricts how external code can interact with object state, and accessor/mutator methods provide controlled access points that can validate inputs, enforce business rules, maintain data integrity through invariants, and hide implementation details like computed values or internal representations, creating a secure and maintainable interface",
+      B: "Getters and setters simply expose fields directly with no additional functionality",
+      C: "Controlled access prevents all external interaction, making objects completely isolated",
+      D: "Accessor and mutator methods are unnecessary and add complexity without benefits"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Controlled access (truy cập có kiểm soát) restrict cách external code có thể interact với object state. Accessor/mutator methods (getters/setters) provide controlled access points có thể: validate inputs (kiểm tra tính hợp lệ), enforce business rules (áp dụng quy tắc nghiệp vụ), maintain data integrity through invariants (duy trì tính toàn vẹn qua bất biến), và hide implementation details như computed values hoặc internal representations. Getters có thể return computed values thay vì stored values. Setters có thể validate và reject invalid values. Điều này tạo secure và maintainable interface - clients không thể tạo invalid states, và implementation có thể change mà không affect clients. Controlled access không prevent interaction mà control nó - chỉ allow valid, safe interactions. Đây là proper encapsulation - không chỉ hide data mà còn control access."
+  },
+  // Question 357
+  {
+    question: "What is the theoretical foundation of the relationship between polymorphism and the design of flexible, maintainable software systems, and how does polymorphism enable systems to adapt to new requirements through extension rather than modification?",
+    options: {
+      A: "Polymorphism enables flexible systems by allowing code to depend on abstractions, so new requirements can be accommodated by creating new implementations of existing abstractions rather than modifying existing code, enabling extension-based adaptation that maintains system stability while providing flexibility for new functionality",
+      B: "Polymorphism requires modifying existing code to add new functionality",
+      C: "Flexible systems cannot be achieved through polymorphism, requiring complete rewrites for new requirements",
+      D: "Polymorphism and system flexibility are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable flexible systems bằng cách allow code depend vào abstractions. New requirements có thể được accommodate bằng cách create new implementations của existing abstractions thay vì modify existing code. Điều này enable extension-based adaptation (thích ứng dựa trên mở rộng) maintain system stability trong khi provide flexibility cho new functionality. Process: define abstraction → existing code depend vào abstraction → new requirements → create new implementation → plug in without modification. Đây là Open-Closed Principle - open for extension, closed for modification. Systems có thể adapt và evolve mà không break existing functionality. Polymorphism không require modification mà enable extension - add new types, không change existing types. Đây là foundation của maintainable software - systems có thể grow và change mà không degrade."
+  },
+  // Question 358
+  {
+    question: "Explain the theoretical concept of abstraction as a tool for managing system complexity, and how do appropriate abstraction levels create boundaries that allow different parts of a system to be developed, understood, and maintained independently?",
+    options: {
+      A: "Abstraction manages complexity by creating boundaries that hide implementation details, with appropriate abstraction levels allowing different system parts to be developed independently by different teams, understood in isolation without knowing all system details, and maintained separately with changes in one part not requiring changes in others, enabled by stable interfaces that hide implementation complexity",
+      B: "Abstraction increases complexity by requiring understanding of all abstraction layers",
+      C: "System parts cannot be developed independently regardless of abstraction levels",
+      D: "Abstraction boundaries prevent independent development and maintenance"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction (trừu tượng hóa) manage complexity bằng cách tạo boundaries ẩn implementation details. Appropriate abstraction levels allow different system parts được develop independently bởi different teams - teams chỉ cần biết interfaces, không cần biết implementations của other teams. Parts có thể được understand in isolation mà không cần biết all system details - chỉ cần biết interface và behavior của component. Parts có thể được maintain separately - changes trong một part không require changes trong others nếu interfaces stable. Điều này enabled bởi stable interfaces ẩn implementation complexity. Boundaries tạo separation of concerns - mỗi component có responsibility riêng, communicate qua well-defined interfaces. Đây là foundation của modular architecture - systems được chia thành independent, interchangeable modules. Without abstraction, all parts tightly coupled, không thể develop/maintain independently."
+  },
+  // Question 359
+  {
+    question: "What is the theoretical relationship between inheritance hierarchies and the organization of knowledge in object-oriented systems, and how do inheritance structures help developers understand relationships between classes and locate relevant code in large codebases?",
+    options: {
+      A: "Inheritance hierarchies organize knowledge by creating explicit relationships that reflect specialization and generalization, with the hierarchical structure helping developers understand how classes relate to each other, predict where functionality might be located, and navigate large codebases by following the inheritance structure from general base classes to specific derived classes",
+      B: "Inheritance hierarchies make code organization more difficult by creating complex dependencies",
+      C: "Knowledge organization is unrelated to inheritance structure",
+      D: "Inheritance hierarchies prevent developers from understanding class relationships"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance hierarchies (hệ thống kế thừa) organize knowledge bằng cách tạo explicit relationships reflect specialization và generalization. Hierarchical structure help developers understand cách classes relate với nhau - classes trong cùng hierarchy share characteristics, derived classes specialize base classes. Developers có thể predict where functionality might be located - common features trong base classes, specific features trong derived classes. Navigation trong large codebases dễ hơn - follow inheritance structure từ general base classes đến specific derived classes. Structure tạo mental model - từ abstract đến concrete, từ general đến specific. Điều này help developers locate relevant code, understand design decisions, và maintain consistency. Trong large codebases, inheritance hierarchy là roadmap - biết base class, biết derived classes có gì. Tuy nhiên, hierarchy quá sâu có thể làm khó navigate, cần balance."
+  },
+  // Question 360
+  {
+    question: "In the theoretical framework of encapsulation, what is the concept of information hiding and how does it differ from simply making fields private, particularly in terms of hiding implementation strategies, data representations, and internal algorithms from client code?",
+    options: {
+      A: "Information hiding goes beyond private fields to hide implementation strategies (how data is stored or computed), data representations (internal structures), and algorithms (computation methods), allowing these to change without affecting client code, while private fields only restrict access but don't necessarily hide implementation details if exposed through getters that reveal the internal structure",
+      B: "Information hiding is identical to making fields private with no additional meaning",
+      C: "Information hiding only applies to algorithms, not to data or implementation strategies",
+      D: "Private fields provide complete information hiding with no need for additional mechanisms"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Information hiding (ẩn thông tin) goes beyond private fields để ẩn: implementation strategies (cách data được store hoặc compute), data representations (internal structures), và algorithms (computation methods). Những thứ này có thể change mà không affect client code. Private fields chỉ restrict access nhưng không necessarily hide implementation details nếu exposed through getters reveal internal structure. Ví dụ: nếu getter return internal array directly, client biết representation. Proper information hiding: getter return copy hoặc different representation, hide cách data được store. Implementation strategies có thể change (array → linked list) mà client không biết. Algorithms có thể optimize mà client không biết. Điều này tạo flexibility - implementation có thể evolve mà không break clients. Information hiding là về hiding 'how', không chỉ restrict access. Đây là true encapsulation - hide implementation, expose interface."
+  },
+  // Question 361
+  {
+    question: "What is the theoretical foundation of the relationship between polymorphism and the design of testable software systems, and how does polymorphism enable the creation of testable code through dependency injection and mock object patterns?",
+    options: {
+      A: "Polymorphism enables testability by allowing code to depend on abstractions that can be replaced with test doubles (mocks, stubs) during testing, with dependency injection providing a mechanism to inject these test implementations, enabling isolated unit testing without dependencies on concrete implementations or external resources",
+      B: "Polymorphism prevents testability by creating dependencies that cannot be mocked",
+      C: "Testability can only be achieved through direct dependencies on concrete classes",
+      D: "Polymorphism and testability are unrelated concepts in software design"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable testability (khả năng kiểm thử) bằng cách allow code depend vào abstractions có thể được replace với test doubles (mocks, stubs) trong testing. Dependency injection (tiêm phụ thuộc) provide mechanism để inject test implementations này. Điều này enable isolated unit testing mà không depend vào concrete implementations hoặc external resources. Code depend vào interface, trong test có thể inject mock implementation, test behavior mà không cần real dependencies. Ví dụ: service depend vào Repository interface, trong test inject MockRepository. Điều này tạo testable code - dễ test, fast tests, isolated tests. Polymorphism không prevent testability mà enable nó - abstractions có thể được mock. Đây là foundation của test-driven development và maintainable code. Code không testable thường có tight coupling với concrete classes."
+  },
+  // Question 362
+  {
+    question: "In the theoretical framework of inheritance, what is the concept of the inheritance contract and how do the rules governing method overriding, access modifiers, and exceptions create a contract that ensures derived classes can properly substitute base classes while maintaining system correctness?",
+    options: {
+      A: "The inheritance contract requires derived classes to maintain behavioral compatibility with base classes, enforced through rules: identical method signatures for overriding, covariant return types allowed, equal or broader access modifiers, and equal or narrower exceptions, creating a contract that ensures substitutability and maintains system correctness while allowing specialization",
+      B: "Inheritance contracts allow complete freedom to change any aspect of inherited methods",
+      C: "Inheritance contracts only apply to method names, with all other aspects being unconstrained",
+      D: "Inheritance contracts prevent any form of specialization or customization"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance contract (hợp đồng kế thừa) require derived classes maintain behavioral compatibility với base classes. Rules enforce contract: identical method signatures cho overriding (tên, parameters phải giống), covariant return types allowed (derived có thể return subtype), equal or broader access modifiers (derived không thể restrictive hơn), và equal or narrower exceptions (derived không thể throw broader checked exceptions). Contract này ensure substitutability (Liskov Substitution) và maintain system correctness trong khi allow specialization. Derived classes có thể enhance behavior nhưng không thể break expectations của client code. Violation của contract sẽ break substitutability và cause bugs. Contract balance giữa flexibility (cho phép customization) và safety (đảm bảo correctness). Đây là foundation của inheritance design - derived classes phải honor contract của base classes."
+  },
+  // Question 363
+  {
+    question: "What is the theoretical relationship between abstraction and the concept of separation of concerns in software architecture, and how do abstraction mechanisms help separate different concerns into distinct, independently manageable components?",
+    options: {
+      A: "Abstraction enables separation of concerns by creating boundaries between different system concerns, with each abstraction representing a specific concern and hiding irrelevant details, allowing concerns to be developed, maintained, and evolved independently while interacting through well-defined interfaces",
+      B: "Abstraction prevents separation of concerns by mixing all concerns together",
+      C: "Separation of concerns can only be achieved through physical separation, not through abstraction",
+      D: "Abstraction and separation of concerns are conflicting principles"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction (trừu tượng hóa) enable separation of concerns (tách biệt mối quan tâm) bằng cách tạo boundaries giữa different system concerns. Mỗi abstraction represent specific concern và ẩn irrelevant details. Concerns có thể được develop, maintain, và evolve independently trong khi interact through well-defined interfaces. Ví dụ: DataAccess abstraction separate data persistence concern, BusinessLogic abstraction separate business rules concern. Mỗi concern có interface riêng, implementation riêng, có thể change độc lập. Boundaries tạo clear separation - changes trong một concern không affect others nếu interfaces stable. Điều này tạo modular architecture - mỗi module handle một concern, communicate qua interfaces. Without abstraction, concerns mixed together, không thể separate. Abstraction không prevent separation mà enable nó - tạo boundaries và interfaces cho separation."
+  },
+  // Question 364
+  {
+    question: "Explain the theoretical concept of encapsulation as a mechanism for creating self-contained, cohesive units in object-oriented design, and how does proper encapsulation contribute to the cohesion of a class by keeping related data and operations together?",
+    options: {
+      A: "Encapsulation creates self-contained units by bundling related data and operations into classes, with proper encapsulation keeping all data and methods related to a single responsibility together, contributing to high cohesion where all class members work together toward a common purpose, making classes easier to understand and maintain",
+      B: "Encapsulation prevents cohesion by separating data and operations",
+      C: "Cohesion can only be achieved without encapsulation",
+      D: "Encapsulation and cohesion are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) tạo self-contained units bằng cách bundle related data và operations vào classes. Proper encapsulation keep all data và methods related đến single responsibility together, contribute đến high cohesion (tính gắn kết cao) - tất cả class members work together toward common purpose. Classes với high cohesion dễ understand và maintain hơn - tất cả related functionality ở một chỗ, clear purpose. Ví dụ: BankAccount class encapsulate account data (balance, accountNumber) và operations (deposit, withdraw, getBalance) - tất cả related đến bank account responsibility. Low cohesion: class có unrelated responsibilities mixed together. Encapsulation không prevent cohesion mà enable nó - bundle related things together. Cohesion measure how well class members belong together - high cohesion tốt, low cohesion xấu. Encapsulation help achieve high cohesion bằng cách keep related things together."
+  },
+  // Question 365
+  {
+    question: "What is the theoretical foundation of the relationship between polymorphism and the design of extensible frameworks and libraries, and how does polymorphism enable framework code to work with user-defined types that didn't exist when the framework was created?",
+    options: {
+      A: "Polymorphism enables extensible frameworks by designing framework code to depend on abstractions (interfaces or abstract classes) that users can implement, allowing user-defined types implementing these abstractions to work with existing framework code through polymorphism, enabling frameworks to be extended with new types without modifying framework code",
+      B: "Frameworks cannot work with user-defined types and require all types to be defined within the framework",
+      C: "Polymorphism prevents framework extensibility by locking in specific implementations",
+      D: "Extensible frameworks can only be created without using polymorphism"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable extensible frameworks bằng cách design framework code depend vào abstractions (interfaces hoặc abstract classes) mà users có thể implement. User-defined types implement những abstractions này có thể work với existing framework code thông qua polymorphism. Điều này enable frameworks được extend với new types mà không cần modify framework code. Process: framework define abstraction → framework code depend vào abstraction → users implement abstraction → users' types work với framework. Ví dụ: Collection framework define Collection interface, framework methods work với Collection, users implement List, Set, etc. Framework không cần biết specific implementations, chỉ cần biết interface. Đây là foundation của plugin architectures và extensible systems. Frameworks có thể support types chưa tồn tại khi framework được tạo - users define types, framework work với chúng. Đây là power của polymorphism - enable extension without modification."
+  },
+  // Question 366
+  {
+    question: "In the theoretical framework of object-oriented programming, what is the concept of object identity versus object equality, and how do these concepts relate to the fundamental nature of objects as distinct entities with their own state and lifecycle?",
+    options: {
+      A: "Object identity refers to whether two references point to the same object instance in memory, while object equality refers to whether two objects are considered equivalent based on their state or business logic, with identity being a fundamental property of objects as distinct entities, while equality is a semantic concept that can be defined differently for different types",
+      B: "Object identity and object equality are identical concepts with no distinction",
+      C: "Objects cannot have identity, only primitive types can",
+      D: "Object equality is determined solely by memory location with no semantic meaning"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Object identity (danh tính đối tượng) refer đến việc hai references có point đến same object instance trong memory không (== operator). Object equality (sự bằng nhau đối tượng) refer đến việc hai objects có được consider equivalent dựa trên state hoặc business logic không (equals() method). Identity là fundamental property của objects như distinct entities - mỗi object có identity riêng, unique trong memory. Equality là semantic concept có thể được define differently cho different types - có thể dựa trên tất cả fields, một số fields, hoặc business logic. Hai objects có thể equal nhưng không identical (different instances, same state). Identity là về 'same object', equality là về 'equivalent objects'. Understanding distinction này important cho object-oriented design - khi nào dùng ==, khi nào dùng equals(). Identity không thể change, equality có thể được define theo business requirements."
+  },
+  // Question 367
+  {
+    question: "What are the theoretical mechanisms by which encapsulation protects against unauthorized access and maintains data integrity, and how do access modifiers create a security model that prevents external code from directly manipulating object state?",
+    options: {
+      A: "Encapsulation protects against unauthorized access by using access modifiers to restrict direct field access, forcing all state changes through controlled methods that can validate inputs and enforce business rules, creating a security model where private fields cannot be accessed externally, protected fields allow inheritance access, and public methods form controlled interfaces that maintain data integrity",
+      B: "Encapsulation provides no security benefits and is purely organizational",
+      C: "All fields should be public for maximum accessibility and security",
+      D: "Access modifiers have no impact on data integrity or security"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) protect against unauthorized access bằng cách dùng access modifiers restrict direct field access. Tất cả state changes phải through controlled methods có thể validate inputs và enforce business rules. Security model: private fields không thể access externally (chỉ trong class), protected fields allow inheritance access (trong package và subclass), public methods form controlled interfaces maintain data integrity. External code không thể directly manipulate object state - phải through methods có validation. Setters có thể reject invalid values, enforce constraints, maintain invariants. Điều này prevent unauthorized modifications và maintain data integrity. Security model này prevent: invalid state creation, unauthorized access, và unintended modifications. Public fields sẽ break security model - external code có thể set invalid values. Encapsulation tạo defense-in-depth - multiple layers of protection."
+  },
+  // Question 368
+  {
+    question: "Explain the theoretical concept of method overloading as a form of ad-hoc polymorphism, and how does the compiler's method resolution algorithm determine which overloaded method to call based on argument types, type promotion, and ambiguity resolution?",
+    options: {
+      A: "Method overloading is ad-hoc polymorphism where methods with the same name but different signatures are resolved at compile-time, with the compiler using an algorithm that first seeks exact type matches, then applies type promotion rules (byte→short→int→long→float→double), considers varargs as last resort, and reports compilation errors when ambiguity cannot be resolved, all determined statically based on reference types",
+      B: "Method overloading is resolved at runtime based on actual argument values",
+      C: "The compiler randomly selects overloaded methods when multiple matches exist",
+      D: "Method overloading only works with primitive types, not with object types"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Method overloading (nạp chồng method) là ad-hoc polymorphism - methods cùng tên nhưng khác signatures được resolve tại compile-time. Compiler dùng algorithm: đầu tiên seek exact type matches (khớp chính xác), nếu không có thì apply type promotion rules (byte→short→int→long→float→double, char→int), consider varargs như last resort, và report compilation errors khi ambiguity không thể resolve. Tất cả được determine statically dựa trên reference types (không phải runtime values). Overloading khác overriding: overloading là compile-time (dựa trên signature), overriding là runtime (dựa trên object type). Overloading có thể dùng với cả primitive và object types, nhưng với object types, exact match được ưu tiên hơn inheritance hierarchy. Ambiguity xảy ra khi có nhiều matches có thể sau promotion - compiler không thể quyết định, báo lỗi."
+  },
+  // Question 369
+  {
+    question: "What is the theoretical relationship between inheritance and the concept of code evolution and maintenance in long-lived software systems, and how do inheritance hierarchies impact the ability to evolve code over time while maintaining backward compatibility?",
+    options: {
+      A: "Inheritance impacts code evolution by creating dependencies where changes to base classes affect derived classes, making evolution challenging as base class changes can break derived classes (fragile base class problem), requiring careful design of base class interfaces to remain stable while allowing implementation evolution, with inheritance hierarchies creating maintenance challenges but also enabling systematic updates through base class modifications",
+      B: "Inheritance makes code evolution easier by allowing unlimited changes without any impact",
+      C: "Code evolution is unrelated to inheritance structure",
+      D: "Inheritance prevents all code evolution, requiring complete rewrites for any changes"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) impact code evolution bằng cách tạo dependencies - changes trong base classes affect derived classes. Evolution challenging vì base class changes có thể break derived classes (fragile base class problem). Cần careful design của base class interfaces để remain stable trong khi allow implementation evolution. Inheritance hierarchies tạo maintenance challenges nhưng cũng enable systematic updates through base class modifications - sửa một chỗ có thể fix nhiều subclasses. Trade-off: inheritance enable code reuse và systematic updates nhưng tạo tight coupling và fragile dependencies. Để maintain backward compatibility, base class interfaces phải stable - chỉ add methods, không remove hoặc change signatures. Implementation có thể evolve nhưng interface phải stable. Deep hierarchies tăng risk - changes propagate nhiều levels. Shallow hierarchies giảm risk nhưng có thể có duplication."
+  },
+  // Question 370
+  {
+    question: "In the context of abstraction, what is the theoretical concept of interface design and how do well-designed interfaces balance between being comprehensive enough to support all necessary operations while remaining simple enough to be easily understood and implemented?",
+    options: {
+      A: "Interface design involves creating abstractions that capture essential operations needed by clients while hiding implementation complexity, with well-designed interfaces being comprehensive enough to support all necessary use cases but simple enough to understand and implement, balancing completeness with simplicity through careful selection of methods and clear, minimal method signatures",
+      B: "Interfaces should include all possible operations regardless of complexity or necessity",
+      C: "Interfaces should be minimal with only one method to maximize simplicity",
+      D: "Interface design has no impact on system usability or maintainability"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Interface design (thiết kế giao diện) involve tạo abstractions capture essential operations needed bởi clients trong khi ẩn implementation complexity. Well-designed interfaces comprehensive enough để support all necessary use cases nhưng simple enough để understand và implement. Balance completeness với simplicity through careful selection của methods và clear, minimal method signatures. Interface không nên quá large (khó understand và implement) hoặc quá small (không đủ functionality). Methods nên be cohesive - related operations together. Signatures nên be clear và minimal - chỉ parameters cần thiết. Interface nên hide complexity - clients chỉ cần biết 'what', không cần biết 'how'. Design decisions: include gì (essential operations), exclude gì (implementation details), organize như thế nào (logical grouping). Good interface design tạo usable, maintainable systems. Bad design tạo confusion và difficulty."
+  },
+  // Question 371
+  {
+    question: "What is the theoretical foundation of the relationship between encapsulation and the principle of least exposure in object-oriented design, and how does minimizing the exposed surface area of a class contribute to reducing coupling and increasing maintainability?",
+    options: {
+      A: "Encapsulation implements the principle of least exposure by minimizing the public interface exposed by a class, with a smaller exposed surface area reducing the number of dependencies other classes can form on the class, decreasing coupling and making the class easier to maintain and evolve since fewer external dependencies need to be considered when making changes",
+      B: "Encapsulation requires exposing all class members publicly for maximum flexibility",
+      C: "The principle of least exposure conflicts with encapsulation by requiring public access",
+      D: "Exposed surface area has no relationship to coupling or maintainability"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) implement principle of least exposure (nguyên tắc phơi bày tối thiểu) bằng cách minimize public interface exposed bởi class. Smaller exposed surface area (diện tích phơi bày nhỏ hơn) reduce số dependencies mà other classes có thể form trên class, decrease coupling và make class dễ maintain và evolve hơn vì fewer external dependencies cần được consider khi make changes. Public interface nên minimal - chỉ expose những gì thực sự cần thiết. Mỗi public method tạo potential dependency - classes khác có thể depend vào nó. Nhiều public methods = nhiều dependencies = high coupling = khó maintain. Principle of least exposure: expose ít nhất có thể, chỉ expose khi cần thiết. Điều này tạo loose coupling và maintainable code. Encapsulation không require expose tất cả mà minimize exposure."
+  },
+  // Question 372
+  {
+    question: "In the theoretical framework of inheritance, what is the concept of the inheritance hierarchy as a taxonomy, and how does this taxonomic structure help organize knowledge about domain concepts and their relationships in object-oriented domain modeling?",
+    options: {
+      A: "Inheritance hierarchies function as taxonomies that organize domain concepts into hierarchical classifications, with the hierarchy structure reflecting specialization relationships and shared characteristics, helping organize knowledge about domain concepts by showing how general concepts specialize into specific ones, enabling systematic domain modeling that captures both commonalities and variations",
+      B: "Inheritance hierarchies are unrelated to domain modeling or knowledge organization",
+      C: "Taxonomic structures prevent effective domain modeling by creating rigid classifications",
+      D: "Inheritance hierarchies can only model technical concepts, not domain concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance hierarchies (hệ thống kế thừa) function như taxonomies (phân loại) organize domain concepts vào hierarchical classifications. Hierarchy structure reflect specialization relationships và shared characteristics. Help organize knowledge về domain concepts bằng cách show cách general concepts specialize vào specific ones. Enable systematic domain modeling capture cả commonalities (điểm chung) và variations (biến thể). Ví dụ: Animal taxonomy có Mammal, Bird, Fish - mỗi có characteristics riêng nhưng share Animal characteristics. Hierarchy tạo structure từ general đến specific, reflect real-world relationships. Domain modeling benefit: clear organization, easy navigation, systematic approach. Hierarchy giúp understand domain - từ abstract concepts đến concrete instances. Taxonomic structure không prevent modeling mà enable systematic modeling - organize concepts theo logical structure."
+  },
+  // Question 373
+  {
+    question: "What is the theoretical relationship between polymorphism and the design of flexible algorithms that can work with multiple types, and how does polymorphism enable the creation of generic algorithms that operate on abstractions rather than specific concrete types?",
+    options: {
+      A: "Polymorphism enables flexible algorithms by allowing algorithms to operate on abstractions (interfaces or base classes) rather than concrete types, so the same algorithm can work with any type implementing the abstraction, creating generic algorithms that are type-agnostic and can be extended to work with new types without modifying the algorithm code",
+      B: "Polymorphism requires algorithms to know all specific types they will work with",
+      C: "Generic algorithms cannot be created through polymorphism, requiring type-specific implementations",
+      D: "Polymorphism and algorithm design are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable flexible algorithms bằng cách allow algorithms operate trên abstractions (interfaces hoặc base classes) thay vì concrete types. Same algorithm có thể work với any type implement abstraction, tạo generic algorithms type-agnostic và có thể được extend để work với new types mà không cần modify algorithm code. Ví dụ: sort algorithm work với List interface, có thể sort ArrayList, LinkedList, etc. Algorithm depend vào List abstraction, không depend vào specific implementation. Khi add new List implementation, algorithm tự động work với nó. Generic algorithms operate trên abstractions - chỉ cần biết interface, không cần biết implementation. Điều này tạo flexible, reusable algorithms - một algorithm, nhiều types. Polymorphism không require know specific types mà work với abstractions. Đây là foundation của generic programming và reusable code."
+  },
+  // Question 374
+  {
+    question: "Explain the theoretical concept of encapsulation as a mechanism for creating black box abstractions, and how does the black box model enable clients to use objects effectively without needing to understand their internal implementation details?",
+    options: {
+      A: "Encapsulation creates black box abstractions where objects hide their internal implementation, exposing only a public interface, enabling clients to use objects effectively by interacting only with the interface without needing to understand implementation details, with the black box model allowing implementation to change without affecting clients as long as the interface remains stable",
+      B: "Black box abstractions require clients to understand all implementation details",
+      C: "Encapsulation prevents the black box model by exposing all internals",
+      D: "The black box model cannot be achieved through encapsulation"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) tạo black box abstractions (trừu tượng hộp đen) - objects ẩn internal implementation, chỉ expose public interface. Enable clients use objects effectively bằng cách interact chỉ với interface mà không cần understand implementation details. Black box model allow implementation change mà không affect clients miễn là interface remain stable. Clients chỉ cần biết 'what' (interface), không cần biết 'how' (implementation). Ví dụ: Stack black box - clients biết push/pop, không cần biết implement bằng array hay linked list. Implementation có thể change (optimize, refactor) mà clients không biết và không bị affect. Black box model tạo separation of concerns - clients focus vào usage, implementers focus vào implementation. Encapsulation enable black box model bằng cách hide internals. Đây là foundation của abstraction - hide complexity, expose simplicity."
+  },
+  // Question 375
+  {
+    question: "What are the theoretical mechanisms by which inheritance enables code reuse while maintaining the ability to customize behavior, and how does the balance between inherited code and overridden methods create flexible class hierarchies?",
+    options: {
+      A: "Inheritance enables code reuse by allowing derived classes to inherit methods and fields from base classes, while method overriding allows customization of inherited behavior, creating a balance where common behavior is inherited and reused, while specific behavior is customized through overriding, resulting in flexible hierarchies that combine code reuse with behavioral customization",
+      B: "Inheritance prevents code reuse by requiring all methods to be overridden",
+      C: "Code reuse and customization are conflicting goals that cannot be achieved together",
+      D: "Inheritance only enables code reuse without any customization capabilities"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) enable code reuse bằng cách allow derived classes inherit methods và fields từ base classes. Method overriding allow customization của inherited behavior. Balance: common behavior được inherit và reuse, specific behavior được customize through overriding. Result: flexible hierarchies combine code reuse với behavioral customization. Ví dụ: Animal base class có common method breathe(), Dog override makeSound() với bark(). Common behavior (breathe) được reuse, specific behavior (makeSound) được customize. Hierarchy flexible - vừa reuse code, vừa allow customization. Overriding không prevent reuse mà enable customization của specific parts. Inheritance không require override tất cả - chỉ override khi cần customize. Balance tạo optimal design - reuse common code, customize specific behavior. Đây là power của inheritance - code reuse + flexibility."
+  },
+  // Question 376
+  {
+    question: "In the theoretical framework of abstraction, what is the concept of abstraction levels and how do different levels of abstraction (high-level, mid-level, low-level) create a layered architecture that manages complexity by presenting appropriate views of the system to different stakeholders?",
+    options: {
+      A: "Abstraction levels create layered architectures where high-level abstractions present simplified views for architects and designers focusing on system structure, mid-level abstractions provide component views for developers, and low-level abstractions show implementation details for implementers, with each level hiding complexity below while exposing relevant information, managing overall system complexity through appropriate information hiding at each layer",
+      B: "All abstraction levels should expose the same information for consistency",
+      C: "Abstraction levels increase complexity by adding unnecessary layers",
+      D: "Only one abstraction level can exist in a system"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction levels (mức trừu tượng) tạo layered architectures: high-level abstractions present simplified views cho architects và designers focus vào system structure, mid-level abstractions provide component views cho developers, low-level abstractions show implementation details cho implementers. Mỗi level ẩn complexity below trong khi expose relevant information. Manage overall system complexity through appropriate information hiding ở mỗi layer. High-level: system overview, components, interactions. Mid-level: component interfaces, responsibilities. Low-level: algorithms, data structures, implementation. Mỗi stakeholder work ở appropriate level - không cần biết tất cả details. Layers tạo separation - changes trong một layer không necessarily affect others nếu interfaces stable. Điều này manage complexity - system có thể complex nhưng vẫn comprehensible vì complexity được organize vào layers. Without layers, tất cả complexity visible cùng lúc, overwhelming."
+  },
+  // Question 377
+  {
+    question: "What is the theoretical foundation of the relationship between encapsulation and the concept of object autonomy, and how does proper encapsulation create self-contained objects that can manage their own state and behavior independently?",
+    options: {
+      A: "Encapsulation creates object autonomy by bundling data and operations together, allowing objects to manage their own state and behavior independently through controlled internal operations, with proper encapsulation ensuring objects are self-contained units that can maintain their integrity and make decisions about their state without external interference, creating autonomous entities in the system",
+      B: "Encapsulation prevents object autonomy by requiring external control of all operations",
+      C: "Object autonomy can only be achieved without encapsulation",
+      D: "Encapsulation and object autonomy are conflicting concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) tạo object autonomy (tự chủ đối tượng) bằng cách bundle data và operations together. Objects có thể manage own state và behavior independently through controlled internal operations. Proper encapsulation ensure objects là self-contained units có thể maintain integrity và make decisions về state mà không có external interference. Tạo autonomous entities trong system - objects có thể operate independently, make decisions, maintain state. Ví dụ: BankAccount object tự manage balance, validate transactions, maintain invariants. External code không thể directly manipulate state - phải through object's methods. Object có control over own state và behavior. Autonomy không mean isolation - objects vẫn interact với others, nhưng through controlled interfaces. Encapsulation enable autonomy bằng cách give objects control. Đây là foundation của object-oriented thinking - objects như autonomous agents, không chỉ data containers."
+  },
+  // Question 378
+  {
+    question: "Explain the theoretical concept of polymorphism as enabling the design of systems that follow the Dependency Inversion Principle, where high-level modules depend on abstractions rather than low-level concrete implementations, and how does this architectural pattern improve system flexibility and testability?",
+    options: {
+      A: "Polymorphism enables Dependency Inversion by allowing high-level modules to depend on abstractions (interfaces or base classes) that low-level modules implement, with polymorphism allowing the high-level code to work with any implementation of the abstraction, creating flexible architectures where high-level policy is independent of low-level details, improving both flexibility through swappable implementations and testability through mockable dependencies",
+      B: "Polymorphism requires high-level modules to depend directly on low-level implementations",
+      C: "Dependency Inversion cannot be achieved through polymorphism",
+      D: "Polymorphism and architectural patterns are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable Dependency Inversion (đảo ngược phụ thuộc) bằng cách allow high-level modules depend vào abstractions (interfaces hoặc base classes) mà low-level modules implement. Polymorphism allow high-level code work với any implementation của abstraction. Tạo flexible architectures - high-level policy independent của low-level details. Improve flexibility through swappable implementations - có thể swap implementations mà không affect high-level. Improve testability through mockable dependencies - có thể inject mocks trong tests. Ví dụ: Service depend vào Repository interface, Repository implementations (Database, File, Memory) implement interface. Service không depend vào specific implementation, có thể work với any. High-level (business logic) independent của low-level (data access). Architecture flexible và testable. Polymorphism enable pattern này - code depend vào abstraction, polymorphism allow work với implementations."
+  },
+  // Question 379
+  {
+    question: "What is the theoretical relationship between inheritance and the concept of incremental development in object-oriented systems, and how does inheritance enable developers to build systems incrementally by extending existing classes rather than creating everything from scratch?",
+    options: {
+      A: "Inheritance enables incremental development by allowing new functionality to be added through derived classes that extend existing base classes, building upon established functionality rather than recreating it, enabling developers to incrementally add features and specializations to a system by extending the inheritance hierarchy, creating an evolutionary development approach where systems grow through extension",
+      B: "Inheritance prevents incremental development by requiring complete system design upfront",
+      C: "Incremental development can only be achieved without using inheritance",
+      D: "Inheritance and incremental development are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) enable incremental development (phát triển tăng dần) bằng cách allow new functionality được add through derived classes extend existing base classes. Build upon established functionality thay vì recreate it. Enable developers incrementally add features và specializations vào system bằng cách extend inheritance hierarchy. Tạo evolutionary development approach - systems grow through extension. Ví dụ: có Animal base class, add Dog, Cat, Bird incrementally. Mỗi extension build trên existing functionality, không cần recreate. Development incremental - start với base, add specializations. Systems evolve - từ simple đến complex, từ general đến specific. Inheritance không require complete design upfront - có thể start simple, extend later. Extension-based approach - add new types, không modify existing. Đây là foundation của extensible systems - grow through inheritance, không through modification."
+  },
+  // Question 380
+  {
+    question: "In the theoretical framework of encapsulation, what is the concept of controlled mutability and how do encapsulation mechanisms allow objects to control when and how their state can be changed, enabling both mutable and immutable object designs?",
+    options: {
+      A: "Controlled mutability means objects control state changes through encapsulation mechanisms, with mutable objects allowing controlled changes through methods that validate and enforce invariants, while immutable objects prevent all state changes by not providing mutator methods, with encapsulation enabling both designs by controlling access to state modification pathways",
+      B: "Encapsulation only supports mutable objects, with immutability being impossible",
+      C: "Controlled mutability requires all fields to be public for maximum flexibility",
+      D: "Encapsulation prevents any form of mutability control"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Controlled mutability (khả năng thay đổi có kiểm soát) có nghĩa objects control state changes through encapsulation mechanisms. Mutable objects allow controlled changes through methods validate và enforce invariants - setters có validation, chỉ allow valid changes. Immutable objects prevent all state changes bằng cách không provide mutator methods - không có setters, chỉ có getters, state set trong constructor và không change. Encapsulation enable cả hai designs bằng cách control access đến state modification pathways. Mutable: private fields + controlled setters. Immutable: private final fields + no setters. Encapsulation không force một design - có thể choose mutable hoặc immutable based on requirements. Controlled mutability give objects control - decide khi nào và như thế nào state có thể change. Điều này enable safe state management - prevent invalid changes, maintain integrity. Design choice: mutable cho flexible objects, immutable cho safe, thread-safe objects."
+  },
+  // Question 381
+  {
+    question: "What is the theoretical foundation of the relationship between abstraction and the concept of conceptual modeling in object-oriented analysis and design, and how do abstractions help capture and represent essential domain concepts while ignoring irrelevant implementation details?",
+    options: {
+      A: "Abstraction enables conceptual modeling by identifying and representing essential domain concepts at appropriate levels of detail, with abstractions capturing the essential characteristics and behaviors of domain entities while ignoring implementation specifics, allowing designers to model the problem domain conceptually before considering implementation details, creating a clear separation between domain understanding and technical realization",
+      B: "Abstraction prevents conceptual modeling by focusing only on implementation details",
+      C: "Conceptual modeling can only be achieved without using abstraction",
+      D: "Abstraction and conceptual modeling are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction (trừu tượng hóa) enable conceptual modeling (mô hình khái niệm) bằng cách identify và represent essential domain concepts ở appropriate levels of detail. Abstractions capture essential characteristics và behaviors của domain entities trong khi ignore implementation specifics. Allow designers model problem domain conceptually trước khi consider implementation details. Tạo clear separation giữa domain understanding và technical realization. Conceptual model focus vào 'what' và 'why', không phải 'how'. Abstractions represent domain concepts - Customer, Order, Product - với essential features, không có implementation details. Model domain trước, implement sau. Separation này important - domain model stable, implementation có thể change. Abstraction không prevent modeling mà enable modeling - tạo conceptual representation của domain. Đây là foundation của object-oriented analysis - understand domain, model concepts, implement later."
+  },
+  // Question 382
+  {
+    question: "In the theoretical framework of inheritance, what is the concept of the inheritance chain and method lookup, and how does the depth and structure of the inheritance chain impact the performance, maintainability, and comprehensibility of object-oriented systems?",
+    options: {
+      A: "The inheritance chain represents the path from a class to its root ancestor, with method lookup traversing this chain to find implementations, where deeper chains increase lookup complexity and make code harder to understand and maintain, though modern JVMs optimize through virtual method tables, with optimal design balancing chain depth against maintainability and performance concerns",
+      B: "Inheritance chain depth has no impact on system design or performance",
+      C: "Deeper inheritance chains always improve performance and maintainability",
+      D: "Method lookup does not traverse the inheritance chain, always using immediate class methods"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance chain (chuỗi kế thừa) represent path từ một class đến root ancestor (Object trong Java). Method lookup traverse chain này để tìm implementations - bắt đầu từ class hiện tại, nếu không tìm thấy thì lên parent, tiếp tục đến root. Deeper chains increase lookup complexity và make code khó understand và maintain hơn - phải trace qua nhiều levels, understand nhiều classes. Modern JVMs optimize through virtual method tables (vtables) - O(1) lookup thay vì traverse. Optimal design balance chain depth với maintainability và performance concerns. Shallow chains (2-3 levels) thường tốt hơn - dễ understand, maintain, và debug. Deep chains (>4-5 levels) tăng complexity và fragile base class risk. Balance: đủ depth để reuse code, không quá deep để maintain. Chain structure cũng important - linear chains tốt hơn complex hierarchies. Design decision: minimize depth, maximize clarity."
+  },
+  // Question 383
+  {
+    question: "What is the theoretical relationship between polymorphism and the design of event-driven and callback-based systems, and how does polymorphism enable flexible event handling where different objects can respond to the same events in different ways?",
+    options: {
+      A: "Polymorphism enables event-driven systems by allowing event handlers to be defined as methods in different classes implementing a common interface, with polymorphism allowing the event system to invoke handlers on any object implementing the interface, enabling different objects to respond to the same events differently based on their specific implementations, creating flexible event handling architectures",
+      B: "Polymorphism prevents event-driven design by requiring all handlers to behave identically",
+      C: "Event-driven systems cannot use polymorphism and require type-specific handlers",
+      D: "Polymorphism and event-driven design are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable event-driven systems bằng cách allow event handlers được define như methods trong different classes implement common interface. Polymorphism allow event system invoke handlers trên any object implement interface. Enable different objects respond đến same events differently based trên specific implementations. Tạo flexible event handling architectures. Ví dụ: EventListener interface có onEvent() method, Button và Menu implement interface, mỗi respond differently. Event system chỉ cần biết EventListener interface, không cần biết specific types. Polymorphism enable này - same event, different responses. Callback-based systems cũng benefit - callbacks có thể là methods của different classes implement interface. Flexibility: add new event handlers bằng cách implement interface, không cần modify event system. Đây là foundation của observer pattern và event-driven architectures. Polymorphism không prevent flexibility mà enable nó - allow different behaviors through common interface."
+  },
+  // Question 384
+  {
+    question: "Explain the theoretical concept of encapsulation as a mechanism for creating contracts between objects, and how do encapsulated interfaces define the terms of interaction between objects, establishing clear boundaries and responsibilities in object-oriented systems?",
+    options: {
+      A: "Encapsulation creates contracts through public interfaces that define how objects interact, with the encapsulated interface establishing the terms of interaction by specifying what operations are available, what parameters are required, and what can be expected in return, creating clear boundaries that define object responsibilities and enable objects to interact predictably while maintaining independence",
+      B: "Encapsulation prevents contracts by hiding all interaction mechanisms",
+      C: "Contracts can only be established without using encapsulation",
+      D: "Encapsulation and object contracts are conflicting concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) tạo contracts (hợp đồng) through public interfaces định nghĩa cách objects interact. Encapsulated interface establish terms of interaction bằng cách specify: what operations available, what parameters required, và what can be expected in return. Tạo clear boundaries định nghĩa object responsibilities và enable objects interact predictably trong khi maintain independence. Contract là agreement giữa objects - object A expect object B behave theo contract. Interface define contract - methods, parameters, return types, exceptions. Objects interact through contracts, không through direct access. Boundaries clear - inside (implementation), outside (interface). Responsibilities defined - mỗi object có contract riêng. Predictable interaction - objects biết expect gì từ others. Independence maintained - objects có thể change implementation mà không break contracts. Encapsulation không prevent contracts mà create chúng - interface là contract. Đây là foundation của component-based design - components interact through contracts."
+  },
+  // Question 385
+  {
+    question: "What is the theoretical foundation of the relationship between inheritance and code organization in large-scale software projects, and how do inheritance hierarchies help structure and organize classes in ways that make large codebases more navigable and understandable?",
+    options: {
+      A: "Inheritance helps organize code by creating hierarchical structures that group related classes, with inheritance hierarchies providing a navigation structure that reflects specialization relationships, making large codebases more navigable by allowing developers to understand class relationships, locate functionality by following the hierarchy, and organize classes systematically based on their inheritance relationships",
+      B: "Inheritance makes code organization more difficult by creating complex dependencies",
+      C: "Code organization is unrelated to inheritance structure",
+      D: "Inheritance prevents effective code organization in large projects"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) help organize code bằng cách tạo hierarchical structures nhóm related classes. Inheritance hierarchies provide navigation structure reflect specialization relationships. Make large codebases navigable hơn bằng cách allow developers understand class relationships, locate functionality bằng cách follow hierarchy, và organize classes systematically based trên inheritance relationships. Hierarchy tạo structure - từ general đến specific, từ base đến derived. Navigation: biết base class, biết derived classes có gì. Organization: related classes trong cùng hierarchy, share characteristics. Large codebases benefit - structure rõ ràng, easy to navigate, understand relationships. Developers có thể predict locations - common features trong base, specific features trong derived. Systematic organization - classes organized theo inheritance, không random. Điều này tạo maintainable codebases - dễ find, understand, modify. Inheritance không prevent organization mà enable systematic organization."
+  },
+  // Question 386
+  {
+    question: "In the theoretical framework of polymorphism, what is the concept of behavioral polymorphism versus structural polymorphism, and how do these different forms of polymorphism contribute to flexible system design?",
+    options: {
+      A: "Behavioral polymorphism allows different objects to respond differently to the same method call based on their implementations, while structural polymorphism allows objects of different types to be used interchangeably based on shared structure (interfaces), with both forms enabling flexible design where code can work with multiple types through common interfaces or behaviors",
+      B: "Behavioral and structural polymorphism are identical concepts with no distinction",
+      C: "Only behavioral polymorphism exists, with structural polymorphism being impossible",
+      D: "Polymorphism cannot contribute to flexible system design"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Behavioral polymorphism (đa hình hành vi) allow different objects respond differently đến same method call based trên implementations - same method call, different behaviors. Structural polymorphism (đa hình cấu trúc) allow objects của different types được dùng interchangeably based trên shared structure (interfaces) - different types, same interface. Cả hai forms enable flexible design - code có thể work với multiple types through common interfaces hoặc behaviors. Behavioral: method overriding, runtime polymorphism. Structural: interface implementation, type substitution. Both contribute to flexibility - behavioral cho phép customization, structural cho phép interchangeability. Flexible systems benefit từ cả hai - vừa có interchangeable types, vừa có customizable behaviors. Ví dụ: List interface (structural) có ArrayList, LinkedList (behavioral differences). Polymorphism không chỉ một form mà multiple forms contribute to flexibility."
+  },
+  // Question 387
+  {
+    question: "What are the theoretical mechanisms by which abstraction reduces the cognitive complexity of understanding software systems, and how do abstraction layers allow developers to work at appropriate levels of detail without being overwhelmed by system complexity?",
+    options: {
+      A: "Abstraction reduces cognitive complexity by hiding irrelevant details at each level, with abstraction layers allowing developers to focus on relevant information for their current task, working at appropriate levels of detail where high-level abstractions hide low-level complexity, mid-level abstractions hide implementation details, and developers can understand and work with systems without needing to comprehend all details simultaneously",
+      B: "Abstraction increases cognitive complexity by adding layers that must be understood",
+      C: "Cognitive complexity can only be reduced by understanding all system details",
+      D: "Abstraction and cognitive complexity are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction (trừu tượng hóa) reduce cognitive complexity (độ phức tạp nhận thức) bằng cách ẩn irrelevant details ở mỗi level. Abstraction layers allow developers focus vào relevant information cho current task, work ở appropriate levels of detail. High-level abstractions ẩn low-level complexity - architects chỉ cần biết system structure. Mid-level abstractions ẩn implementation details - developers chỉ cần biết component interfaces. Developers có thể understand và work với systems mà không cần comprehend all details simultaneously. Cognitive load reduced - chỉ cần biết level relevant, ignore others. Without abstraction, developers phải understand everything - overwhelming. With abstraction, complexity manageable - work ở appropriate level, ignore irrelevant. Điều này enable understand large, complex systems - không cần biết tất cả, chỉ cần biết relevant parts. Abstraction không increase complexity mà manage nó - organize complexity vào layers."
+  },
+  // Question 388
+  {
+    question: "In the context of encapsulation, what is the theoretical concept of the encapsulation boundary and how does this boundary create a clear separation between the internal implementation of an object and its external interface, enabling independent evolution of implementation and interface?",
+    options: {
+      A: "The encapsulation boundary is the conceptual line separating internal implementation from external interface, created through access modifiers that restrict external access to internals, enabling the internal implementation to evolve independently of the interface as long as the interface contract is maintained, allowing implementation improvements without affecting clients",
+      B: "Encapsulation boundaries prevent any form of evolution or change",
+      C: "The boundary between implementation and interface cannot be maintained through encapsulation",
+      D: "Encapsulation boundaries require exposing all internals for maximum flexibility"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation boundary (ranh giới đóng gói) là conceptual line tách internal implementation từ external interface, được tạo through access modifiers restrict external access đến internals. Enable internal implementation evolve independently của interface miễn là interface contract được maintain. Allow implementation improvements mà không affect clients. Boundary clear - inside (private, implementation), outside (public, interface). Separation này important - implementation có thể change (optimize, refactor, fix) mà interface stable. Clients depend vào interface, không phải implementation, nên không bị affect. Independent evolution - implementation evolve, interface stable. Điều này enable maintainable systems - improve implementation, không break clients. Boundary không prevent evolution mà enable safe evolution - change implementation, maintain interface. Encapsulation tạo boundary này - protect internals, expose interface. Đây là foundation của stable, evolvable systems."
+  },
+  // Question 389
+  {
+    question: "What is the theoretical relationship between inheritance and the concept of code reuse versus code sharing, and how does inheritance enable both the reuse of existing code and the sharing of common functionality across related classes in an inheritance hierarchy?",
+    options: {
+      A: "Inheritance enables both code reuse where derived classes use inherited methods without modification, and code sharing where base class code is shared among multiple derived classes, with inheritance allowing common functionality to be defined once in a base class and automatically available to all derived classes, creating efficient code organization where shared code is centralized and reused code eliminates duplication",
+      B: "Inheritance only enables code reuse, with code sharing being impossible",
+      C: "Code reuse and code sharing are conflicting goals that cannot be achieved together",
+      D: "Inheritance prevents both code reuse and code sharing"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) enable cả code reuse (tái sử dụng code) - derived classes dùng inherited methods mà không modify, và code sharing (chia sẻ code) - base class code được share giữa multiple derived classes. Inheritance allow common functionality được define một lần trong base class và automatically available đến all derived classes. Tạo efficient code organization - shared code centralized, reused code eliminate duplication. Code reuse: derived classes inherit và use methods từ base. Code sharing: một base class, nhiều derived classes share code. Both benefit - reuse eliminate duplication, sharing centralize common code. Efficiency: define once, use many times. Organization: common code trong base, specific code trong derived. Inheritance enable cả hai - vừa reuse (sử dụng lại), vừa share (chia sẻ). Đây là power của inheritance - code efficiency và organization. Trade-off: reuse và share tạo dependencies, nhưng benefit lớn hơn cost trong many cases."
+  },
+  // Question 390
+  {
+    question: "Explain the theoretical concept of polymorphism as enabling the design of plug-and-play architectures, and how does polymorphism allow systems to support new components that implement existing interfaces without requiring modifications to the core system infrastructure?",
+    options: {
+      A: "Polymorphism enables plug-and-play architectures by designing core systems to depend on abstractions, allowing new components implementing those abstractions to be plugged into the system without modifying core infrastructure, with polymorphism ensuring the core system can work with any implementation of the abstraction, creating extensible systems where functionality can be added through new components rather than system modifications",
+      B: "Polymorphism requires modifying core systems to add new components",
+      C: "Plug-and-play architectures cannot be achieved through polymorphism",
+      D: "Polymorphism prevents the addition of new components to systems"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable plug-and-play architectures (kiến trúc cắm và chạy) bằng cách design core systems depend vào abstractions. New components implement những abstractions này có thể được plug vào system mà không cần modify core infrastructure. Polymorphism ensure core system có thể work với any implementation của abstraction. Tạo extensible systems - functionality có thể được add through new components thay vì system modifications. Ví dụ: Plugin architecture - core system define Plugin interface, plugins implement interface, plug in without modification. Core system không cần biết specific plugins, chỉ cần biết interface. Polymorphism enable này - core work với any Plugin implementation. Extensibility: add functionality bằng cách add components, không modify core. Đây là foundation của plugin systems, extension points, và modular architectures. Polymorphism không prevent extension mà enable nó - allow plug new components through abstractions."
+  },
+  // Question 391
+  {
+    question: "What is the theoretical foundation of the relationship between encapsulation and the concept of object responsibility, and how does proper encapsulation help define and maintain clear responsibilities for objects by bundling related data and operations together?",
+    options: {
+      A: "Encapsulation helps define object responsibility by bundling related data and operations that work together to fulfill a specific purpose, with proper encapsulation keeping all members related to a single responsibility together in one class, creating cohesive units where responsibility is clear and all class members contribute to fulfilling that responsibility, making objects easier to understand and maintain",
+      B: "Encapsulation prevents clear responsibility definition by mixing unrelated concerns",
+      C: "Object responsibility can only be defined without using encapsulation",
+      D: "Encapsulation and object responsibility are conflicting concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) help define object responsibility bằng cách bundle related data và operations work together để fulfill specific purpose. Proper encapsulation keep all members related đến single responsibility together trong một class. Tạo cohesive units - responsibility clear và all class members contribute đến fulfill responsibility đó. Make objects dễ understand và maintain hơn. Responsibility là 'what object does' - single, clear purpose. Encapsulation keep related things together - data và operations cho responsibility đó. Cohesion high - all members related, work toward common goal. Clear responsibility - easy to understand purpose, easy to maintain. Ví dụ: BankAccount responsibility là manage account, encapsulate balance, accountNumber, và deposit/withdraw methods. All related, all contribute. Encapsulation không prevent responsibility mà define nó - bundle related functionality. Đây là foundation của single responsibility principle - một class, một responsibility."
+  },
+  // Question 392
+  {
+    question: "In the theoretical framework of inheritance, what is the concept of the inheritance relationship as a modeling tool, and how does inheritance help model real-world relationships and hierarchies that exist in problem domains, making object-oriented models more intuitive and aligned with domain understanding?",
+    options: {
+      A: "Inheritance serves as a modeling tool that reflects real-world 'is-a' relationships and specialization hierarchies, allowing object-oriented models to mirror domain structures where general concepts have specialized variants, making models more intuitive by aligning code structure with domain understanding and enabling developers to reason about code using domain knowledge",
+      B: "Inheritance has no relationship to domain modeling or real-world relationships",
+      C: "Inheritance prevents intuitive modeling by creating artificial structures",
+      D: "Real-world relationships cannot be modeled through inheritance"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance (kế thừa) serve như modeling tool reflect real-world 'is-a' relationships và specialization hierarchies. Allow object-oriented models mirror domain structures - general concepts có specialized variants. Make models intuitive hơn bằng cách align code structure với domain understanding. Enable developers reason về code using domain knowledge. Ví dụ: domain có Animal → Mammal → Dog hierarchy, code có inheritance hierarchy tương tự. Intuitive - code structure match domain structure. Domain knowledge applicable - understand domain, understand code. Models align với domain - không artificial, natural. Inheritance không prevent modeling mà enable intuitive modeling - reflect real relationships. Điều này tạo maintainable code - developers có thể use domain knowledge để understand và modify code. Modeling tool - inheritance help model domain, không chỉ organize code."
+  },
+  // Question 393
+  {
+    question: "What is the theoretical relationship between abstraction and the concept of interface stability in long-lived software systems, and how do well-designed abstractions create stable interfaces that can evolve and adapt over time while maintaining backward compatibility?",
+    options: {
+      A: "Abstraction creates stable interfaces by defining essential operations and contracts that remain constant, with well-designed abstractions focusing on stable concepts rather than volatile implementation details, enabling interfaces to remain stable over time while implementations evolve, maintaining backward compatibility by keeping the abstraction contract unchanged even as internal implementations improve or change",
+      B: "Abstraction prevents interface stability by requiring constant interface changes",
+      C: "Interface stability can only be achieved without using abstraction",
+      D: "Abstraction and interface stability are conflicting goals"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction (trừu tượng hóa) tạo stable interfaces bằng cách define essential operations và contracts remain constant. Well-designed abstractions focus vào stable concepts thay vì volatile implementation details. Enable interfaces remain stable over time trong khi implementations evolve. Maintain backward compatibility bằng cách keep abstraction contract unchanged ngay cả khi internal implementations improve hoặc change. Stable interfaces important cho long-lived systems - clients depend vào interfaces, interfaces phải stable. Abstractions capture essential, stable concepts - 'what', không phải 'how'. Implementation details volatile, abstractions stable. Evolution: implementation change, interface stable. Backward compatibility: old clients vẫn work, new implementations compatible. Abstraction không prevent stability mà enable nó - focus vào stable concepts. Đây là foundation của maintainable, evolvable systems - stable interfaces, evolving implementations."
+  },
+  // Question 394
+  {
+    question: "Explain the theoretical concept of polymorphism as a mechanism for achieving runtime flexibility, and how does dynamic method dispatch enable systems to adapt their behavior at runtime based on the actual types of objects, rather than being fixed at compile time?",
+    options: {
+      A: "Polymorphism achieves runtime flexibility through dynamic method dispatch where method calls are resolved at runtime based on actual object types, allowing systems to adapt behavior dynamically as different object types are used, with the same code working with different types and producing different behaviors based on runtime object types, creating flexible systems that can respond to runtime conditions and object configurations",
+      B: "Polymorphism requires all behavior to be fixed at compile time",
+      C: "Runtime flexibility cannot be achieved through polymorphism",
+      D: "Dynamic method dispatch prevents runtime adaptation"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) achieve runtime flexibility (linh hoạt runtime) through dynamic method dispatch - method calls được resolve tại runtime dựa trên actual object types. Allow systems adapt behavior dynamically khi different object types được dùng. Same code work với different types và produce different behaviors based trên runtime object types. Tạo flexible systems có thể respond đến runtime conditions và object configurations. Compile-time: code depend vào abstraction. Runtime: actual types determine behavior. Flexibility: behavior adapt based trên runtime types, không fixed tại compile-time. Ví dụ: processPayment() work với CreditCard hoặc PayPal based trên runtime type. Dynamic dispatch enable này - method được chọn tại runtime. Systems flexible - có thể handle different scenarios, adapt to conditions. Polymorphism không prevent flexibility mà enable runtime flexibility - behavior determined tại runtime, không compile-time."
+  },
+  // Question 395
+  {
+    question: "What are the theoretical mechanisms by which encapsulation protects object state from corruption and maintains data integrity, and how do encapsulation mechanisms create defensive programming patterns that validate inputs and enforce business rules?",
+    options: {
+      A: "Encapsulation protects state by restricting direct access and requiring all modifications through controlled methods that can validate inputs, check preconditions, enforce business rules, and maintain invariants, creating defensive programming patterns where invalid states cannot be created because all state changes go through validation pathways that reject invalid inputs and ensure data integrity",
+      B: "Encapsulation provides no protection and allows unrestricted state modification",
+      C: "State protection can only be achieved without encapsulation",
+      D: "Encapsulation prevents all state validation and business rule enforcement"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Encapsulation (đóng gói) protect state bằng cách restrict direct access và require all modifications through controlled methods có thể validate inputs, check preconditions, enforce business rules, và maintain invariants. Tạo defensive programming patterns - invalid states không thể được tạo vì all state changes go through validation pathways reject invalid inputs và ensure data integrity. Setters validate - check values, reject invalid, enforce rules. Preconditions checked - ensure valid state before operations. Business rules enforced - age >= 0, balance >= 0, etc. Invariants maintained - state luôn valid. Defensive: prevent problems, không chỉ detect. Invalid states impossible - không có pathway tạo chúng. Data integrity ensured - state luôn consistent và valid. Encapsulation không prevent protection mà enable defensive programming - control access, validate changes. Đây là foundation của robust systems - prevent corruption, maintain integrity."
+  },
+  // Question 396
+  {
+    question: "In the theoretical framework of inheritance, what is the concept of inheritance depth and its impact on system design, and how do shallow versus deep inheritance hierarchies affect code maintainability, testability, and the risk of fragile base class problems?",
+    options: {
+      A: "Inheritance depth refers to the number of levels in an inheritance hierarchy, with shallow hierarchies (2-3 levels) generally being more maintainable and testable with lower fragile base class risk, while deep hierarchies (4+ levels) increase complexity, make testing harder, and amplify the fragile base class problem where base class changes affect many derived classes, with optimal design minimizing depth while achieving necessary code reuse",
+      B: "Deeper inheritance hierarchies always improve maintainability and reduce risks",
+      C: "Inheritance depth has no impact on system design or maintainability",
+      D: "Shallow hierarchies always cause more problems than deep hierarchies"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Inheritance depth (độ sâu kế thừa) refer đến số levels trong inheritance hierarchy. Shallow hierarchies (2-3 levels) generally more maintainable và testable với lower fragile base class risk - dễ understand, test, và modify. Deep hierarchies (4+ levels) increase complexity, make testing harder, và amplify fragile base class problem - base class changes affect many derived classes. Optimal design minimize depth trong khi achieve necessary code reuse. Shallow: easy to understand, test, maintain. Deep: complex, hard to test, fragile. Fragile base class: changes propagate nhiều levels, break many classes. Balance: đủ depth để reuse, không quá deep để maintain. Design decision: prefer shallow, avoid deep. Composition có thể thay thế deep inheritance. Depth impact: maintainability, testability, risk. Minimize depth, maximize clarity. Đây là design principle - keep hierarchies shallow."
+  },
+  // Question 397
+  {
+    question: "What is the theoretical foundation of the relationship between polymorphism and the design of algorithms that operate on collections of heterogeneous objects, and how does polymorphism enable algorithms to work uniformly with different object types through common interfaces?",
+    options: {
+      A: "Polymorphism enables uniform algorithms by allowing algorithms to operate on abstractions (interfaces or base classes) rather than specific types, so algorithms can work with collections containing different object types that all implement the same abstraction, processing each object uniformly through the common interface while each object responds according to its specific implementation, creating flexible algorithms that work with heterogeneous collections",
+      B: "Polymorphism requires algorithms to know all specific types in collections",
+      C: "Algorithms cannot work with heterogeneous collections through polymorphism",
+      D: "Polymorphism prevents uniform algorithm design"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Polymorphism (đa hình) enable uniform algorithms bằng cách allow algorithms operate trên abstractions (interfaces hoặc base classes) thay vì specific types. Algorithms có thể work với collections chứa different object types mà all implement same abstraction. Process mỗi object uniformly through common interface trong khi mỗi object respond according đến specific implementation. Tạo flexible algorithms work với heterogeneous collections. Ví dụ: drawAll() algorithm work với List<Shape>, process Circle, Rectangle, Triangle uniformly. Algorithm chỉ cần biết Shape interface, không cần biết specific types. Uniform processing - same algorithm, different behaviors. Heterogeneous collections - different types, same interface. Polymorphism enable này - algorithm work với abstraction, objects provide implementations. Flexibility: add new types, algorithm tự động work. Đây là foundation của generic algorithms - work với any types implement interface."
+  },
+  // Question 398
+  {
+    question: "In the context of encapsulation, what is the theoretical concept of the public interface as a contract, and how does the public interface define the obligations and guarantees that an object provides to its clients, establishing a formal agreement for object interaction?",
+    options: {
+      A: "The public interface serves as a contract defining what operations an object provides, what parameters are required, what return values can be expected, and what exceptions might be thrown, establishing formal obligations (what the object will do) and guarantees (what clients can rely on), creating a contract that clients depend on and that the object must honor, enabling predictable and reliable object interactions",
+      B: "Public interfaces have no contractual meaning and are purely informational",
+      C: "Contracts can only be established without using public interfaces",
+      D: "The public interface prevents formal agreements between objects"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Public interface (giao diện công khai) serve như contract định nghĩa: what operations object provides, what parameters required, what return values expected, và what exceptions might be thrown. Establish formal obligations (object sẽ làm gì) và guarantees (clients có thể rely on gì). Tạo contract mà clients depend on và object phải honor. Enable predictable và reliable object interactions. Contract là agreement - object promise provide operations, clients expect behaviors. Obligations: object phải fulfill contract. Guarantees: clients có thể rely on behavior. Formal agreement - clear, documented, enforceable. Predictable: clients biết expect gì. Reliable: object honor contract. Interface define contract - methods, signatures, behaviors. Objects must honor - implement đúng contract. Clients depend on - expect contract behavior. Đây là foundation của reliable systems - contracts ensure predictable behavior. Encapsulation tạo contract này - interface là contract."
+  },
+  // Question 399
+  {
+    question: "What is the theoretical relationship between abstraction and the concept of domain modeling in object-oriented analysis, and how do abstractions help capture and represent the essential concepts, relationships, and behaviors of a problem domain in a way that is both accurate and implementable?",
+    options: {
+      A: "Abstraction enables domain modeling by identifying and representing essential domain concepts at appropriate levels of detail, capturing key concepts, their relationships, and behaviors while ignoring implementation specifics, allowing designers to create accurate models of the problem domain that reflect real-world structures and can be directly implemented in code, bridging the gap between domain understanding and technical implementation",
+      B: "Abstraction prevents accurate domain modeling by focusing only on technical details",
+      C: "Domain modeling can only be achieved without using abstraction",
+      D: "Abstraction and domain modeling are unrelated concepts"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Abstraction (trừu tượng hóa) enable domain modeling (mô hình hóa miền) bằng cách identify và represent essential domain concepts ở appropriate levels of detail. Capture key concepts, relationships, và behaviors trong khi ignore implementation specifics. Allow designers create accurate models của problem domain reflect real-world structures và có thể được directly implement trong code. Bridge gap giữa domain understanding và technical implementation. Domain model: concepts, relationships, behaviors. Abstraction represent chúng - classes, inheritance, associations. Accurate: reflect domain correctly. Implementable: có thể code directly. Gap bridged - model translate thành code. Abstraction không prevent modeling mà enable nó - represent domain concepts. Models accurate và implementable - vừa reflect domain, vừa code được. Đây là foundation của object-oriented analysis - understand domain, model concepts, implement code."
+  },
+  // Question 400
+  {
+    question: "Explain the theoretical concept of the four fundamental principles of object-oriented programming working together as an integrated system, and how do encapsulation, inheritance, polymorphism, and abstraction complement each other to create well-designed, maintainable, and extensible object-oriented systems?",
+    options: {
+      A: "The four OOP principles work together as an integrated system where encapsulation provides data protection and controlled access, inheritance enables code reuse and specialization, polymorphism allows flexible behavior through abstractions, and abstraction creates simplified interfaces, with each principle addressing different aspects of design that together create systems that are protected (encapsulation), organized (inheritance), flexible (polymorphism), and comprehensible (abstraction), resulting in maintainable and extensible architectures",
+      B: "The four principles are independent and cannot work together",
+      C: "Only one principle can be used at a time in any system",
+      D: "The principles conflict with each other and cannot be combined"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Bốn nguyên tắc OOP work together như integrated system: Encapsulation (đóng gói) provide data protection và controlled access - bảo vệ data, control access. Inheritance (kế thừa) enable code reuse và specialization - reuse code, specialize behavior. Polymorphism (đa hình) allow flexible behavior through abstractions - work với multiple types, flexible behavior. Abstraction (trừu tượng hóa) create simplified interfaces - hide complexity, expose essentials. Mỗi principle address different aspects: encapsulation → protection, inheritance → organization, polymorphism → flexibility, abstraction → comprehensibility. Together tạo systems: protected (encapsulation), organized (inheritance), flexible (polymorphism), và comprehensible (abstraction). Result: maintainable và extensible architectures. Principles complement nhau - encapsulation protect, inheritance organize, polymorphism flex, abstraction simplify. Integrated approach - không chỉ một principle, mà all together. Well-designed systems use all four - comprehensive design. Đây là foundation của object-oriented programming - four principles, integrated system, maintainable code."
   }
 ];
