@@ -21,7 +21,7 @@ function App() {
 
 
   const startQuiz = (setNumber) => {
-    // Calculate question range: Set 1 = 1-50, Set 2 = 51-100, Set 3 = 101-150, Set 4 = 151-200, Set 5 = 201-250, Set 6 = 251-300, Set 7 = 301-350, Set 8 = 351-400
+    // Calculate question range: Set 1 = 1-50, Set 2 = 51-100
     const startIndex = (setNumber - 1) * 50;
     const endIndex = startIndex + 50;
     const selected = questions.slice(startIndex, endIndex);
@@ -132,7 +132,7 @@ function App() {
         <div className="quiz-container home-container">
           <div className="home-header">
             <h1>OOP Java Quiz</h1>
-            <p className="home-subtitle">Test your knowledge with 400 challenging OOP questions</p>
+            <p className="home-subtitle">Test your knowledge with 100 challenging OOP questions</p>
           </div>
 
           <div className="quiz-options">
@@ -147,36 +147,6 @@ function App() {
                 <span className="set-icon">2</span>
                 <span className="set-title">Set 2</span>
                 <span className="set-desc">Questions 51-100</span>
-              </button>
-              <button className="set-button" onClick={() => startQuiz(3)}>
-                <span className="set-icon">3</span>
-                <span className="set-title">Set 3</span>
-                <span className="set-desc">Questions 101-150</span>
-              </button>
-              <button className="set-button" onClick={() => startQuiz(4)}>
-                <span className="set-icon">4</span>
-                <span className="set-title">Set 4</span>
-                <span className="set-desc">Questions 151-200</span>
-              </button>
-              <button className="set-button" onClick={() => startQuiz(5)}>
-                <span className="set-icon">5</span>
-                <span className="set-title">Set 5</span>
-                <span className="set-desc">Questions 201-250</span>
-              </button>
-              <button className="set-button" onClick={() => startQuiz(6)}>
-                <span className="set-icon">6</span>
-                <span className="set-title">Set 6</span>
-                <span className="set-desc">Questions 251-300</span>
-              </button>
-              <button className="set-button" onClick={() => startQuiz(7)}>
-                <span className="set-icon">7</span>
-                <span className="set-title">Set 7</span>
-                <span className="set-desc">Questions 301-350</span>
-              </button>
-              <button className="set-button" onClick={() => startQuiz(8)}>
-                <span className="set-icon">8</span>
-                <span className="set-title">Set 8</span>
-                <span className="set-desc">Questions 351-400</span>
               </button>
             </div>
           </div>
