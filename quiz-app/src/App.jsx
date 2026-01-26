@@ -21,7 +21,7 @@ function App() {
 
 
   const startQuiz = (setNumber) => {
-    // Calculate question range: Set 1 = 1-50, Set 2 = 51-100
+    // Calculate question range: Set 1 = 1-50, Set 2 = 51-100, Set 3 = 101-150, Set 4 = 151-200
     const startIndex = (setNumber - 1) * 50;
     const endIndex = startIndex + 50;
     const selected = questions.slice(startIndex, endIndex);
@@ -131,8 +131,8 @@ function App() {
       <div className="app">
         <div className="quiz-container home-container">
           <div className="home-header">
-            <h1>OOP Java Quiz</h1>
-            <p className="home-subtitle">Test your knowledge with 100 challenging OOP questions</p>
+            <h1>Git Quiz</h1>
+            <p className="home-subtitle">Test your knowledge with 200 challenging Git questions</p>
           </div>
 
           <div className="quiz-options">
@@ -147,6 +147,16 @@ function App() {
                 <span className="set-icon">2</span>
                 <span className="set-title">Set 2</span>
                 <span className="set-desc">Questions 51-100</span>
+              </button>
+              <button className="set-button" onClick={() => startQuiz(3)}>
+                <span className="set-icon">3</span>
+                <span className="set-title">Set 3</span>
+                <span className="set-desc">Questions 101-150</span>
+              </button>
+              <button className="set-button" onClick={() => startQuiz(4)}>
+                <span className="set-icon">4</span>
+                <span className="set-title">Set 4</span>
+                <span className="set-desc">Questions 151-200</span>
               </button>
             </div>
           </div>
@@ -269,12 +279,6 @@ function App() {
                     </div>
                   )}
                 </div>
-                {answer.explanation && (
-                  <div className="explanation">
-                    <strong>Giải thích:</strong>
-                    <p>{answer.explanation}</p>
-                  </div>
-                )}
               </div>
             ))}
           </div>
@@ -352,7 +356,7 @@ function App() {
       <div className="quiz-container quiz-view">
         <div className="quiz-header">
           <div className="quiz-header-top">
-            <h1>OOP Java Quiz - Set {currentSet}</h1>
+            <h1>Git Quiz - Set {currentSet}</h1>
             <button className="finish-quiz-button" onClick={handleFinishQuizClick}>
               Kết thúc bài
             </button>
