@@ -1,2366 +1,2421 @@
 export const questions = [
+  // ============ VARIABLE NAMING CONVENTIONS (1-20) ============
   {
-    question: "What does 'git init' do?",
+    question: "Which of the following is the correct naming convention for a constant in Java?",
     options: {
-      A: "Initializes a new Git repository in the current directory",
-      B: "Clones an existing repository",
-      C: "Creates a new branch",
-      D: "Commits all changes"
-    },
-    correctAnswer: "A",
-    code: null,
-    explanation: "Lệnh 'git init' khởi tạo một repository Git mới trong thư mục hiện tại, tạo thư mục .git để lưu trữ metadata và lịch sử của repository."
-  },
-  {
-    question: "What does 'git init -b main' do?",
-    options: {
-      A: "Initializes a repository and creates a branch named 'main'",
-      B: "Initializes a repository with the default branch named 'main'",
-      C: "Creates a backup of the main branch",
-      D: "Merges into the main branch"
+      A: "maxValue",
+      B: "MAX_VALUE",
+      C: "MaxValue",
+      D: "max_value"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git init -b main' khởi tạo repository mới và đặt tên nhánh mặc định là 'main' thay vì 'master'. Đây là cách tốt để thiết lập tên nhánh chính ngay từ đầu."
+    explanation: "Trong Java, hằng số (constants) được đặt tên theo quy tắc SCREAMING_SNAKE_CASE - tất cả chữ in hoa và các từ được phân cách bằng dấu gạch dưới."
   },
   {
-    question: "What is the purpose of 'git clone'?",
+    question: "What is the correct naming convention for a local variable in Java?",
     options: {
-      A: "To create a new repository",
-      B: "To copy an existing repository from a remote source",
-      C: "To delete a repository",
-      D: "To rename a repository"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git clone' sao chép toàn bộ repository từ nguồn remote (như GitHub) về máy local, bao gồm tất cả lịch sử commit, branches, và files."
-  },
-  {
-    question: "What does 'git add' do?",
-    options: {
-      A: "Commits changes to the repository",
-      B: "Stages changes for the next commit",
-      C: "Pushes changes to remote",
-      D: "Creates a new branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git add' đưa các thay đổi vào staging area (khu vực tạm), chuẩn bị cho việc commit. Đây là bước trung gian giữa working directory và repository."
-  },
-  {
-    question: "What does 'git add -A' do?",
-    options: {
-      A: "Adds only new files",
-      B: "Adds only modified files",
-      C: "Adds all changes including new, modified, and deleted files",
-      D: "Adds files one by one"
+      A: "MyVariable",
+      B: "my_variable",
+      C: "myVariable",
+      D: "MY_VARIABLE"
     },
     correctAnswer: "C",
     code: null,
-    explanation: "Lệnh 'git add -A' thêm tất cả các thay đổi trong toàn bộ repository vào staging area, bao gồm file mới, file đã sửa, và file đã xóa. Tương đương với 'git add --all'."
+    explanation: "Biến cục bộ trong Java sử dụng quy tắc camelCase - chữ cái đầu tiên viết thường, các từ tiếp theo viết hoa chữ cái đầu."
   },
   {
-    question: "What is the difference between 'git add .' and 'git add -A'?",
+    question: "Which variable name follows Java naming conventions for a boolean variable?",
     options: {
-      A: "They are exactly the same",
-      B: "'git add .' only adds files in current directory and subdirectories, 'git add -A' adds from entire repository",
-      C: "'git add .' is faster",
-      D: "'git add -A' only adds new files"
+      A: "active",
+      B: "isActive",
+      C: "Active",
+      D: "ACTIVE"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Trước Git 2.0, 'git add .' chỉ thêm files từ thư mục hiện tại trở xuống, trong khi 'git add -A' thêm từ toàn bộ repository. Từ Git 2.0 trở đi, chúng hoạt động giống nhau."
+    explanation: "Biến boolean trong Java thường bắt đầu bằng 'is', 'has', 'can', 'should' để thể hiện rõ ý nghĩa true/false. Ví dụ: isActive, hasPermission, canEdit."
   },
   {
-    question: "What does 'git commit -m \"message\"' do?",
+    question: "What is wrong with this variable name in Java: '2ndPlace'?",
     options: {
-      A: "Stages all changes",
-      B: "Saves staged changes to the repository with a message",
-      C: "Pushes changes to remote",
-      D: "Creates a new branch"
+      A: "It contains a number",
+      B: "It starts with a number",
+      C: "It uses camelCase",
+      D: "Nothing is wrong"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git commit -m \"message\"' lưu các thay đổi đã được stage vào repository với một commit message mô tả. Đây là cách tạo một snapshot của dự án tại thời điểm hiện tại."
+    explanation: "Tên biến trong Java không được bắt đầu bằng số. Đây là quy tắc cú pháp bắt buộc. Có thể sửa thành 'secondPlace' hoặc 'place2nd'."
   },
   {
-    question: "What does 'git commit -am \"message\"' do?",
+    question: "Which of the following is NOT a valid variable name in Java?",
     options: {
-      A: "Commits only new files",
-      B: "Stages and commits all tracked modified files",
-      C: "Commits all files including untracked ones",
-      D: "Amends the previous commit"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git commit -am \"message\"' kết hợp 'git add' và 'git commit' cho các file đã được tracked (đã có trong Git). Nó KHÔNG thêm các file mới chưa được tracked."
-  },
-  {
-    question: "What does 'git commit --amend' do?",
-    options: {
-      A: "Creates a new commit",
-      B: "Modifies the most recent commit",
-      C: "Deletes the last commit",
-      D: "Merges two commits"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git commit --amend' cho phép sửa đổi commit cuối cùng, có thể thay đổi message hoặc thêm các thay đổi đã quên. Nó thay thế commit cũ bằng commit mới."
-  },
-  {
-    question: "What does 'git commit --amend --no-edit' do?",
-    options: {
-      A: "Amends the commit but keeps the same commit message",
-      B: "Amends the commit and opens editor for new message",
-      C: "Creates a new commit without message",
-      D: "Deletes the commit message"
-    },
-    correctAnswer: "A",
-    code: null,
-    explanation: "Lệnh 'git commit --amend --no-edit' sửa đổi commit cuối cùng nhưng giữ nguyên commit message. Hữu ích khi bạn quên thêm file vào commit nhưng không muốn thay đổi message."
-  },
-  {
-    question: "What does 'git status' show?",
-    options: {
-      A: "The commit history",
-      B: "The current state of the working directory and staging area",
-      C: "All branches in the repository",
-      D: "Remote repository information"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git status' hiển thị trạng thái hiện tại của working directory và staging area, cho biết files nào đã được modified, staged, hoặc untracked."
-  },
-  {
-    question: "What does 'git log' display?",
-    options: {
-      A: "Current branch status",
-      B: "Staged files",
-      C: "Commit history",
-      D: "Remote branches"
+      A: "_count",
+      B: "$total",
+      C: "class",
+      D: "myVar1"
     },
     correctAnswer: "C",
     code: null,
-    explanation: "Lệnh 'git log' hiển thị lịch sử các commit trong repository, bao gồm commit hash, tác giả, ngày giờ, và commit message. Đây là công cụ quan trọng để xem lại lịch sử dự án."
+    explanation: "'class' là từ khóa (reserved keyword) trong Java nên không thể sử dụng làm tên biến. Các từ khóa khác như 'int', 'public', 'static' cũng không được dùng."
   },
   {
-    question: "What does 'git log --oneline' do?",
+    question: "What naming convention should be used for a private instance variable in Java?",
     options: {
-      A: "Shows only the first commit",
-      B: "Shows each commit on a single line with abbreviated hash",
-      C: "Shows only one branch",
-      D: "Shows commits from online repository"
+      A: "PUBLIC_NAME",
+      B: "privateName",
+      C: "_privateName",
+      D: "PrivateName"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git log --oneline' hiển thị mỗi commit trên một dòng với hash được rút gọn và commit message, giúp xem nhanh lịch sử commit mà không bị quá nhiều thông tin."
+    explanation: "Biến instance private trong Java sử dụng camelCase như các biến thông thường. Không cần thêm prefix '_' như một số ngôn ngữ khác (Python). Access modifier đã thể hiện tính private."
   },
   {
-    question: "What does 'git log --graph --oneline --all' display?",
+    question: "Which variable name best represents a collection of users?",
     options: {
-      A: "A text-based graph of all branches and their commits",
-      B: "Only the current branch",
-      C: "A graphical user interface",
-      D: "Remote repository information"
-    },
-    correctAnswer: "A",
-    code: null,
-    explanation: "Lệnh 'git log --graph --oneline --all' hiển thị đồ họa dạng text của tất cả các nhánh và commits, giúp visualize cấu trúc phân nhánh và merge history của dự án."
-  },
-  {
-    question: "What does 'git branch' without arguments do?",
-    options: {
-      A: "Creates a new branch",
-      B: "Lists all local branches",
-      C: "Deletes a branch",
-      D: "Merges branches"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git branch' không có tham số sẽ liệt kê tất cả các nhánh local và đánh dấu (*) nhánh hiện tại đang làm việc."
-  },
-  {
-    question: "What does 'git branch feature-name' do?",
-    options: {
-      A: "Switches to the feature-name branch",
-      B: "Creates a new branch named feature-name",
-      C: "Deletes the feature-name branch",
-      D: "Merges feature-name into current branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git branch feature-name' tạo một nhánh mới có tên 'feature-name' nhưng KHÔNG chuyển sang nhánh đó. Bạn vẫn đang ở nhánh hiện tại."
-  },
-  {
-    question: "What does 'git branch -d branch-name' do?",
-    options: {
-      A: "Creates a new branch",
-      B: "Safely deletes a branch that has been merged",
-      C: "Forces deletion of any branch",
-      D: "Renames a branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git branch -d branch-name' xóa một nhánh một cách an toàn (safe delete). Nó chỉ xóa nếu nhánh đã được merge, tránh mất dữ liệu."
-  },
-  {
-    question: "What does 'git branch -D branch-name' do?",
-    options: {
-      A: "Creates a duplicate branch",
-      B: "Forces deletion of a branch even if not merged",
-      C: "Renames a branch",
-      D: "Downloads a branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git branch -D branch-name' xóa cưỡng bức một nhánh bất kể nó đã được merge hay chưa. Cẩn thận vì có thể mất code nếu nhánh chưa merge!"
-  },
-  {
-    question: "What does 'git branch -a' show?",
-    options: {
-      A: "Only local branches",
-      B: "Only remote branches",
-      C: "All local and remote branches",
-      D: "Only the active branch"
+      A: "user",
+      B: "userList",
+      C: "users",
+      D: "USER"
     },
     correctAnswer: "C",
     code: null,
-    explanation: "Lệnh 'git branch -a' hiển thị tất cả các nhánh bao gồm cả local và remote branches. Remote branches thường có prefix như 'remotes/origin/'."
+    explanation: "Tên biến cho collection nên ở dạng số nhiều (plural) như 'users', 'items', 'orders'. Điều này giúp code dễ đọc và phân biệt với biến đơn lẻ."
   },
   {
-    question: "What does 'git branch -r' show?",
+    question: "What is the recommended way to name a temporary loop variable?",
     options: {
-      A: "Recently created branches",
-      B: "Remote branches only",
-      C: "Renamed branches",
-      D: "Root branches"
+      A: "temporaryLoopVariable",
+      B: "i",
+      C: "temp",
+      D: "loopVar"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git branch -r' chỉ hiển thị các remote branches (các nhánh trên server remote như GitHub). Hữu ích khi muốn xem các nhánh có sẵn trên remote mà chưa có ở local."
+    code: "for (int i = 0; i < 10; i++) { }",
+    explanation: "Các biến vòng lặp đơn giản thường dùng tên ngắn như 'i', 'j', 'k'. Đây là convention được chấp nhận rộng rãi vì phạm vi sử dụng rất nhỏ và mọi người đều hiểu."
   },
   {
-    question: "What does 'git checkout branch-name' do?",
+    question: "Which naming style is used for JavaScript constants in modern ES6+?",
     options: {
-      A: "Creates a new branch",
-      B: "Switches to an existing branch",
-      C: "Deletes a branch",
-      D: "Merges branches"
+      A: "camelCase",
+      B: "PascalCase",
+      C: "SCREAMING_SNAKE_CASE",
+      D: "kebab-case"
     },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git checkout branch-name' chuyển sang một nhánh đã tồn tại. Working directory sẽ được cập nhật để phản ánh nội dung của nhánh đó."
+    correctAnswer: "C",
+    code: "const MAX_RETRIES = 3;",
+    explanation: "Trong JavaScript ES6+, hằng số thường được đặt tên theo SCREAMING_SNAKE_CASE giống Java. Tuy nhiên, nếu const chứa object/array có thể thay đổi, vẫn dùng camelCase."
   },
   {
-    question: "What does 'git checkout -b new-branch' do?",
+    question: "What is wrong with this variable name: 'x'?",
     options: {
-      A: "Deletes new-branch",
-      B: "Creates and switches to a new branch named new-branch",
-      C: "Only creates new-branch without switching",
-      D: "Backs up the current branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git checkout -b new-branch' là shortcut để tạo nhánh mới và chuyển sang nhánh đó ngay lập tức. Tương đương với 'git branch new-branch' + 'git checkout new-branch'."
-  },
-  {
-    question: "What does 'git checkout commit-hash' do?",
-    options: {
-      A: "Deletes the commit",
-      B: "Switches to a specific commit (detached HEAD state)",
-      C: "Creates a new branch",
-      D: "Merges the commit"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git checkout commit-hash' chuyển HEAD đến một commit cụ thể, đưa bạn vào trạng thái 'detached HEAD'. Trong trạng thái này, bạn không ở trên bất kỳ nhánh nào."
-  },
-  {
-    question: "What is 'git switch' introduced for?",
-    options: {
-      A: "To replace git checkout for switching branches",
-      B: "To switch between repositories",
-      C: "To switch users",
-      D: "To switch commit messages"
-    },
-    correctAnswer: "A",
-    code: null,
-    explanation: "Lệnh 'git switch' được giới thiệu trong Git 2.23 để thay thế 'git checkout' cho việc chuyển nhánh, làm cho lệnh rõ ràng và dễ hiểu hơn. 'git checkout' có quá nhiều chức năng khác nhau."
-  },
-  {
-    question: "What does 'git switch -c new-branch' do?",
-    options: {
-      A: "Copies a branch",
-      B: "Creates and switches to a new branch",
-      C: "Checks a branch",
-      D: "Cancels branch creation"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git switch -c new-branch' tạo và chuyển sang nhánh mới. Đây là cách mới thay thế cho 'git checkout -b', với cú pháp rõ ràng hơn."
-  },
-  {
-    question: "What is a fast-forward merge?",
-    options: {
-      A: "A very quick merge operation",
-      B: "A merge where the branch pointer simply moves forward",
-      C: "A merge that skips conflicts",
-      D: "A merge done on a fast computer"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Fast-forward merge xảy ra khi nhánh hiện tại không có commit mới nào sau điểm phân nhánh. Git chỉ cần di chuyển con trỏ nhánh về phía trước, không tạo merge commit mới."
-  },
-  {
-    question: "What is a three-way merge?",
-    options: {
-      A: "Merging three branches at once",
-      B: "A merge that creates a new commit combining two branch histories",
-      C: "A merge with three conflicts",
-      D: "A merge done three times"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Three-way merge xảy ra khi cả hai nhánh đều có commits mới sau điểm phân nhánh. Git tạo một merge commit mới kết hợp lịch sử của cả hai nhánh."
-  },
-  {
-    question: "What does 'git merge feature-branch' do?",
-    options: {
-      A: "Deletes feature-branch",
-      B: "Merges feature-branch into the current branch",
-      C: "Creates feature-branch",
-      D: "Renames feature-branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git merge feature-branch' hợp nhất các thay đổi từ feature-branch vào nhánh hiện tại. Bạn cần đang ở nhánh đích (thường là main/master) trước khi merge."
-  },
-  {
-    question: "What happens during a merge conflict?",
-    options: {
-      A: "Git automatically chooses the best version",
-      B: "Git marks conflicting sections and requires manual resolution",
-      C: "The merge is cancelled permanently",
-      D: "All changes are lost"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Khi có conflict, Git đánh dấu các phần xung đột trong file với markers (<<<<<<<, =======, >>>>>>>). Bạn phải sửa thủ công, chọn hoặc kết hợp code, rồi commit."
-  },
-  {
-    question: "What is 'git merge --ff-only'?",
-    options: {
-      A: "Forces a fast-forward merge only, aborts if not possible",
-      B: "Always creates a merge commit",
-      C: "Merges without checking conflicts",
-      D: "Fast-forwards to the oldest commit"
-    },
-    correctAnswer: "A",
-    code: null,
-    explanation: "Lệnh 'git merge --ff-only' chỉ thực hiện merge nếu có thể fast-forward. Nếu không thể fast-forward, merge sẽ bị abort. Hữu ích để giữ lịch sử tuyến tính."
-  },
-  {
-    question: "What is 'git merge --no-ff'?",
-    options: {
-      A: "Prevents merging",
-      B: "Always creates a merge commit even if fast-forward is possible",
-      C: "Merges without fetching",
-      D: "Disables conflict detection"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git merge --no-ff' luôn tạo merge commit mới ngay cả khi có thể fast-forward. Điều này giữ lại lịch sử rõ ràng về việc một feature branch đã được merge."
-  },
-  {
-    question: "What does 'git remote' do?",
-    options: {
-      A: "Removes all remotes",
-      B: "Lists all remote repository names",
-      C: "Creates a remote repository",
-      D: "Connects to remote server"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git remote' không có tham số sẽ liệt kê tên của tất cả các remote repositories đã được cấu hình (thường là 'origin')."
-  },
-  {
-    question: "What does 'git remote -v' show?",
-    options: {
-      A: "Remote version",
-      B: "Remote names with their URLs (verbose)",
-      C: "Remote variables",
-      D: "Remote validation"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git remote -v' (verbose) hiển thị tên remote cùng với URLs đầy đủ cho fetch và push. Giúp bạn biết repository đang kết nối với server nào."
-  },
-  {
-    question: "What does 'git remote add origin URL' do?",
-    options: {
-      A: "Deletes origin",
-      B: "Adds a remote repository named 'origin' with the specified URL",
-      C: "Changes origin URL",
-      D: "Downloads from origin"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git remote add origin URL' thêm một remote repository mới với tên 'origin' (tên thông dụng nhất) trỏ đến URL chỉ định. Dùng sau khi 'git init' để kết nối với remote."
-  },
-  {
-    question: "What does 'git remote set-url origin new-URL' do?",
-    options: {
-      A: "Adds a new remote",
-      B: "Changes the URL of the existing 'origin' remote",
-      C: "Deletes origin",
-      D: "Creates a backup URL"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git remote set-url origin new-URL' thay đổi URL của remote 'origin' hiện tại. Hữu ích khi repository được di chuyển sang server khác hoặc chuyển từ HTTPS sang SSH."
-  },
-  {
-    question: "What does 'git remote remove origin' do?",
-    options: {
-      A: "Removes all files",
-      B: "Removes the remote named 'origin' from configuration",
-      C: "Removes origin branch",
-      D: "Removes remote server"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git remote remove origin' (hoặc 'git remote rm origin') xóa remote 'origin' khỏi cấu hình local. Repository local vẫn còn, chỉ mất kết nối với remote."
-  },
-  {
-    question: "What does 'git remote show origin' display?",
-    options: {
-      A: "Only the origin URL",
-      B: "Detailed information about the 'origin' remote including branches",
-      C: "Shows origin on map",
-      D: "Shows origin creation date"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git remote show origin' hiển thị thông tin chi tiết về remote 'origin' bao gồm URL, HEAD branch, remote branches, local branches được cấu hình cho pull/push."
-  },
-  {
-    question: "What does 'git fetch' do?",
-    options: {
-      A: "Downloads and merges changes from remote",
-      B: "Downloads changes from remote without merging",
-      C: "Uploads changes to remote",
-      D: "Deletes remote changes"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git fetch' tải về tất cả thay đổi từ remote repository nhưng KHÔNG merge vào nhánh hiện tại. Bạn có thể xem xét thay đổi trước khi quyết định merge."
-  },
-  {
-    question: "What does 'git fetch origin' do?",
-    options: {
-      A: "Fetches from all remotes",
-      B: "Fetches changes from the 'origin' remote only",
-      C: "Fetches and merges",
-      D: "Fetches origin branch only"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git fetch origin' chỉ tải về thay đổi từ remote 'origin'. Nếu bạn có nhiều remotes, lệnh này chỉ fetch từ origin mà thôi."
-  },
-  {
-    question: "What does 'git fetch origin branch-name' do?",
-    options: {
-      A: "Fetches all branches",
-      B: "Fetches only the specified branch from origin",
-      C: "Creates a new branch",
-      D: "Deletes the branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git fetch origin branch-name' chỉ tải về một nhánh cụ thể từ remote 'origin'. Giúp tiết kiệm thời gian khi bạn chỉ quan tâm đến một nhánh nhất định."
-  },
-  {
-    question: "What does 'git fetch --all' do?",
-    options: {
-      A: "Fetches from all configured remotes",
-      B: "Fetches all files",
-      C: "Fetches all commits",
-      D: "Fetches everything including working directory"
-    },
-    correctAnswer: "A",
-    code: null,
-    explanation: "Lệnh 'git fetch --all' tải về thay đổi từ tất cả các remote repositories đã được cấu hình. Hữu ích khi bạn làm việc với nhiều remotes (origin, upstream, etc.)."
-  },
-  {
-    question: "What does 'git fetch -p' or 'git fetch --prune' do?",
-    options: {
-      A: "Fetches with high priority",
-      B: "Removes local references to remote branches that no longer exist",
-      C: "Fetches private branches",
-      D: "Fetches and prints details"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git fetch -p' (prune) xóa các remote-tracking branches local khi branch tương ứng đã bị xóa trên remote. Giúp giữ danh sách branches sạch sẽ."
-  },
-  {
-    question: "What does 'git fetch --tags' do?",
-    options: {
-      A: "Fetches only tags from remote",
-      B: "Fetches all refs including tags",
-      C: "Tags the fetched commits",
-      D: "Creates new tags"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git fetch --tags' tải về tất cả tags từ remote. Mặc định 'git fetch' chỉ fetch tags trên các commits đã fetch, còn --tags fetch tất cả tags."
-  },
-  {
-    question: "What does 'git fetch -v' display?",
-    options: {
-      A: "Version of fetched files",
-      B: "Verbose output showing what is being fetched",
-      C: "Validates fetch",
-      D: "Virtual fetch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git fetch -v' (verbose) hiển thị thông tin chi tiết về quá trình fetch, cho biết branches và commits nào đang được tải về."
-  },
-  {
-    question: "What does 'git pull' do?",
-    options: {
-      A: "Only fetches from remote",
-      B: "Fetches from remote and merges into current branch",
-      C: "Pulls files from staging area",
-      D: "Removes changes"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git pull' là shortcut của 'git fetch' + 'git merge'. Nó tải về thay đổi từ remote và tự động merge vào nhánh hiện tại."
-  },
-  {
-    question: "What does 'git pull origin branch-name' do?",
-    options: {
-      A: "Pulls from all branches",
-      B: "Fetches and merges the specified branch from origin into current branch",
-      C: "Creates a new branch",
-      D: "Deletes origin"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git pull origin branch-name' fetch và merge một nhánh cụ thể từ remote 'origin' vào nhánh hiện tại. Thường dùng để cập nhật code từ remote."
-  },
-  {
-    question: "What does 'git pull --rebase' do?",
-    options: {
-      A: "Pulls without merging",
-      B: "Fetches and rebases current branch on top of remote branch",
-      C: "Removes base commits",
-      D: "Pulls and creates backup"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git pull --rebase' fetch và rebase thay vì merge. Điều này tạo lịch sử tuyến tính bằng cách đặt các commits local lên trên các commits remote, tránh merge commits."
-  },
-  {
-    question: "What does 'git pull -v' do?",
-    options: {
-      A: "Validates pull",
-      B: "Shows verbose output during pull operation",
-      C: "Pulls version tags",
-      D: "Pulls virtual branches"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git pull -v' (verbose) hiển thị thông tin chi tiết về quá trình pull, bao gồm fetch và merge/rebase operations."
-  },
-  {
-    question: "What does 'git push origin branch-name' do?",
-    options: {
-      A: "Pulls from origin",
-      B: "Uploads the specified branch to origin remote",
-      C: "Deletes the branch",
-      D: "Creates origin"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git push origin branch-name' đẩy nhánh chỉ định lên remote 'origin'. Đây là cách chia sẻ code của bạn với team hoặc backup lên server."
-  },
-  {
-    question: "What does 'git push -u origin branch-name' do?",
-    options: {
-      A: "Undoes the push",
-      B: "Pushes and sets upstream tracking for the branch",
-      C: "Pushes to user origin",
-      D: "Updates origin"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git push -u origin branch-name' (hoặc --set-upstream) push và thiết lập tracking relationship. Sau đó bạn có thể dùng 'git push' hoặc 'git pull' mà không cần chỉ định remote và branch."
-  },
-  {
-    question: "What does 'git push --tags' do?",
-    options: {
-      A: "Pushes only tags to remote",
-      B: "Tags all commits",
-      C: "Pushes commits and all tags",
-      D: "Creates tags on remote"
+      A: "It's too short",
+      B: "It doesn't describe the purpose",
+      C: "Both A and B",
+      D: "Nothing, it's acceptable in all cases"
     },
     correctAnswer: "C",
     code: null,
-    explanation: "Lệnh 'git push --tags' đẩy tất cả local tags lên remote. Mặc định 'git push' không push tags, bạn phải dùng --tags hoặc push từng tag riêng."
+    explanation: "Tên biến 'x' quá ngắn và không mô tả mục đích sử dụng. Tên biến nên có ý nghĩa rõ ràng. Tuy nhiên, 'x' có thể chấp nhận trong các phép tính toán học ngắn hoặc lambda expressions."
   },
   {
-    question: "What does 'git push origin --delete branch-name' do?",
+    question: "Which is the correct way to name an interface in Java?",
     options: {
-      A: "Deletes local branch",
-      B: "Deletes the specified branch on remote",
-      C: "Deletes all branches",
-      D: "Deletes origin"
+      A: "iRunnable",
+      B: "RunnableInterface",
+      C: "Runnable",
+      D: "RUNNABLE"
     },
-    correctAnswer: "B",
+    correctAnswer: "C",
     code: null,
-    explanation: "Lệnh 'git push origin --delete branch-name' xóa một nhánh trên remote repository. Local branch vẫn còn, chỉ nhánh trên server bị xóa."
+    explanation: "Interface trong Java đặt tên theo PascalCase giống class, thường là tính từ (Runnable, Serializable) hoặc danh từ. Không cần prefix 'I' như C#."
   },
   {
-    question: "What does 'git push --force' do?",
+    question: "What is the Hungarian notation and should it be used in Java?",
     options: {
-      A: "Pushes faster",
-      B: "Overwrites remote branch with local branch, potentially losing remote commits",
-      C: "Forces merge conflicts",
-      D: "Pushes with force majeure"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git push --force' ghi đè nhánh remote bằng nhánh local, có thể mất commits trên remote. RẤT NGUY HIỂM! Chỉ dùng khi bạn chắc chắn biết mình đang làm gì."
-  },
-  {
-    question: "What does 'git push --force-with-lease' do?",
-    options: {
-      A: "Same as --force",
-      B: "Force pushes but only if remote hasn't been updated by others",
-      C: "Pushes with a lease agreement",
-      D: "Leases the remote branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git push --force-with-lease' an toàn hơn --force. Nó chỉ force push nếu remote branch chưa có thay đổi từ lần fetch cuối. Bảo vệ khỏi việc ghi đè work của người khác."
-  },
-  {
-    question: "What does 'git stash' do?",
-    options: {
-      A: "Deletes all changes",
-      B: "Temporarily saves uncommitted changes and reverts working directory to clean state",
-      C: "Creates a backup branch",
-      D: "Stashes commits"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git stash' lưu tạm thời các thay đổi chưa commit và làm sạch working directory. Hữu ích khi cần chuyển nhánh nhanh mà chưa muốn commit."
-  },
-  {
-    question: "What does 'git stash push -m \"message\"' do?",
-    options: {
-      A: "Pushes stash to remote",
-      B: "Creates a stash with a descriptive message",
-      C: "Pushes and stashes simultaneously",
-      D: "Sends message to team"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git stash push -m \"message\"' tạo stash với một message mô tả. Giúp bạn nhận biết stash chứa gì khi có nhiều stashes. 'git stash save' đã deprecated."
-  },
-  {
-    question: "What does 'git stash -u' or 'git stash --include-untracked' do?",
-    options: {
-      A: "Stashes for specific user",
-      B: "Stashes tracked and untracked files",
-      C: "Undoes stash",
-      D: "Updates stash"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git stash -u' stash cả các files untracked (file mới chưa add). Mặc định 'git stash' chỉ stash tracked files. -u giúp stash toàn bộ thay đổi."
-  },
-  {
-    question: "What does 'git stash list' show?",
-    options: {
-      A: "Lists all branches",
-      B: "Shows all stashed changes",
-      C: "Lists commits",
-      D: "Shows shopping list"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git stash list' hiển thị danh sách tất cả các stashes đã lưu, với format 'stash@{0}', 'stash@{1}', etc. stash@{0} là stash mới nhất."
-  },
-  {
-    question: "What does 'git stash pop' do?",
-    options: {
-      A: "Creates a pop-up notification",
-      B: "Applies the most recent stash and removes it from stash list",
-      C: "Removes all stashes",
-      D: "Pops a commit"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git stash pop' apply stash gần nhất (stash@{0}) vào working directory và xóa stash đó khỏi danh sách. Giống như 'apply + drop'."
-  },
-  {
-    question: "What does 'git stash apply' do?",
-    options: {
-      A: "Applies the most recent stash but keeps it in stash list",
-      B: "Deletes the stash",
-      C: "Creates a new stash",
-      D: "Applies for a job"
+      A: "Prefix with data type (strName), not recommended",
+      B: "Suffix with data type (nameStr), recommended",
+      C: "Using underscores, recommended",
+      D: "Using camelCase, not recommended"
     },
     correctAnswer: "A",
     code: null,
-    explanation: "Lệnh 'git stash apply' apply stash vào working directory nhưng GIỮ LẠI stash trong list. Hữu ích khi muốn apply cùng một stash vào nhiều nhánh."
+    explanation: "Hungarian notation là quy tắc đặt prefix theo kiểu dữ liệu (strName, intCount). Không khuyến khích trong Java vì IDE hiện đại đã hiển thị kiểu dữ liệu, và code trở nên khó đọc."
   },
   {
-    question: "What does 'git stash drop stash@{0}' do?",
+    question: "Which variable name follows the principle of meaningful naming?",
     options: {
-      A: "Drops all stashes",
-      B: "Deletes the specified stash from the list",
-      C: "Drops the working directory",
-      D: "Downloads a stash"
+      A: "d",
+      B: "data",
+      C: "elapsedTimeInDays",
+      D: "eTD"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "'elapsedTimeInDays' mô tả rõ ràng mục đích (thời gian đã trôi qua) và đơn vị (ngày). Tên biến có ý nghĩa giúp code tự giải thích mà không cần comment."
+  },
+  {
+    question: "In JavaScript, which naming convention is used for private class fields?",
+    options: {
+      A: "_privateField",
+      B: "#privateField",
+      C: "privateField",
+      D: "PRIVATE_FIELD"
+    },
+    correctAnswer: "B",
+    code: "class MyClass { #privateField = 10; }",
+    explanation: "JavaScript ES2022+ hỗ trợ private fields với prefix '#'. Đây là cách chính thức để tạo private field, khác với convention '_' chỉ là quy ước không có enforcement."
+  },
+  {
+    question: "What is the recommended maximum length for a variable name?",
+    options: {
+      A: "5 characters",
+      B: "10 characters",
+      C: "No strict limit, but should be descriptive yet concise",
+      D: "30 characters exactly"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Không có giới hạn cứng cho độ dài tên biến. Nguyên tắc là đủ dài để mô tả rõ ràng, nhưng đủ ngắn để dễ đọc. Thường từ 10-20 ký tự là phù hợp."
+  },
+  {
+    question: "Which is the correct naming for an enum constant in Java?",
+    options: {
+      A: "monday",
+      B: "Monday",
+      C: "MONDAY",
+      D: "Mon"
+    },
+    correctAnswer: "C",
+    code: "enum Day { MONDAY, TUESDAY, WEDNESDAY }",
+    explanation: "Enum constants trong Java sử dụng SCREAMING_SNAKE_CASE giống như hằng số. Điều này giúp phân biệt enum values với các biến thông thường."
+  },
+  {
+    question: "What naming convention should generic type parameters follow in Java?",
+    options: {
+      A: "Full words like 'Type'",
+      B: "Single uppercase letters like 'T', 'E', 'K', 'V'",
+      C: "Lowercase letters",
+      D: "Prefixed with 'Type_'"
+    },
+    correctAnswer: "B",
+    code: "public class Box<T> { }",
+    explanation: "Generic type parameters trong Java dùng chữ cái in hoa đơn: T (Type), E (Element), K (Key), V (Value), N (Number). Đây là convention chuẩn giúp code ngắn gọn."
+  },
+  {
+    question: "Which variable name is most appropriate for storing a user's age?",
+    options: {
+      A: "a",
+      B: "age",
+      C: "userAge",
+      D: "theAgeOfTheUser"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "'userAge' cân bằng giữa ngắn gọn và mô tả rõ ràng. 'age' có thể gây nhầm lẫn nếu có nhiều đối tượng, 'theAgeOfTheUser' quá dài và thừa từ."
+  },
+  {
+    question: "In Java, what prefix is commonly used for boolean getter methods?",
+    options: {
+      A: "get",
+      B: "is",
+      C: "has",
+      D: "Both B and C"
+    },
+    correctAnswer: "D",
+    code: "public boolean isActive() { }\npublic boolean hasPermission() { }",
+    explanation: "Boolean getter methods thường dùng prefix 'is' (isActive, isValid) hoặc 'has' (hasChildren, hasPermission). Điều này giúp code đọc như câu tiếng Anh tự nhiên."
+  },
+  {
+    question: "Which naming is correct for a static factory method in Java?",
+    options: {
+      A: "CreateInstance",
+      B: "create_instance",
+      C: "createInstance",
+      D: "CREATEINSTANCE"
+    },
+    correctAnswer: "C",
+    code: "public static User createInstance() { }",
+    explanation: "Static factory methods trong Java dùng camelCase như các method khác. Các tên phổ biến: of(), valueOf(), getInstance(), newInstance(), create()."
+  },
+
+  // ============ FUNCTION/METHOD NAMING CONVENTIONS (21-40) ============
+  {
+    question: "What naming convention should methods follow in Java?",
+    options: {
+      A: "PascalCase",
+      B: "camelCase",
+      C: "snake_case",
+      D: "SCREAMING_CASE"
+    },
+    correctAnswer: "B",
+    code: "public void calculateTotal() { }",
+    explanation: "Methods trong Java sử dụng camelCase - bắt đầu bằng chữ thường, các từ tiếp theo viết hoa chữ đầu. Ví dụ: getName(), calculateSum(), processOrder()."
+  },
+  {
+    question: "Which is the recommended way to name a method that returns a boolean?",
+    options: {
+      A: "checkValid()",
+      B: "valid()",
+      C: "isValid()",
+      D: "getValid()"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Method trả về boolean nên bắt đầu bằng 'is', 'has', 'can', 'should', 'will'. Điều này giúp code đọc tự nhiên: if (user.isActive()) { ... }"
+  },
+  {
+    question: "What should a method name start with according to conventions?",
+    options: {
+      A: "A noun",
+      B: "A verb",
+      C: "An adjective",
+      D: "A number"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git stash drop stash@{0}' xóa một stash cụ thể khỏi danh sách. Hữu ích khi bạn đã apply stash và không cần nó nữa."
+    explanation: "Tên method nên bắt đầu bằng động từ vì method thực hiện hành động: calculate(), process(), validate(), send(), create(), delete()."
   },
   {
-    question: "What does 'git stash clear' do?",
+    question: "Which method name follows the getter convention in Java?",
     options: {
-      A: "Clears working directory",
-      B: "Removes all stashes from the stash list",
-      C: "Makes stash list more clear",
-      D: "Clears staging area"
+      A: "name()",
+      B: "getName()",
+      C: "fetchName()",
+      D: "returnName()"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git stash clear' xóa TẤT CẢ các stashes. Cẩn thận vì không thể khôi phục sau khi clear! Chỉ dùng khi chắc chắn không cần stashes nữa."
+    explanation: "Getter trong Java theo convention JavaBeans: getPropertyName(). Điều này cho phép các framework như Spring, Hibernate tự động detect và sử dụng."
   },
   {
-    question: "What does 'git reset --soft HEAD~1' do?",
+    question: "What is the correct setter method name for a property called 'email'?",
     options: {
-      A: "Deletes the last commit and all changes",
-      B: "Undoes the last commit but keeps changes staged",
-      C: "Resets to first commit",
-      D: "Softly removes files"
+      A: "email(String email)",
+      B: "setEmail(String email)",
+      C: "changeEmail(String email)",
+      D: "updateEmail(String email)"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git reset --soft HEAD~1' hủy commit cuối cùng nhưng giữ các thay đổi trong staging area. Bạn có thể commit lại ngay với message mới."
+    explanation: "Setter trong Java theo convention JavaBeans: setPropertyName(value). Pattern này được sử dụng rộng rãi trong Java ecosystem và các IDE tự động generate."
   },
   {
-    question: "What does 'git reset --mixed HEAD~1' (or just 'git reset HEAD~1') do?",
+    question: "Which of the following is a good name for a method that converts an object to JSON?",
     options: {
-      A: "Undoes the last commit and unstages changes but keeps them in working directory",
-      B: "Deletes all changes",
-      C: "Mixes two commits",
-      D: "Resets mixing settings"
+      A: "json()",
+      B: "makeJson()",
+      C: "toJson()",
+      D: "convertToJson()"
     },
-    correctAnswer: "A",
+    correctAnswer: "C",
     code: null,
-    explanation: "Lệnh 'git reset --mixed HEAD~1' (mặc định) hủy commit cuối và unstage changes, nhưng giữ thay đổi trong working directory. Bạn cần add và commit lại."
+    explanation: "Methods chuyển đổi thường dùng pattern 'toX()': toString(), toJson(), toArray(), toList(). Ngắn gọn và rõ ràng về mục đích chuyển đổi."
   },
   {
-    question: "What does 'git reset --hard HEAD~1' do?",
+    question: "What naming pattern should be used for factory methods?",
     options: {
-      A: "Makes the last commit harder to remove",
-      B: "Undoes the last commit and completely deletes all changes",
-      C: "Resets hardware",
-      D: "Creates a hard backup"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git reset --hard HEAD~1' hủy commit cuối và XÓA HẾT thay đổi trong staging và working directory. NGUY HIỂM! Không thể phục hồi nếu chưa commit."
-  },
-  {
-    question: "What is the main difference between the three reset options?",
-    options: {
-      A: "Speed of execution",
-      B: "How they handle the working directory and staging area after resetting",
-      C: "Which files they affect",
-      D: "The number of commits they reset"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "--soft giữ staging area, --mixed (default) unstage nhưng giữ working directory, --hard xóa tất cả. Chọn option phù hợp tùy bạn muốn giữ lại changes hay không."
-  },
-  {
-    question: "What does 'git rebase main' do when on feature branch?",
-    options: {
-      A: "Merges main into feature",
-      B: "Moves feature branch commits on top of main branch",
-      C: "Deletes main branch",
-      D: "Creates a new base"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git rebase main' (khi đang ở feature branch) di chuyển các commits của feature lên trên commits mới nhất của main. Tạo lịch sử tuyến tính, sạch đẹp hơn merge."
-  },
-  {
-    question: "What does 'git rebase --continue' do?",
-    options: {
-      A: "Skips the rebase",
-      B: "Continues the rebase after resolving conflicts",
-      C: "Continues to next branch",
-      D: "Continues downloading"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git rebase --continue' tiếp tục quá trình rebase sau khi bạn đã giải quyết conflicts. Bạn cần add các files đã sửa conflict trước khi chạy lệnh này."
-  },
-  {
-    question: "What does 'git rebase --abort' do?",
-    options: {
-      A: "Aborts Git",
-      B: "Cancels the rebase and returns to the state before rebase started",
-      C: "Aborts the commit",
-      D: "Removes all branches"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git rebase --abort' hủy bỏ quá trình rebase và quay về trạng thái trước khi bắt đầu rebase. Hữu ích khi gặp quá nhiều conflicts hoặc muốn thử cách khác."
-  },
-  {
-    question: "What does 'git rebase -i HEAD~3' do?",
-    options: {
-      A: "Interactive rebase of the last 3 commits",
-      B: "Rebases 3 branches",
-      C: "Internet rebase",
-      D: "Intelligent rebase"
-    },
-    correctAnswer: "A",
-    code: null,
-    explanation: "Lệnh 'git rebase -i HEAD~3' (interactive) mở editor cho phép bạn chỉnh sửa, reorder, squash, hoặc xóa 3 commits gần nhất. Công cụ mạnh để dọn dẹp lịch sử commit."
-  },
-  {
-    question: "In interactive rebase, what does 'pick' do?",
-    options: {
-      A: "Deletes the commit",
-      B: "Uses the commit as is",
-      C: "Picks random commits",
-      D: "Chooses files to commit"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Trong interactive rebase, 'pick' giữ nguyên commit. Đây là option mặc định. Các option khác như 'reword', 'edit', 'squash', 'drop' cho phép chỉnh sửa commit."
-  },
-  {
-    question: "In interactive rebase, what does 'squash' do?",
-    options: {
-      A: "Deletes the commit",
-      B: "Combines the commit with the previous commit",
-      C: "Compresses files",
-      D: "Squashes bugs"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Trong interactive rebase, 'squash' (hoặc 's') gộp commit với commit trước đó, cho phép viết lại message. Hữu ích để gộp nhiều commits nhỏ thành một commit lớn."
-  },
-  {
-    question: "In interactive rebase, what does 'reword' do?",
-    options: {
-      A: "Rewrites the code",
-      B: "Allows you to change the commit message",
-      C: "Reorders commits",
-      D: "Translates message to another language"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Trong interactive rebase, 'reword' (hoặc 'r') cho phép thay đổi commit message mà không thay đổi nội dung commit. Khác với 'pick' giữ nguyên message."
-  },
-  {
-    question: "What does 'git rebase main feature' do?",
-    options: {
-      A: "Rebases main onto feature",
-      B: "Rebases feature branch onto main branch",
-      C: "Merges main and feature",
-      D: "Creates a new branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git rebase main feature' rebase nhánh 'feature' lên 'main' mà không cần checkout feature trước. Cú pháp: 'git rebase <base> <branch>'."
-  },
-  {
-    question: "What does 'git cherry-pick a123abc' do?",
-    options: {
-      A: "Deletes commit a123abc",
-      B: "Applies the changes from commit a123abc to current branch",
-      C: "Picks cherries from the tree",
-      D: "Creates a new commit a123abc"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git cherry-pick a123abc' apply một commit cụ thể từ nhánh khác vào nhánh hiện tại. Tạo commit mới với cùng thay đổi nhưng hash khác."
-  },
-  {
-    question: "What does 'git cherry-pick a123 b456 c789' do?",
-    options: {
-      A: "Picks only the first commit",
-      B: "Cherry-picks multiple commits in order",
-      C: "Merges three commits",
-      D: "Creates three branches"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git cherry-pick a123 b456 c789' apply nhiều commits theo thứ tự vào nhánh hiện tại. Mỗi commit được apply riêng lẻ, tạo commits mới tương ứng."
-  },
-  {
-    question: "What does 'git cherry-pick c1..c5' do?",
-    options: {
-      A: "Cherry-picks commits from c1 to c5 (excluding c1)",
-      B: "Cherry-picks only c1 and c5",
-      C: "Creates 5 commits",
-      D: "Picks 5 random commits"
-    },
-    correctAnswer: "A",
-    code: null,
-    explanation: "Lệnh 'git cherry-pick c1..c5' apply một range commits từ c1 đến c5, KHÔNG bao gồm c1. Để bao gồm c1, dùng 'c1^..c5' hoặc 'git cherry-pick c1^..c5'."
-  },
-  {
-    question: "What does 'git cherry-pick --continue' do?",
-    options: {
-      A: "Skips the current commit",
-      B: "Continues cherry-pick after resolving conflicts",
-      C: "Continues to next branch",
-      D: "Cancels cherry-pick"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git cherry-pick --continue' tiếp tục quá trình cherry-pick sau khi giải quyết conflicts. Cần add các files đã sửa conflicts trước khi chạy lệnh này."
-  },
-  {
-    question: "What does 'git cherry-pick --abort' do?",
-    options: {
-      A: "Aborts Git",
-      B: "Cancels the cherry-pick and returns to state before cherry-pick",
-      C: "Aborts all commits",
-      D: "Deletes the branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git cherry-pick --abort' hủy bỏ cherry-pick và quay về trạng thái trước khi bắt đầu. Dùng khi gặp conflicts phức tạp hoặc cherry-pick nhầm commit."
-  },
-  {
-    question: "Can you cherry-pick from a stash?",
-    options: {
-      A: "No, impossible",
-      B: "Yes, using 'git cherry-pick stash@{0}'",
-      C: "Only on Fridays",
-      D: "Only with special permission"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Có thể cherry-pick từ stash bằng 'git cherry-pick stash@{0}'. Stash về bản chất là một commit đặc biệt, nên có thể cherry-pick như commit bình thường."
-  },
-  {
-    question: "What is .gitignore file used for?",
-    options: {
-      A: "To ignore Git commands",
-      B: "To specify files and patterns that Git should not track",
-      C: "To ignore other users",
-      D: "To delete files"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "File .gitignore chỉ định các files/folders mà Git sẽ không track. Thường dùng cho node_modules, .env, build files, IDE settings, etc."
-  },
-  {
-    question: "Which pattern in .gitignore ignores all .log files?",
-    options: {
-      A: "log",
-      B: "*.log",
-      C: ".log",
-      D: "all.log"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Pattern '*.log' trong .gitignore sẽ ignore tất cả files có đuôi .log trong toàn bộ repository. Dấu * là wildcard matching bất kỳ ký tự nào."
-  },
-  {
-    question: "Which pattern in .gitignore ignores a specific folder named 'temp'?",
-    options: {
-      A: "temp",
-      B: "temp/",
-      C: "/temp",
-      D: "All of the above work but have different meanings"
+      A: "make(), build(), create()",
+      B: "of(), valueOf(), from()",
+      C: "new(), init(), construct()",
+      D: "All of the above are acceptable"
     },
     correctAnswer: "D",
     code: null,
-    explanation: "'temp/' ignore folder temp ở mọi nơi, '/temp/' chỉ ignore folder temp ở root, 'temp' ignore cả file và folder tên temp. Dấu / cuối chỉ định rõ là folder."
+    explanation: "Factory methods có nhiều pattern: of() (List.of()), valueOf() (Integer.valueOf()), from() (Date.from()), create(), newInstance(). Tùy context mà chọn phù hợp."
   },
   {
-    question: "What does '**' mean in .gitignore patterns?",
+    question: "In JavaScript, what naming convention is used for constructor functions (before ES6 classes)?",
     options: {
-      A: "Match anything",
-      B: "Match any number of directories",
-      C: "Make pattern bold",
-      D: "Double wildcard"
+      A: "camelCase",
+      B: "PascalCase",
+      C: "snake_case",
+      D: "SCREAMING_CASE"
+    },
+    correctAnswer: "B",
+    code: "function Person(name) { this.name = name; }",
+    explanation: "Constructor functions trong JavaScript dùng PascalCase để phân biệt với functions thông thường. Khi gọi với 'new', biết ngay đây là constructor."
+  },
+  {
+    question: "Which method name indicates it may throw an exception?",
+    options: {
+      A: "parseOrNull()",
+      B: "tryParse()",
+      C: "parse()",
+      D: "safeParse()"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Method không có prefix đặc biệt (parse()) thường có thể throw exception. Các variant như tryParse(), parseOrNull(), parseOrDefault() thường không throw mà trả về giá trị thay thế."
+  },
+  {
+    question: "What is the convention for naming callback functions in JavaScript?",
+    options: {
+      A: "onEventName or handleEventName",
+      B: "CALLBACK_NAME",
+      C: "callback_name",
+      D: "_callbackName"
+    },
+    correctAnswer: "A",
+    code: "onClick, onSubmit, handleClick, handleSubmit",
+    explanation: "Callback functions trong JavaScript thường dùng prefix 'on' hoặc 'handle': onClick, onSubmit, handleClick, handleFormSubmit. React components thường dùng pattern này."
+  },
+  {
+    question: "Which naming is appropriate for a method that validates user input?",
+    options: {
+      A: "userInput()",
+      B: "validateUserInput()",
+      C: "inputValidation()",
+      D: "isUserInput()"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Pattern '**' trong .gitignore match bất kỳ số lượng directories nào. Ví dụ: '**/logs/*.log' match logs/debug.log và cả build/logs/error.log."
+    explanation: "Method thực hiện validation nên bắt đầu bằng 'validate': validateUserInput(), validateEmail(). Động từ 'validate' rõ ràng cho biết method sẽ kiểm tra và có thể throw error."
   },
   {
-    question: "How do you ignore all files in a directory except one file?",
+    question: "What is the recommended approach for naming overloaded methods?",
     options: {
-      A: "Impossible",
-      B: "Use * to ignore all, then use ! to negate for specific file",
-      C: "Delete other files",
-      D: "Use special Git command"
+      A: "Use different names for each",
+      B: "Use the same name with different parameters",
+      C: "Add numbers to distinguish (method1, method2)",
+      D: "Add parameter type to name (methodInt, methodString)"
+    },
+    correctAnswer: "B",
+    code: "void print(String s) { }\nvoid print(int i) { }",
+    explanation: "Overloaded methods dùng cùng tên, khác nhau ở tham số. Java compiler phân biệt dựa trên signature. Không nên đặt tên khác nhau vì làm mất ý nghĩa overloading."
+  },
+  {
+    question: "In functional programming style, what prefix is often used for pure functions that create new values?",
+    options: {
+      A: "create",
+      B: "with",
+      C: "make",
+      D: "new"
+    },
+    correctAnswer: "B",
+    code: "user.withName(\"John\").withAge(25)",
+    explanation: "Pattern 'with' thường dùng cho immutable objects và method chaining. withX() trả về bản copy mới với thuộc tính X được thay đổi, object gốc không đổi."
+  },
+  {
+    question: "Which is NOT a good practice for method naming?",
+    options: {
+      A: "Using verbs at the beginning",
+      B: "Keeping names short and abbreviated",
+      C: "Making names descriptive of what the method does",
+      D: "Using camelCase in Java"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Dùng pattern: 'folder/*' để ignore tất cả, sau đó '!folder/keep.txt' để negate (giữ lại) file cụ thể. Dấu ! dùng để negate pattern."
+    explanation: "Không nên viết tắt tên method (calcTot thay vì calculateTotal). Tên rõ ràng quan trọng hơn ngắn gọn. IDE có autocomplete nên độ dài không phải vấn đề khi viết code."
   },
   {
-    question: "What does '#' at the start of a line in .gitignore mean?",
+    question: "What does the 'find' prefix typically indicate in a method name?",
     options: {
-      A: "A comment line",
-      B: "Ignore files starting with #",
-      C: "Special pattern",
-      D: "Hash files"
+      A: "The method always returns a value",
+      B: "The method may return null or empty",
+      C: "The method throws an exception if not found",
+      D: "The method modifies the original collection"
+    },
+    correctAnswer: "B",
+    code: "Optional<User> findUserById(int id)",
+    explanation: "Prefix 'find' thường indicate method có thể không tìm thấy và trả về null/Optional/empty. So với 'get' thường expect có giá trị và có thể throw exception nếu không có."
+  },
+  {
+    question: "Which method naming pattern indicates the method modifies the object in place?",
+    options: {
+      A: "sort()",
+      B: "sorted()",
+      C: "toSorted()",
+      D: "getSorted()"
+    },
+    correctAnswer: "A",
+    code: "list.sort(); // modifies list\nlist.stream().sorted(); // returns new stream",
+    explanation: "Động từ đơn (sort, add, remove) thường modify object in-place. Past participle (sorted) hoặc prefix 'to' (toSorted) thường trả về bản copy mới."
+  },
+  {
+    question: "In JavaScript, what is the convention for async functions?",
+    options: {
+      A: "Prefix with 'async'",
+      B: "Suffix with 'Async'",
+      C: "No special naming required",
+      D: "Prefix with 'await'"
+    },
+    correctAnswer: "C",
+    code: "async function fetchUser() { }",
+    explanation: "JavaScript async functions không cần naming convention đặc biệt. Keyword 'async' trong declaration đã rõ ràng. Tuy nhiên, một số team thêm suffix 'Async' cho rõ ràng hơn."
+  },
+  {
+    question: "What naming convention should test methods follow in Java?",
+    options: {
+      A: "testMethodName",
+      B: "methodName_condition_expectedResult",
+      C: "test_methodName",
+      D: "All are acceptable depending on team convention"
+    },
+    correctAnswer: "D",
+    code: null,
+    explanation: "Test methods có nhiều conventions: testAdd(), add_twoNumbers_returnsSum(), shouldReturnSum(). JUnit 5 không yêu cầu prefix 'test'. Quan trọng là team thống nhất một style."
+  },
+  {
+    question: "Which is the correct way to name a method that initializes resources?",
+    options: {
+      A: "start()",
+      B: "init()",
+      C: "setup()",
+      D: "All are acceptable"
+    },
+    correctAnswer: "D",
+    code: null,
+    explanation: "Các tên init(), initialize(), setup(), start() đều acceptable cho initialization. init() phổ biến trong Java, setup() thường dùng trong testing (JUnit @Before)."
+  },
+  {
+    question: "What naming pattern is used for methods that release resources in Java?",
+    options: {
+      A: "close(), cleanup(), dispose()",
+      B: "end(), finish(), terminate()",
+      C: "release(), free(), destroy()",
+      D: "All of the above"
+    },
+    correctAnswer: "D",
+    code: null,
+    explanation: "Các pattern phổ biến: close() (Closeable interface), cleanup(), dispose() (GUI), destroy() (Servlet). Pattern nào phụ thuộc vào context và conventions của framework đang dùng."
+  },
+
+  // ============ COMMENTS AND DOCUMENTATION (41-60) ============
+  {
+    question: "What is the correct format for a Javadoc comment?",
+    options: {
+      A: "// This is a comment",
+      B: "/* This is a comment */",
+      C: "/** This is a comment */",
+      D: "# This is a comment"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Javadoc comments bắt đầu bằng /** và kết thúc bằng */. Đây là format đặc biệt mà tool javadoc sử dụng để generate documentation HTML."
+  },
+  {
+    question: "Which Javadoc tag is used to document a method parameter?",
+    options: {
+      A: "@parameter",
+      B: "@param",
+      C: "@arg",
+      D: "@argument"
+    },
+    correctAnswer: "B",
+    code: "/**\n * @param name The user's name\n */",
+    explanation: "@param là tag chuẩn để document tham số của method. Format: @param tênThamSố mô tả. Mỗi tham số nên có một @param riêng."
+  },
+  {
+    question: "What Javadoc tag documents the return value of a method?",
+    options: {
+      A: "@returns",
+      B: "@return",
+      C: "@result",
+      D: "@output"
+    },
+    correctAnswer: "B",
+    code: "/**\n * @return The calculated sum\n */",
+    explanation: "@return (không có 's') là tag chuẩn trong Javadoc để mô tả giá trị trả về. Lưu ý: JavaScript JSDoc dùng @returns (có 's')."
+  },
+  {
+    question: "Which comment style should be avoided in production code?",
+    options: {
+      A: "Javadoc comments",
+      B: "TODO comments left indefinitely",
+      C: "Comments explaining complex algorithms",
+      D: "License header comments"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "TODO comments không nên để lại indefinitely trong production. Chúng nên được tracked trong issue tracker và xử lý. TODO lâu ngày trở thành 'noise' trong code."
+  },
+  {
+    question: "What is the purpose of the @throws or @exception Javadoc tag?",
+    options: {
+      A: "To catch exceptions",
+      B: "To document exceptions that may be thrown",
+      C: "To throw an exception",
+      D: "To suppress exceptions"
+    },
+    correctAnswer: "B",
+    code: "/**\n * @throws IllegalArgumentException if value is negative\n */",
+    explanation: "@throws (hoặc @exception) dùng để document các exception mà method có thể throw. Giúp caller biết cần handle những exception nào."
+  },
+  {
+    question: "Which of the following is a good comment practice?",
+    options: {
+      A: "Comment every line of code",
+      B: "Explain 'what' the code does",
+      C: "Explain 'why' the code does something",
+      D: "Use comments instead of meaningful names"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Good comments giải thích 'tại sao' (why) chứ không phải 'cái gì' (what). Code should be self-documenting cho 'what'. Comment cho context, business rules, hoặc decisions."
+  },
+  {
+    question: "What is wrong with this comment: '// increment i by 1' above 'i++;'?",
+    options: {
+      A: "The comment is too short",
+      B: "The comment states the obvious",
+      C: "The comment uses incorrect grammar",
+      D: "Nothing is wrong"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Comment này thừa vì nói điều hiển nhiên mà code đã thể hiện rõ. 'i++' đã tự giải thích. Comments nên thêm value, không lặp lại code."
+  },
+  {
+    question: "Which Javadoc tag is used to reference another class or method?",
+    options: {
+      A: "@link",
+      B: "@ref",
+      C: "@see",
+      D: "Both A and C"
+    },
+    correctAnswer: "D",
+    code: "/**\n * @see OtherClass#method()\n * Use {@link OtherClass} for details\n */",
+    explanation: "@see tạo 'See Also' section trong generated docs. {@link ClassName} tạo inline hyperlink. Cả hai đều dùng để reference related code."
+  },
+  {
+    question: "What is the purpose of the @deprecated Javadoc tag?",
+    options: {
+      A: "To delete old code",
+      B: "To mark code that should no longer be used",
+      C: "To hide code from documentation",
+      D: "To optimize old code"
+    },
+    correctAnswer: "B",
+    code: "/**\n * @deprecated Use {@link #newMethod()} instead\n */",
+    explanation: "@deprecated đánh dấu code không nên dùng nữa. Compiler sẽ warning khi code deprecated được sử dụng. Nên chỉ ra alternative để developer biết dùng gì thay thế."
+  },
+  {
+    question: "In JavaScript, which comment format is used for JSDoc?",
+    options: {
+      A: "// JSDoc comment",
+      B: "/* JSDoc comment */",
+      C: "/** JSDoc comment */",
+      D: "/// JSDoc comment"
+    },
+    correctAnswer: "C",
+    code: "/**\n * @param {string} name\n * @returns {boolean}\n */",
+    explanation: "JSDoc dùng format /** */ giống Javadoc. JSDoc comments cho phép document types, parameters, return values và được IDE sử dụng cho autocomplete."
+  },
+  {
+    question: "Which of the following is NOT a valid reason to write comments?",
+    options: {
+      A: "Explain complex business logic",
+      B: "Document public API",
+      C: "Compensate for poorly named variables",
+      D: "Explain workarounds for bugs"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Không nên dùng comment để bù đắp cho tên biến tệ. Thay vào đó, hãy đặt tên biến có ý nghĩa. Comments nên cho context, không phải giải thích code tệ."
+  },
+  {
+    question: "What is a 'magic comment' in programming?",
+    options: {
+      A: "A comment that makes code run faster",
+      B: "A special comment that affects program behavior",
+      C: "A comment written by senior developers",
+      D: "An encrypted comment"
+    },
+    correctAnswer: "B",
+    code: "// @ts-ignore\n// eslint-disable-next-line",
+    explanation: "Magic comments là comments đặc biệt ảnh hưởng đến behavior của tools (compiler, linter). Ví dụ: @ts-ignore, eslint-disable, pragma once."
+  },
+  {
+    question: "How should you document a method that may return null?",
+    options: {
+      A: "Don't mention it",
+      B: "Use @nullable annotation and document when null is returned",
+      C: "Only use @return tag",
+      D: "Write 'may be null' in method name"
+    },
+    correctAnswer: "B",
+    code: "/**\n * @return the user, or null if not found\n */\n@Nullable\npublic User findUser(int id)",
+    explanation: "Khi method có thể return null, cần document rõ ràng trong @return tag và dùng @Nullable annotation. Caller cần biết để handle null case."
+  },
+  {
+    question: "What is the recommended practice for commented-out code?",
+    options: {
+      A: "Keep it for reference",
+      B: "Remove it - use version control instead",
+      C: "Convert it to a string",
+      D: "Move it to a separate file"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Commented-out code nên được xóa. Version control (Git) lưu trữ history nếu cần tham khảo. Code bị comment tạo confusion và làm codebase khó maintain."
+  },
+  {
+    question: "Which tag is used in Javadoc to document the author of a class?",
+    options: {
+      A: "@writer",
+      B: "@author",
+      C: "@creator",
+      D: "@by"
+    },
+    correctAnswer: "B",
+    code: "/**\n * @author John Doe\n */",
+    explanation: "@author tag document tác giả của class/interface. Tuy nhiên, nhiều team không dùng vì Git blame đã track author info tốt hơn và luôn up-to-date."
+  },
+  {
+    question: "What is the purpose of the @since tag in Javadoc?",
+    options: {
+      A: "To show time elapsed",
+      B: "To indicate the version when the feature was added",
+      C: "To set a timer",
+      D: "To show creation date"
+    },
+    correctAnswer: "B",
+    code: "/**\n * @since 1.5\n */",
+    explanation: "@since chỉ ra version nào feature được thêm vào. Quan trọng cho library/API để users biết minimum version required. Ví dụ: @since Java 8."
+  },
+  {
+    question: "Which comment style is used for file headers in Java?",
+    options: {
+      A: "Single-line comments only",
+      B: "Block comments with license and copyright info",
+      C: "No comments needed",
+      D: "HTML comments"
+    },
+    correctAnswer: "B",
+    code: "/*\n * Copyright 2024 Company Name\n * Licensed under Apache 2.0\n */",
+    explanation: "File headers thường chứa copyright, license info, và mô tả ngắn về file. Dùng block comment /* */ ở đầu file. Nhiều IDE có template cho việc này."
+  },
+  {
+    question: "What is 'self-documenting code'?",
+    options: {
+      A: "Code that automatically generates documentation",
+      B: "Code that is clear enough to understand without comments",
+      C: "Code with comments on every line",
+      D: "Code written by documentation tools"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Self-documenting code là code rõ ràng đến mức không cần comment để hiểu 'what' và 'how'. Đạt được qua meaningful names, clear structure, và small functions."
+  },
+  {
+    question: "When should you update comments?",
+    options: {
+      A: "Never, comments are permanent",
+      B: "Only when the project is complete",
+      C: "Whenever the related code changes",
+      D: "Once a year"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Comments phải được update khi code thay đổi. Outdated comments còn tệ hơn không có comments vì gây misleading. Đây là lý do minimize comments và để code tự giải thích."
+  },
+  {
+    question: "What does the @version tag indicate in Javadoc?",
+    options: {
+      A: "Java version required",
+      B: "Current version of the class/interface",
+      C: "IDE version",
+      D: "Comment version"
+    },
+    correctAnswer: "B",
+    code: "/**\n * @version 2.0\n */",
+    explanation: "@version chỉ version hiện tại của class. Tuy nhiên, nhiều project không dùng vì version thường managed ở project level (pom.xml, build.gradle) chứ không phải class level."
+  },
+
+  // ============ EXCEPTION HANDLING CONVENTIONS (61-80) ============
+  {
+    question: "What is the naming convention for custom exception classes in Java?",
+    options: {
+      A: "MyError",
+      B: "MyException",
+      C: "MyExc",
+      D: "ExceptionMy"
+    },
+    correctAnswer: "B",
+    code: "public class InvalidUserException extends Exception { }",
+    explanation: "Custom exception classes nên kết thúc bằng 'Exception' (checked) hoặc 'Error' (unchecked severe). Ví dụ: FileNotFoundException, OutOfMemoryError."
+  },
+  {
+    question: "Which is the correct way to catch multiple exceptions in Java 7+?",
+    options: {
+      A: "catch (IOException, SQLException e)",
+      B: "catch (IOException | SQLException e)",
+      C: "catch (IOException && SQLException e)",
+      D: "catch (IOException or SQLException e)"
+    },
+    correctAnswer: "B",
+    code: "try { } catch (IOException | SQLException e) { }",
+    explanation: "Java 7+ hỗ trợ multi-catch với toán tử |. Giúp giảm code duplication khi xử lý nhiều exceptions theo cùng cách. Biến e implicitly final."
+  },
+  {
+    question: "What is wrong with catching Exception or Throwable directly?",
+    options: {
+      A: "It's a syntax error",
+      B: "It catches too broadly, including programming errors",
+      C: "It's slower",
+      D: "Nothing is wrong"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Catch Exception/Throwable quá rộng, bắt cả RuntimeExceptions và Errors (NullPointerException, OutOfMemoryError). Nên catch specific exceptions để handle đúng cách."
+  },
+  {
+    question: "What should you do in a catch block at minimum?",
+    options: {
+      A: "Leave it empty",
+      B: "Print the stack trace",
+      C: "Log the exception appropriately",
+      D: "Throw a new exception"
+    },
+    correctAnswer: "C",
+    code: "catch (Exception e) {\n    logger.error(\"Operation failed\", e);\n}",
+    explanation: "Catch block không nên để trống (swallow exception). Minimum là log exception với context. printStackTrace() không tốt vì đi ra console thay vì log system."
+  },
+  {
+    question: "What is the purpose of the 'finally' block?",
+    options: {
+      A: "To catch exceptions",
+      B: "To execute code only if no exception occurs",
+      C: "To execute cleanup code regardless of exception",
+      D: "To throw exceptions"
+    },
+    correctAnswer: "C",
+    code: "try { } catch (Exception e) { } finally { /* always runs */ }",
+    explanation: "Finally block chạy regardless of exception xảy ra hay không. Dùng để cleanup resources (close streams, connections). Java 7+ có try-with-resources thay thế cho nhiều cases."
+  },
+  {
+    question: "What is try-with-resources in Java?",
+    options: {
+      A: "A way to try multiple resources simultaneously",
+      B: "Automatic resource management that closes resources",
+      C: "A testing framework",
+      D: "A way to allocate more memory"
+    },
+    correctAnswer: "B",
+    code: "try (FileReader fr = new FileReader(file)) {\n    // use fr\n} // fr automatically closed",
+    explanation: "Try-with-resources (Java 7+) tự động close resources implement AutoCloseable. Thay thế finally block cho resource cleanup. Cleaner và ít bug hơn manual close."
+  },
+  {
+    question: "When should you use checked vs unchecked exceptions?",
+    options: {
+      A: "Always use checked exceptions",
+      B: "Always use unchecked exceptions",
+      C: "Checked for recoverable, unchecked for programming errors",
+      D: "It doesn't matter"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Checked exceptions (extends Exception) cho lỗi recoverable (file not found, network error). Unchecked (extends RuntimeException) cho programming errors (null pointer, invalid argument)."
+  },
+  {
+    question: "What is exception chaining in Java?",
+    options: {
+      A: "Catching multiple exceptions",
+      B: "Wrapping one exception in another while preserving the original",
+      C: "Throwing exceptions in a loop",
+      D: "Linking catch blocks"
+    },
+    correctAnswer: "B",
+    code: "throw new ServiceException(\"Failed\", originalException);",
+    explanation: "Exception chaining là wrap exception gốc trong exception mới. Preserve root cause cho debugging. Constructor Exception(String message, Throwable cause) hỗ trợ việc này."
+  },
+  {
+    question: "What is the convention for exception messages?",
+    options: {
+      A: "Use uppercase only",
+      B: "Include technical details and context",
+      C: "Keep them empty",
+      D: "Use error codes only"
+    },
+    correctAnswer: "B",
+    code: "throw new IllegalArgumentException(\"User ID must be positive, got: \" + id);",
+    explanation: "Exception messages nên có context và details hữu ích cho debugging. Include giá trị gây lỗi, expected values, và có thể suggested fix."
+  },
+  {
+    question: "Which is the correct order of catch blocks?",
+    options: {
+      A: "Most general first, specific last",
+      B: "Most specific first, general last",
+      C: "Alphabetical order",
+      D: "Order doesn't matter"
+    },
+    correctAnswer: "B",
+    code: "catch (FileNotFoundException e) { }\ncatch (IOException e) { }",
+    explanation: "Catch blocks phải từ specific đến general. FileNotFoundException trước IOException (vì FNFE extends IOException). Compiler sẽ error nếu order sai."
+  },
+  {
+    question: "What should you avoid in exception handling?",
+    options: {
+      A: "Logging exceptions",
+      B: "Using finally blocks",
+      C: "Using exceptions for flow control",
+      D: "Creating custom exceptions"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Không dùng exceptions cho normal flow control (ví dụ: dùng exception để break loop). Exceptions chậm và làm code khó đọc. Dùng conditionals cho flow control."
+  },
+  {
+    question: "What is the 'throw early, catch late' principle?",
+    options: {
+      A: "Throw exceptions at the start of the day",
+      B: "Validate and throw as soon as problem detected, catch at appropriate level",
+      C: "Delay throwing exceptions",
+      D: "Catch exceptions immediately"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Throw early: validate input và throw ngay khi phát hiện vấn đề. Catch late: handle exception ở level có đủ context để xử lý properly (thường là upper layers)."
+  },
+  {
+    question: "How should you handle InterruptedException in Java?",
+    options: {
+      A: "Ignore it",
+      B: "Log and continue",
+      C: "Restore the interrupted status or propagate",
+      D: "Throw RuntimeException"
+    },
+    correctAnswer: "C",
+    code: "catch (InterruptedException e) {\n    Thread.currentThread().interrupt();\n    throw new RuntimeException(e);\n}",
+    explanation: "InterruptedException cần được handle carefully. Hoặc propagate lên, hoặc restore interrupted status với Thread.currentThread().interrupt(). Không nên swallow."
+  },
+  {
+    question: "What is a suppressed exception in Java?",
+    options: {
+      A: "An exception that is hidden",
+      B: "An exception that occurred during resource cleanup in try-with-resources",
+      C: "An exception that is caught but not logged",
+      D: "An old exception type"
+    },
+    correctAnswer: "B",
+    code: "exception.getSuppressed(); // returns suppressed exceptions",
+    explanation: "Trong try-with-resources, nếu exception xảy ra trong cả try block và close(), exception từ close() được 'suppressed' và gắn vào primary exception."
+  },
+  {
+    question: "What is the convention for rethrowing exceptions?",
+    options: {
+      A: "Always create a new exception",
+      B: "Use 'throw e' to rethrow, or wrap with additional context",
+      C: "Never rethrow exceptions",
+      D: "Use return instead"
+    },
+    correctAnswer: "B",
+    code: "catch (SQLException e) {\n    throw new DataAccessException(\"Query failed\", e);\n}",
+    explanation: "Rethrow bằng 'throw e' giữ nguyên exception, hoặc wrap trong exception mới với context thêm. Luôn preserve original exception as cause để không mất stack trace."
+  },
+  {
+    question: "What annotation marks that a method intentionally doesn't throw its declared exception?",
+    options: {
+      A: "@NoThrow",
+      B: "@SuppressWarnings",
+      C: "@SneakyThrows (Lombok)",
+      D: "No such annotation in standard Java"
+    },
+    correctAnswer: "D",
+    code: null,
+    explanation: "Java standard không có annotation này. Lombok có @SneakyThrows để bypass checked exceptions (controversial). Best practice là declare đúng exceptions có thể throw."
+  },
+  {
+    question: "When creating custom exceptions, what constructors should you include?",
+    options: {
+      A: "Only default constructor",
+      B: "At least constructors matching Exception class",
+      C: "Only constructor with message",
+      D: "No constructors needed"
+    },
+    correctAnswer: "B",
+    code: "public class MyException extends Exception {\n    public MyException() { }\n    public MyException(String msg) { super(msg); }\n    public MyException(String msg, Throwable cause) { super(msg, cause); }\n}",
+    explanation: "Custom exceptions nên có các constructors giống Exception: default, message-only, message+cause, cause-only. Cho phép flexibility khi throw exception."
+  },
+  {
+    question: "What is wrong with: catch (Exception e) { throw e; }?",
+    options: {
+      A: "Syntax error",
+      B: "It loses the original stack trace",
+      C: "Nothing, but it's pointless without additional handling",
+      D: "It causes infinite loop"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Code này syntactically correct và preserve stack trace, nhưng pointless nếu không làm gì khác (log, cleanup, wrap). Nếu chỉ rethrow, không cần catch block."
+  },
+  {
+    question: "How should exceptions be documented in Javadoc?",
+    options: {
+      A: "Only document checked exceptions",
+      B: "Document all exceptions including when they're thrown",
+      C: "Don't document exceptions",
+      D: "Only document in README"
+    },
+    correctAnswer: "B",
+    code: "/**\n * @throws IllegalArgumentException if id is negative\n * @throws UserNotFoundException if user doesn't exist\n */",
+    explanation: "Document cả checked và unchecked exceptions với điều kiện gây throw. Caller cần biết để handle hoặc prevent. @throws hoặc @exception đều được."
+  },
+  {
+    question: "What is defensive programming in exception handling?",
+    options: {
+      A: "Catching all exceptions",
+      B: "Validating inputs and failing fast with clear exceptions",
+      C: "Never throwing exceptions",
+      D: "Using only try-catch"
+    },
+    correctAnswer: "B",
+    code: "public void setAge(int age) {\n    if (age < 0) throw new IllegalArgumentException(\"Age cannot be negative\");\n    this.age = age;\n}",
+    explanation: "Defensive programming: validate inputs, check preconditions, fail fast với clear error messages. Phát hiện bugs sớm thay vì để chúng gây problems sau."
+  },
+
+  // ============ CODE STRUCTURE AND FORMATTING (81-100) ============
+  {
+    question: "What is the recommended maximum line length in Java according to Google Style Guide?",
+    options: {
+      A: "60 characters",
+      B: "80 characters",
+      C: "100 characters",
+      D: "No limit"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Google Java Style Guide khuyến nghị 100 characters. Oracle conventions truyền thống là 80. Quan trọng là team thống nhất một giới hạn và dùng formatter tự động."
+  },
+  {
+    question: "Where should the opening brace be placed in Java?",
+    options: {
+      A: "On a new line (Allman style)",
+      B: "On the same line (K&R style)",
+      C: "Either is acceptable",
+      D: "No braces needed"
+    },
+    correctAnswer: "B",
+    code: "if (condition) {\n    // code\n}",
+    explanation: "Java convention chuẩn là K&R style - opening brace trên cùng dòng với statement. Khác với C# thường dùng Allman style (brace trên dòng mới)."
+  },
+  {
+    question: "How many blank lines should separate methods in a class?",
+    options: {
+      A: "Zero",
+      B: "One",
+      C: "Two",
+      D: "Three"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Một blank line giữa các methods là convention phổ biến. Giúp code dễ đọc và phân biệt các methods. Quá nhiều blank lines làm code trở nên sparse."
+  },
+  {
+    question: "What is the correct indentation style in Java?",
+    options: {
+      A: "2 spaces",
+      B: "4 spaces or 1 tab",
+      C: "8 spaces",
+      D: "No indentation needed"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Java thường dùng 4 spaces hoặc 1 tab cho indentation. Google style dùng 2 spaces. Quan trọng là consistency trong project - không mix spaces và tabs."
+  },
+  {
+    question: "In which order should class members be organized in Java?",
+    options: {
+      A: "Alphabetical order",
+      B: "Random order",
+      C: "Fields, constructors, methods",
+      D: "Methods, fields, constructors"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Thứ tự chuẩn: static fields, instance fields, constructors, methods. Trong mỗi group, thường sắp theo access modifier (public -> private) hoặc logic liên quan."
+  },
+  {
+    question: "What is the Single Responsibility Principle (SRP)?",
+    options: {
+      A: "A class should have only one method",
+      B: "A class should have only one reason to change",
+      C: "A method should have only one line",
+      D: "A file should have only one class"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "SRP: mỗi class chỉ nên có một lý do để thay đổi, tức là một responsibility. Giúp code dễ maintain, test, và hiểu. Là chữ S trong SOLID principles."
+  },
+  {
+    question: "What is the recommended maximum number of parameters for a method?",
+    options: {
+      A: "1-2",
+      B: "3-4",
+      C: "7-10",
+      D: "No limit"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "3-4 parameters là lý tưởng. Nhiều hơn 4-5 parameters là code smell - nên dùng parameter object hoặc builder pattern. Quá nhiều parameters khó nhớ và dễ sai order."
+  },
+  {
+    question: "What is the recommended maximum length for a method?",
+    options: {
+      A: "10 lines",
+      B: "20-30 lines",
+      C: "100 lines",
+      D: "No limit as long as it works"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "20-30 lines là guideline tốt. Method nên fit trong một màn hình. Long methods khó hiểu và test. Nếu method quá dài, refactor thành smaller methods."
+  },
+  {
+    question: "What does 'DRY' stand for in programming?",
+    options: {
+      A: "Do Repeat Yourself",
+      B: "Don't Repeat Yourself",
+      C: "Do Run Yourself",
+      D: "Don't Run Yourself"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "DRY = Don't Repeat Yourself. Tránh duplicate code bằng cách extract vào methods, classes, hoặc modules có thể reuse. Duplicate code khó maintain và dễ gây bugs."
+  },
+  {
+    question: "What is the 'magic number' code smell?",
+    options: {
+      A: "Using random numbers",
+      B: "Using hard-coded numeric literals without explanation",
+      C: "Using prime numbers",
+      D: "Using negative numbers"
+    },
+    correctAnswer: "B",
+    code: "// Bad: if (age > 18)\n// Good: if (age > ADULT_AGE)",
+    explanation: "Magic numbers là numeric literals không có explanation. Khó hiểu 18 nghĩa là gì. Nên extract thành named constants: ADULT_AGE = 18, MAX_RETRIES = 3."
+  },
+  {
+    question: "Which import style is preferred in Java?",
+    options: {
+      A: "Wildcard imports (import java.util.*)",
+      B: "Explicit imports (import java.util.List)",
+      C: "No imports, use full qualified names",
+      D: "Static imports for everything"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Explicit imports preferred vì: rõ ràng classes nào được dùng, tránh naming conflicts, IDE dễ optimize. Wildcard imports có thể gây confusion và conflicts."
+  },
+  {
+    question: "What is the convention for organizing imports in Java?",
+    options: {
+      A: "Alphabetical within groups: java.*, javax.*, third-party, project",
+      B: "Random order",
+      C: "By length of import statement",
+      D: "By usage frequency"
     },
     correctAnswer: "A",
     code: null,
-    explanation: "Dấu '#' ở đầu dòng trong .gitignore đánh dấu dòng đó là comment. Git sẽ ignore dòng đó. Để ignore file tên '#filename', dùng '\\#filename'."
+    explanation: "Imports nên group: java.*, javax.*, third-party libraries, project packages. Trong mỗi group, sort alphabetically. Blank line giữa các groups. IDE auto-organize."
   },
   {
-    question: "If a file is already tracked by Git, will adding it to .gitignore stop tracking it?",
+    question: "What is the purpose of using final keyword for method parameters?",
     options: {
-      A: "Yes, immediately",
-      B: "No, you need to manually untrack it first using 'git rm --cached'",
-      C: "Yes, after restart",
-      D: "Only if you force it"
+      A: "To improve performance",
+      B: "To prevent reassignment of the parameter",
+      C: "To make the method faster",
+      D: "To allow null values"
+    },
+    correctAnswer: "B",
+    code: "public void process(final String input) { }",
+    explanation: "final parameter ngăn reassign parameter trong method body. Giúp code dễ reason about vì biến không thay đổi. Một số teams require final cho tất cả parameters."
+  },
+  {
+    question: "What is 'early return' pattern?",
+    options: {
+      A: "Returning from main() early",
+      B: "Returning early from a method to reduce nesting",
+      C: "Starting work early in the morning",
+      D: "Returning before the deadline"
+    },
+    correctAnswer: "B",
+    code: "if (input == null) return null;\n// main logic here",
+    explanation: "Early return: kiểm tra edge cases/preconditions ở đầu method và return sớm. Giảm nesting, code dễ đọc hơn. Còn gọi là 'guard clauses'."
+  },
+  {
+    question: "What is the convention for placing static members in a class?",
+    options: {
+      A: "At the end of the class",
+      B: "Mixed with instance members",
+      C: "At the beginning of the class",
+      D: "In a separate file"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Static members (constants, static methods) thường đặt đầu class. Order: static constants, static fields, static blocks, instance fields, constructors, methods."
+  },
+  {
+    question: "What is the 'Tell, Don't Ask' principle?",
+    options: {
+      A: "Never ask questions in code",
+      B: "Tell objects what to do instead of querying their state",
+      C: "Always use print statements",
+      D: "Ask before telling"
+    },
+    correctAnswer: "B",
+    code: "// Ask: if(user.getAge() > 18) { user.setAdult(true); }\n// Tell: user.updateAdultStatus();",
+    explanation: "Tell, Don't Ask: gọi method để object tự xử lý, thay vì lấy data, xử lý bên ngoài, rồi set lại. Encapsulation tốt hơn, logic tập trung trong object."
+  },
+  {
+    question: "What is the Law of Demeter (LoD)?",
+    options: {
+      A: "A method should only call methods of its immediate friends",
+      B: "A class must have exactly one method",
+      C: "All classes must inherit from Object",
+      D: "Code must be written in Greece"
+    },
+    correctAnswer: "A",
+    code: "// Violation: user.getAddress().getCity().getName()\n// Better: user.getCityName()",
+    explanation: "Law of Demeter: don't talk to strangers. Method chỉ nên gọi methods của: this, parameters, objects it creates, direct components. Tránh chain calls dài."
+  },
+  {
+    question: "What should be the visibility of class fields by default?",
+    options: {
+      A: "public",
+      B: "protected",
+      C: "private",
+      D: "package-private (default)"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Fields nên private by default (encapsulation). Expose qua getters/setters nếu cần. Public fields break encapsulation và make class hard to change later."
+  },
+  {
+    question: "What is the convention for boolean method names that check a condition?",
+    options: {
+      A: "checkCondition()",
+      B: "condition()",
+      C: "isCondition() or hasCondition()",
+      D: "getCondition()"
+    },
+    correctAnswer: "C",
+    code: "boolean isEmpty()\nboolean hasChildren()\nboolean canExecute()",
+    explanation: "Boolean methods dùng is/has/can/should prefix. Đọc như câu hỏi yes/no: isEmpty()? hasChildren()? Giúp code đọc tự nhiên trong if statements."
+  },
+  {
+    question: "What is method chaining and when is it appropriate?",
+    options: {
+      A: "Calling methods in a loop",
+      B: "Calling methods that return 'this' for fluent API",
+      C: "Calling the same method multiple times",
+      D: "Never appropriate"
+    },
+    correctAnswer: "B",
+    code: "builder.setName(\"John\").setAge(25).build();",
+    explanation: "Method chaining: methods return 'this' để chain calls. Phổ biến trong builders, streams, fluent APIs. Giúp code ngắn gọn và đọc dễ như prose."
+  },
+
+  // ============ MORE CODE STRUCTURE (101-120) ============
+  {
+    question: "What is the recommended approach for null handling in Java?",
+    options: {
+      A: "Return null freely",
+      B: "Use Optional or throw exceptions instead of returning null",
+      C: "Never use null",
+      D: "Use empty string instead of null"
+    },
+    correctAnswer: "B",
+    code: "Optional<User> findUser(int id)",
+    explanation: "Tránh return null khi có thể. Dùng Optional (Java 8+) để express 'may be absent'. Hoặc throw exception cho error cases. Null causes NullPointerException bugs."
+  },
+  {
+    question: "What is the purpose of the @Override annotation?",
+    options: {
+      A: "To override all methods",
+      B: "To indicate method overrides a parent method, compiler checks",
+      C: "To create a new method",
+      D: "To delete a method"
+    },
+    correctAnswer: "B",
+    code: "@Override\npublic String toString() { }",
+    explanation: "@Override cho compiler biết method này override parent method. Nếu parent không có method đó, compiler báo lỗi. Catch bugs sớm khi refactor."
+  },
+  {
+    question: "What is the convention for static import?",
+    options: {
+      A: "Use for all static members",
+      B: "Use sparingly, mainly for well-known utilities like Math, Assert",
+      C: "Never use static import",
+      D: "Only for constants"
+    },
+    correctAnswer: "B",
+    code: "import static java.lang.Math.PI;\nimport static org.junit.Assert.*;",
+    explanation: "Static imports dùng sparingly cho utilities phổ biến (Math.PI, Assert methods). Overuse làm code khó đọc vì không biết method từ đâu."
+  },
+  {
+    question: "What is a 'code smell'?",
+    options: {
+      A: "Code that has bugs",
+      B: "Indicators of potential problems in code design",
+      C: "Code that doesn't compile",
+      D: "Code written by juniors"
     },
     correctAnswer: "B",
     code: null,
-    explanation: ".gitignore chỉ áp dụng cho untracked files. Để stop tracking file đã tracked, phải dùng 'git rm --cached filename', sau đó add vào .gitignore."
+    explanation: "Code smells là symptoms của deeper problems: long method, large class, duplicate code, magic numbers, long parameter list. Không phải bugs nhưng chỉ ra cần refactor."
   },
   {
-    question: "What does 'git rm --cached filename' do?",
+    question: "What is the 'Feature Envy' code smell?",
     options: {
-      A: "Deletes the file completely",
-      B: "Removes file from Git tracking but keeps it in working directory",
-      C: "Caches the removal",
-      D: "Removes cache files"
+      A: "Wanting new features",
+      B: "A method that uses more features of another class than its own",
+      C: "Missing features",
+      D: "Having too many features"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git rm --cached filename' untrack file khỏi Git nhưng giữ file trong working directory. Dùng khi muốn stop tracking file nhưng không xóa file local."
+    explanation: "Feature Envy: method sử dụng nhiều data/methods của class khác hơn class của nó. Suggests method nên move sang class kia. Violates encapsulation."
   },
   {
-    question: "What is the difference between 'git merge' and 'git rebase'?",
+    question: "What is the recommended way to compare strings in Java?",
     options: {
-      A: "No difference",
-      B: "Merge creates a merge commit; rebase rewrites history linearly",
-      C: "Merge is faster",
-      D: "Rebase is only for advanced users"
+      A: "str1 == str2",
+      B: "str1.equals(str2)",
+      C: "str1.compareTo(str2)",
+      D: "String.compare(str1, str2)"
+    },
+    correctAnswer: "B",
+    code: "\"constant\".equals(variable) // null-safe",
+    explanation: "Dùng equals() để compare string content. == chỉ compare references. Tip: put constant first (\"value\".equals(var)) để tránh NullPointerException."
+  },
+  {
+    question: "What is the 'Primitive Obsession' code smell?",
+    options: {
+      A: "Using too many objects",
+      B: "Overusing primitives instead of small objects for simple tasks",
+      C: "Avoiding primitives entirely",
+      D: "Using only primitive types"
+    },
+    correctAnswer: "B",
+    code: "// Bad: String phoneNumber, String email\n// Good: PhoneNumber phone, Email email",
+    explanation: "Primitive Obsession: dùng primitives thay vì small value objects. Phone number as String không có validation. PhoneNumber class có thể validate format."
+  },
+  {
+    question: "What is the purpose of making a class final?",
+    options: {
+      A: "To improve performance",
+      B: "To prevent inheritance",
+      C: "To make it abstract",
+      D: "To make all methods final"
+    },
+    correctAnswer: "B",
+    code: "public final class String { }",
+    explanation: "final class không thể được extend. Dùng khi: immutable classes (String), security (prevent malicious subclass), design decision (class not designed for inheritance)."
+  },
+  {
+    question: "What is the convention for package names in Java?",
+    options: {
+      A: "CamelCase",
+      B: "All lowercase with dots separating levels",
+      C: "UPPERCASE",
+      D: "snake_case"
+    },
+    correctAnswer: "B",
+    code: "package com.company.project.module;",
+    explanation: "Package names all lowercase, domain reversed (com.google.guava). Dùng dots để separate levels. Tránh special characters và numbers ở đầu."
+  },
+  {
+    question: "What is the convention for class names in Java?",
+    options: {
+      A: "camelCase",
+      B: "PascalCase (UpperCamelCase)",
+      C: "snake_case",
+      D: "lowercase"
+    },
+    correctAnswer: "B",
+    code: "public class UserAccount { }",
+    explanation: "Class names dùng PascalCase (UpperCamelCase): mỗi từ bắt đầu bằng chữ hoa. Nên là noun hoặc noun phrase: User, UserAccount, HttpConnectionFactory."
+  },
+  {
+    question: "What is 'composition over inheritance'?",
+    options: {
+      A: "Always use inheritance",
+      B: "Prefer containing objects over extending classes",
+      C: "Never use classes",
+      D: "Write more code"
+    },
+    correctAnswer: "B",
+    code: "// Instead of: class Car extends Engine\n// Use: class Car { private Engine engine; }",
+    explanation: "Composition over Inheritance: thay vì extend class, contain instance của nó. Flexible hơn, tránh fragile base class problem, allows changing behavior at runtime."
+  },
+  {
+    question: "What is the 'Open/Closed Principle'?",
+    options: {
+      A: "Open source is better",
+      B: "Classes should be open for extension, closed for modification",
+      C: "Always close files after opening",
+      D: "Open and close braces must match"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Merge tạo merge commit, giữ lại toàn bộ lịch sử phân nhánh. Rebase viết lại lịch sử tuyến tính bằng cách di chuyển commits. Merge an toàn hơn cho shared branches."
+    explanation: "Open/Closed Principle (SOLID): software entities nên open for extension (add new features) nhưng closed for modification (không cần change existing code). Dùng abstraction, interfaces."
   },
   {
-    question: "When should you NOT use 'git rebase'?",
+    question: "What is the 'Liskov Substitution Principle'?",
     options: {
-      A: "On local branches",
-      B: "On public/shared branches that others are using",
-      C: "On feature branches",
-      D: "Never, it's always safe"
+      A: "Named after Barbara Liskov",
+      B: "Subtypes must be substitutable for their base types",
+      C: "Always use substitution",
+      D: "Replace all classes with interfaces"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "KHÔNG nên rebase các public/shared branches vì rebase thay đổi commit history. Điều này gây confusion và conflicts cho người khác đang làm việc trên cùng branch."
+    explanation: "LSP: objects of subclass should be usable wherever parent class expected without breaking functionality. Ví dụ: Square extends Rectangle có thể violate nếu setWidth/setHeight behaves differently."
   },
   {
-    question: "What happens after a successful merge on GitHub?",
+    question: "What is the 'Interface Segregation Principle'?",
     options: {
-      A: "Nothing",
-      B: "The feature branch can be deleted if no longer needed",
-      C: "All branches are deleted",
-      D: "Repository is archived"
+      A: "Use only one interface",
+      B: "Clients shouldn't be forced to depend on interfaces they don't use",
+      C: "Segregate all interfaces",
+      D: "Never use interfaces"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Sau khi merge pull request trên GitHub, feature branch thường được delete để giữ repository sạch sẽ. Code đã được merge vào main branch nên branch cũ không còn cần thiết."
+    explanation: "ISP: thay vì một fat interface, dùng nhiều small, specific interfaces. Client chỉ implement interfaces nó cần. Reduces coupling và unnecessary dependencies."
   },
   {
-    question: "What is a pull request (PR) on GitHub?",
+    question: "What is the 'Dependency Inversion Principle'?",
     options: {
-      A: "A request to pull code from main",
-      B: "A request to merge changes from one branch into another, with code review",
-      C: "A request to pull the repository",
-      D: "A request for help"
+      A: "Invert all dependencies",
+      B: "High-level modules shouldn't depend on low-level modules; both should depend on abstractions",
+      C: "Avoid dependencies",
+      D: "Use dependency injection only"
+    },
+    correctAnswer: "B",
+    code: "// Bad: class Service { private MySQLDB db; }\n// Good: class Service { private Database db; }",
+    explanation: "DIP: depend on abstractions (interfaces), not concrete implementations. Allows swapping implementations, easier testing với mocks. Foundation of dependency injection."
+  },
+  {
+    question: "What is the purpose of using interfaces?",
+    options: {
+      A: "To slow down the program",
+      B: "To define contracts and enable loose coupling",
+      C: "To avoid writing code",
+      D: "To make code complex"
+    },
+    correctAnswer: "B",
+    code: "interface PaymentProcessor { void process(Payment p); }",
+    explanation: "Interfaces define contracts: what methods must exist. Enable loose coupling (depend on interface, not implementation), polymorphism, và easier testing/mocking."
+  },
+  {
+    question: "When should you create an interface?",
+    options: {
+      A: "For every class",
+      B: "When you need multiple implementations or want to define a contract",
+      C: "Never",
+      D: "Only for database classes"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Pull Request (PR) trên GitHub là yêu cầu merge code từ branch này sang branch khác, kèm theo code review, discussions, và checks. Đây là workflow chuẩn cho team collaboration."
+    explanation: "Create interface khi: cần multiple implementations, muốn loose coupling với implementation, define API contract, enable testing với mocks. Không cần interface cho mọi class."
   },
   {
-    question: "What does 'git clone --depth 1' do?",
+    question: "What is a 'utility class' in Java?",
     options: {
-      A: "Clones only 1 file",
-      B: "Creates a shallow clone with only the latest commit history",
-      C: "Clones with depth of 1 meter",
-      D: "Clones 1 branch only"
+      A: "A class with only instance methods",
+      B: "A class with only static methods and private constructor",
+      C: "A class that extends Utility",
+      D: "Any small class"
+    },
+    correctAnswer: "B",
+    code: "public final class StringUtils {\n    private StringUtils() { }\n    public static boolean isEmpty(String s) { }\n}",
+    explanation: "Utility class: chỉ chứa static methods, private constructor ngăn instantiation, thường final. Ví dụ: Math, Arrays, Collections, StringUtils."
+  },
+  {
+    question: "What is the 'Builder' pattern used for?",
+    options: {
+      A: "Building houses",
+      B: "Constructing complex objects step by step",
+      C: "Building databases",
+      D: "Building networks"
+    },
+    correctAnswer: "B",
+    code: "User user = User.builder()\n    .name(\"John\")\n    .age(25)\n    .build();",
+    explanation: "Builder pattern: construct complex objects step by step. Tránh constructors với nhiều parameters, readable code, immutable objects. Lombok @Builder auto-generates."
+  },
+  {
+    question: "What is 'fail-fast' principle in coding?",
+    options: {
+      A: "Fail the project quickly",
+      B: "Detect and report errors as early as possible",
+      C: "Make code run faster",
+      D: "Skip error handling"
+    },
+    correctAnswer: "B",
+    code: "public void process(String input) {\n    Objects.requireNonNull(input, \"input cannot be null\");\n    // rest of code\n}",
+    explanation: "Fail-fast: detect và report problems immediately thay vì để chúng propagate. Validate inputs early, throw descriptive exceptions. Easier debugging, predictable behavior."
+  },
+
+  // ============ PRACTICAL EXERCISES - VARIABLE NAMING (121-140) ============
+  {
+    question: "Which variable name is better for storing the total price after discount?",
+    options: {
+      A: "tp",
+      B: "price",
+      C: "totalPriceAfterDiscount",
+      D: "x"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "'totalPriceAfterDiscount' mô tả rõ ràng nhất. 'price' quá chung, 'tp' và 'x' không có ý nghĩa. Tên biến nên tự giải thích mục đích sử dụng."
+  },
+  {
+    question: "What is wrong with this code?\nint d; // elapsed time in days",
+    options: {
+      A: "Nothing wrong",
+      B: "Variable name is not descriptive",
+      C: "Comment is wrong",
+      D: "Should use long instead"
+    },
+    correctAnswer: "B",
+    code: "int d; // elapsed time in days\n// Better:\nint elapsedTimeInDays;",
+    explanation: "Biến 'd' cần comment để giải thích, tức là tên không self-explanatory. 'elapsedTimeInDays' tự giải thích, không cần comment. Code should be self-documenting."
+  },
+  {
+    question: "Which naming is correct for a method that checks if user is logged in?",
+    options: {
+      A: "checkLogin()",
+      B: "loginStatus()",
+      C: "isLoggedIn()",
+      D: "getLogin()"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "'isLoggedIn()' theo đúng convention cho boolean methods với prefix 'is'. Đọc tự nhiên: if (user.isLoggedIn()). 'checkLogin' không rõ return type."
+  },
+  {
+    question: "Identify the naming convention violation:\npublic static final int Max_Value = 100;",
+    options: {
+      A: "Should be MAX_VALUE",
+      B: "Should be maxValue",
+      C: "Should be max_value",
+      D: "No violation"
+    },
+    correctAnswer: "A",
+    code: "public static final int MAX_VALUE = 100;",
+    explanation: "Constants trong Java dùng SCREAMING_SNAKE_CASE. 'Max_Value' sai convention - nên là 'MAX_VALUE'. Tất cả chữ in hoa, underscore giữa các từ."
+  },
+  {
+    question: "What is the best name for a list of products in a shopping cart?",
+    options: {
+      A: "list",
+      B: "productList",
+      C: "cartItems",
+      D: "p"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "'cartItems' mô tả rõ context (cart) và nội dung (items). 'productList' có suffix List không cần thiết. 'list' và 'p' quá chung."
+  },
+  {
+    question: "Which refactoring improves this code?\nString s = getFullName();\nString s2 = getAddress();",
+    options: {
+      A: "Use s1 instead of s",
+      B: "Use descriptive names like fullName and address",
+      C: "Add comments",
+      D: "Use shorter names"
+    },
+    correctAnswer: "B",
+    code: "String fullName = getFullName();\nString address = getAddress();",
+    explanation: "Dùng tên mô tả: fullName, address. Tên s, s2 không có ý nghĩa và dễ confuse. Tên biến nên cho biết nội dung chứa gì."
+  },
+  {
+    question: "What naming convention does this violate: calculatesum()?",
+    options: {
+      A: "Should use underscores",
+      B: "Should be camelCase: calculateSum()",
+      C: "Should be all uppercase",
+      D: "No violation"
+    },
+    correctAnswer: "B",
+    code: "public int calculateSum() { }",
+    explanation: "Methods trong Java dùng camelCase. 'calculatesum' thiếu chữ hoa ở 'Sum'. Đúng là 'calculateSum()'. CamelCase giúp phân biệt các từ."
+  },
+  {
+    question: "Which is the best name for a boolean flag indicating if data is valid?",
+    options: {
+      A: "flag",
+      B: "valid",
+      C: "isDataValid",
+      D: "dataValidFlag"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "'isDataValid' theo convention boolean với prefix 'is', và mô tả rõ ràng data nào được validate. 'flag' và 'valid' quá generic."
+  },
+  {
+    question: "What is wrong with this variable name: numberOfUsersInTheSystemCurrentlyLoggedIn?",
+    options: {
+      A: "Too short",
+      B: "Too long, could be simplified to activeUserCount",
+      C: "Should use underscores",
+      D: "Nothing wrong"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git clone --depth 1' tạo shallow clone chỉ với commit history gần nhất. Tiết kiệm bandwidth và disk space, hữu ích khi chỉ cần code mới nhất, không cần toàn bộ history."
+    explanation: "Tên quá dài. 'activeUserCount' hoặc 'loggedInUserCount' ngắn hơn mà vẫn đủ ý nghĩa. Tên biến nên concise nhưng vẫn descriptive."
   },
   {
-    question: "What is 'git reflog'?",
+    question: "Choose the better variable name for storing a user's email address:",
     options: {
-      A: "A log of references",
-      B: "A log of all HEAD movements and changes, useful for recovering lost commits",
-      C: "A log of remote operations",
-      D: "A reference manual"
+      A: "e",
+      B: "str",
+      C: "email",
+      D: "emailOfTheUser"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "'email' vừa ngắn gọn vừa rõ ràng. 'e' và 'str' không mô tả. 'emailOfTheUser' thừa từ. Context thường đã cho biết email thuộc về ai."
+  },
+  {
+    question: "What is the issue with: ArrayList<String> list = new ArrayList<>();",
+    options: {
+      A: "Should use LinkedList",
+      B: "Variable name 'list' is not descriptive",
+      C: "Should use raw type",
+      D: "Nothing wrong"
+    },
+    correctAnswer: "B",
+    code: "ArrayList<String> userNames = new ArrayList<>();",
+    explanation: "'list' không cho biết chứa gì. 'userNames', 'orderIds', 'productCodes' mô tả nội dung. Tên collection nên cho biết elements là gì."
+  },
+  {
+    question: "Which is correct for a constant representing seconds in a minute?",
+    options: {
+      A: "secondsInMinute",
+      B: "SECONDS_IN_MINUTE",
+      C: "SecondsInMinute",
+      D: "seconds_in_minute"
+    },
+    correctAnswer: "B",
+    code: "public static final int SECONDS_IN_MINUTE = 60;",
+    explanation: "Constants dùng SCREAMING_SNAKE_CASE. 'SECONDS_IN_MINUTE' là đúng convention. Giúp phân biệt constants với variables khi đọc code."
+  },
+  {
+    question: "What naming issue exists here?\nprivate int temp;",
+    options: {
+      A: "Should be public",
+      B: "Name 'temp' is ambiguous - temperature or temporary?",
+      C: "Should be static",
+      D: "No issue"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git reflog' hiển thị lịch sử mọi thay đổi của HEAD. Cực kỳ hữu ích để recover commits 'mất' sau reset --hard hoặc xóa branch nhầm. Như 'time machine' của Git."
+    explanation: "'temp' có thể là temperature hoặc temporary. Abbreviations gây ambiguity. Dùng 'temperature' hoặc 'temporaryValue' để rõ ràng."
   },
   {
-    question: "What does 'git diff' show?",
+    question: "Which is the better name for a method that saves user data to database?",
     options: {
-      A: "All commits",
-      B: "Differences between working directory and staging area",
-      C: "Branch names",
-      D: "Remote URLs"
+      A: "doIt()",
+      B: "save()",
+      C: "saveUserToDatabase()",
+      D: "handleUser()"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "'saveUserToDatabase()' mô tả rõ action (save), object (user), và destination (database). 'doIt()' và 'handleUser()' quá vague."
+  },
+  {
+    question: "Identify the convention issue: class userAccount { }",
+    options: {
+      A: "Should be UserAccount (PascalCase)",
+      B: "Should be USER_ACCOUNT",
+      C: "Should be user_account",
+      D: "No issue"
+    },
+    correctAnswer: "A",
+    code: "class UserAccount { }",
+    explanation: "Class names trong Java dùng PascalCase (UpperCamelCase). 'userAccount' sai vì bắt đầu bằng chữ thường. Đúng là 'UserAccount'."
+  },
+  {
+    question: "What is wrong with: public void foo(int a, int b, int c, int d, int e, int f)?",
+    options: {
+      A: "Nothing wrong",
+      B: "Too many parameters with meaningless names",
+      C: "Should use static",
+      D: "Should return something"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git diff' hiển thị differences giữa working directory và staging area (các thay đổi chưa được staged). Giúp review changes trước khi add."
+    explanation: "Quá nhiều parameters (>4) và tên a,b,c,d,e,f không có ý nghĩa. Nên dùng parameter object hoặc builder. Tên cần mô tả purpose."
   },
   {
-    question: "What does 'git diff --staged' show?",
+    question: "Which is the correct way to name a getter for the 'firstName' field?",
     options: {
-      A: "Differences between staging area and last commit",
-      B: "Differences between branches",
-      C: "All changes",
-      D: "Stage names"
+      A: "firstName()",
+      B: "getfirstname()",
+      C: "getFirstName()",
+      D: "get_first_name()"
+    },
+    correctAnswer: "C",
+    code: "public String getFirstName() { return firstName; }",
+    explanation: "JavaBeans convention: getter là 'get' + PropertyName với PascalCase. 'getFirstName()' đúng. Framework như Spring, Jackson rely on this convention."
+  },
+  {
+    question: "What naming improvement can be made?\nfor(int i=0; i<users.size(); i++) { User u = users.get(i); }",
+    options: {
+      A: "Change i to index",
+      B: "Change u to user",
+      C: "Both A and B",
+      D: "No improvement needed"
+    },
+    correctAnswer: "B",
+    code: "for(int i=0; i<users.size(); i++) { User user = users.get(i); }",
+    explanation: "'i' acceptable cho loop counter (convention). Nhưng 'u' nên là 'user' - object reference cần descriptive name. Hoặc dùng for-each loop."
+  },
+  {
+    question: "Which variable name violates Java conventions?",
+    options: {
+      A: "userId",
+      B: "user_id",
+      C: "userID",
+      D: "id"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Java dùng camelCase cho variables, không dùng snake_case. 'user_id' sai convention. Đúng là 'userId'. snake_case phổ biến trong Python, không phải Java."
+  },
+  {
+    question: "What is the best practice for naming a map that stores user by their ID?",
+    options: {
+      A: "map",
+      B: "userMap",
+      C: "usersById",
+      D: "m"
+    },
+    correctAnswer: "C",
+    code: "Map<Long, User> usersById = new HashMap<>();",
+    explanation: "'usersById' mô tả: plural 'users' (nhiều users), 'ById' (key là ID). Pattern 'xByY' rất clear cho maps. 'userMap' thiếu thông tin về key."
+  },
+
+  // ============ PRACTICAL EXERCISES - METHODS & STRUCTURE (141-160) ============
+  {
+    question: "What refactoring would improve this?\nif(status == 1) { ... } else if(status == 2) { ... }",
+    options: {
+      A: "Use switch statement",
+      B: "Replace magic numbers with named constants or enum",
+      C: "Add comments explaining 1 and 2",
+      D: "Nothing needs improvement"
+    },
+    correctAnswer: "B",
+    code: "if(status == Status.ACTIVE) { ... }\nelse if(status == Status.INACTIVE) { ... }",
+    explanation: "1 và 2 là magic numbers. Dùng enum hoặc constants: Status.ACTIVE, Status.INACTIVE. Code tự giải thích, không cần đoán ý nghĩa của 1, 2."
+  },
+  {
+    question: "What is wrong with this exception handling?\ncatch(Exception e) { }",
+    options: {
+      A: "Nothing wrong",
+      B: "Empty catch block swallows exceptions",
+      C: "Should catch Throwable",
+      D: "Should use 'ex' instead of 'e'"
+    },
+    correctAnswer: "B",
+    code: "catch(Exception e) {\n    logger.error(\"Error occurred\", e);\n}",
+    explanation: "Empty catch block 'nuốt' exception - lỗi xảy ra nhưng không ai biết. Minimum cần log exception. Swallowing exceptions làm debugging rất khó."
+  },
+  {
+    question: "How can this be improved?\npublic void process() throws Exception",
+    options: {
+      A: "Use specific exception types instead of generic Exception",
+      B: "Remove throws clause",
+      C: "Change to throw Error",
+      D: "Nothing to improve"
+    },
+    correctAnswer: "A",
+    code: "public void process() throws IOException, ValidationException",
+    explanation: "Declare specific exceptions thay vì generic Exception. Caller biết chính xác exceptions nào có thể xảy ra và handle appropriately."
+  },
+  {
+    question: "What's the issue?\nString result = obj == null ? \"default\" : obj.getValue();",
+    options: {
+      A: "Nothing wrong, good null check",
+      B: "Should use Optional",
+      C: "Should use try-catch",
+      D: "Ternary operator not allowed"
     },
     correctAnswer: "A",
     code: null,
-    explanation: "Lệnh 'git diff --staged' (hoặc --cached) hiển thị differences giữa staging area và commit cuối cùng. Cho biết những gì sẽ được commit."
+    explanation: "Code này actually OK - kiểm tra null trước khi gọi method. Ternary operator cho null check là pattern phổ biến. Optional cũng là alternative tốt."
   },
   {
-    question: "What does 'git diff branch1 branch2' show?",
+    question: "What principle does this violate?\nclass UserManager { saveUser(); sendEmail(); generateReport(); }",
     options: {
-      A: "Nothing",
-      B: "Differences between two branches",
-      C: "Merges two branches",
-      D: "Deletes differences"
+      A: "DRY",
+      B: "Single Responsibility Principle",
+      C: "Open/Closed Principle",
+      D: "No violation"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git diff branch1 branch2' hiển thị differences giữa hai nhánh. Hữu ích để xem những thay đổi giữa feature branch và main trước khi merge."
+    explanation: "SRP violation: class làm quá nhiều việc (user management, email, reports). Nên tách thành: UserRepository, EmailService, ReportGenerator."
   },
   {
-    question: "What is 'HEAD' in Git?",
+    question: "What is wrong with this?\nfor(int i=0; i<100; i++) { /* 100 lines of code */ }",
     options: {
-      A: "The top of the repository",
-      B: "A pointer to the current branch reference or commit",
-      C: "The first commit",
-      D: "The main branch"
+      A: "Loop count too high",
+      B: "Loop body too long, should extract to method",
+      C: "Should use while loop",
+      D: "Nothing wrong"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "HEAD là con trỏ đến current branch reference hoặc commit hiện tại. Thường HEAD trỏ đến branch tip. Khi checkout commit trực tiếp, HEAD rời khỏi branch (detached HEAD)."
+    code: "for(int i=0; i<100; i++) {\n    processItem(i);\n}",
+    explanation: "Loop body quá dài khó đọc và maintain. Extract logic vào method riêng. Method nhỏ dễ test, reuse, và understand."
   },
   {
-    question: "What does 'HEAD~1' mean?",
+    question: "How to improve this code?\nif(a) { if(b) { if(c) { doSomething(); } } }",
     options: {
-      A: "The current commit",
-      B: "The parent commit (one commit before HEAD)",
-      C: "The first commit",
-      D: "One branch before"
+      A: "Add more nesting",
+      B: "Use early return or combine conditions",
+      C: "Add comments",
+      D: "Nothing to improve"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "HEAD~1 (hoặc HEAD~) là parent commit của HEAD, tức commit trước đó. HEAD~2 là 2 commits trước, HEAD~3 là 3 commits trước, v.v..."
+    code: "if(!a || !b || !c) return;\ndoSomething();",
+    explanation: "Nested ifs tạo 'arrow code' khó đọc. Dùng early return (guard clauses) hoặc combine: if(a && b && c). Giảm nesting, code dễ đọc hơn."
   },
   {
-    question: "What is the difference between 'HEAD~1' and 'HEAD^1'?",
+    question: "What's wrong with: public class Utils { public void helper() { } }",
     options: {
-      A: "They are the same for linear history",
-      B: "HEAD~1 goes back commits, HEAD^1 chooses parent in merge commits",
-      C: "HEAD^ is faster",
-      D: "No difference ever"
+      A: "Class name should be lowercase",
+      B: "Utility class should have static methods and private constructor",
+      C: "Should extend Object explicitly",
+      D: "Nothing wrong"
+    },
+    correctAnswer: "B",
+    code: "public final class Utils {\n    private Utils() { }\n    public static void helper() { }\n}",
+    explanation: "Utility class nên: final (prevent extension), private constructor (prevent instantiation), static methods only. Không cần create instance để dùng."
+  },
+  {
+    question: "What issue does this have?\npublic void setValues(String a, String b, String c, String d, String e, String f, String g)",
+    options: {
+      A: "Nothing wrong",
+      B: "Too many parameters, use builder pattern or parameter object",
+      C: "Should use int instead",
+      D: "Names are correct"
+    },
+    correctAnswer: "B",
+    code: "public void setValues(UserData data)",
+    explanation: "7 parameters quá nhiều và khó nhớ order. Dùng parameter object (UserData) hoặc builder pattern. Rule of thumb: max 3-4 parameters."
+  },
+  {
+    question: "What's the code smell here?\nif(type.equals(\"ADMIN\")) { ... } else if(type.equals(\"USER\")) { ... }",
+    options: {
+      A: "Should use == for strings",
+      B: "String comparisons should be replaced with enum",
+      C: "Should use switch",
+      D: "Nothing wrong"
+    },
+    correctAnswer: "B",
+    code: "enum UserType { ADMIN, USER }\nif(type == UserType.ADMIN) { ... }",
+    explanation: "Magic strings 'ADMIN', 'USER' dễ typo và không type-safe. Enum UserType đảm bảo chỉ valid values được dùng, compiler check."
+  },
+  {
+    question: "What improvement can be made?\nArrayList<String> names = new ArrayList<String>();",
+    options: {
+      A: "Use interface type: List<String> names = new ArrayList<>();",
+      B: "Use array instead",
+      C: "Remove generic type",
+      D: "Nothing to improve"
     },
     correctAnswer: "A",
-    code: null,
-    explanation: "Với linear history, HEAD~1 và HEAD^1 giống nhau. Với merge commits (có nhiều parents), HEAD^1 là parent thứ nhất, HEAD^2 là parent thứ hai. HEAD~1 luôn đi ngược lịch sử."
+    code: "List<String> names = new ArrayList<>();",
+    explanation: "Program to interface, not implementation. Dùng List<String> thay vì ArrayList<String>. Cho phép thay đổi implementation sau này mà không change code."
   },
   {
-    question: "What does 'git tag v1.0.0' do?",
+    question: "What's wrong?\npublic int calc(int x) {\n    // TODO: implement later\n    return 0;\n}",
     options: {
-      A: "Deletes tags",
-      B: "Creates a lightweight tag named v1.0.0 at current commit",
-      C: "Tags all files",
-      D: "Versions the repository"
+      A: "TODO comments are fine",
+      B: "TODO should be tracked and resolved, not left indefinitely",
+      C: "Method name is fine",
+      D: "Return 0 is correct"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git tag v1.0.0' tạo lightweight tag (như bookmark) tại commit hiện tại. Tags thường dùng để đánh dấu release versions (v1.0.0, v2.0.0, etc.)."
+    explanation: "TODO comments không nên để lâu trong production code. Track trong issue system và resolve. Method name 'calc' cũng quá vague - calculateWhat?"
   },
   {
-    question: "What does 'git tag -a v1.0.0 -m \"Release version 1.0.0\"' do?",
+    question: "How to improve this?\nboolean isValid = (age > 0 && age < 150 && name != null && name.length() > 0 && email != null && email.contains(\"@\"));",
     options: {
-      A: "Creates a lightweight tag",
-      B: "Creates an annotated tag with metadata",
-      C: "Adds version to files",
-      D: "Archives the release"
+      A: "Add more conditions",
+      B: "Extract to separate validation methods",
+      C: "Use shorter variable names",
+      D: "Nothing to improve"
+    },
+    correctAnswer: "B",
+    code: "boolean isValid = isValidAge(age) && isValidName(name) && isValidEmail(email);",
+    explanation: "Complex condition khó đọc và maintain. Extract thành methods: isValidAge(), isValidName(), isValidEmail(). Code readable và reusable."
+  },
+  {
+    question: "What principle does this violate?\nclass Rectangle { protected int width, height; }\nclass Square extends Rectangle { void setWidth(int w) { width = height = w; } }",
+    options: {
+      A: "Single Responsibility",
+      B: "Liskov Substitution Principle",
+      C: "Interface Segregation",
+      D: "No violation"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Lệnh 'git tag -a' tạo annotated tag với metadata (tagger name, email, date, message). Annotated tags recommended cho releases vì chứa đầy đủ thông tin hơn lightweight tags."
+    explanation: "LSP violation: Square thay đổi behavior của setWidth. Code expect Rectangle sẽ surprise khi Square.setWidth() cũng thay đổi height. Classic LSP example."
   },
   {
-    question: "How do you delete a local tag?",
+    question: "What's the issue with this?\nclass OrderService {\n    private MySQLDatabase db = new MySQLDatabase();\n}",
     options: {
-      A: "git tag -d tag-name",
-      B: "git delete tag-name",
-      C: "git remove tag-name",
-      D: "git tag --delete tag-name"
+      A: "Nothing wrong",
+      B: "Violates Dependency Inversion - should depend on interface",
+      C: "Should use static",
+      D: "Should be public"
+    },
+    correctAnswer: "B",
+    code: "class OrderService {\n    private Database db; // inject via constructor\n}",
+    explanation: "DIP violation: depend on concrete MySQLDatabase. Dùng interface Database, inject dependency. Cho phép switch to PostgreSQL, mock for testing."
+  },
+  {
+    question: "How to fix this Law of Demeter violation?\norder.getCustomer().getAddress().getCity().getName()",
+    options: {
+      A: "Add more getters",
+      B: "Create order.getCustomerCityName() method",
+      C: "Use longer chain",
+      D: "Nothing wrong"
+    },
+    correctAnswer: "B",
+    code: "order.getCustomerCityName() // hides internal structure",
+    explanation: "Chain calls dài violate Law of Demeter (don't talk to strangers). Tạo method wrapper để hide internal structure. Easier to change later."
+  },
+  {
+    question: "What's wrong with this class?\nclass DataProcessor {\n    public Connection connection;\n    public String query;\n    public ResultSet results;\n}",
+    options: {
+      A: "Nothing wrong",
+      B: "Fields should be private with getters/setters",
+      C: "Should use inheritance",
+      D: "Names are wrong"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Public fields break encapsulation. Fields nên private, expose qua getters/setters nếu cần. Cho phép validation, change implementation mà không break callers."
+  },
+  {
+    question: "What refactoring helps here?\nvoid processOrder(Order o) {\n    // 200 lines of code\n}",
+    options: {
+      A: "Add more code",
+      B: "Extract smaller methods: validateOrder(), calculateTotal(), saveOrder()",
+      C: "Add comments",
+      D: "Nothing needed"
+    },
+    correctAnswer: "B",
+    code: "void processOrder(Order o) {\n    validateOrder(o);\n    calculateTotal(o);\n    saveOrder(o);\n}",
+    explanation: "200 lines quá dài. Extract thành smaller methods với single responsibility. Code dễ đọc, test, và maintain. Method nên fit một màn hình."
+  },
+  {
+    question: "What's the issue?\nif(user != null) {\n    if(user.getRole() != null) {\n        if(user.getRole().equals(\"ADMIN\")) {\n            // do admin stuff\n        }\n    }\n}",
+    options: {
+      A: "Nothing wrong",
+      B: "Use Optional or combine null checks",
+      C: "Add more null checks",
+      D: "Remove all checks"
+    },
+    correctAnswer: "B",
+    code: "Optional.ofNullable(user)\n    .map(User::getRole)\n    .filter(\"ADMIN\"::equals)\n    .ifPresent(r -> doAdminStuff());",
+    explanation: "Nested null checks là code smell. Dùng Optional, hoặc early return: if(user == null || user.getRole() == null) return; More readable."
+  },
+  {
+    question: "Which comment is useful?\nA: i++; // increment i\nB: i++; // move to next customer in queue",
+    options: {
+      A: "Comment A is better",
+      B: "Comment B is better",
+      C: "Both are good",
+      D: "Neither is good"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Comment A states the obvious (what). Comment B explains why/context (moving to next customer). Good comments explain intent, not mechanics."
+  },
+
+  // ============ JAVASCRIPT CONVENTIONS (161-180) ============
+  {
+    question: "Which is the preferred way to declare variables in modern JavaScript?",
+    options: {
+      A: "var",
+      B: "let and const",
+      C: "No keyword needed",
+      D: "global"
+    },
+    correctAnswer: "B",
+    code: "const PI = 3.14;\nlet count = 0;",
+    explanation: "ES6+ khuyến khích let và const thay vì var. const cho values không reassign, let cho variables cần reassign. var có hoisting issues và function scope."
+  },
+  {
+    question: "What is the naming convention for React components?",
+    options: {
+      A: "camelCase",
+      B: "PascalCase",
+      C: "snake_case",
+      D: "kebab-case"
+    },
+    correctAnswer: "B",
+    code: "function UserProfile() { return <div>...</div>; }",
+    explanation: "React components dùng PascalCase để phân biệt với HTML elements. JSX cần PascalCase để biết đó là component, không phải native element."
+  },
+  {
+    question: "Which is correct for JavaScript file naming?",
+    options: {
+      A: "UserComponent.JS",
+      B: "user-component.js",
+      C: "user_component.js",
+      D: "All are acceptable, but B is most common"
+    },
+    correctAnswer: "D",
+    code: null,
+    explanation: "kebab-case (user-component.js) phổ biến nhất cho JS files. Một số frameworks (React) dùng PascalCase. Quan trọng là consistency trong project."
+  },
+  {
+    question: "What is the convention for private methods in JavaScript classes (before #)?",
+    options: {
+      A: "private keyword",
+      B: "_underscore prefix convention",
+      C: "UPPERCASE",
+      D: "No way to make private"
+    },
+    correctAnswer: "B",
+    code: "class User {\n    _validateEmail() { } // convention only, not enforced\n}",
+    explanation: "Trước ES2022 #, dùng _ prefix như convention (không enforced). _method() indicates 'internal use only'. Modern JS dùng #privateMethod()."
+  },
+  {
+    question: "Which is the correct way to export in ES6 modules?",
+    options: {
+      A: "module.exports = { }",
+      B: "export default và export",
+      C: "exports.name = value",
+      D: "define([ ], function() { })"
+    },
+    correctAnswer: "B",
+    code: "export default function main() { }\nexport const helper = () => { };",
+    explanation: "ES6 modules dùng export/import. export default cho main export, named exports cho multiple exports. module.exports là CommonJS (Node.js cũ)."
+  },
+  {
+    question: "What is the convention for event handler props in React?",
+    options: {
+      A: "click, submit",
+      B: "onClick, onSubmit",
+      C: "handleClick, handleSubmit",
+      D: "Both B for props, C for handler functions"
+    },
+    correctAnswer: "D",
+    code: "<Button onClick={handleClick} />\nconst handleClick = () => { };",
+    explanation: "Props dùng 'on' prefix (onClick, onSubmit). Handler functions dùng 'handle' prefix (handleClick). Pattern: <Component onEvent={handleEvent} />."
+  },
+  {
+    question: "Which is the preferred equality operator in JavaScript?",
+    options: {
+      A: "== (loose equality)",
+      B: "=== (strict equality)",
+      C: "Both are equally good",
+      D: "= (assignment)"
+    },
+    correctAnswer: "B",
+    code: "if (value === 'test') { } // preferred",
+    explanation: "=== (strict equality) preferred vì không có type coercion. == có unexpected behaviors: '1' == 1 is true. Dùng === để tránh bugs."
+  },
+  {
+    question: "What is the convention for async/await error handling?",
+    options: {
+      A: "Ignore errors",
+      B: "Use try-catch blocks",
+      C: "Use callbacks",
+      D: "Use global error handler only"
+    },
+    correctAnswer: "B",
+    code: "async function fetchData() {\n    try {\n        const data = await api.get();\n    } catch (error) {\n        console.error('Failed:', error);\n    }\n}",
+    explanation: "async/await dùng try-catch cho error handling. Readable hơn .catch() chains. Catch block nên log error với context, không swallow silently."
+  },
+  {
+    question: "Which is the correct way to define a constant object in JavaScript?",
+    options: {
+      A: "const CONFIG = {}",
+      B: "const CONFIG = Object.freeze({})",
+      C: "A for reference immutability, B for deep immutability",
+      D: "var CONFIG = {}"
+    },
+    correctAnswer: "C",
+    code: "const CONFIG = Object.freeze({ API_URL: 'https://...' });",
+    explanation: "const ngăn reassign reference nhưng object properties vẫn mutable. Object.freeze() ngăn modify properties (shallow). Deep freeze cần recursive."
+  },
+  {
+    question: "What is the naming convention for JavaScript test files?",
+    options: {
+      A: "test.js",
+      B: "*.test.js or *.spec.js",
+      C: "TEST_*.js",
+      D: "test/*.js only"
+    },
+    correctAnswer: "B",
+    code: "userService.test.js\nuserService.spec.js",
+    explanation: "Test files thường có suffix .test.js hoặc .spec.js. Jest, Mocha auto-discover files với pattern này. Đặt cùng folder hoặc trong __tests__."
+  },
+  {
+    question: "Which is the preferred way to handle null/undefined in JavaScript?",
+    options: {
+      A: "if (value != null)",
+      B: "Optional chaining (?.) and nullish coalescing (??)",
+      C: "if (value !== null && value !== undefined)",
+      D: "All are acceptable, B is most modern"
+    },
+    correctAnswer: "D",
+    code: "const name = user?.profile?.name ?? 'Anonymous';",
+    explanation: "ES2020+ có optional chaining (?.) và nullish coalescing (??). Cleaner than nested checks. ?. returns undefined if null/undefined, ?? provides default."
+  },
+  {
+    question: "What is the convention for environment variables in JavaScript?",
+    options: {
+      A: "camelCase",
+      B: "SCREAMING_SNAKE_CASE",
+      C: "PascalCase",
+      D: "kebab-case"
+    },
+    correctAnswer: "B",
+    code: "process.env.DATABASE_URL\nprocess.env.API_KEY",
+    explanation: "Environment variables dùng SCREAMING_SNAKE_CASE by convention (từ Unix). Trong code JS access qua process.env.VARIABLE_NAME."
+  },
+  {
+    question: "Which is the correct convention for arrow functions in JavaScript?",
+    options: {
+      A: "Always use function keyword",
+      B: "Use arrow functions for callbacks, regular functions for methods",
+      C: "Never use arrow functions",
+      D: "Only use arrow functions"
+    },
+    correctAnswer: "B",
+    code: "array.map(item => item.name); // arrow\nclass User { getName() { } } // regular method",
+    explanation: "Arrow functions good for callbacks (lexical this). Regular functions/methods cho class methods và functions cần own 'this'. Arrow functions không có own 'this'."
+  },
+  {
+    question: "What is the convention for destructuring in JavaScript?",
+    options: {
+      A: "Never use destructuring",
+      B: "Use for cleaner access to object/array properties",
+      C: "Only for arrays",
+      D: "Only for objects"
+    },
+    correctAnswer: "B",
+    code: "const { name, age } = user;\nconst [first, second] = array;",
+    explanation: "Destructuring làm code cleaner. Extract properties thành variables. Default values: { name = 'Unknown' } = user. Rất phổ biến trong modern JS."
+  },
+  {
+    question: "Which is the preferred way to concatenate strings in modern JavaScript?",
+    options: {
+      A: "str1 + str2",
+      B: "Template literals with backticks",
+      C: "str1.concat(str2)",
+      D: "String.format()"
+    },
+    correctAnswer: "B",
+    code: "const message = `Hello, ${name}! You have ${count} messages.`;",
+    explanation: "Template literals (backticks) preferred cho string interpolation. Readable hơn +. Supports multi-line strings và embedded expressions."
+  },
+  {
+    question: "What is the convention for default exports vs named exports?",
+    options: {
+      A: "Always use default",
+      B: "Always use named",
+      C: "Default for main thing, named for utilities",
+      D: "It doesn't matter"
+    },
+    correctAnswer: "C",
+    code: "export default class UserService { }\nexport const formatDate = () => { };\nexport const parseDate = () => { };",
+    explanation: "Default export cho main functionality của module. Named exports cho utilities, helpers. Một số style guides prefer named-only để consistent imports."
+  },
+  {
+    question: "Which is correct for handling promises?",
+    options: {
+      A: "Ignore rejections",
+      B: "Always handle with .catch() or try-catch",
+      C: "Use callbacks only",
+      D: "Use synchronous code"
+    },
+    correctAnswer: "B",
+    code: "promise.then(result => { }).catch(error => { });\n// or\ntry { await promise; } catch (e) { }",
+    explanation: "Unhandled promise rejections gây warnings/errors. Luôn handle với .catch() hoặc try-catch. Node.js có thể crash on unhandled rejection."
+  },
+  {
+    question: "What is the convention for JSDoc in JavaScript?",
+    options: {
+      A: "Not used in JavaScript",
+      B: "Same format as Javadoc with type annotations",
+      C: "Only for libraries",
+      D: "Use TypeScript instead"
+    },
+    correctAnswer: "B",
+    code: "/**\n * @param {string} name - User name\n * @returns {Promise<User>}\n */\nasync function getUser(name) { }",
+    explanation: "JSDoc dùng để document JS code với type info. IDE dùng cho autocomplete. @param, @returns, @type. Useful even without TypeScript."
+  },
+  {
+    question: "Which is the convention for spreading objects/arrays?",
+    options: {
+      A: "Use Object.assign() only",
+      B: "Use spread operator (...) for immutable updates",
+      C: "Mutate directly",
+      D: "Use JSON.parse(JSON.stringify())"
+    },
+    correctAnswer: "B",
+    code: "const newObj = { ...oldObj, newProp: value };\nconst newArr = [...oldArr, newItem];",
+    explanation: "Spread operator tạo shallow copy. Preferred trong React/Redux cho immutable updates. Object.assign() cũng OK nhưng spread cleaner."
+  },
+  {
+    question: "What is the convention for module organization in JavaScript?",
+    options: {
+      A: "Everything in one file",
+      B: "One class/function per file, organize by feature or type",
+      C: "Random organization",
+      D: "Only use global variables"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Tổ chức theo feature (feature folders) hoặc type (services/, components/). Một class/component per file. File name matches exported name. Index files for re-exports."
+  },
+
+  // ============ ADVANCED CONVENTIONS (181-200) ============
+  {
+    question: "What is the convention for Git commit messages?",
+    options: {
+      A: "Any format is fine",
+      B: "Short imperative subject line, detailed body if needed",
+      C: "Only one word",
+      D: "Include all code changes"
+    },
+    correctAnswer: "B",
+    code: "feat: add user authentication\n\nImplement login/logout with JWT tokens.\nAdd password hashing with bcrypt.",
+    explanation: "Conventional commits: type(scope): subject. Types: feat, fix, docs, style, refactor, test. Subject imperative mood ('add' not 'added'). Body giải thích why."
+  },
+  {
+    question: "What is the convention for logging in production applications?",
+    options: {
+      A: "Use System.out.println()",
+      B: "Use proper logging framework with levels (DEBUG, INFO, ERROR)",
+      C: "Don't log anything",
+      D: "Log everything at ERROR level"
+    },
+    correctAnswer: "B",
+    code: "logger.debug(\"Processing user: {}\", userId);\nlogger.error(\"Failed to save\", exception);",
+    explanation: "Dùng logging framework (Log4j, SLF4J, Winston). Các levels: DEBUG, INFO, WARN, ERROR. Production thường INFO+. Include context và structured data."
+  },
+  {
+    question: "What is the convention for configuration values?",
+    options: {
+      A: "Hardcode in source",
+      B: "Externalize to config files or environment variables",
+      C: "Store in database only",
+      D: "Include in comments"
+    },
+    correctAnswer: "B",
+    code: "String dbUrl = System.getenv(\"DATABASE_URL\");\n// or from config file",
+    explanation: "Externalize config: environment variables, config files (application.properties, .env). Cho phép thay đổi mà không recompile. 12-factor app principle."
+  },
+  {
+    question: "What is the convention for API response format?",
+    options: {
+      A: "Return any format",
+      B: "Consistent JSON structure with data, errors, metadata",
+      C: "Return HTML always",
+      D: "Return plain text"
+    },
+    correctAnswer: "B",
+    code: "{\n    \"success\": true,\n    \"data\": { ... },\n    \"error\": null,\n    \"meta\": { \"page\": 1 }\n}",
+    explanation: "API responses nên consistent format. Bao gồm: success flag, data, error messages, metadata (pagination). HTTP status codes cũng quan trọng."
+  },
+  {
+    question: "What is the convention for database column naming?",
+    options: {
+      A: "camelCase",
+      B: "snake_case",
+      C: "PascalCase",
+      D: "UPPERCASE"
+    },
+    correctAnswer: "B",
+    code: "user_id, created_at, first_name",
+    explanation: "SQL databases thường dùng snake_case cho columns. case-insensitive trong nhiều DBs. ORM tự động map snake_case columns -> camelCase fields."
+  },
+  {
+    question: "What is the convention for RESTful API endpoints?",
+    options: {
+      A: "/getUsers, /createUser",
+      B: "/users (GET, POST), /users/{id} (GET, PUT, DELETE)",
+      C: "/user_management",
+      D: "/api_get_all_users"
+    },
+    correctAnswer: "B",
+    code: "GET /users\nPOST /users\nGET /users/{id}\nPUT /users/{id}\nDELETE /users/{id}",
+    explanation: "RESTful: nouns cho resources (users, not getUsers), HTTP methods cho actions. Plural nouns. Hierarchical paths: /users/{id}/orders."
+  },
+  {
+    question: "What is the convention for error codes in applications?",
+    options: {
+      A: "Use random numbers",
+      B: "Structured error codes with categories (USER_001, AUTH_002)",
+      C: "Only use text messages",
+      D: "Don't use error codes"
+    },
+    correctAnswer: "B",
+    code: "// USER_001: Invalid email format\n// AUTH_001: Token expired\n// DB_001: Connection failed",
+    explanation: "Structured error codes: category prefix + number. Dễ trace, document, và localize. Clients có thể handle specific errors. Include human-readable message."
+  },
+  {
+    question: "What is the convention for date/time handling?",
+    options: {
+      A: "Use String for dates",
+      B: "Use proper date types, store in UTC, format for display",
+      C: "Use integers (timestamps)",
+      D: "Use local time everywhere"
+    },
+    correctAnswer: "B",
+    code: "// Store: 2024-01-15T10:30:00Z (ISO 8601, UTC)\n// Display: formatted for user's timezone",
+    explanation: "Store dates as proper types (LocalDateTime, Date), trong UTC. Convert to user timezone khi display. ISO 8601 format cho APIs. Tránh String manipulation."
+  },
+  {
+    question: "What is the convention for password handling?",
+    options: {
+      A: "Store as plain text",
+      B: "Hash with salt using bcrypt or similar, never log passwords",
+      C: "Encrypt with reversible encryption",
+      D: "Store in source code"
+    },
+    correctAnswer: "B",
+    code: "String hashed = BCrypt.hashpw(password, BCrypt.gensalt());",
+    explanation: "Hash passwords với bcrypt/argon2, có salt. NEVER store plain text, log passwords, hoặc dùng weak hashing (MD5, SHA1). Không thể và không cần decrypt."
+  },
+  {
+    question: "What is the convention for code reviews?",
+    options: {
+      A: "Skip reviews for small changes",
+      B: "All code should be reviewed, focus on readability and conventions",
+      C: "Only senior developers review",
+      D: "Reviews are optional"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "All code nên được review trước khi merge. Check: correctness, conventions, readability, test coverage. PR nên small và focused. Constructive feedback."
+  },
+  {
+    question: "What is the convention for test naming?",
+    options: {
+      A: "test1, test2, test3",
+      B: "Descriptive names: should/given-when-then format",
+      C: "Random names",
+      D: "Same as method names"
+    },
+    correctAnswer: "B",
+    code: "@Test\nvoid shouldReturnEmptyListWhenNoUsersExist() { }\n// or\nvoid givenNoUsers_whenFindAll_thenReturnEmpty() { }",
+    explanation: "Test names nên describe behavior. Formats: shouldDoXWhenY, givenX_whenY_thenZ. Khi fail, tên cho biết ngay what's broken."
+  },
+  {
+    question: "What is the AAA pattern in testing?",
+    options: {
+      A: "Arrange, Act, Assert",
+      B: "Add, Adjust, Apply",
+      C: "Always Assert All",
+      D: "Async Await Assert"
     },
     correctAnswer: "A",
-    code: null,
-    explanation: "Lệnh 'git tag -d tag-name' xóa tag local. Để xóa tag trên remote, dùng 'git push origin --delete tag-name' hoặc 'git push origin :refs/tags/tag-name'."
-  },
-  {
-    question: "What does 'git push origin v1.0.0' do?",
-    options: {
-      A: "Pushes branch v1.0.0",
-      B: "Pushes the tag v1.0.0 to remote",
-      C: "Versions the push",
-      D: "Creates remote tag"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git push origin v1.0.0' đẩy một tag cụ thể lên remote. Mặc định 'git push' KHÔNG push tags, phải push riêng hoặc dùng --tags."
-  },
-  {
-    question: "What does 'git show commit-hash' do?",
-    options: {
-      A: "Shows all commits",
-      B: "Shows detailed information and diff of a specific commit",
-      C: "Shows the repository",
-      D: "Displays the hash"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git show commit-hash' hiển thị thông tin chi tiết về một commit (author, date, message) và diff của commit đó. Có thể dùng cho tags, branches, hoặc commit hash."
-  },
-  {
-    question: "What is a 'detached HEAD' state?",
-    options: {
-      A: "A broken Git repository",
-      B: "When HEAD points directly to a commit instead of a branch",
-      C: "When Git is not working",
-      D: "A deleted branch"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Detached HEAD xảy ra khi checkout một commit cụ thể thay vì branch. Trong trạng thái này, commits mới sẽ không thuộc branch nào và có thể bị mất nếu không tạo branch mới."
-  },
-  {
-    question: "What should you do if you make commits in detached HEAD state?",
-    options: {
-      A: "Panic",
-      B: "Create a new branch to save the commits",
-      C: "Restart computer",
-      D: "Nothing, they're automatically saved"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Nếu commit trong detached HEAD state, cần tạo branch mới với 'git branch branch-name' hoặc 'git checkout -b branch-name' để lưu commits. Nếu không, commits có thể bị mất khi checkout nơi khác."
-  },
-  {
-    question: "What does 'git clean -f' do?",
-    options: {
-      A: "Cleans the repository",
-      B: "Removes untracked files from working directory",
-      C: "Formats the code",
-      D: "Cleans up commits"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git clean -f' (force) xóa các untracked files khỏi working directory. Cẩn thận vì không thể phục hồi! Nên dùng 'git clean -n' (dry-run) để xem files sẽ bị xóa trước."
-  },
-  {
-    question: "What does 'git clean -fd' do?",
-    options: {
-      A: "Cleans files only",
-      B: "Removes untracked files and directories",
-      C: "Formats directories",
-      D: "Finds duplicates"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git clean -fd' xóa cả untracked files và directories. Flag -d bao gồm directories. Rất mạnh và nguy hiểm, nên test với -n trước!"
-  },
-  {
-    question: "What does 'git blame filename' do?",
-    options: {
-      A: "Blames you for errors",
-      B: "Shows who last modified each line of a file",
-      C: "Finds bugs in file",
-      D: "Deletes the file"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git blame filename' hiển thị author, commit hash, và timestamp cho mỗi dòng trong file. Hữu ích để tìm ai viết/sửa đổi một đoạn code cụ thể."
-  },
-  {
-    question: "What does 'git bisect' help you do?",
-    options: {
-      A: "Split the repository",
-      B: "Use binary search to find which commit introduced a bug",
-      C: "Divide branches",
-      D: "Create two copies"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git bisect' dùng binary search để tìm commit gây ra bug. Bạn đánh dấu good/bad commits, Git tự động checkout commits ở giữa để test, nhanh chóng tìm ra commit lỗi."
-  },
-  {
-    question: "What does 'git archive' do?",
-    options: {
-      A: "Archives old commits",
-      B: "Creates a zip or tar archive of the repository files",
-      C: "Backs up to archive.org",
-      D: "Deletes old files"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git archive' tạo archive file (zip, tar, etc.) của repository không bao gồm .git folder. Hữu ích để export source code cho release hoặc deployment."
-  },
-  {
-    question: "What is 'origin/main' or 'origin/master'?",
-    options: {
-      A: "The main branch on remote",
-      B: "A remote-tracking branch that mirrors the main branch on origin",
-      C: "The original main branch",
-      D: "The master origin"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'origin/main' là remote-tracking branch, một bản copy local của main branch trên remote origin. Nó được update khi bạn fetch/pull, cho biết trạng thái của remote branch."
-  },
-  {
-    question: "What does 'git push -f' stand for and why is it dangerous?",
-    options: {
-      A: "Fast push, not dangerous",
-      B: "Force push, overwrites remote history and can lose others' work",
-      C: "Fix push, fixes errors",
-      D: "Final push, completes the operation"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git push -f' (force) ghi đè lịch sử remote bằng local. CỰC KỲ NGUY HIỂM trên shared branches vì có thể xóa mất công việc của người khác. Chỉ dùng trên personal branches hoặc khi thực sự cần thiết."
-  },
-  {
-    question: "What is a 'git hook'?",
-    options: {
-      A: "A fishing tool",
-      B: "Scripts that run automatically at certain Git events (commit, push, etc.)",
-      C: "A way to hook repositories together",
-      D: "A branch connector"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Git hooks là scripts tự động chạy tại các events nhất định (pre-commit, post-commit, pre-push, etc.). Dùng để enforce coding standards, run tests, hoặc tự động hóa workflows."
-  },
-  {
-    question: "Where are Git hooks stored?",
-    options: {
-      A: "In the cloud",
-      B: "In the .git/hooks directory",
-      C: "In the main directory",
-      D: "On GitHub servers"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Git hooks được lưu trong thư mục .git/hooks/ dưới dạng executable scripts. Git cung cấp sample hooks, bạn có thể rename (bỏ .sample) và customize chúng."
-  },
-  {
-    question: "What does 'git config --global user.name \"Your Name\"' do?",
-    options: {
-      A: "Changes Git username",
-      B: "Sets the name that will be attached to your commits globally",
-      C: "Creates a new user",
-      D: "Configures the repository name"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh này set tên author sẽ được ghi trong mọi commits bạn tạo (global config). Để set cho riêng một repository, bỏ --global và chạy trong repository đó."
-  },
-  {
-    question: "What does 'git config --global user.email \"email@example.com\"' do?",
-    options: {
-      A: "Sends email",
-      B: "Sets the email that will be attached to your commits globally",
-      C: "Creates email account",
-      D: "Configures email notifications"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh này set email author cho commits. Rất quan trọng để đúng email, đặc biệt khi làm việc với GitHub - email cần khớp với GitHub account để contributions được tính."
-  },
-  {
-    question: "What does 'git config --list' do?",
-    options: {
-      A: "Lists all files",
-      B: "Shows all Git configuration settings",
-      C: "Lists all branches",
-      D: "Creates a configuration list"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git config --list' hiển thị tất cả Git configs (global và local), bao gồm user.name, user.email, aliases, và nhiều settings khác. Hữu ích để kiểm tra cấu hình."
-  },
-  {
-    question: "What does 'git log --author=\"John\"' do?",
-    options: {
-      A: "Changes author to John",
-      B: "Shows only commits by author containing 'John'",
-      C: "Logs in as John",
-      D: "Creates author John"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git log --author=\"John\"' filter log chỉ hiển thị commits của authors có tên chứa 'John'. Hữu ích để xem contributions của một người cụ thể."
-  },
-  {
-    question: "What does 'git log --since=\"2 weeks ago\"' show?",
-    options: {
-      A: "Commits from 2 weeks in the future",
-      B: "Commits made in the last 2 weeks",
-      C: "The second week's commits",
-      D: "Weekly reports"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git log --since=\"2 weeks ago\"' hiển thị commits từ 2 tuần trước đến nay. Có thể dùng --since, --after, --until, --before với nhiều format dates."
-  },
-  {
-    question: "What does 'git log --grep=\"bugfix\"' do?",
-    options: {
-      A: "Fixes bugs",
-      B: "Searches for commits with 'bugfix' in the commit message",
-      C: "Greps files for 'bugfix'",
-      D: "Creates bugfix log"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git log --grep=\"bugfix\"' tìm commits có 'bugfix' trong commit message. Hữu ích để tìm các commits liên quan đến một topic hoặc ticket number."
-  },
-  {
-    question: "What does 'git log -p' show?",
-    options: {
-      A: "Pretty log",
-      B: "Commit history with patch (diff) for each commit",
-      C: "Public commits",
-      D: "Private log"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git log -p' (patch) hiển thị commit history kèm theo diff chi tiết của mỗi commit. Cho phép xem chính xác những gì đã thay đổi trong mỗi commit."
-  },
-  {
-    question: "What does 'git log --stat' show?",
-    options: {
-      A: "Statistical analysis",
-      B: "Commit history with statistics of changed files",
-      C: "Status of repository",
-      D: "Static files"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git log --stat' hiển thị commit history với thống kê files đã thay đổi và số lượng insertions/deletions. Tóm tắt thay đổi mà không show full diff."
-  },
-  {
-    question: "What is 'git revert'?",
-    options: {
-      A: "Same as git reset",
-      B: "Creates a new commit that undoes changes from a previous commit",
-      C: "Reverts all changes",
-      D: "Goes back in time"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git revert commit-hash' tạo một commit MỚI để undo changes của commit cũ. Khác với reset, revert KHÔNG xóa history, nên an toàn cho shared branches."
-  },
-  {
-    question: "What is the difference between 'git reset' and 'git revert'?",
-    options: {
-      A: "They are the same",
-      B: "Reset removes commits from history; revert creates new commit to undo",
-      C: "Revert is faster",
-      D: "Reset is safer"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Reset xóa commits khỏi history (rewrites history), nguy hiểm cho shared branches. Revert tạo commit mới để undo, giữ nguyên history, an toàn cho collaboration."
-  },
-  {
-    question: "What does 'git mv oldname newname' do?",
-    options: {
-      A: "Moves files between directories",
-      B: "Renames a file and stages the change",
-      C: "Creates a new file",
-      D: "Moves commits"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git mv oldname newname' rename file và tự động stage change đó. Tương đương với mv + git rm + git add, nhưng tiện hơn và Git nhận biết đây là rename operation."
-  },
-  {
-    question: "What does 'git restore filename' do (Git 2.23+)?",
-    options: {
-      A: "Restores deleted repository",
-      B: "Discards changes in working directory for the file",
-      C: "Restores from backup",
-      D: "Repairs corrupted file"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git restore filename' (Git 2.23+) discard changes trong working directory, quay về trạng thái của last commit. Thay thế cho 'git checkout -- filename'."
-  },
-  {
-    question: "What does 'git restore --staged filename' do?",
-    options: {
-      A: "Restores staged files",
-      B: "Unstages the file but keeps changes in working directory",
-      C: "Deletes staged changes",
-      D: "Stages the file"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git restore --staged filename' unstage file (bỏ khỏi staging area) nhưng giữ changes trong working directory. Thay thế cho 'git reset HEAD filename'."
-  },
-  {
-    question: "What does 'git shortlog' do?",
-    options: {
-      A: "Shows short logs",
-      B: "Summarizes git log output by author",
-      C: "Shortens commit messages",
-      D: "Creates shortcuts"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git shortlog' tóm tắt 'git log' output theo author, hiển thị số lượng commits và messages của mỗi contributor. Hữu ích cho release notes hoặc contribution summary."
-  },
-  {
-    question: "What does 'git describe' do?",
-    options: {
-      A: "Describes the repository",
-      B: "Shows the most recent tag reachable from a commit",
-      C: "Writes descriptions",
-      D: "Describes files"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git describe' tìm tag gần nhất từ commit hiện tại và tạo human-readable name. Ví dụ: 'v1.0.0-14-g2414721' (14 commits sau tag v1.0.0, commit hash g2414721)."
-  },
-  {
-    question: "What does .gitattributes file do?",
-    options: {
-      A: "Sets file attributes",
-      B: "Defines attributes for paths (line endings, diff, merge strategies)",
-      C: "Attributes files",
-      D: "Creates file metadata"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "File .gitattributes định nghĩa attributes cho paths, như xử lý line endings (text/binary), merge strategies, diff algorithms. Ví dụ: '*.sh text eol=lf' đảm bảo shell scripts dùng LF endings."
-  },
-  {
-    question: "What line ending issue does .gitattributes help solve?",
-    options: {
-      A: "Ending sentences",
-      B: "Cross-platform line ending conflicts (CRLF vs LF)",
-      C: "Network line issues",
-      D: "Code line limits"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Windows dùng CRLF (\\r\\n), Unix/Mac dùng LF (\\n) cho line endings. .gitattributes với '* text=auto' tự động normalize line endings, tránh conflicts và spurious diffs."
-  },
-  {
-    question: "What does 'git submodule' allow you to do?",
-    options: {
-      A: "Create sub-branches",
-      B: "Include and track other Git repositories within your repository",
-      C: "Split repository into modules",
-      D: "Create smaller versions"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Git submodules cho phép include repository khác như một subdirectory trong repository chính, giữ riêng history. Hữu ích cho dependencies hoặc shared libraries."
-  },
-  {
-    question: "What does 'git worktree' allow you to do?",
-    options: {
-      A: "Work on trees",
-      B: "Check out multiple branches simultaneously in different directories",
-      C: "Creates work logs",
-      D: "Organizes files into tree structure"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git worktree' tạo linked working directories, cho phép checkout nhiều branches cùng lúc ở các thư mục khác nhau. Tiện khi cần làm việc trên nhiều features song song."
-  },
-  {
-    question: "What does 'git bundle' do?",
-    options: {
-      A: "Bundles files together",
-      B: "Creates a single file containing repository data for offline transfer",
-      C: "Packages for deployment",
-      D: "Creates zip files"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git bundle' đóng gói repository hoặc một phần repository thành một file để transfer offline. Hữu ích khi không có network access hoặc firewall chặn Git protocol."
-  },
-  {
-    question: "What is 'git filter-branch' used for?",
-    options: {
-      A: "Filtering logs",
-      B: "Rewriting Git history by applying filters (deprecated, use git-filter-repo)",
-      C: "Creating branch filters",
-      D: "Filtering files"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git filter-branch' dùng để rewrite history ở quy mô lớn (xóa sensitive data, thay đổi author). ĐÃ DEPRECATED, nên dùng 'git-filter-repo' thay thế vì nhanh và an toàn hơn."
-  },
-  {
-    question: "What does 'git gc' do?",
-    options: {
-      A: "Git compiler",
-      B: "Garbage collection - cleans up and optimizes the repository",
-      C: "Git counter",
-      D: "Global commit"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git gc' (garbage collection) dọn dẹp unnecessary files và optimize repository. Git tự động chạy định kỳ, nhưng có thể chạy manual để giảm disk usage và tăng performance."
-  },
-  {
-    question: "What is the three areas/stages model in Git?",
-    options: {
-      A: "Three branches",
-      B: "Working Directory, Staging Area (Index), Repository",
-      C: "Local, Remote, Cloud",
-      D: "Past, Present, Future"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Git có 3 khu vực: Working Directory (files bạn đang làm việc), Staging Area/Index (files chuẩn bị commit), và Repository (.git directory - lịch sử commits). Hiểu 3 areas này rất quan trọng!"
-  },
-  {
-    question: "Which command moves changes from Working Directory to Staging Area?",
-    options: {
-      A: "git commit",
-      B: "git add",
-      C: "git push",
-      D: "git stage"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git add' di chuyển changes từ Working Directory vào Staging Area. Đây là bước chuẩn bị cho commit."
-  },
-  {
-    question: "Which command moves changes from Staging Area to Repository?",
-    options: {
-      A: "git add",
-      B: "git commit",
-      C: "git save",
-      D: "git store"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git commit' di chuyển changes từ Staging Area vào Repository, tạo một snapshot mới trong lịch sử. Đây là bước finalize changes."
-  },
-  {
-    question: "In .gitignore, what does '!' at the beginning of a line do?",
-    options: {
-      A: "Important file",
-      B: "Negates the pattern (un-ignores files)",
-      C: "Exclamation mark",
-      D: "Warning"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Dấu '!' ở đầu dòng trong .gitignore negate (đảo ngược) pattern. Dùng để un-ignore files đã bị ignore bởi pattern trước đó. Ví dụ: '*.log' ignore all logs, '!important.log' giữ lại file này."
-  },
-  {
-    question: "What happens if you commit without staging (git commit -a)?",
-    options: {
-      A: "Error occurs",
-      B: "All tracked modified files are automatically staged and committed",
-      C: "Nothing happens",
-      D: "Repository is deleted"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git commit -a' (hoặc -am với message) tự động stage tất cả tracked modified files và commit. Tiện lợi nhưng cẩn thận vì có thể commit nhầm files không muốn."
-  },
-  {
-    question: "How do you rename a branch?",
-    options: {
-      A: "git branch -r old new",
-      B: "git branch -m old-name new-name",
-      C: "git rename old new",
-      D: "git branch --rename old new"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git branch -m old-name new-name' rename branch. Nếu đang ở branch cần rename, chỉ cần 'git branch -m new-name'. -m là move/rename."
-  },
-  {
-    question: "What does 'git log --follow filename' do?",
-    options: {
-      A: "Follows you on Git",
-      B: "Shows commit history of a file including renames",
-      C: "Tracks file changes",
-      D: "Follows branches"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git log --follow filename' hiển thị lịch sử commit của file kể cả khi file đã bị rename. Mặc định 'git log filename' không theo dõi qua renames."
-  },
-  {
-    question: "What is a 'fork' on GitHub?",
-    options: {
-      A: "A eating utensil",
-      B: "A personal copy of someone else's repository on your GitHub account",
-      C: "A branch",
-      D: "A merge conflict"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Fork trên GitHub là một bản copy của repository người khác vào account của bạn. Cho phép bạn freely experiment mà không ảnh hưởng original project. Thường dùng cho contributing to open source."
-  },
-  {
-    question: "What is 'upstream' in the context of forked repositories?",
-    options: {
-      A: "Going up the river",
-      B: "The original repository that you forked from",
-      C: "The newest version",
-      D: "Your local repository"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'Upstream' là original repository mà bạn fork từ đó. 'Origin' là fork của bạn. Thường add upstream remote để pull updates từ original repo: 'git remote add upstream URL'."
-  },
-  {
-    question: "What does 'git fetch upstream' do in a forked repository?",
-    options: {
-      A: "Fetches your changes",
-      B: "Downloads changes from the original repository",
-      C: "Uploads to upstream",
-      D: "Synchronizes branches"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git fetch upstream' tải về changes từ original repository (upstream). Sau đó có thể merge vào local branch để sync với original repo."
-  },
-  {
-    question: "What is a merge conflict marker?",
-    options: {
-      A: "A type of pen",
-      B: "Special symbols (<<<<<<<, =======, >>>>>>>) that mark conflicting sections",
-      C: "A person who marks conflicts",
-      D: "A branch marker"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Khi có conflict, Git thêm markers: <<<<<<< HEAD (your changes), ======= (separator), >>>>>>> branch-name (incoming changes). Bạn phải xóa markers này sau khi resolve conflict."
-  },
-  {
-    question: "After resolving merge conflicts, what should you do?",
-    options: {
-      A: "Nothing",
-      B: "Stage the resolved files with 'git add' and complete the merge with 'git commit'",
-      C: "Delete the files",
-      D: "Restart Git"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Sau khi resolve conflicts, dùng 'git add' để stage resolved files, sau đó 'git commit' (hoặc 'git merge --continue' cho merge, 'git rebase --continue' cho rebase)."
-  },
-  {
-    question: "What does 'git merge --abort' do?",
-    options: {
-      A: "Aborts Git",
-      B: "Cancels the merge and returns to pre-merge state",
-      C: "Aborts all operations",
-      D: "Deletes branches"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git merge --abort' hủy merge operation và quay về trạng thái trước khi merge. Hữu ích khi gặp quá nhiều conflicts hoặc merge nhầm."
-  },
-  {
-    question: "What is 'fast-forward' vs 'no-fast-forward' merge?",
-    options: {
-      A: "Speed differences",
-      B: "Fast-forward moves branch pointer; no-fast-forward always creates merge commit",
-      C: "Different merge algorithms",
-      D: "Forward vs backward merge"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Fast-forward chỉ di chuyển branch pointer (linear history). No-fast-forward (--no-ff) luôn tạo merge commit, giữ rõ ràng feature branch history ngay cả khi có thể fast-forward."
-  },
-  {
-    question: "What does 'git stash branch branch-name' do?",
-    options: {
-      A: "Stashes a branch",
-      B: "Creates a new branch from stash and applies the stash to it",
-      C: "Branches a stash",
-      D: "Stashes and branches simultaneously"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git stash branch branch-name' tạo branch mới từ commit khi stash được tạo, checkout branch đó, apply stash, và drop stash nếu apply thành công. Hữu ích khi stash gây conflicts."
-  },
-  {
-    question: "Can you have multiple .gitignore files in a repository?",
-    options: {
-      A: "No, only one at root",
-      B: "Yes, you can have .gitignore in subdirectories with specific rules",
-      C: "Maximum two",
-      D: "Only in the .git folder"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Có thể có nhiều .gitignore files trong các subdirectories. Mỗi .gitignore áp dụng rules cho directory đó và subdirectories. Patterns trong parent directories vẫn có hiệu lực."
-  },
-  {
-    question: "What is the purpose of 'git fetch' before 'git merge'?",
-    options: {
-      A: "Not necessary",
-      B: "To get latest changes from remote without automatically merging",
-      C: "To speed up merge",
-      D: "To fix errors"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git fetch' tải changes từ remote mà không tự động merge, cho phép review changes trước. Sau đó có thể 'git merge' khi sẵn sàng. 'git pull' = 'git fetch' + 'git merge'."
-  },
-  {
-    question: "What does 'git rebase -i --root' allow you to do?",
-    options: {
-      A: "Root access to Git",
-      B: "Interactive rebase of all commits including the first commit",
-      C: "Delete root directory",
-      D: "Rebase only root files"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git rebase -i --root' cho phép interactive rebase toàn bộ lịch sử từ commit đầu tiên. Mạnh mẽ để clean up toàn bộ history, nhưng cẩn thận với shared repositories!"
-  },
-  {
-    question: "What happens if you delete a branch that has unmerged commits?",
-    options: {
-      A: "Git deletes it without warning",
-      B: "Git prevents deletion with -d, but allows with -D",
-      C: "Commits are automatically merged",
-      D: "Repository becomes corrupted"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git branch -d' (safe delete) từ chối xóa branch chưa merge để bảo vệ work. 'git branch -D' (force delete) xóa bất kể trạng thái. Luôn cẩn thận với -D!"
-  },
-  {
-    question: "What does 'git commit --fixup=commit-hash' do?",
-    options: {
-      A: "Fixes up your repository",
-      B: "Creates a fixup commit for later squashing in interactive rebase",
-      C: "Repairs corrupted commits",
-      D: "Fixes commit errors"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git commit --fixup=hash' tạo fixup commit với message 'fixup! original-message'. Khi rebase với --autosquash, fixup commit tự động squash vào commit target. Workflow pro!"
-  },
-  {
-    question: "What does 'git rebase -i --autosquash' do?",
-    options: {
-      A: "Automatically squashes bugs",
-      B: "Automatically reorders and squashes fixup/squash commits",
-      C: "Squashes all commits",
-      D: "Creates auto-commits"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git rebase -i --autosquash' tự động sắp xếp và squash các fixup!/squash! commits vào target commits của chúng. Kết hợp với --fixup để clean history hiệu quả."
-  },
-  {
-    question: "What is 'git cherry' used for?",
-    options: {
-      A: "Picking cherries",
-      B: "Finding commits that haven't been merged upstream",
-      C: "Cherry picking automatically",
-      D: "Creating cherry branches"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git cherry branch upstream' tìm commits trong branch chưa được merge vào upstream. Hiển thị + (chưa merge) hoặc - (đã merge). Hữu ích để track what needs to be pushed/merged."
-  },
-  {
-    question: "What does 'git apply' do?",
-    options: {
-      A: "Applies for a job",
-      B: "Applies a patch file to the working directory",
-      C: "Applies changes automatically",
-      D: "Applies configurations"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git apply patch-file' áp dụng patch file (tạo bằng git diff) vào working directory. Khác với 'git am', apply không tạo commit, chỉ thay đổi files."
-  },
-  {
-    question: "What does 'git am' do?",
-    options: {
-      A: "Morning Git",
-      B: "Applies patches from mailbox format and creates commits",
-      C: "Automatic merge",
-      D: "Adds messages"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git am' (apply mailbox) áp dụng patches từ email format và tự động tạo commits với author info và messages từ patch. Dùng trong email-based workflows."
-  },
-  {
-    question: "What does 'git format-patch' do?",
-    options: {
-      A: "Formats code",
-      B: "Generates patch files from commits for email submission",
-      C: "Formats patches nicely",
-      D: "Creates format documentation"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git format-patch' tạo patch files từ commits, format phù hợp cho email submission. Mỗi commit thành một .patch file. Dùng trong open source email workflows."
-  },
-  {
-    question: "What does 'git request-pull' do?",
-    options: {
-      A: "Requests help",
-      B: "Generates a summary of changes for pull request",
-      C: "Pulls requests from server",
-      D: "Requests permissions"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git request-pull' tạo summary message mô tả changes để gửi maintainers, bao gồm commit range và diffstat. Dùng trong email-based workflows thay vì GitHub PRs."
-  },
-  {
-    question: "What is 'git notes' used for?",
-    options: {
-      A: "Taking notes during coding",
-      B: "Adding notes to commits without changing commit hash",
-      C: "Creating note files",
-      D: "Noting errors"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git notes' thêm metadata/notes vào commits mà KHÔNG thay đổi commit hash. Notes riêng biệt với commit, có thể fetch/push riêng. Hữu ích cho code reviews, build status."
-  },
-  {
-    question: "What does 'git grep pattern' do?",
-    options: {
-      A: "Greets patterns",
-      B: "Searches for pattern in tracked files",
-      C: "Groups patterns",
-      D: "Generates patterns"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git grep pattern' tìm kiếm pattern trong tracked files của repository. Nhanh hơn regular grep vì chỉ search tracked files, tôn trọng .gitignore. Có nhiều options như -n (line numbers)."
-  },
-  {
-    question: "What does 'git bisect start' begin?",
-    options: {
-      A: "Starting Git",
-      B: "A binary search process to find the commit that introduced a bug",
-      C: "Bisecting branches",
-      D: "Starting a section"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git bisect start' bắt đầu binary search để tìm bad commit. Sau đó mark commits là good/bad, Git tự động checkout middle commits để test. Rất hiệu quả: log(n) thay vì n tests!"
-  },
-  {
-    question: "In git bisect, what do 'git bisect good' and 'git bisect bad' do?",
-    options: {
-      A: "Judge code quality",
-      B: "Mark commits as working or broken to narrow down the problematic commit",
-      C: "Sort commits",
-      D: "Create good/bad branches"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Trong bisect, 'git bisect good' mark commit hiện tại là working, 'git bisect bad' mark là broken. Git dùng thông tin này để narrow down range và checkout commit tiếp theo để test."
-  },
-  {
-    question: "What does 'git fsck' do?",
-    options: {
-      A: "File system check",
-      B: "Verifies connectivity and validity of objects in Git database",
-      C: "Fast check",
-      D: "Fixes errors"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git fsck' (file system check) kiểm tra integrity của Git database, tìm corrupted hoặc dangling objects. Hữu ích để diagnose repository issues hoặc recover lost commits."
-  },
-  {
-    question: "What does 'git prune' do?",
-    options: {
-      A: "Prunes branches",
-      B: "Removes unreachable objects from the object database",
-      C: "Prunes files",
-      D: "Cleans code"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git prune' xóa objects không còn reachable từ any branch/tag. Thường không cần chạy manual vì 'git gc' tự động chạy prune. Cẩn thận vì có thể mất dangling commits!"
-  },
-  {
-    question: "What is the difference between 'git fetch --prune' and 'git prune'?",
-    options: {
-      A: "They are the same",
-      B: "'git fetch --prune' removes stale remote-tracking branches; 'git prune' removes unreachable objects",
-      C: "Fetch prune is faster",
-      D: "No real difference"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git fetch --prune' xóa local remote-tracking branches khi remote branch đã bị delete. 'git prune' xóa unreachable objects trong database. Hai lệnh hoàn toàn khác mục đích!"
-  },
-  {
-    question: "What does 'git ls-files' show?",
-    options: {
-      A: "Lists directories",
-      B: "Shows information about files in the index and working tree",
-      C: "Lists large files",
-      D: "Long list of files"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git ls-files' hiển thị files trong index (staging area) và working tree. Có nhiều options: -c (cached), -m (modified), -o (others/untracked), -i (ignored). Công cụ low-level nhưng mạnh."
-  },
-  {
-    question: "What does 'git ls-tree' show?",
-    options: {
-      A: "Lists tree structure",
-      B: "Shows tree object contents including files and subdirectories",
-      C: "Lists branches in tree format",
-      D: "Long listing of trees"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git ls-tree' hiển thị contents của tree object (directories trong Git). Mỗi dòng show mode, type, hash, và name. Low-level command để explore Git's internal structure."
-  },
-  {
-    question: "What is 'git rev-parse' used for?",
-    options: {
-      A: "Reversing commits",
-      B: "Parsing revision parameters and returning commit hashes",
-      C: "Reviewing code",
-      D: "Parsing files"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git rev-parse' converts symbolic references (HEAD, branch names, tags) thành commit hashes. Ví dụ: 'git rev-parse HEAD' returns full hash của current commit. Dùng trong scripts."
-  },
-  {
-    question: "What does 'git symbolic-ref HEAD' show?",
-    options: {
-      A: "Symbolic representation",
-      B: "The current branch reference that HEAD points to",
-      C: "Symbols in HEAD",
-      D: "Reference manual"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git symbolic-ref HEAD' hiển thị symbolic reference mà HEAD đang trỏ đến (ví dụ: refs/heads/main). Trong detached HEAD state, lệnh này sẽ báo lỗi vì HEAD trỏ trực tiếp đến commit."
-  },
-  {
-    question: "What does 'git update-ref' do?",
-    options: {
-      A: "Updates files",
-      B: "Updates object references (branches, tags) to point to new commits",
-      C: "Updates remote references",
-      D: "Refreshes references"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git update-ref' update reference (branch, tag) để trỏ đến commit khác. Low-level command, thường dùng trong scripts. Ví dụ: 'git update-ref refs/heads/main new-hash'."
-  },
-  {
-    question: "When collaborating, should you rebase shared branches?",
-    options: {
-      A: "Yes, always",
-      B: "No, it rewrites history and causes problems for others",
-      C: "Only on Mondays",
-      D: "Doesn't matter"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "KHÔNG NÊN rebase shared/public branches! Rebase thay đổi history, gây conflicts và confusion cho collaborators. Golden rule: chỉ rebase local/personal branches, dùng merge cho shared branches."
-  },
-  {
-    question: "What does 'git commit -v' do?",
-    options: {
-      A: "Verbose commit",
-      B: "Shows diff in the commit message editor",
-      C: "Version commit",
-      D: "Validates commit"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git commit -v' (verbose) hiển thị full diff trong editor khi viết commit message. Giúp review changes kỹ hơn trước khi commit."
-  },
-  {
-    question: "What does 'git log --merges' show?",
-    options: {
-      A: "All commits",
-      B: "Only merge commits",
-      C: "Merged branches",
-      D: "Merge conflicts"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Lệnh 'git log --merges' chỉ hiển thị merge commits (commits có 2+ parents). Ngược lại, --no-merges bỏ qua merge commits, chỉ show regular commits."
-  },
-  {
-    question: "What does 'git log --first-parent' do?",
-    options: {
-      A: "Shows first commit",
-      B: "Follows only the first parent of merge commits",
-      C: "Shows parent directory",
-      D: "Lists first contributors"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git log --first-parent' chỉ follow first parent của merge commits, bỏ qua merged branches. Hữu ích để xem main branch history mà không bị 'nhiễu' bởi feature branch commits."
-  },
-  {
-    question: "What does 'git rebase --onto newbase upstream branch' do?",
-    options: {
-      A: "Simple rebase",
-      B: "Rebases commits from upstream..branch onto newbase",
-      C: "Creates three branches",
-      D: "Merges onto newbase"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git rebase --onto newbase upstream branch' rebase commits trong range upstream..branch lên newbase. Advanced technique để transplant commits hoặc remove commits khỏi history."
-  },
-  {
-    question: "What is 'git rerere'?",
-    options: {
-      A: "A rare command",
-      B: "Reuse recorded resolution - remembers how you resolved conflicts",
-      C: "Re-read errors",
-      D: "Rerun commands"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git rerere' (reuse recorded resolution) ghi nhớ cách bạn resolve conflicts. Lần sau gặp conflict tương tự, Git tự động apply resolution. Enable với 'git config --global rerere.enabled true'."
-  },
-  {
-    question: "What does 'git pull --rebase=preserve' do (now deprecated)?",
-    options: {
-      A: "Preserves files",
-      B: "Rebases while preserving merge commits",
-      C: "Preserves history",
-      D: "Protective pull"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git pull --rebase=preserve' rebase nhưng giữ merge commits trong local history. ĐÃ DEPRECATED, thay bằng '--rebase=merges' trong Git 2.18+."
-  },
-  {
-    question: "What does 'git range-diff' do?",
-    options: {
-      A: "Shows diff in ranges",
-      B: "Compares two commit ranges to see how they differ",
-      C: "Calculates range",
-      D: "Finds differences"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git range-diff' so sánh hai commit ranges (ví dụ: versions của cùng feature branch). Hữu ích để xem changes giữa v1 và v2 của pull request sau rebase/amendments."
-  },
-  {
-    question: "What is the purpose of 'git maintenance'?",
-    options: {
-      A: "Fixes bugs",
-      B: "Runs maintenance tasks to optimize repository performance",
-      C: "Maintains branches",
-      D: "Repairs files"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git maintenance' (Git 2.30+) chạy background tasks để optimize repo: incremental repack, commit-graph, loose objects cleanup. Có thể schedule automatic runs."
-  },
-  {
-    question: "What does 'git sparse-checkout' enable?",
-    options: {
-      A: "Sparse commits",
-      B: "Checking out only a subset of files from the repository",
-      C: "Sparse branches",
-      D: "Checking sparsely"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git sparse-checkout' cho phép checkout chỉ một subset của files, không phải toàn bộ repository. Cực kỳ hữu ích cho monorepos lớn khi bạn chỉ cần làm việc với một phần nhỏ."
-  },
-  {
-    question: "What is 'git switch --orphan new-branch'?",
-    options: {
-      A: "Switches to orphan",
-      B: "Creates a new branch with no commit history",
-      C: "Switches to old branch",
-      D: "Adopts branches"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git switch --orphan new-branch' tạo branch mới không có parent commits (orphan). Hữu ích để tạo gh-pages branch hoặc start fresh history trong cùng repo."
-  },
-  {
-    question: "What does 'git push --atomic' do?",
-    options: {
-      A: "Atomic push",
-      B: "Ensures all refs are updated or none (all-or-nothing push)",
-      C: "Pushes atoms",
-      D: "Automatic push"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git push --atomic' đảm bảo tất cả refs được update hoặc không ref nào (atomic transaction). Nếu một ref fail, tất cả đều fail. Tránh partial updates khi push multiple branches."
-  },
-  {
-    question: "What does 'git push --mirror' do?",
-    options: {
-      A: "Creates mirror",
-      B: "Pushes all refs (branches, tags) and mirrors repository structure",
-      C: "Reflects changes",
-      D: "Duplicates repository"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'git push --mirror' push ALL refs (branches, tags, remote-tracking) và mirror repository structure. Dùng để tạo exact copy hoặc migrate repository. Cẩn thận vì có thể overwrite!"
+    code: "@Test\nvoid testAdd() {\n    // Arrange\n    Calculator calc = new Calculator();\n    // Act\n    int result = calc.add(2, 3);\n    // Assert\n    assertEquals(5, result);\n}",
+    explanation: "AAA pattern: Arrange (setup), Act (execute), Assert (verify). Clear separation của 3 phases. Makes tests easy to read and maintain."
   },
   {
-    question: "What is 'git instaweb'?",
+    question: "What is the convention for handling null in method parameters?",
     options: {
-      A: "Instagram for Git",
-      B: "Instantly starts a web server to browse repository via gitweb",
-      C: "Instant website",
-      D: "Web installer"
+      A: "Accept null silently",
+      B: "Validate early and fail fast with clear message",
+      C: "Ignore null parameters",
+      D: "Return null"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "'git instaweb' tự động start web server (gitweb) để browse repository qua web browser. Tiện để quick visualization của repo. Dùng 'git instaweb --stop' để tắt."
+    code: "public void setName(String name) {\n    this.name = Objects.requireNonNull(name, \"name cannot be null\");\n}",
+    explanation: "Validate parameters early, fail fast. Objects.requireNonNull() hoặc manual check. Clear error message better than NullPointerException deep in code."
   },
   {
-    question: "What does 'git replace' do?",
+    question: "What is the convention for thread safety documentation?",
     options: {
-      A: "Replaces files",
-      B: "Creates references to replace one object with another",
-      C: "Finds and replaces text",
-      D: "Replaces commits"
+      A: "Don't document",
+      B: "Document with @ThreadSafe, @NotThreadSafe, or Javadoc",
+      C: "Assume everything is thread-safe",
+      D: "Only document if thread-safe"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "'git replace' tạo references để 'thay thế' một object bằng object khác khi display. Không thay đổi thực tế objects. Dùng để graft history hoặc fix mistakes mà không rewrite history."
+    code: "/**\n * This class is thread-safe.\n * @ThreadSafe\n */\npublic class Counter { }",
+    explanation: "Explicitly document thread-safety. Dùng annotations hoặc Javadoc. Caller cần biết có thể share giữa threads hay không. Default assume NOT thread-safe."
   },
   {
-    question: "What does 'git interpret-trailers' do?",
+    question: "What is the convention for immutable objects?",
     options: {
-      A: "Translates messages",
-      B: "Parses and modifies commit message trailers (Signed-off-by, etc.)",
-      C: "Interprets errors",
-      D: "Reads trailers"
+      A: "All fields public",
+      B: "Final class, final fields, no setters, defensive copies",
+      C: "Use setters freely",
+      D: "Immutability not important"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "'git interpret-trailers' parse và manipulate commit message trailers (lines ở cuối commit message như 'Signed-off-by: Name <email>'). Dùng để add/modify metadata theo format chuẩn."
+    code: "public final class User {\n    private final String name;\n    public User(String name) { this.name = name; }\n    public String getName() { return name; }\n}",
+    explanation: "Immutable: final class (prevent subclass), private final fields, no setters, constructor-only initialization. Defensive copies cho mutable fields. Thread-safe by default."
   },
   {
-    question: "What is the purpose of '.git/info/exclude' file?",
+    question: "What is the convention for enum methods in Java?",
     options: {
-      A: "Excludes information",
-      B: "Personal gitignore rules not shared with repository",
-      C: "Excludes folders",
-      D: "Information file"
+      A: "Enums shouldn't have methods",
+      B: "Enums can have fields, constructors, and methods",
+      C: "Only static methods",
+      D: "Only toString()"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "File '.git/info/exclude' giống .gitignore nhưng local-only, không được commit. Dùng cho personal ignore patterns không muốn share (IDE settings, personal scripts). .gitignore dùng cho shared rules."
+    code: "enum Status {\n    ACTIVE(\"Active\"), INACTIVE(\"Inactive\");\n    private final String display;\n    Status(String display) { this.display = display; }\n    public String getDisplay() { return display; }\n}",
+    explanation: "Java enums có thể có fields, constructor (private), methods. Rich enums thay thế magic strings với behavior. Override toString() cho display."
   },
   {
-    question: "What does 'git credential' help manage?",
+    question: "What is the convention for Optional usage in Java?",
     options: {
-      A: "Credit cards",
-      B: "Username and password credentials for remote repositories",
-      C: "User credentials system-wide",
-      D: "SSH credentials"
+      A: "Use for all return types",
+      B: "Use for return types that may be absent, never for fields/parameters",
+      C: "Never use Optional",
+      D: "Use instead of null everywhere"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "'git credential' system quản lý usernames/passwords cho remote repos. Có thể configure credential helpers để cache hoặc store credentials: 'git config credential.helper cache'."
+    code: "public Optional<User> findById(int id) { }\n// Don't: Optional<String> name; // as field",
+    explanation: "Optional cho return types express 'may be absent'. Không dùng cho fields, parameters, collections. isPresent() + get() là antipattern, dùng orElse(), map(), ifPresent()."
   },
   {
-    question: "What is 'git multi-pack-index'?",
+    question: "What is the convention for stream operations in Java?",
     options: {
-      A: "Multiple packages",
-      B: "An index of multiple pack files for improved performance",
-      C: "Packing tool",
-      D: "Multiple repositories"
+      A: "Put everything on one line",
+      B: "One operation per line for readability",
+      C: "Avoid streams",
+      D: "Always use parallel streams"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "'git multi-pack-index' tạo index spanning multiple pack files, cải thiện performance khi repo có nhiều packs. Part của modern Git optimization features."
+    code: "users.stream()\n    .filter(u -> u.isActive())\n    .map(User::getName)\n    .sorted()\n    .collect(Collectors.toList());",
+    explanation: "Mỗi stream operation một dòng. Dễ đọc và debug. Parallel streams chỉ dùng khi cần thiết và data đủ lớn. Method references khi có thể."
   },
   {
-    question: "What does 'git switch -' do?",
+    question: "What is the convention for lambda expressions?",
     options: {
-      A: "Switches off Git",
-      B: "Switches to the previously checked out branch",
-      C: "Switches minus mode",
-      D: "Removes switch"
+      A: "Always use block body { }",
+      B: "Use expression body when possible, name parameters meaningfully",
+      C: "Always use method references",
+      D: "Avoid lambdas"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "'git switch -' (hoặc 'git checkout -') chuyển về branch trước đó, giống 'cd -' trong shell. Shortcut tiện lợi để toggle giữa hai branches đang làm việc."
+    code: "// Good: user -> user.getName()\n// Good: User::getName\n// Avoid: u -> u.getName() // unclear 'u'\n// Avoid: x -> { return x.getName(); } // unnecessary block",
+    explanation: "Prefer expression body (no braces) khi simple. Method references khi applicable. Meaningful parameter names. Block body only khi cần multiple statements."
   },
   {
-    question: "When should you use 'git pull' vs 'git fetch + git merge'?",
+    question: "What is the final best practice summary for coding conventions?",
     options: {
-      A: "Always use git pull",
-      B: "'git pull' for quick sync; 'fetch + merge' when you want to review changes first",
-      C: "They are exactly the same",
-      D: "Never use git pull"
+      A: "Conventions don't matter",
+      B: "Consistency, readability, and team agreement are most important",
+      C: "Follow every rule strictly",
+      D: "Each developer should have their own style"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "'git pull' tiện và nhanh cho simple sync. 'git fetch + git merge' tốt hơn khi muốn review remote changes (với git log, git diff) trước khi merge, tránh bất ngờ và conflicts."
+    explanation: "Coding conventions quan trọng vì: consistency across codebase, easier onboarding, reduce cognitive load. Team agree on conventions, enforce với linters/formatters. Conventions có thể adapt cho project."
   }
 ]
