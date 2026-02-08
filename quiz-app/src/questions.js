@@ -1,2421 +1,1515 @@
 export const questions = [
-  // ============ VARIABLE NAMING CONVENTIONS (1-20) ============
+  // ===== VARIABLE NAMING (1-20) =====
   {
-    question: "Which of the following is the correct naming convention for a constant in Java?",
+    question: "What is wrong with the following variable name?",
     options: {
-      A: "maxValue",
-      B: "MAX_VALUE",
-      C: "MaxValue",
-      D: "max_value"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Trong Java, hằng số (constants) được đặt tên theo quy tắc SCREAMING_SNAKE_CASE - tất cả chữ in hoa và các từ được phân cách bằng dấu gạch dưới."
-  },
-  {
-    question: "What is the correct naming convention for a local variable in Java?",
-    options: {
-      A: "MyVariable",
-      B: "my_variable",
-      C: "myVariable",
-      D: "MY_VARIABLE"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Biến cục bộ trong Java sử dụng quy tắc camelCase - chữ cái đầu tiên viết thường, các từ tiếp theo viết hoa chữ cái đầu."
-  },
-  {
-    question: "Which variable name follows Java naming conventions for a boolean variable?",
-    options: {
-      A: "active",
-      B: "isActive",
-      C: "Active",
-      D: "ACTIVE"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Biến boolean trong Java thường bắt đầu bằng 'is', 'has', 'can', 'should' để thể hiện rõ ý nghĩa true/false. Ví dụ: isActive, hasPermission, canEdit."
-  },
-  {
-    question: "What is wrong with this variable name in Java: '2ndPlace'?",
-    options: {
-      A: "It contains a number",
-      B: "It starts with a number",
-      C: "It uses camelCase",
+      A: "The name is too long",
+      B: "Variable names should not start with uppercase",
+      C: "The name contains invalid characters",
       D: "Nothing is wrong"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "Tên biến trong Java không được bắt đầu bằng số. Đây là quy tắc cú pháp bắt buộc. Có thể sửa thành 'secondPlace' hoặc 'place2nd'."
+    code: `int TotalAmount = 100;`,
+    explanation: "Trong Java, tên biến phải bắt đầu bằng chữ thường và sử dụng camelCase. 'TotalAmount' nên được viết là 'totalAmount'. Chữ cái đầu viết hoa được dành cho tên class."
   },
   {
-    question: "Which of the following is NOT a valid variable name in Java?",
+    question: "Which variable name follows Java naming conventions?",
     options: {
-      A: "_count",
-      B: "$total",
-      C: "class",
-      D: "myVar1"
+      A: "user_name",
+      B: "UserName",
+      C: "userName",
+      D: "username_"
     },
     correctAnswer: "C",
     code: null,
-    explanation: "'class' là từ khóa (reserved keyword) trong Java nên không thể sử dụng làm tên biến. Các từ khóa khác như 'int', 'public', 'static' cũng không được dùng."
+    explanation: "Java sử dụng camelCase cho tên biến. 'userName' là đúng chuẩn vì bắt đầu bằng chữ thường và các từ tiếp theo viết hoa chữ cái đầu. 'user_name' là snake_case (dùng trong Python), 'UserName' là PascalCase (dùng cho class)."
   },
   {
-    question: "What naming convention should be used for a private instance variable in Java?",
+    question: "Identify the naming convention violation in this code:",
     options: {
-      A: "PUBLIC_NAME",
-      B: "privateName",
-      C: "_privateName",
-      D: "PrivateName"
+      A: "Constant should use UPPER_SNAKE_CASE",
+      B: "Constant should use camelCase",
+      C: "The name is too short",
+      D: "Nothing is wrong"
+    },
+    correctAnswer: "A",
+    code: `public static final double piValue = 3.14159;`,
+    explanation: "Trong Java, hằng số (final static) phải được đặt tên theo UPPER_SNAKE_CASE. Đúng phải là 'PI_VALUE' hoặc 'PI'. Quy tắc này giúp phân biệt hằng số với biến thông thường trong code."
+  },
+  {
+    question: "What naming issue exists in this JavaScript code?",
+    options: {
+      A: "Should use const instead of let",
+      B: "Variable name should be more descriptive",
+      C: "Variable name uses wrong case style",
+      D: "Variable name is a reserved keyword"
+    },
+    correctAnswer: "B",
+    code: `let x = users.filter(u => u.age > 18);`,
+    explanation: "Biến 'x' không mô tả được nội dung chứa bên trong. Nên đặt tên có ý nghĩa như 'adultUsers' hoặc 'usersOver18'. Tên biến cần phản ánh mục đích và nội dung để code dễ đọc và bảo trì."
+  },
+  {
+    question: "Which variable declaration violates naming conventions?",
+    options: {
+      A: "int itemCount = 0;",
+      B: "String firstName = \"\";",
+      C: "boolean Is_Active = true;",
+      D: "double totalPrice = 0.0;"
+    },
+    correctAnswer: "C",
+    code: null,
+    explanation: "Biến 'Is_Active' vi phạm 2 quy tắc: (1) Bắt đầu bằng chữ hoa, (2) Sử dụng gạch dưới thay vì camelCase. Đúng phải là 'isActive'. Các biến boolean thường bắt đầu bằng 'is', 'has', 'can', 'should'."
+  },
+  {
+    question: "What is the problem with this loop variable?",
+    options: {
+      A: "Variable 'i' is acceptable for loop counters",
+      B: "Should use 'index' instead",
+      C: "Loop variables must be final",
+      D: "Variable should be declared outside the loop"
+    },
+    correctAnswer: "A",
+    code: `for (int i = 0; i < array.length; i++) {
+    System.out.println(array[i]);
+}`,
+    explanation: "Biến 'i' hoàn toàn chấp nhận được cho loop counter trong các vòng lặp ngắn và đơn giản. Đây là quy ước phổ biến được chấp nhận rộng rãi. Chỉ cần đặt tên dài hơn khi vòng lặp phức tạp hoặc có nhiều vòng lặp lồng nhau."
+  },
+  {
+    question: "Identify the convention violation:",
+    options: {
+      A: "Method parameter should be final",
+      B: "Parameter name starts with wrong prefix",
+      C: "No violation, this is correct",
+      D: "Parameter name should be shorter"
+    },
+    correctAnswer: "B",
+    code: `public void setName(String str_name) {
+    this.name = str_name;
+}`,
+    explanation: "Trong Java không nên dùng tiền tố kiểu Hungarian notation như 'str_'. Đúng phải là 'name' hoặc 'newName'. Hungarian notation (gắn kiểu dữ liệu vào tên) đã lỗi thời vì IDE hiện đại hiển thị kiểu dữ liệu rõ ràng."
+  },
+  {
+    question: "Which is the correct way to name a boolean variable?",
+    options: {
+      A: "boolean active = true;",
+      B: "boolean isActive = true;",
+      C: "boolean Active = true;",
+      D: "boolean ACTIVE = true;"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Biến instance private trong Java sử dụng camelCase như các biến thông thường. Không cần thêm prefix '_' như một số ngôn ngữ khác (Python). Access modifier đã thể hiện tính private."
+    explanation: "Biến boolean nên bắt đầu bằng 'is', 'has', 'can', 'should', 'was', 'will' để thể hiện rõ đây là giá trị true/false. 'isActive' rõ ràng hơn 'active' khi đọc code: if(isActive) vs if(active)."
   },
   {
-    question: "Which variable name best represents a collection of users?",
+    question: "What naming convention is violated here?",
     options: {
-      A: "user",
-      B: "userList",
-      C: "users",
-      D: "USER"
+      A: "Interface name should start with 'I'",
+      B: "Interface name should use PascalCase",
+      C: "Nothing is wrong, this follows convention",
+      D: "Interface name is too generic"
     },
     correctAnswer: "C",
-    code: null,
-    explanation: "Tên biến cho collection nên ở dạng số nhiều (plural) như 'users', 'items', 'orders'. Điều này giúp code dễ đọc và phân biệt với biến đơn lẻ."
+    code: `public interface UserService {
+    User findById(Long id);
+}`,
+    explanation: "Code này hoàn toàn đúng chuẩn Java! Interface trong Java dùng PascalCase và KHÔNG cần tiền tố 'I' (đó là quy ước của C#). Tên 'UserService' rõ ràng và mô tả đúng chức năng."
   },
   {
-    question: "What is the recommended way to name a temporary loop variable?",
+    question: "Find the naming error in this code:",
     options: {
-      A: "temporaryLoopVariable",
-      B: "i",
-      C: "temp",
-      D: "loopVar"
-    },
-    correctAnswer: "B",
-    code: "for (int i = 0; i < 10; i++) { }",
-    explanation: "Các biến vòng lặp đơn giản thường dùng tên ngắn như 'i', 'j', 'k'. Đây là convention được chấp nhận rộng rãi vì phạm vi sử dụng rất nhỏ và mọi người đều hiểu."
-  },
-  {
-    question: "Which naming style is used for JavaScript constants in modern ES6+?",
-    options: {
-      A: "camelCase",
-      B: "PascalCase",
-      C: "SCREAMING_SNAKE_CASE",
-      D: "kebab-case"
+      A: "Class name should be lowercase",
+      B: "Variable name should match class name",
+      C: "Package should be in lowercase",
+      D: "No error exists"
     },
     correctAnswer: "C",
-    code: "const MAX_RETRIES = 3;",
-    explanation: "Trong JavaScript ES6+, hằng số thường được đặt tên theo SCREAMING_SNAKE_CASE giống Java. Tuy nhiên, nếu const chứa object/array có thể thay đổi, vẫn dùng camelCase."
+    code: `package com.Company.Utils;
+
+public class StringHelper {
+    // ...
+}`,
+    explanation: "Package name phải viết thường hoàn toàn: 'com.company.utils'. Quy tắc này giúp tránh xung đột với tên class (dùng PascalCase) và là tiêu chuẩn trong Java từ đầu."
   },
   {
-    question: "What is wrong with this variable name: 'x'?",
+    question: "Which JavaScript variable naming is incorrect?",
     options: {
-      A: "It's too short",
-      B: "It doesn't describe the purpose",
-      C: "Both A and B",
-      D: "Nothing, it's acceptable in all cases"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Tên biến 'x' quá ngắn và không mô tả mục đích sử dụng. Tên biến nên có ý nghĩa rõ ràng. Tuy nhiên, 'x' có thể chấp nhận trong các phép tính toán học ngắn hoặc lambda expressions."
-  },
-  {
-    question: "Which is the correct way to name an interface in Java?",
-    options: {
-      A: "iRunnable",
-      B: "RunnableInterface",
-      C: "Runnable",
-      D: "RUNNABLE"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Interface trong Java đặt tên theo PascalCase giống class, thường là tính từ (Runnable, Serializable) hoặc danh từ. Không cần prefix 'I' như C#."
-  },
-  {
-    question: "What is the Hungarian notation and should it be used in Java?",
-    options: {
-      A: "Prefix with data type (strName), not recommended",
-      B: "Suffix with data type (nameStr), recommended",
-      C: "Using underscores, recommended",
-      D: "Using camelCase, not recommended"
+      A: "const MAX_SIZE = 100;",
+      B: "let userList = [];",
+      C: "var $element = document.getElementById('app');",
+      D: "const _private = 'secret';"
     },
     correctAnswer: "A",
     code: null,
-    explanation: "Hungarian notation là quy tắc đặt prefix theo kiểu dữ liệu (strName, intCount). Không khuyến khích trong Java vì IDE hiện đại đã hiển thị kiểu dữ liệu, và code trở nên khó đọc."
+    explanation: "Thực ra tất cả đều hợp lệ về mặt cú pháp JavaScript! Tuy nhiên, trong JS, hằng số thường dùng UPPER_SNAKE_CASE nên A là đúng convention. '$' prefix thường dùng cho jQuery elements, '_' prefix cho biến private."
   },
   {
-    question: "Which variable name follows the principle of meaningful naming?",
+    question: "What is wrong with this enum declaration?",
     options: {
-      A: "d",
-      B: "data",
-      C: "elapsedTimeInDays",
-      D: "eTD"
+      A: "Enum values should be in lowercase",
+      B: "Enum name should be plural",
+      C: "Nothing is wrong",
+      D: "Enum values should use camelCase"
     },
     correctAnswer: "C",
-    code: null,
-    explanation: "'elapsedTimeInDays' mô tả rõ ràng mục đích (thời gian đã trôi qua) và đơn vị (ngày). Tên biến có ý nghĩa giúp code tự giải thích mà không cần comment."
+    code: `public enum OrderStatus {
+    PENDING,
+    PROCESSING,
+    COMPLETED,
+    CANCELLED
+}`,
+    explanation: "Enum này hoàn toàn đúng chuẩn! Tên enum dùng PascalCase số ít (OrderStatus, không phải OrderStatuses), và các giá trị enum dùng UPPER_SNAKE_CASE. Đây là convention chuẩn của Java."
   },
   {
-    question: "In JavaScript, which naming convention is used for private class fields?",
+    question: "Identify the naming issue:",
     options: {
-      A: "_privateField",
-      B: "#privateField",
-      C: "privateField",
-      D: "PRIVATE_FIELD"
+      A: "Method should return void",
+      B: "Variable shadows class field",
+      C: "Local variable has same name as parameter",
+      D: "No issue, shadowing is acceptable here"
     },
     correctAnswer: "B",
-    code: "class MyClass { #privateField = 10; }",
-    explanation: "JavaScript ES2022+ hỗ trợ private fields với prefix '#'. Đây là cách chính thức để tạo private field, khác với convention '_' chỉ là quy ước không có enforcement."
+    code: `public class User {
+    private String name;
+    
+    public void process() {
+        String name = "temp";
+        System.out.println(name);
+    }
+}`,
+    explanation: "Biến local 'name' che (shadow) field 'name' của class. Điều này gây nhầm lẫn và có thể dẫn đến bug. Nên đặt tên khác như 'tempName' hoặc 'localName' để tránh shadowing."
   },
   {
-    question: "What is the recommended maximum length for a variable name?",
+    question: "Which naming follows the Single Responsibility hint?",
     options: {
-      A: "5 characters",
-      B: "10 characters",
-      C: "No strict limit, but should be descriptive yet concise",
-      D: "30 characters exactly"
+      A: "UserManagerAndValidator",
+      B: "UserDataProcessor",
+      C: "UserValidator",
+      D: "UserServiceHelperUtil"
     },
     correctAnswer: "C",
     code: null,
-    explanation: "Không có giới hạn cứng cho độ dài tên biến. Nguyên tắc là đủ dài để mô tả rõ ràng, nhưng đủ ngắn để dễ đọc. Thường từ 10-20 ký tự là phù hợp."
+    explanation: "Tên class 'UserValidator' chỉ rõ một trách nhiệm duy nhất: validate user. Các tên như 'UserManagerAndValidator' hoặc 'UserDataProcessor' gợi ý class làm nhiều việc. Tên ngắn gọn, cụ thể thường tốt hơn."
   },
   {
-    question: "Which is the correct naming for an enum constant in Java?",
+    question: "What naming convention applies to this code?",
     options: {
-      A: "monday",
-      B: "Monday",
-      C: "MONDAY",
-      D: "Mon"
+      A: "Generic type should be single uppercase letter",
+      B: "Generic type should be descriptive word",
+      C: "Both A and B are acceptable",
+      D: "Generic type should be lowercase"
     },
     correctAnswer: "C",
-    code: "enum Day { MONDAY, TUESDAY, WEDNESDAY }",
-    explanation: "Enum constants trong Java sử dụng SCREAMING_SNAKE_CASE giống như hằng số. Điều này giúp phân biệt enum values với các biến thông thường."
+    code: `public class Repository<T> {
+    public T findById(Long id) { ... }
+}
+
+public class Cache<KeyType, ValueType> {
+    public ValueType get(KeyType key) { ... }
+}`,
+    explanation: "Cả hai cách đều được chấp nhận! Single letter (T, E, K, V) phổ biến cho generic đơn giản. Tên mô tả (KeyType, ValueType) tốt khi có nhiều type parameters hoặc cần rõ nghĩa hơn."
   },
   {
-    question: "What naming convention should generic type parameters follow in Java?",
+    question: "Find the variable naming mistake:",
     options: {
-      A: "Full words like 'Type'",
-      B: "Single uppercase letters like 'T', 'E', 'K', 'V'",
-      C: "Lowercase letters",
-      D: "Prefixed with 'Type_'"
+      A: "Array variable should end with 's' or 'List'",
+      B: "Variable type should match name",
+      C: "Variable should be final",
+      D: "Name is correct"
+    },
+    correctAnswer: "A",
+    code: `String[] name = {"John", "Jane", "Bob"};`,
+    explanation: "Biến mảng nên có tên số nhiều hoặc có suffix cho biết đây là collection: 'names', 'nameList', hoặc 'nameArray'. Điều này giúp người đọc code hiểu ngay đây là danh sách, không phải giá trị đơn lẻ."
+  },
+  {
+    question: "Which method name follows JavaBeans convention?",
+    options: {
+      A: "public String name() { return name; }",
+      B: "public String getName() { return name; }",
+      C: "public String fetchName() { return name; }",
+      D: "public String retrieveName() { return name; }"
     },
     correctAnswer: "B",
-    code: "public class Box<T> { }",
-    explanation: "Generic type parameters trong Java dùng chữ cái in hoa đơn: T (Type), E (Element), K (Key), V (Value), N (Number). Đây là convention chuẩn giúp code ngắn gọn."
-  },
-  {
-    question: "Which variable name is most appropriate for storing a user's age?",
-    options: {
-      A: "a",
-      B: "age",
-      C: "userAge",
-      D: "theAgeOfTheUser"
-    },
-    correctAnswer: "C",
     code: null,
-    explanation: "'userAge' cân bằng giữa ngắn gọn và mô tả rõ ràng. 'age' có thể gây nhầm lẫn nếu có nhiều đối tượng, 'theAgeOfTheUser' quá dài và thừa từ."
+    explanation: "JavaBeans convention yêu cầu getter dùng prefix 'get' (hoặc 'is' cho boolean). 'getName()' là đúng chuẩn. Các framework như Spring, Hibernate dựa vào convention này để auto-detect properties."
   },
   {
-    question: "In Java, what prefix is commonly used for boolean getter methods?",
+    question: "Identify the naming problem:",
     options: {
-      A: "get",
-      B: "is",
-      C: "has",
-      D: "Both B and C"
+      A: "Numbers in variable names are not allowed",
+      B: "Variable name starting with number is invalid",
+      C: "This is valid Java code",
+      D: "Should use words instead of numbers"
+    },
+    correctAnswer: "B",
+    code: `int 2ndPlace = 2;
+String player1 = "Alice";`,
+    explanation: "Biến '2ndPlace' KHÔNG hợp lệ vì bắt đầu bằng số - Java không cho phép điều này. Còn 'player1' thì hợp lệ vì số đứng sau chữ cái. Nên dùng 'secondPlace' thay cho '2ndPlace'."
+  },
+  {
+    question: "What is the convention for temporary variables?",
+    options: {
+      A: "Always use 'temp' prefix",
+      B: "Use descriptive names based on purpose",
+      C: "Use single letters only",
+      D: "Use 'tmp' suffix"
+    },
+    correctAnswer: "B",
+    code: `// Swapping values
+int temp = a;
+a = b;
+b = temp;`,
+    explanation: "Trong trường hợp swap đơn giản, 'temp' là chấp nhận được. Nhưng quy tắc chung là dùng tên mô tả mục đích: 'tempUserBeforeUpdate', 'cachedResult'. Tên tốt giúp debug và maintain code dễ hơn."
+  },
+  {
+    question: "Which constant naming is correct in JavaScript?",
+    options: {
+      A: "const apiEndpoint = '/api/users';",
+      B: "const API_ENDPOINT = '/api/users';",
+      C: "const ApiEndpoint = '/api/users';",
+      D: "Both A and B are acceptable"
     },
     correctAnswer: "D",
-    code: "public boolean isActive() { }\npublic boolean hasPermission() { }",
-    explanation: "Boolean getter methods thường dùng prefix 'is' (isActive, isValid) hoặc 'has' (hasChildren, hasPermission). Điều này giúp code đọc như câu tiếng Anh tự nhiên."
-  },
-  {
-    question: "Which naming is correct for a static factory method in Java?",
-    options: {
-      A: "CreateInstance",
-      B: "create_instance",
-      C: "createInstance",
-      D: "CREATEINSTANCE"
-    },
-    correctAnswer: "C",
-    code: "public static User createInstance() { }",
-    explanation: "Static factory methods trong Java dùng camelCase như các method khác. Các tên phổ biến: of(), valueOf(), getInstance(), newInstance(), create()."
+    code: null,
+    explanation: "Trong JavaScript, cả camelCase và UPPER_SNAKE_CASE đều được dùng cho const. UPPER_SNAKE_CASE thường dùng cho 'true constants' (không thay đổi), camelCase cho const references đến objects/arrays có thể mutate."
   },
 
-  // ============ FUNCTION/METHOD NAMING CONVENTIONS (21-40) ============
+  // ===== FUNCTION/METHOD NAMING (21-40) =====
   {
-    question: "What naming convention should methods follow in Java?",
+    question: "What is wrong with this method name?",
     options: {
-      A: "PascalCase",
-      B: "camelCase",
-      C: "snake_case",
-      D: "SCREAMING_CASE"
+      A: "Method name too long",
+      B: "Should not use 'And' in method name",
+      C: "Method should be static",
+      D: "Nothing wrong"
     },
     correctAnswer: "B",
-    code: "public void calculateTotal() { }",
-    explanation: "Methods trong Java sử dụng camelCase - bắt đầu bằng chữ thường, các từ tiếp theo viết hoa chữ đầu. Ví dụ: getName(), calculateSum(), processOrder()."
+    code: `public void saveUserAndSendEmail(User user) {
+    userRepository.save(user);
+    emailService.sendWelcomeEmail(user);
+}`,
+    explanation: "Method có 'And' trong tên vi phạm Single Responsibility Principle. Một method chỉ nên làm một việc. Nên tách thành 'saveUser()' và 'sendWelcomeEmail()' riêng biệt, sau đó gọi từ một method orchestrator."
   },
   {
-    question: "Which is the recommended way to name a method that returns a boolean?",
+    question: "Which method name best describes its action?",
     options: {
-      A: "checkValid()",
-      B: "valid()",
-      C: "isValid()",
-      D: "getValid()"
+      A: "process()",
+      B: "doIt()",
+      C: "calculateTotalPrice()",
+      D: "handle()"
     },
     correctAnswer: "C",
     code: null,
-    explanation: "Method trả về boolean nên bắt đầu bằng 'is', 'has', 'can', 'should', 'will'. Điều này giúp code đọc tự nhiên: if (user.isActive()) { ... }"
+    explanation: "'calculateTotalPrice()' mô tả chính xác method làm gì. Các tên như 'process()', 'doIt()', 'handle()' quá chung chung, không cho biết method thực sự làm gì. Method name nên trả lời được câu hỏi 'This method does what?'"
   },
   {
-    question: "What should a method name start with according to conventions?",
+    question: "Identify the naming convention issue:",
     options: {
-      A: "A noun",
-      B: "A verb",
-      C: "An adjective",
-      D: "A number"
+      A: "Method name should start with lowercase",
+      B: "Method name should describe action",
+      C: "Parameters need better names",
+      D: "Return type should match name"
+    },
+    correctAnswer: "A",
+    code: `public class Calculator {
+    public int Add(int a, int b) {
+        return a + b;
+    }
+}`,
+    explanation: "Trong Java, method name phải bắt đầu bằng chữ thường: 'add' không phải 'Add'. PascalCase dùng cho class name, camelCase dùng cho method và variable. Đây là quy tắc cơ bản của Java naming convention."
+  },
+  {
+    question: "What prefix should boolean-returning methods use?",
+    options: {
+      A: "get",
+      B: "is, has, can, should",
+      C: "check",
+      D: "return"
+    },
+    correctAnswer: "B",
+    code: `public boolean validateUser(User user) { ... }`,
+    explanation: "Methods trả về boolean nên dùng prefix như 'is', 'has', 'can', 'should', 'was', 'will'. Ví dụ: 'isValid()', 'hasPermission()', 'canAccess()'. Code 'validateUser' nên đổi thành 'isValidUser()' hoặc 'isUserValid()'."
+  },
+  {
+    question: "Which getter method name follows convention?",
+    options: {
+      A: "public boolean getActive() { return active; }",
+      B: "public boolean isActive() { return active; }",
+      C: "public boolean active() { return active; }",
+      D: "public boolean hasActive() { return active; }"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Tên method nên bắt đầu bằng động từ vì method thực hiện hành động: calculate(), process(), validate(), send(), create(), delete()."
+    explanation: "Với boolean properties, getter phải dùng 'is' prefix thay vì 'get'. 'isActive()' là đúng chuẩn JavaBeans. 'getActive()' dùng cho các kiểu non-boolean. 'hasActive()' chỉ dùng khi kiểm tra sự tồn tại của something."
   },
   {
-    question: "Which method name follows the getter convention in Java?",
+    question: "Find the method naming violation:",
     options: {
-      A: "name()",
-      B: "getName()",
-      C: "fetchName()",
-      D: "returnName()"
+      A: "Method does too many things",
+      B: "Method name uses underscore",
+      C: "Return type mismatch",
+      D: "No violation"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "Getter trong Java theo convention JavaBeans: getPropertyName(). Điều này cho phép các framework như Spring, Hibernate tự động detect và sử dụng."
+    code: `public void update_user_profile(User user) {
+    // update logic
+}`,
+    explanation: "Java methods sử dụng camelCase, không dùng snake_case với underscore. Đúng phải là 'updateUserProfile'. Snake_case là convention của Python và C. Mỗi ngôn ngữ có quy ước riêng cần tuân thủ."
   },
   {
-    question: "What is the correct setter method name for a property called 'email'?",
+    question: "What's wrong with this factory method name?",
     options: {
-      A: "email(String email)",
-      B: "setEmail(String email)",
-      C: "changeEmail(String email)",
-      D: "updateEmail(String email)"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Setter trong Java theo convention JavaBeans: setPropertyName(value). Pattern này được sử dụng rộng rãi trong Java ecosystem và các IDE tự động generate."
-  },
-  {
-    question: "Which of the following is a good name for a method that converts an object to JSON?",
-    options: {
-      A: "json()",
-      B: "makeJson()",
-      C: "toJson()",
-      D: "convertToJson()"
+      A: "Should use 'new' keyword instead",
+      B: "Factory method should use 'create' or 'of' prefix",
+      C: "Nothing wrong",
+      D: "Should return void"
     },
     correctAnswer: "C",
-    code: null,
-    explanation: "Methods chuyển đổi thường dùng pattern 'toX()': toString(), toJson(), toArray(), toList(). Ngắn gọn và rõ ràng về mục đích chuyển đổi."
-  },
-  {
-    question: "What naming pattern should be used for factory methods?",
-    options: {
-      A: "make(), build(), create()",
-      B: "of(), valueOf(), from()",
-      C: "new(), init(), construct()",
-      D: "All of the above are acceptable"
-    },
-    correctAnswer: "D",
-    code: null,
-    explanation: "Factory methods có nhiều pattern: of() (List.of()), valueOf() (Integer.valueOf()), from() (Date.from()), create(), newInstance(). Tùy context mà chọn phù hợp."
-  },
-  {
-    question: "In JavaScript, what naming convention is used for constructor functions (before ES6 classes)?",
-    options: {
-      A: "camelCase",
-      B: "PascalCase",
-      C: "snake_case",
-      D: "SCREAMING_CASE"
-    },
-    correctAnswer: "B",
-    code: "function Person(name) { this.name = name; }",
-    explanation: "Constructor functions trong JavaScript dùng PascalCase để phân biệt với functions thông thường. Khi gọi với 'new', biết ngay đây là constructor."
+    code: `public static User createUser(String name) {
+    return new User(name);
+}`,
+    explanation: "Method này hoàn toàn đúng! Factory methods thường dùng các prefix như 'create', 'of', 'from', 'valueOf', 'getInstance', 'newInstance'. 'createUser' là tên rõ ràng và đúng convention."
   },
   {
     question: "Which method name indicates it may throw an exception?",
     options: {
-      A: "parseOrNull()",
-      B: "tryParse()",
-      C: "parse()",
-      D: "safeParse()"
+      A: "parseInteger()",
+      B: "tryParseInteger()",
+      C: "parseIntegerSafe()",
+      D: "None of the above can indicate this"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Prefix 'try' ngụ ý method có thể fail và xử lý lỗi internally (thường return Optional hoặc null thay vì throw). 'parseInteger()' có thể throw, 'tryParseInteger()' ngụ ý xử lý an toàn. Đây là convention phổ biến trong .NET và được áp dụng trong Java."
+  },
+  {
+    question: "Identify the issue with this async method name in JavaScript:",
+    options: {
+      A: "Should have 'async' in name",
+      B: "Should have 'Async' suffix",
+      C: "The naming is acceptable",
+      D: "Should return a callback"
     },
     correctAnswer: "C",
-    code: null,
-    explanation: "Method không có prefix đặc biệt (parse()) thường có thể throw exception. Các variant như tryParse(), parseOrNull(), parseOrDefault() thường không throw mà trả về giá trị thay thế."
+    code: `async function fetchUserData(userId) {
+    const response = await fetch(\`/api/users/\${userId}\`);
+    return response.json();
+}`,
+    explanation: "Tên method async không bắt buộc phải có suffix 'Async'. Với JavaScript modern dùng async/await, tên method như 'fetchUserData' là đủ rõ ràng. 'Async' suffix phổ biến hơn trong C#/.NET ecosystem."
   },
   {
-    question: "What is the convention for naming callback functions in JavaScript?",
+    question: "What naming issue exists in this code?",
     options: {
-      A: "onEventName or handleEventName",
-      B: "CALLBACK_NAME",
-      C: "callback_name",
-      D: "_callbackName"
+      A: "Method name reveals implementation",
+      B: "Method name is too short",
+      C: "Should use different return type",
+      D: "No issue"
     },
     correctAnswer: "A",
-    code: "onClick, onSubmit, handleClick, handleSubmit",
-    explanation: "Callback functions trong JavaScript thường dùng prefix 'on' hoặc 'handle': onClick, onSubmit, handleClick, handleFormSubmit. React components thường dùng pattern này."
+    code: `public List<User> selectUsersFromMySQLDatabase() {
+    return jdbcTemplate.query("SELECT * FROM users", userMapper);
+}`,
+    explanation: "Tên method không nên tiết lộ implementation details như database type. Nên đặt là 'findAllUsers()' hoặc 'getUsers()'. Nếu sau này đổi từ MySQL sang PostgreSQL, tên method sẽ bị sai lệch. Abstraction quan trọng!"
   },
   {
-    question: "Which naming is appropriate for a method that validates user input?",
+    question: "Which method signature follows clean code principles?",
     options: {
-      A: "userInput()",
-      B: "validateUserInput()",
-      C: "inputValidation()",
-      D: "isUserInput()"
+      A: "void process(String a, String b, int c, boolean d, List e)",
+      B: "void createOrder(OrderRequest request)",
+      C: "void doStuff(Object... args)",
+      D: "void x(Map m)"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Method thực hiện validation nên bắt đầu bằng 'validate': validateUserInput(), validateEmail(). Động từ 'validate' rõ ràng cho biết method sẽ kiểm tra và có thể throw error."
+    explanation: "Method với parameter object (OrderRequest) gọn gàng và dễ mở rộng hơn. Quá nhiều parameters (A) khó đọc và dễ nhầm thứ tự. Varargs không rõ nghĩa (C), single-letter (D) không mô tả được. Clean code khuyên <= 3 parameters."
   },
   {
-    question: "What is the recommended approach for naming overloaded methods?",
+    question: "Find the naming problem:",
     options: {
-      A: "Use different names for each",
-      B: "Use the same name with different parameters",
-      C: "Add numbers to distinguish (method1, method2)",
-      D: "Add parameter type to name (methodInt, methodString)"
-    },
-    correctAnswer: "B",
-    code: "void print(String s) { }\nvoid print(int i) { }",
-    explanation: "Overloaded methods dùng cùng tên, khác nhau ở tham số. Java compiler phân biệt dựa trên signature. Không nên đặt tên khác nhau vì làm mất ý nghĩa overloading."
-  },
-  {
-    question: "In functional programming style, what prefix is often used for pure functions that create new values?",
-    options: {
-      A: "create",
-      B: "with",
-      C: "make",
-      D: "new"
-    },
-    correctAnswer: "B",
-    code: "user.withName(\"John\").withAge(25)",
-    explanation: "Pattern 'with' thường dùng cho immutable objects và method chaining. withX() trả về bản copy mới với thuộc tính X được thay đổi, object gốc không đổi."
-  },
-  {
-    question: "Which is NOT a good practice for method naming?",
-    options: {
-      A: "Using verbs at the beginning",
-      B: "Keeping names short and abbreviated",
-      C: "Making names descriptive of what the method does",
-      D: "Using camelCase in Java"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Không nên viết tắt tên method (calcTot thay vì calculateTotal). Tên rõ ràng quan trọng hơn ngắn gọn. IDE có autocomplete nên độ dài không phải vấn đề khi viết code."
-  },
-  {
-    question: "What does the 'find' prefix typically indicate in a method name?",
-    options: {
-      A: "The method always returns a value",
-      B: "The method may return null or empty",
-      C: "The method throws an exception if not found",
-      D: "The method modifies the original collection"
-    },
-    correctAnswer: "B",
-    code: "Optional<User> findUserById(int id)",
-    explanation: "Prefix 'find' thường indicate method có thể không tìm thấy và trả về null/Optional/empty. So với 'get' thường expect có giá trị và có thể throw exception nếu không có."
-  },
-  {
-    question: "Which method naming pattern indicates the method modifies the object in place?",
-    options: {
-      A: "sort()",
-      B: "sorted()",
-      C: "toSorted()",
-      D: "getSorted()"
-    },
-    correctAnswer: "A",
-    code: "list.sort(); // modifies list\nlist.stream().sorted(); // returns new stream",
-    explanation: "Động từ đơn (sort, add, remove) thường modify object in-place. Past participle (sorted) hoặc prefix 'to' (toSorted) thường trả về bản copy mới."
-  },
-  {
-    question: "In JavaScript, what is the convention for async functions?",
-    options: {
-      A: "Prefix with 'async'",
-      B: "Suffix with 'Async'",
-      C: "No special naming required",
-      D: "Prefix with 'await'"
+      A: "Setter should return void",
+      B: "Setter parameter should be 'name'",
+      C: "Both A and B are correct",
+      D: "No problem"
     },
     correctAnswer: "C",
-    code: "async function fetchUser() { }",
-    explanation: "JavaScript async functions không cần naming convention đặc biệt. Keyword 'async' trong declaration đã rõ ràng. Tuy nhiên, một số team thêm suffix 'Async' cho rõ ràng hơn."
+    code: `public class User {
+    private String name;
+    
+    public User setName(String n) {
+        this.name = n;
+        return this;
+    }
+}`,
+    explanation: "Có 2 vấn đề: (1) Tham số nên là 'name' thay vì 'n' để rõ nghĩa, (2) Setter truyền thống return void. Tuy nhiên, trả về 'this' là pattern Builder/Fluent interface - được chấp nhận nhưng cần nhất quán trong project."
   },
   {
-    question: "What naming convention should test methods follow in Java?",
+    question: "What is the convention for conversion methods?",
     options: {
-      A: "testMethodName",
-      B: "methodName_condition_expectedResult",
-      C: "test_methodName",
-      D: "All are acceptable depending on team convention"
+      A: "Use 'to' prefix (toJson, toString)",
+      B: "Use 'convert' prefix",
+      C: "Use 'as' prefix",
+      D: "Use 'make' prefix"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Conversion methods trong Java theo convention dùng prefix 'to': toString(), toArray(), toJson(), toDTO(). Prefix 'as' thường dùng cho view/wrapper không tạo object mới (asList()). 'convert' quá dài và ít được dùng."
+  },
+  {
+    question: "Identify the issue:",
+    options: {
+      A: "Method name doesn't match behavior",
+      B: "Should throw exception instead",
+      C: "Return type should be boolean",
+      D: "Nothing wrong"
+    },
+    correctAnswer: "A",
+    code: `public User getUser(Long id) {
+    User user = repository.findById(id);
+    if (user == null) {
+        return new User(); // return empty user
+    }
+    return user;
+}`,
+    explanation: "'getUser' ngụ ý sẽ trả về User hoặc throw exception nếu không tìm thấy. Việc trả về empty User gây hiểu nhầm. Nên đổi tên thành 'findUser' (có thể return null) hoặc 'getOrCreateUser'. Tên method phải phản ánh behavior."
+  },
+  {
+    question: "Which callback method name follows convention in JavaScript?",
+    options: {
+      A: "onClickHandler",
+      B: "handleClick",
+      C: "clickCallback",
+      D: "Both A and B are acceptable"
     },
     correctAnswer: "D",
     code: null,
-    explanation: "Test methods có nhiều conventions: testAdd(), add_twoNumbers_returnsSum(), shouldReturnSum(). JUnit 5 không yêu cầu prefix 'test'. Quan trọng là team thống nhất một style."
+    explanation: "Cả 'onClickHandler' và 'handleClick' đều là conventions phổ biến trong JavaScript/React. 'on' prefix thường dùng cho event props, 'handle' prefix cho actual handler functions. Quan trọng là consistency trong project."
   },
   {
-    question: "Which is the correct way to name a method that initializes resources?",
+    question: "What's wrong with this recursive method name?",
     options: {
-      A: "start()",
-      B: "init()",
-      C: "setup()",
-      D: "All are acceptable"
+      A: "Should indicate recursion in name",
+      B: "Name is misleading about depth",
+      C: "Nothing wrong with the name",
+      D: "Should use 'Recursive' suffix"
     },
-    correctAnswer: "D",
-    code: null,
-    explanation: "Các tên init(), initialize(), setup(), start() đều acceptable cho initialization. init() phổ biến trong Java, setup() thường dùng trong testing (JUnit @Before)."
+    correctAnswer: "C",
+    code: `public int factorial(int n) {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1);
+}`,
+    explanation: "Tên 'factorial' hoàn toàn ổn! Không cần thêm 'Recursive' vào tên vì đó là implementation detail. Method name nên mô tả WHAT (tính factorial), không phải HOW (recursive hay iterative)."
   },
   {
-    question: "What naming pattern is used for methods that release resources in Java?",
+    question: "Find the naming violation:",
     options: {
-      A: "close(), cleanup(), dispose()",
-      B: "end(), finish(), terminate()",
-      C: "release(), free(), destroy()",
-      D: "All of the above"
+      A: "Interface method should have body",
+      B: "Method name should not start with verb",
+      C: "Method names are correct",
+      D: "Should use default methods"
+    },
+    correctAnswer: "C",
+    code: `public interface OrderService {
+    Order createOrder(OrderRequest request);
+    void cancelOrder(Long orderId);
+    Order findOrderById(Long id);
+}`,
+    explanation: "Tất cả method names đều đúng convention! 'createOrder' là action verb + noun, 'cancelOrder' và 'findOrderById' cũng tương tự. Interface methods trong Java không cần body (abstract by default)."
+  },
+  {
+    question: "What does the method name suggest about its behavior?",
+    options: {
+      A: "Returns null if not found",
+      B: "Throws exception if not found",
+      C: "Creates new entity if not found",
+      D: "Cannot determine from name"
+    },
+    correctAnswer: "B",
+    code: `public User getUserById(Long id) {
+    // implementation
+}`,
+    explanation: "Prefix 'get' thường ngụ ý method expects entity to exist và sẽ throw exception nếu không tìm thấy. Dùng 'find' (findUserById) nếu có thể return null/Optional. Đây là convention phổ biến trong Spring và các frameworks."
+  },
+  {
+    question: "Which method name is most appropriate?",
+    options: {
+      A: "List<User> getAll()",
+      B: "List<User> getAllUsers()",
+      C: "List<User> all()",
+      D: "List<User> users()"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "'getAllUsers()' rõ ràng nhất vì nói rõ lấy TẤT CẢ USERS. 'getAll()' thiếu context - all what? 'all()' và 'users()' không theo naming convention của Java (thiếu verb). Method name nên là động từ hoặc verb phrase."
+  },
+  {
+    question: "Identify the problem in this test method name:",
+    options: {
+      A: "Test name is too long",
+      B: "Test name should use underscores",
+      C: "Test name lacks 'test' prefix",
+      D: "Nothing wrong"
     },
     correctAnswer: "D",
-    code: null,
-    explanation: "Các pattern phổ biến: close() (Closeable interface), cleanup(), dispose() (GUI), destroy() (Servlet). Pattern nào phụ thuộc vào context và conventions của framework đang dùng."
+    code: `@Test
+void shouldReturnEmptyListWhenNoUsersExist() {
+    // test implementation
+}`,
+    explanation: "Method name này hoàn hảo cho unit test! Format 'should...When...' rõ ràng mô tả expected behavior và condition. Với JUnit 5 (@Test annotation), không cần prefix 'test'. Tên dài OK cho test vì nó là documentation."
   },
 
-  // ============ COMMENTS AND DOCUMENTATION (41-60) ============
+  // ===== COMMENTS (41-55) =====
   {
-    question: "What is the correct format for a Javadoc comment?",
+    question: "What is wrong with this comment?",
     options: {
-      A: "// This is a comment",
-      B: "/* This is a comment */",
-      C: "/** This is a comment */",
-      D: "# This is a comment"
+      A: "Comment is too short",
+      B: "Comment states the obvious",
+      C: "Comment should be in Javadoc format",
+      D: "Nothing wrong"
+    },
+    correctAnswer: "B",
+    code: `// increment i by 1
+i++;`,
+    explanation: "Comment này thừa vì code đã tự giải thích. 'i++' là expression phổ biến, ai cũng hiểu. Comments chỉ nên giải thích WHY (tại sao làm vậy), không phải WHAT (code làm gì). Code tốt tự document chính nó."
+  },
+  {
+    question: "Which comment style is preferred for explaining complex logic?",
+    options: {
+      A: "// Single line comment",
+      B: "/* Multi-line comment */",
+      C: "/** Javadoc comment */",
+      D: "Depends on context"
+    },
+    correctAnswer: "D",
+    code: null,
+    explanation: "Tùy context: Javadoc (/**) cho public API documentation, single-line (//) cho brief inline explanations, multi-line (/*) cho temporary disable code hoặc explanations dài. Quan trọng là consistency trong project."
+  },
+  {
+    question: "Identify the comment anti-pattern:",
+    options: {
+      A: "Comment is not in English",
+      B: "Commented-out code should be removed",
+      C: "Comment formatting is wrong",
+      D: "No issue"
+    },
+    correctAnswer: "B",
+    code: `public void process() {
+    // old implementation
+    // if (condition) {
+    //     doSomething();
+    // }
+    
+    newImplementation();
+}`,
+    explanation: "Commented-out code là code smell! Nên xóa hoàn toàn vì có version control (Git) để lưu history. Code bị comment tạo noise, gây confused, và thường không bao giờ được dùng lại. Delete it!"
+  },
+  {
+    question: "What is missing in this Javadoc?",
+    options: {
+      A: "@author tag",
+      B: "@param and @return tags",
+      C: "@version tag",
+      D: "Nothing missing"
+    },
+    correctAnswer: "B",
+    code: `/**
+ * Calculates the total price.
+ */
+public double calculateTotal(List<Item> items, double taxRate) {
+    // implementation
+}`,
+    explanation: "Javadoc cho method cần @param cho mỗi parameter và @return cho return value. Đầy đủ: @param items - list of items, @param taxRate - tax percentage, @return total price including tax. Điều này giúp IDE hiển thị hints."
+  },
+  {
+    question: "Which TODO comment is more useful?",
+    options: {
+      A: "// TODO: fix this",
+      B: "// TODO: refactor",
+      C: "// TODO (john.doe): Implement caching for performance - JIRA-123",
+      D: "// TODO: improve"
     },
     correctAnswer: "C",
     code: null,
-    explanation: "Javadoc comments bắt đầu bằng /** và kết thúc bằng */. Đây là format đặc biệt mà tool javadoc sử dụng để generate documentation HTML."
+    explanation: "TODO tốt phải có: (1) Người chịu trách nhiệm, (2) Mô tả cụ thể việc cần làm, (3) Reference ticket/issue nếu có. 'fix this' không cho biết fix cái gì, ai fix, khi nào. Good TODOs are actionable!"
   },
   {
-    question: "Which Javadoc tag is used to document a method parameter?",
+    question: "What's wrong with this comment style?",
     options: {
-      A: "@parameter",
-      B: "@param",
-      C: "@arg",
-      D: "@argument"
+      A: "Separator comments add no value",
+      B: "Should use more asterisks",
+      C: "This is a valid documentation style",
+      D: "Comments should be shorter"
     },
-    correctAnswer: "B",
-    code: "/**\n * @param name The user's name\n */",
-    explanation: "@param là tag chuẩn để document tham số của method. Format: @param tênThamSố mô tả. Mỗi tham số nên có một @param riêng."
+    correctAnswer: "A",
+    code: `//*******************************
+// GETTERS AND SETTERS
+//*******************************
+public String getName() { return name; }
+public void setName(String name) { this.name = name; }`,
+    explanation: "Banner comments như này là noise! Chúng không thêm information hữu ích. IDE có thể collapse/organize code. Nếu cần nhóm code, hãy refactor thành class riêng hoặc dùng regions (IDE feature), không phải comments."
   },
   {
-    question: "What Javadoc tag documents the return value of a method?",
+    question: "Identify the documentation issue:",
     options: {
-      A: "@returns",
-      B: "@return",
-      C: "@result",
-      D: "@output"
-    },
-    correctAnswer: "B",
-    code: "/**\n * @return The calculated sum\n */",
-    explanation: "@return (không có 's') là tag chuẩn trong Javadoc để mô tả giá trị trả về. Lưu ý: JavaScript JSDoc dùng @returns (có 's')."
-  },
-  {
-    question: "Which comment style should be avoided in production code?",
-    options: {
-      A: "Javadoc comments",
-      B: "TODO comments left indefinitely",
-      C: "Comments explaining complex algorithms",
-      D: "License header comments"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "TODO comments không nên để lại indefinitely trong production. Chúng nên được tracked trong issue tracker và xử lý. TODO lâu ngày trở thành 'noise' trong code."
-  },
-  {
-    question: "What is the purpose of the @throws or @exception Javadoc tag?",
-    options: {
-      A: "To catch exceptions",
-      B: "To document exceptions that may be thrown",
-      C: "To throw an exception",
-      D: "To suppress exceptions"
-    },
-    correctAnswer: "B",
-    code: "/**\n * @throws IllegalArgumentException if value is negative\n */",
-    explanation: "@throws (hoặc @exception) dùng để document các exception mà method có thể throw. Giúp caller biết cần handle những exception nào."
-  },
-  {
-    question: "Which of the following is a good comment practice?",
-    options: {
-      A: "Comment every line of code",
-      B: "Explain 'what' the code does",
-      C: "Explain 'why' the code does something",
-      D: "Use comments instead of meaningful names"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Good comments giải thích 'tại sao' (why) chứ không phải 'cái gì' (what). Code should be self-documenting cho 'what'. Comment cho context, business rules, hoặc decisions."
-  },
-  {
-    question: "What is wrong with this comment: '// increment i by 1' above 'i++;'?",
-    options: {
-      A: "The comment is too short",
-      B: "The comment states the obvious",
-      C: "The comment uses incorrect grammar",
-      D: "Nothing is wrong"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Comment này thừa vì nói điều hiển nhiên mà code đã thể hiện rõ. 'i++' đã tự giải thích. Comments nên thêm value, không lặp lại code."
-  },
-  {
-    question: "Which Javadoc tag is used to reference another class or method?",
-    options: {
-      A: "@link",
-      B: "@ref",
-      C: "@see",
+      A: "Method name already explains what it does",
+      B: "Javadoc should explain implementation",
+      C: "Missing @throws tag",
       D: "Both A and C"
     },
     correctAnswer: "D",
-    code: "/**\n * @see OtherClass#method()\n * Use {@link OtherClass} for details\n */",
-    explanation: "@see tạo 'See Also' section trong generated docs. {@link ClassName} tạo inline hyperlink. Cả hai đều dùng để reference related code."
+    code: `/**
+ * Gets the user by ID.
+ */
+public User getUserById(Long id) throws UserNotFoundException {
+    // throws exception if not found
+}`,
+    explanation: "Hai vấn đề: (1) Javadoc 'Gets the user by ID' trùng với method name - không thêm value, nên giải thích behavior chi tiết hơn; (2) Thiếu @throws UserNotFoundException để document exception. Javadoc phải document contract đầy đủ."
   },
   {
-    question: "What is the purpose of the @deprecated Javadoc tag?",
+    question: "Which is a proper use of comments?",
     options: {
-      A: "To delete old code",
-      B: "To mark code that should no longer be used",
-      C: "To hide code from documentation",
-      D: "To optimize old code"
+      A: "Explain what the code does",
+      B: "Explain why a non-obvious decision was made",
+      C: "Label every method",
+      D: "Repeat the method name"
     },
     correctAnswer: "B",
-    code: "/**\n * @deprecated Use {@link #newMethod()} instead\n */",
-    explanation: "@deprecated đánh dấu code không nên dùng nữa. Compiler sẽ warning khi code deprecated được sử dụng. Nên chỉ ra alternative để developer biết dùng gì thay thế."
+    code: null,
+    explanation: "Comments nên giải thích WHY, không phải WHAT. Ví dụ: '// Using insertion sort because array is nearly sorted (faster than quicksort in this case)'. Code tốt tự giải thích what it does, comments giải thích reasoning."
   },
   {
-    question: "In JavaScript, which comment format is used for JSDoc?",
+    question: "What's the issue with this API documentation?",
     options: {
-      A: "// JSDoc comment",
-      B: "/* JSDoc comment */",
-      C: "/** JSDoc comment */",
-      D: "/// JSDoc comment"
+      A: "Description too long",
+      B: "Missing example",
+      C: "Return description doesn't match actual behavior",
+      D: "No issue"
     },
     correctAnswer: "C",
-    code: "/**\n * @param {string} name\n * @returns {boolean}\n */",
-    explanation: "JSDoc dùng format /** */ giống Javadoc. JSDoc comments cho phép document types, parameters, return values và được IDE sử dụng cho autocomplete."
+    code: `/**
+ * Finds user by email.
+ * @param email the email address
+ * @return the user
+ */
+public Optional<User> findByEmail(String email) {
+    // returns Optional.empty() if not found
+}`,
+    explanation: "Javadoc nói '@return the user' nhưng thực tế trả về Optional<User>. Cần update: '@return Optional containing the user, or empty if not found'. Documentation phải CHÍNH XÁC với behavior, nếu không sẽ gây nhầm lẫn."
   },
   {
-    question: "Which of the following is NOT a valid reason to write comments?",
+    question: "Identify the comment best practice:",
     options: {
-      A: "Explain complex business logic",
-      B: "Document public API",
-      C: "Compensate for poorly named variables",
-      D: "Explain workarounds for bugs"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Không nên dùng comment để bù đắp cho tên biến tệ. Thay vào đó, hãy đặt tên biến có ý nghĩa. Comments nên cho context, không phải giải thích code tệ."
-  },
-  {
-    question: "What is a 'magic comment' in programming?",
-    options: {
-      A: "A comment that makes code run faster",
-      B: "A special comment that affects program behavior",
-      C: "A comment written by senior developers",
-      D: "An encrypted comment"
-    },
-    correctAnswer: "B",
-    code: "// @ts-ignore\n// eslint-disable-next-line",
-    explanation: "Magic comments là comments đặc biệt ảnh hưởng đến behavior của tools (compiler, linter). Ví dụ: @ts-ignore, eslint-disable, pragma once."
-  },
-  {
-    question: "How should you document a method that may return null?",
-    options: {
-      A: "Don't mention it",
-      B: "Use @nullable annotation and document when null is returned",
-      C: "Only use @return tag",
-      D: "Write 'may be null' in method name"
-    },
-    correctAnswer: "B",
-    code: "/**\n * @return the user, or null if not found\n */\n@Nullable\npublic User findUser(int id)",
-    explanation: "Khi method có thể return null, cần document rõ ràng trong @return tag và dùng @Nullable annotation. Caller cần biết để handle null case."
-  },
-  {
-    question: "What is the recommended practice for commented-out code?",
-    options: {
-      A: "Keep it for reference",
-      B: "Remove it - use version control instead",
-      C: "Convert it to a string",
-      D: "Move it to a separate file"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Commented-out code nên được xóa. Version control (Git) lưu trữ history nếu cần tham khảo. Code bị comment tạo confusion và làm codebase khó maintain."
-  },
-  {
-    question: "Which tag is used in Javadoc to document the author of a class?",
-    options: {
-      A: "@writer",
-      B: "@author",
-      C: "@creator",
-      D: "@by"
-    },
-    correctAnswer: "B",
-    code: "/**\n * @author John Doe\n */",
-    explanation: "@author tag document tác giả của class/interface. Tuy nhiên, nhiều team không dùng vì Git blame đã track author info tốt hơn và luôn up-to-date."
-  },
-  {
-    question: "What is the purpose of the @since tag in Javadoc?",
-    options: {
-      A: "To show time elapsed",
-      B: "To indicate the version when the feature was added",
-      C: "To set a timer",
-      D: "To show creation date"
-    },
-    correctAnswer: "B",
-    code: "/**\n * @since 1.5\n */",
-    explanation: "@since chỉ ra version nào feature được thêm vào. Quan trọng cho library/API để users biết minimum version required. Ví dụ: @since Java 8."
-  },
-  {
-    question: "Which comment style is used for file headers in Java?",
-    options: {
-      A: "Single-line comments only",
-      B: "Block comments with license and copyright info",
-      C: "No comments needed",
-      D: "HTML comments"
-    },
-    correctAnswer: "B",
-    code: "/*\n * Copyright 2024 Company Name\n * Licensed under Apache 2.0\n */",
-    explanation: "File headers thường chứa copyright, license info, và mô tả ngắn về file. Dùng block comment /* */ ở đầu file. Nhiều IDE có template cho việc này."
-  },
-  {
-    question: "What is 'self-documenting code'?",
-    options: {
-      A: "Code that automatically generates documentation",
-      B: "Code that is clear enough to understand without comments",
-      C: "Code with comments on every line",
-      D: "Code written by documentation tools"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Self-documenting code là code rõ ràng đến mức không cần comment để hiểu 'what' và 'how'. Đạt được qua meaningful names, clear structure, và small functions."
-  },
-  {
-    question: "When should you update comments?",
-    options: {
-      A: "Never, comments are permanent",
-      B: "Only when the project is complete",
-      C: "Whenever the related code changes",
-      D: "Once a year"
+      A: "Comment every line",
+      B: "No comments needed if code is clean",
+      C: "Document public APIs, explain complex logic",
+      D: "Only use Javadoc"
     },
     correctAnswer: "C",
     code: null,
-    explanation: "Comments phải được update khi code thay đổi. Outdated comments còn tệ hơn không có comments vì gây misleading. Đây là lý do minimize comments và để code tự giải thích."
+    explanation: "Best practice: Document public APIs (Javadoc), giải thích business logic phức tạp, và WHY behind non-obvious decisions. Không phải every line (noise), cũng không phải no comments (public API cần docs). Balance is key."
   },
   {
-    question: "What does the @version tag indicate in Javadoc?",
+    question: "What should this comment explain?",
     options: {
-      A: "Java version required",
-      B: "Current version of the class/interface",
-      C: "IDE version",
-      D: "Comment version"
+      A: "What the regex matches",
+      B: "Why regex is used",
+      C: "Both pattern and purpose",
+      D: "Regex comments are unnecessary"
+    },
+    correctAnswer: "C",
+    code: `String pattern = "^[A-Za-z0-9+_.-]+@(.+)$";
+if (email.matches(pattern)) {
+    // process
+}`,
+    explanation: "Regex phức tạp CẦN comment giải thích: (1) Pattern matches cái gì (basic email format), (2) Tại sao dùng pattern này. Ví dụ: '// Basic email validation: alphanumeric + special chars before @, any domain after'. Regex là classic case cần comments."
+  },
+  {
+    question: "Which inline comment is appropriate?",
+    options: {
+      A: "// create new user",
+      B: "// Using double-checked locking for thread safety",
+      C: "// call method",
+      D: "// return result"
     },
     correctAnswer: "B",
-    code: "/**\n * @version 2.0\n */",
-    explanation: "@version chỉ version hiện tại của class. Tuy nhiên, nhiều project không dùng vì version thường managed ở project level (pom.xml, build.gradle) chứ không phải class level."
+    code: null,
+    explanation: "Comment 'Using double-checked locking for thread safety' giải thích WHY pattern được dùng - đây là information không obvious từ code. Các comments khác chỉ repeat what code does, không thêm value gì."
+  },
+  {
+    question: "Find the documentation smell:",
+    options: {
+      A: "Outdated comment doesn't match code",
+      B: "Comment is too detailed",
+      C: "Should use inline comment",
+      D: "No issue"
+    },
+    correctAnswer: "A",
+    code: `/**
+ * Returns list of active users.
+ */
+public List<User> findAllUsers() {
+    return userRepository.findAll(); // returns ALL users, not just active
+}`,
+    explanation: "Comment nói 'active users' nhưng code lấy ALL users - documentation LIE! Outdated docs còn tệ hơn no docs vì gây misleading. Khi thay đổi code, PHẢI update comments tương ứng. Nếu không maintain được thì đừng write."
+  },
+  {
+    question: "What type of comment is this?",
+    options: {
+      A: "Implementation comment",
+      B: "Documentation comment",
+      C: "Legal/license comment",
+      D: "Debug comment"
+    },
+    correctAnswer: "C",
+    code: `/*
+ * Copyright 2024 Acme Corp.
+ * Licensed under the Apache License, Version 2.0
+ */`,
+    explanation: "Đây là legal/copyright comment, thường đặt ở đầu file. Loại comment này bắt buộc trong nhiều projects để protect intellectual property và comply với license requirements. Không nên xóa dù có vẻ 'không cần thiết'."
+  },
+  {
+    question: "Which is the best practice for method documentation?",
+    options: {
+      A: "Document only complex methods",
+      B: "Document all public methods",
+      C: "No documentation needed",
+      D: "Document only if paid to"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "All public methods NÊN có Javadoc vì chúng là public API. Private methods có thể skip nếu code self-explanatory. Public API documentation là contract với users của code - họ cần biết how to use mà không đọc implementation."
   },
 
-  // ============ EXCEPTION HANDLING CONVENTIONS (61-80) ============
+  // ===== EXCEPTION HANDLING (56-75) =====
   {
-    question: "What is the naming convention for custom exception classes in Java?",
+    question: "What is wrong with this exception handling?",
     options: {
-      A: "MyError",
-      B: "MyException",
-      C: "MyExc",
-      D: "ExceptionMy"
+      A: "Empty catch block",
+      B: "Wrong exception type",
+      C: "Missing finally",
+      D: "Nothing wrong"
+    },
+    correctAnswer: "A",
+    code: `try {
+    file.read();
+} catch (IOException e) {
+    // do nothing
+}`,
+    explanation: "Empty catch block là anti-pattern nghiêm trọng! Exception bị 'nuốt' không trace, không log, không xử lý. Khi có bug sẽ rất khó debug. Ít nhất phải log error, hoặc rethrow với context. NEVER swallow exceptions silently."
+  },
+  {
+    question: "Which exception type should be thrown?",
+    options: {
+      A: "RuntimeException",
+      B: "IllegalArgumentException",
+      C: "Exception",
+      D: "NullPointerException"
     },
     correctAnswer: "B",
-    code: "public class InvalidUserException extends Exception { }",
-    explanation: "Custom exception classes nên kết thúc bằng 'Exception' (checked) hoặc 'Error' (unchecked severe). Ví dụ: FileNotFoundException, OutOfMemoryError."
+    code: `public void setAge(int age) {
+    if (age < 0) {
+        throw new ???("Age cannot be negative");
+    }
+    this.age = age;
+}`,
+    explanation: "IllegalArgumentException là đúng cho invalid method arguments. Nó extends RuntimeException (unchecked), rõ ràng cho biết input không hợp lệ. NullPointerException dùng khi null check fail, RuntimeException quá generic."
   },
   {
-    question: "Which is the correct way to catch multiple exceptions in Java 7+?",
+    question: "Identify the exception handling issue:",
     options: {
-      A: "catch (IOException, SQLException e)",
-      B: "catch (IOException | SQLException e)",
-      C: "catch (IOException && SQLException e)",
-      D: "catch (IOException or SQLException e)"
-    },
-    correctAnswer: "B",
-    code: "try { } catch (IOException | SQLException e) { }",
-    explanation: "Java 7+ hỗ trợ multi-catch với toán tử |. Giúp giảm code duplication khi xử lý nhiều exceptions theo cùng cách. Biến e implicitly final."
-  },
-  {
-    question: "What is wrong with catching Exception or Throwable directly?",
-    options: {
-      A: "It's a syntax error",
-      B: "It catches too broadly, including programming errors",
-      C: "It's slower",
-      D: "Nothing is wrong"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Catch Exception/Throwable quá rộng, bắt cả RuntimeExceptions và Errors (NullPointerException, OutOfMemoryError). Nên catch specific exceptions để handle đúng cách."
-  },
-  {
-    question: "What should you do in a catch block at minimum?",
-    options: {
-      A: "Leave it empty",
-      B: "Print the stack trace",
-      C: "Log the exception appropriately",
-      D: "Throw a new exception"
-    },
-    correctAnswer: "C",
-    code: "catch (Exception e) {\n    logger.error(\"Operation failed\", e);\n}",
-    explanation: "Catch block không nên để trống (swallow exception). Minimum là log exception với context. printStackTrace() không tốt vì đi ra console thay vì log system."
-  },
-  {
-    question: "What is the purpose of the 'finally' block?",
-    options: {
-      A: "To catch exceptions",
-      B: "To execute code only if no exception occurs",
-      C: "To execute cleanup code regardless of exception",
-      D: "To throw exceptions"
-    },
-    correctAnswer: "C",
-    code: "try { } catch (Exception e) { } finally { /* always runs */ }",
-    explanation: "Finally block chạy regardless of exception xảy ra hay không. Dùng để cleanup resources (close streams, connections). Java 7+ có try-with-resources thay thế cho nhiều cases."
-  },
-  {
-    question: "What is try-with-resources in Java?",
-    options: {
-      A: "A way to try multiple resources simultaneously",
-      B: "Automatic resource management that closes resources",
-      C: "A testing framework",
-      D: "A way to allocate more memory"
-    },
-    correctAnswer: "B",
-    code: "try (FileReader fr = new FileReader(file)) {\n    // use fr\n} // fr automatically closed",
-    explanation: "Try-with-resources (Java 7+) tự động close resources implement AutoCloseable. Thay thế finally block cho resource cleanup. Cleaner và ít bug hơn manual close."
-  },
-  {
-    question: "When should you use checked vs unchecked exceptions?",
-    options: {
-      A: "Always use checked exceptions",
-      B: "Always use unchecked exceptions",
-      C: "Checked for recoverable, unchecked for programming errors",
-      D: "It doesn't matter"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Checked exceptions (extends Exception) cho lỗi recoverable (file not found, network error). Unchecked (extends RuntimeException) cho programming errors (null pointer, invalid argument)."
-  },
-  {
-    question: "What is exception chaining in Java?",
-    options: {
-      A: "Catching multiple exceptions",
-      B: "Wrapping one exception in another while preserving the original",
-      C: "Throwing exceptions in a loop",
-      D: "Linking catch blocks"
-    },
-    correctAnswer: "B",
-    code: "throw new ServiceException(\"Failed\", originalException);",
-    explanation: "Exception chaining là wrap exception gốc trong exception mới. Preserve root cause cho debugging. Constructor Exception(String message, Throwable cause) hỗ trợ việc này."
-  },
-  {
-    question: "What is the convention for exception messages?",
-    options: {
-      A: "Use uppercase only",
-      B: "Include technical details and context",
-      C: "Keep them empty",
-      D: "Use error codes only"
-    },
-    correctAnswer: "B",
-    code: "throw new IllegalArgumentException(\"User ID must be positive, got: \" + id);",
-    explanation: "Exception messages nên có context và details hữu ích cho debugging. Include giá trị gây lỗi, expected values, và có thể suggested fix."
-  },
-  {
-    question: "Which is the correct order of catch blocks?",
-    options: {
-      A: "Most general first, specific last",
-      B: "Most specific first, general last",
-      C: "Alphabetical order",
-      D: "Order doesn't matter"
-    },
-    correctAnswer: "B",
-    code: "catch (FileNotFoundException e) { }\ncatch (IOException e) { }",
-    explanation: "Catch blocks phải từ specific đến general. FileNotFoundException trước IOException (vì FNFE extends IOException). Compiler sẽ error nếu order sai."
-  },
-  {
-    question: "What should you avoid in exception handling?",
-    options: {
-      A: "Logging exceptions",
-      B: "Using finally blocks",
-      C: "Using exceptions for flow control",
-      D: "Creating custom exceptions"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Không dùng exceptions cho normal flow control (ví dụ: dùng exception để break loop). Exceptions chậm và làm code khó đọc. Dùng conditionals cho flow control."
-  },
-  {
-    question: "What is the 'throw early, catch late' principle?",
-    options: {
-      A: "Throw exceptions at the start of the day",
-      B: "Validate and throw as soon as problem detected, catch at appropriate level",
-      C: "Delay throwing exceptions",
-      D: "Catch exceptions immediately"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Throw early: validate input và throw ngay khi phát hiện vấn đề. Catch late: handle exception ở level có đủ context để xử lý properly (thường là upper layers)."
-  },
-  {
-    question: "How should you handle InterruptedException in Java?",
-    options: {
-      A: "Ignore it",
-      B: "Log and continue",
-      C: "Restore the interrupted status or propagate",
-      D: "Throw RuntimeException"
-    },
-    correctAnswer: "C",
-    code: "catch (InterruptedException e) {\n    Thread.currentThread().interrupt();\n    throw new RuntimeException(e);\n}",
-    explanation: "InterruptedException cần được handle carefully. Hoặc propagate lên, hoặc restore interrupted status với Thread.currentThread().interrupt(). Không nên swallow."
-  },
-  {
-    question: "What is a suppressed exception in Java?",
-    options: {
-      A: "An exception that is hidden",
-      B: "An exception that occurred during resource cleanup in try-with-resources",
-      C: "An exception that is caught but not logged",
-      D: "An old exception type"
-    },
-    correctAnswer: "B",
-    code: "exception.getSuppressed(); // returns suppressed exceptions",
-    explanation: "Trong try-with-resources, nếu exception xảy ra trong cả try block và close(), exception từ close() được 'suppressed' và gắn vào primary exception."
-  },
-  {
-    question: "What is the convention for rethrowing exceptions?",
-    options: {
-      A: "Always create a new exception",
-      B: "Use 'throw e' to rethrow, or wrap with additional context",
-      C: "Never rethrow exceptions",
-      D: "Use return instead"
-    },
-    correctAnswer: "B",
-    code: "catch (SQLException e) {\n    throw new DataAccessException(\"Query failed\", e);\n}",
-    explanation: "Rethrow bằng 'throw e' giữ nguyên exception, hoặc wrap trong exception mới với context thêm. Luôn preserve original exception as cause để không mất stack trace."
-  },
-  {
-    question: "What annotation marks that a method intentionally doesn't throw its declared exception?",
-    options: {
-      A: "@NoThrow",
-      B: "@SuppressWarnings",
-      C: "@SneakyThrows (Lombok)",
-      D: "No such annotation in standard Java"
+      A: "Should catch specific exception first",
+      B: "Catching Exception is too broad",
+      C: "Missing IOException handler",
+      D: "Both A and B"
     },
     correctAnswer: "D",
-    code: null,
-    explanation: "Java standard không có annotation này. Lombok có @SneakyThrows để bypass checked exceptions (controversial). Best practice là declare đúng exceptions có thể throw."
+    code: `try {
+    readFile();
+} catch (Exception e) {
+    log.error("Error", e);
+} catch (IOException e) {
+    handleIOError(e);
+}`,
+    explanation: "Hai vấn đề: (1) Catch Exception trước IOException nên IOException block unreachable (compile error), (2) Catch Exception quá broad - bắt cả NullPointerException, ArrayIndexOutOfBounds... Nên catch specific exceptions theo thứ tự cụ thể -> general."
   },
   {
-    question: "When creating custom exceptions, what constructors should you include?",
+    question: "What is the best practice shown here?",
     options: {
-      A: "Only default constructor",
-      B: "At least constructors matching Exception class",
-      C: "Only constructor with message",
-      D: "No constructors needed"
+      A: "Using finally for cleanup",
+      B: "Using try-with-resources",
+      C: "Manual resource management",
+      D: "No best practice shown"
     },
     correctAnswer: "B",
-    code: "public class MyException extends Exception {\n    public MyException() { }\n    public MyException(String msg) { super(msg); }\n    public MyException(String msg, Throwable cause) { super(msg, cause); }\n}",
-    explanation: "Custom exceptions nên có các constructors giống Exception: default, message-only, message+cause, cause-only. Cho phép flexibility khi throw exception."
+    code: `try (FileInputStream fis = new FileInputStream("file.txt")) {
+    // read file
+} catch (IOException e) {
+    log.error("Failed to read file", e);
+}`,
+    explanation: "Try-with-resources (Java 7+) tự động close resources implementing AutoCloseable. Đây là best practice vì: (1) Code ngắn gọn, (2) Đảm bảo resource được close even if exception, (3) Handles suppressed exceptions properly."
   },
   {
-    question: "What is wrong with: catch (Exception e) { throw e; }?",
+    question: "What is wrong with this custom exception?",
     options: {
-      A: "Syntax error",
-      B: "It loses the original stack trace",
-      C: "Nothing, but it's pointless without additional handling",
-      D: "It causes infinite loop"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Code này syntactically correct và preserve stack trace, nhưng pointless nếu không làm gì khác (log, cleanup, wrap). Nếu chỉ rethrow, không cần catch block."
-  },
-  {
-    question: "How should exceptions be documented in Javadoc?",
-    options: {
-      A: "Only document checked exceptions",
-      B: "Document all exceptions including when they're thrown",
-      C: "Don't document exceptions",
-      D: "Only document in README"
+      A: "Should extend Exception",
+      B: "Missing serialVersionUID",
+      C: "Constructor is wrong",
+      D: "Both A and B could be issues"
     },
     correctAnswer: "B",
-    code: "/**\n * @throws IllegalArgumentException if id is negative\n * @throws UserNotFoundException if user doesn't exist\n */",
-    explanation: "Document cả checked và unchecked exceptions với điều kiện gây throw. Caller cần biết để handle hoặc prevent. @throws hoặc @exception đều được."
+    code: `public class UserNotFoundException extends RuntimeException {
+    public UserNotFoundException(String message) {
+        super(message);
+    }
+}`,
+    explanation: "Exception classes nên có serialVersionUID vì Exception implements Serializable. IDE thường warning về điều này. Thêm: 'private static final long serialVersionUID = 1L;'. Ngoài ra, nên có constructor nhận cause (Throwable)."
   },
   {
-    question: "What is defensive programming in exception handling?",
+    question: "Identify the logging anti-pattern:",
     options: {
-      A: "Catching all exceptions",
-      B: "Validating inputs and failing fast with clear exceptions",
-      C: "Never throwing exceptions",
-      D: "Using only try-catch"
-    },
-    correctAnswer: "B",
-    code: "public void setAge(int age) {\n    if (age < 0) throw new IllegalArgumentException(\"Age cannot be negative\");\n    this.age = age;\n}",
-    explanation: "Defensive programming: validate inputs, check preconditions, fail fast với clear error messages. Phát hiện bugs sớm thay vì để chúng gây problems sau."
-  },
-
-  // ============ CODE STRUCTURE AND FORMATTING (81-100) ============
-  {
-    question: "What is the recommended maximum line length in Java according to Google Style Guide?",
-    options: {
-      A: "60 characters",
-      B: "80 characters",
-      C: "100 characters",
-      D: "No limit"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Google Java Style Guide khuyến nghị 100 characters. Oracle conventions truyền thống là 80. Quan trọng là team thống nhất một giới hạn và dùng formatter tự động."
-  },
-  {
-    question: "Where should the opening brace be placed in Java?",
-    options: {
-      A: "On a new line (Allman style)",
-      B: "On the same line (K&R style)",
-      C: "Either is acceptable",
-      D: "No braces needed"
-    },
-    correctAnswer: "B",
-    code: "if (condition) {\n    // code\n}",
-    explanation: "Java convention chuẩn là K&R style - opening brace trên cùng dòng với statement. Khác với C# thường dùng Allman style (brace trên dòng mới)."
-  },
-  {
-    question: "How many blank lines should separate methods in a class?",
-    options: {
-      A: "Zero",
-      B: "One",
-      C: "Two",
-      D: "Three"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Một blank line giữa các methods là convention phổ biến. Giúp code dễ đọc và phân biệt các methods. Quá nhiều blank lines làm code trở nên sparse."
-  },
-  {
-    question: "What is the correct indentation style in Java?",
-    options: {
-      A: "2 spaces",
-      B: "4 spaces or 1 tab",
-      C: "8 spaces",
-      D: "No indentation needed"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Java thường dùng 4 spaces hoặc 1 tab cho indentation. Google style dùng 2 spaces. Quan trọng là consistency trong project - không mix spaces và tabs."
-  },
-  {
-    question: "In which order should class members be organized in Java?",
-    options: {
-      A: "Alphabetical order",
-      B: "Random order",
-      C: "Fields, constructors, methods",
-      D: "Methods, fields, constructors"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Thứ tự chuẩn: static fields, instance fields, constructors, methods. Trong mỗi group, thường sắp theo access modifier (public -> private) hoặc logic liên quan."
-  },
-  {
-    question: "What is the Single Responsibility Principle (SRP)?",
-    options: {
-      A: "A class should have only one method",
-      B: "A class should have only one reason to change",
-      C: "A method should have only one line",
-      D: "A file should have only one class"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "SRP: mỗi class chỉ nên có một lý do để thay đổi, tức là một responsibility. Giúp code dễ maintain, test, và hiểu. Là chữ S trong SOLID principles."
-  },
-  {
-    question: "What is the recommended maximum number of parameters for a method?",
-    options: {
-      A: "1-2",
-      B: "3-4",
-      C: "7-10",
-      D: "No limit"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "3-4 parameters là lý tưởng. Nhiều hơn 4-5 parameters là code smell - nên dùng parameter object hoặc builder pattern. Quá nhiều parameters khó nhớ và dễ sai order."
-  },
-  {
-    question: "What is the recommended maximum length for a method?",
-    options: {
-      A: "10 lines",
-      B: "20-30 lines",
-      C: "100 lines",
-      D: "No limit as long as it works"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "20-30 lines là guideline tốt. Method nên fit trong một màn hình. Long methods khó hiểu và test. Nếu method quá dài, refactor thành smaller methods."
-  },
-  {
-    question: "What does 'DRY' stand for in programming?",
-    options: {
-      A: "Do Repeat Yourself",
-      B: "Don't Repeat Yourself",
-      C: "Do Run Yourself",
-      D: "Don't Run Yourself"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "DRY = Don't Repeat Yourself. Tránh duplicate code bằng cách extract vào methods, classes, hoặc modules có thể reuse. Duplicate code khó maintain và dễ gây bugs."
-  },
-  {
-    question: "What is the 'magic number' code smell?",
-    options: {
-      A: "Using random numbers",
-      B: "Using hard-coded numeric literals without explanation",
-      C: "Using prime numbers",
-      D: "Using negative numbers"
-    },
-    correctAnswer: "B",
-    code: "// Bad: if (age > 18)\n// Good: if (age > ADULT_AGE)",
-    explanation: "Magic numbers là numeric literals không có explanation. Khó hiểu 18 nghĩa là gì. Nên extract thành named constants: ADULT_AGE = 18, MAX_RETRIES = 3."
-  },
-  {
-    question: "Which import style is preferred in Java?",
-    options: {
-      A: "Wildcard imports (import java.util.*)",
-      B: "Explicit imports (import java.util.List)",
-      C: "No imports, use full qualified names",
-      D: "Static imports for everything"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Explicit imports preferred vì: rõ ràng classes nào được dùng, tránh naming conflicts, IDE dễ optimize. Wildcard imports có thể gây confusion và conflicts."
-  },
-  {
-    question: "What is the convention for organizing imports in Java?",
-    options: {
-      A: "Alphabetical within groups: java.*, javax.*, third-party, project",
-      B: "Random order",
-      C: "By length of import statement",
-      D: "By usage frequency"
+      A: "Logging exception twice",
+      B: "Not logging exception message",
+      C: "Wrong log level",
+      D: "No anti-pattern"
     },
     correctAnswer: "A",
-    code: null,
-    explanation: "Imports nên group: java.*, javax.*, third-party libraries, project packages. Trong mỗi group, sort alphabetically. Blank line giữa các groups. IDE auto-organize."
+    code: `try {
+    process();
+} catch (Exception e) {
+    log.error("Error occurred", e);
+    throw e;
+}`,
+    explanation: "Log rồi throw lại exception = log duplicate! Exception sẽ được log lần nữa ở nơi catch final. Best practice: hoặc log và handle, hoặc wrap và throw, không làm cả hai. Nếu cần add context, wrap vào new exception."
   },
   {
-    question: "What is the purpose of using final keyword for method parameters?",
+    question: "Which is the correct way to chain exceptions?",
     options: {
-      A: "To improve performance",
-      B: "To prevent reassignment of the parameter",
-      C: "To make the method faster",
-      D: "To allow null values"
-    },
-    correctAnswer: "B",
-    code: "public void process(final String input) { }",
-    explanation: "final parameter ngăn reassign parameter trong method body. Giúp code dễ reason about vì biến không thay đổi. Một số teams require final cho tất cả parameters."
-  },
-  {
-    question: "What is 'early return' pattern?",
-    options: {
-      A: "Returning from main() early",
-      B: "Returning early from a method to reduce nesting",
-      C: "Starting work early in the morning",
-      D: "Returning before the deadline"
-    },
-    correctAnswer: "B",
-    code: "if (input == null) return null;\n// main logic here",
-    explanation: "Early return: kiểm tra edge cases/preconditions ở đầu method và return sớm. Giảm nesting, code dễ đọc hơn. Còn gọi là 'guard clauses'."
-  },
-  {
-    question: "What is the convention for placing static members in a class?",
-    options: {
-      A: "At the end of the class",
-      B: "Mixed with instance members",
-      C: "At the beginning of the class",
-      D: "In a separate file"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Static members (constants, static methods) thường đặt đầu class. Order: static constants, static fields, static blocks, instance fields, constructors, methods."
-  },
-  {
-    question: "What is the 'Tell, Don't Ask' principle?",
-    options: {
-      A: "Never ask questions in code",
-      B: "Tell objects what to do instead of querying their state",
-      C: "Always use print statements",
-      D: "Ask before telling"
-    },
-    correctAnswer: "B",
-    code: "// Ask: if(user.getAge() > 18) { user.setAdult(true); }\n// Tell: user.updateAdultStatus();",
-    explanation: "Tell, Don't Ask: gọi method để object tự xử lý, thay vì lấy data, xử lý bên ngoài, rồi set lại. Encapsulation tốt hơn, logic tập trung trong object."
-  },
-  {
-    question: "What is the Law of Demeter (LoD)?",
-    options: {
-      A: "A method should only call methods of its immediate friends",
-      B: "A class must have exactly one method",
-      C: "All classes must inherit from Object",
-      D: "Code must be written in Greece"
-    },
-    correctAnswer: "A",
-    code: "// Violation: user.getAddress().getCity().getName()\n// Better: user.getCityName()",
-    explanation: "Law of Demeter: don't talk to strangers. Method chỉ nên gọi methods của: this, parameters, objects it creates, direct components. Tránh chain calls dài."
-  },
-  {
-    question: "What should be the visibility of class fields by default?",
-    options: {
-      A: "public",
-      B: "protected",
-      C: "private",
-      D: "package-private (default)"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "Fields nên private by default (encapsulation). Expose qua getters/setters nếu cần. Public fields break encapsulation và make class hard to change later."
-  },
-  {
-    question: "What is the convention for boolean method names that check a condition?",
-    options: {
-      A: "checkCondition()",
-      B: "condition()",
-      C: "isCondition() or hasCondition()",
-      D: "getCondition()"
-    },
-    correctAnswer: "C",
-    code: "boolean isEmpty()\nboolean hasChildren()\nboolean canExecute()",
-    explanation: "Boolean methods dùng is/has/can/should prefix. Đọc như câu hỏi yes/no: isEmpty()? hasChildren()? Giúp code đọc tự nhiên trong if statements."
-  },
-  {
-    question: "What is method chaining and when is it appropriate?",
-    options: {
-      A: "Calling methods in a loop",
-      B: "Calling methods that return 'this' for fluent API",
-      C: "Calling the same method multiple times",
-      D: "Never appropriate"
-    },
-    correctAnswer: "B",
-    code: "builder.setName(\"John\").setAge(25).build();",
-    explanation: "Method chaining: methods return 'this' để chain calls. Phổ biến trong builders, streams, fluent APIs. Giúp code ngắn gọn và đọc dễ như prose."
-  },
-
-  // ============ MORE CODE STRUCTURE (101-120) ============
-  {
-    question: "What is the recommended approach for null handling in Java?",
-    options: {
-      A: "Return null freely",
-      B: "Use Optional or throw exceptions instead of returning null",
-      C: "Never use null",
-      D: "Use empty string instead of null"
-    },
-    correctAnswer: "B",
-    code: "Optional<User> findUser(int id)",
-    explanation: "Tránh return null khi có thể. Dùng Optional (Java 8+) để express 'may be absent'. Hoặc throw exception cho error cases. Null causes NullPointerException bugs."
-  },
-  {
-    question: "What is the purpose of the @Override annotation?",
-    options: {
-      A: "To override all methods",
-      B: "To indicate method overrides a parent method, compiler checks",
-      C: "To create a new method",
-      D: "To delete a method"
-    },
-    correctAnswer: "B",
-    code: "@Override\npublic String toString() { }",
-    explanation: "@Override cho compiler biết method này override parent method. Nếu parent không có method đó, compiler báo lỗi. Catch bugs sớm khi refactor."
-  },
-  {
-    question: "What is the convention for static import?",
-    options: {
-      A: "Use for all static members",
-      B: "Use sparingly, mainly for well-known utilities like Math, Assert",
-      C: "Never use static import",
-      D: "Only for constants"
-    },
-    correctAnswer: "B",
-    code: "import static java.lang.Math.PI;\nimport static org.junit.Assert.*;",
-    explanation: "Static imports dùng sparingly cho utilities phổ biến (Math.PI, Assert methods). Overuse làm code khó đọc vì không biết method từ đâu."
-  },
-  {
-    question: "What is a 'code smell'?",
-    options: {
-      A: "Code that has bugs",
-      B: "Indicators of potential problems in code design",
-      C: "Code that doesn't compile",
-      D: "Code written by juniors"
+      A: "throw new ServiceException(e.getMessage())",
+      B: "throw new ServiceException(\"Error\", e)",
+      C: "throw new ServiceException(e.toString())",
+      D: "throw e"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Code smells là symptoms của deeper problems: long method, large class, duplicate code, magic numbers, long parameter list. Không phải bugs nhưng chỉ ra cần refactor."
+    explanation: "Pass original exception as cause: new ServiceException(\"Error\", e). Điều này giữ FULL stack trace của root cause, essential cho debugging. Các cách khác mất original exception info. Exception chaining là pattern quan trọng!"
   },
   {
-    question: "What is the 'Feature Envy' code smell?",
+    question: "What's wrong with this exception message?",
     options: {
-      A: "Wanting new features",
-      B: "A method that uses more features of another class than its own",
-      C: "Missing features",
-      D: "Having too many features"
+      A: "Message too short",
+      B: "Message doesn't provide context",
+      C: "Should not include variable value",
+      D: "Message is fine"
     },
     correctAnswer: "B",
-    code: null,
-    explanation: "Feature Envy: method sử dụng nhiều data/methods của class khác hơn class của nó. Suggests method nên move sang class kia. Violates encapsulation."
+    code: `if (user == null) {
+    throw new IllegalStateException("Error");
+}`,
+    explanation: "'Error' message không có nghĩa gì! Exception message nên chứa: (1) What went wrong, (2) Context (giá trị relevant). Tốt hơn: 'User cannot be null when processing order #' + orderId. Good messages = faster debugging."
   },
   {
-    question: "What is the recommended way to compare strings in Java?",
+    question: "Identify the exception handling code smell:",
     options: {
-      A: "str1 == str2",
-      B: "str1.equals(str2)",
-      C: "str1.compareTo(str2)",
-      D: "String.compare(str1, str2)"
-    },
-    correctAnswer: "B",
-    code: "\"constant\".equals(variable) // null-safe",
-    explanation: "Dùng equals() để compare string content. == chỉ compare references. Tip: put constant first (\"value\".equals(var)) để tránh NullPointerException."
-  },
-  {
-    question: "What is the 'Primitive Obsession' code smell?",
-    options: {
-      A: "Using too many objects",
-      B: "Overusing primitives instead of small objects for simple tasks",
-      C: "Avoiding primitives entirely",
-      D: "Using only primitive types"
-    },
-    correctAnswer: "B",
-    code: "// Bad: String phoneNumber, String email\n// Good: PhoneNumber phone, Email email",
-    explanation: "Primitive Obsession: dùng primitives thay vì small value objects. Phone number as String không có validation. PhoneNumber class có thể validate format."
-  },
-  {
-    question: "What is the purpose of making a class final?",
-    options: {
-      A: "To improve performance",
-      B: "To prevent inheritance",
-      C: "To make it abstract",
-      D: "To make all methods final"
-    },
-    correctAnswer: "B",
-    code: "public final class String { }",
-    explanation: "final class không thể được extend. Dùng khi: immutable classes (String), security (prevent malicious subclass), design decision (class not designed for inheritance)."
-  },
-  {
-    question: "What is the convention for package names in Java?",
-    options: {
-      A: "CamelCase",
-      B: "All lowercase with dots separating levels",
-      C: "UPPERCASE",
-      D: "snake_case"
-    },
-    correctAnswer: "B",
-    code: "package com.company.project.module;",
-    explanation: "Package names all lowercase, domain reversed (com.google.guava). Dùng dots để separate levels. Tránh special characters và numbers ở đầu."
-  },
-  {
-    question: "What is the convention for class names in Java?",
-    options: {
-      A: "camelCase",
-      B: "PascalCase (UpperCamelCase)",
-      C: "snake_case",
-      D: "lowercase"
-    },
-    correctAnswer: "B",
-    code: "public class UserAccount { }",
-    explanation: "Class names dùng PascalCase (UpperCamelCase): mỗi từ bắt đầu bằng chữ hoa. Nên là noun hoặc noun phrase: User, UserAccount, HttpConnectionFactory."
-  },
-  {
-    question: "What is 'composition over inheritance'?",
-    options: {
-      A: "Always use inheritance",
-      B: "Prefer containing objects over extending classes",
-      C: "Never use classes",
-      D: "Write more code"
-    },
-    correctAnswer: "B",
-    code: "// Instead of: class Car extends Engine\n// Use: class Car { private Engine engine; }",
-    explanation: "Composition over Inheritance: thay vì extend class, contain instance của nó. Flexible hơn, tránh fragile base class problem, allows changing behavior at runtime."
-  },
-  {
-    question: "What is the 'Open/Closed Principle'?",
-    options: {
-      A: "Open source is better",
-      B: "Classes should be open for extension, closed for modification",
-      C: "Always close files after opening",
-      D: "Open and close braces must match"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Open/Closed Principle (SOLID): software entities nên open for extension (add new features) nhưng closed for modification (không cần change existing code). Dùng abstraction, interfaces."
-  },
-  {
-    question: "What is the 'Liskov Substitution Principle'?",
-    options: {
-      A: "Named after Barbara Liskov",
-      B: "Subtypes must be substitutable for their base types",
-      C: "Always use substitution",
-      D: "Replace all classes with interfaces"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "LSP: objects of subclass should be usable wherever parent class expected without breaking functionality. Ví dụ: Square extends Rectangle có thể violate nếu setWidth/setHeight behaves differently."
-  },
-  {
-    question: "What is the 'Interface Segregation Principle'?",
-    options: {
-      A: "Use only one interface",
-      B: "Clients shouldn't be forced to depend on interfaces they don't use",
-      C: "Segregate all interfaces",
-      D: "Never use interfaces"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "ISP: thay vì một fat interface, dùng nhiều small, specific interfaces. Client chỉ implement interfaces nó cần. Reduces coupling và unnecessary dependencies."
-  },
-  {
-    question: "What is the 'Dependency Inversion Principle'?",
-    options: {
-      A: "Invert all dependencies",
-      B: "High-level modules shouldn't depend on low-level modules; both should depend on abstractions",
-      C: "Avoid dependencies",
-      D: "Use dependency injection only"
-    },
-    correctAnswer: "B",
-    code: "// Bad: class Service { private MySQLDB db; }\n// Good: class Service { private Database db; }",
-    explanation: "DIP: depend on abstractions (interfaces), not concrete implementations. Allows swapping implementations, easier testing với mocks. Foundation of dependency injection."
-  },
-  {
-    question: "What is the purpose of using interfaces?",
-    options: {
-      A: "To slow down the program",
-      B: "To define contracts and enable loose coupling",
-      C: "To avoid writing code",
-      D: "To make code complex"
-    },
-    correctAnswer: "B",
-    code: "interface PaymentProcessor { void process(Payment p); }",
-    explanation: "Interfaces define contracts: what methods must exist. Enable loose coupling (depend on interface, not implementation), polymorphism, và easier testing/mocking."
-  },
-  {
-    question: "When should you create an interface?",
-    options: {
-      A: "For every class",
-      B: "When you need multiple implementations or want to define a contract",
-      C: "Never",
-      D: "Only for database classes"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Create interface khi: cần multiple implementations, muốn loose coupling với implementation, define API contract, enable testing với mocks. Không cần interface cho mọi class."
-  },
-  {
-    question: "What is a 'utility class' in Java?",
-    options: {
-      A: "A class with only instance methods",
-      B: "A class with only static methods and private constructor",
-      C: "A class that extends Utility",
-      D: "Any small class"
-    },
-    correctAnswer: "B",
-    code: "public final class StringUtils {\n    private StringUtils() { }\n    public static boolean isEmpty(String s) { }\n}",
-    explanation: "Utility class: chỉ chứa static methods, private constructor ngăn instantiation, thường final. Ví dụ: Math, Arrays, Collections, StringUtils."
-  },
-  {
-    question: "What is the 'Builder' pattern used for?",
-    options: {
-      A: "Building houses",
-      B: "Constructing complex objects step by step",
-      C: "Building databases",
-      D: "Building networks"
-    },
-    correctAnswer: "B",
-    code: "User user = User.builder()\n    .name(\"John\")\n    .age(25)\n    .build();",
-    explanation: "Builder pattern: construct complex objects step by step. Tránh constructors với nhiều parameters, readable code, immutable objects. Lombok @Builder auto-generates."
-  },
-  {
-    question: "What is 'fail-fast' principle in coding?",
-    options: {
-      A: "Fail the project quickly",
-      B: "Detect and report errors as early as possible",
-      C: "Make code run faster",
-      D: "Skip error handling"
-    },
-    correctAnswer: "B",
-    code: "public void process(String input) {\n    Objects.requireNonNull(input, \"input cannot be null\");\n    // rest of code\n}",
-    explanation: "Fail-fast: detect và report problems immediately thay vì để chúng propagate. Validate inputs early, throw descriptive exceptions. Easier debugging, predictable behavior."
-  },
-
-  // ============ PRACTICAL EXERCISES - VARIABLE NAMING (121-140) ============
-  {
-    question: "Which variable name is better for storing the total price after discount?",
-    options: {
-      A: "tp",
-      B: "price",
-      C: "totalPriceAfterDiscount",
-      D: "x"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "'totalPriceAfterDiscount' mô tả rõ ràng nhất. 'price' quá chung, 'tp' và 'x' không có ý nghĩa. Tên biến nên tự giải thích mục đích sử dụng."
-  },
-  {
-    question: "What is wrong with this code?\nint d; // elapsed time in days",
-    options: {
-      A: "Nothing wrong",
-      B: "Variable name is not descriptive",
-      C: "Comment is wrong",
-      D: "Should use long instead"
-    },
-    correctAnswer: "B",
-    code: "int d; // elapsed time in days\n// Better:\nint elapsedTimeInDays;",
-    explanation: "Biến 'd' cần comment để giải thích, tức là tên không self-explanatory. 'elapsedTimeInDays' tự giải thích, không cần comment. Code should be self-documenting."
-  },
-  {
-    question: "Which naming is correct for a method that checks if user is logged in?",
-    options: {
-      A: "checkLogin()",
-      B: "loginStatus()",
-      C: "isLoggedIn()",
-      D: "getLogin()"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "'isLoggedIn()' theo đúng convention cho boolean methods với prefix 'is'. Đọc tự nhiên: if (user.isLoggedIn()). 'checkLogin' không rõ return type."
-  },
-  {
-    question: "Identify the naming convention violation:\npublic static final int Max_Value = 100;",
-    options: {
-      A: "Should be MAX_VALUE",
-      B: "Should be maxValue",
-      C: "Should be max_value",
-      D: "No violation"
-    },
-    correctAnswer: "A",
-    code: "public static final int MAX_VALUE = 100;",
-    explanation: "Constants trong Java dùng SCREAMING_SNAKE_CASE. 'Max_Value' sai convention - nên là 'MAX_VALUE'. Tất cả chữ in hoa, underscore giữa các từ."
-  },
-  {
-    question: "What is the best name for a list of products in a shopping cart?",
-    options: {
-      A: "list",
-      B: "productList",
-      C: "cartItems",
-      D: "p"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "'cartItems' mô tả rõ context (cart) và nội dung (items). 'productList' có suffix List không cần thiết. 'list' và 'p' quá chung."
-  },
-  {
-    question: "Which refactoring improves this code?\nString s = getFullName();\nString s2 = getAddress();",
-    options: {
-      A: "Use s1 instead of s",
-      B: "Use descriptive names like fullName and address",
-      C: "Add comments",
-      D: "Use shorter names"
-    },
-    correctAnswer: "B",
-    code: "String fullName = getFullName();\nString address = getAddress();",
-    explanation: "Dùng tên mô tả: fullName, address. Tên s, s2 không có ý nghĩa và dễ confuse. Tên biến nên cho biết nội dung chứa gì."
-  },
-  {
-    question: "What naming convention does this violate: calculatesum()?",
-    options: {
-      A: "Should use underscores",
-      B: "Should be camelCase: calculateSum()",
-      C: "Should be all uppercase",
-      D: "No violation"
-    },
-    correctAnswer: "B",
-    code: "public int calculateSum() { }",
-    explanation: "Methods trong Java dùng camelCase. 'calculatesum' thiếu chữ hoa ở 'Sum'. Đúng là 'calculateSum()'. CamelCase giúp phân biệt các từ."
-  },
-  {
-    question: "Which is the best name for a boolean flag indicating if data is valid?",
-    options: {
-      A: "flag",
-      B: "valid",
-      C: "isDataValid",
-      D: "dataValidFlag"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "'isDataValid' theo convention boolean với prefix 'is', và mô tả rõ ràng data nào được validate. 'flag' và 'valid' quá generic."
-  },
-  {
-    question: "What is wrong with this variable name: numberOfUsersInTheSystemCurrentlyLoggedIn?",
-    options: {
-      A: "Too short",
-      B: "Too long, could be simplified to activeUserCount",
-      C: "Should use underscores",
+      A: "Using exception for flow control",
+      B: "Catching too specific exception",
+      C: "Exception message too long",
       D: "Nothing wrong"
     },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Tên quá dài. 'activeUserCount' hoặc 'loggedInUserCount' ngắn hơn mà vẫn đủ ý nghĩa. Tên biến nên concise nhưng vẫn descriptive."
-  },
-  {
-    question: "Choose the better variable name for storing a user's email address:",
-    options: {
-      A: "e",
-      B: "str",
-      C: "email",
-      D: "emailOfTheUser"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "'email' vừa ngắn gọn vừa rõ ràng. 'e' và 'str' không mô tả. 'emailOfTheUser' thừa từ. Context thường đã cho biết email thuộc về ai."
-  },
-  {
-    question: "What is the issue with: ArrayList<String> list = new ArrayList<>();",
-    options: {
-      A: "Should use LinkedList",
-      B: "Variable name 'list' is not descriptive",
-      C: "Should use raw type",
-      D: "Nothing wrong"
-    },
-    correctAnswer: "B",
-    code: "ArrayList<String> userNames = new ArrayList<>();",
-    explanation: "'list' không cho biết chứa gì. 'userNames', 'orderIds', 'productCodes' mô tả nội dung. Tên collection nên cho biết elements là gì."
-  },
-  {
-    question: "Which is correct for a constant representing seconds in a minute?",
-    options: {
-      A: "secondsInMinute",
-      B: "SECONDS_IN_MINUTE",
-      C: "SecondsInMinute",
-      D: "seconds_in_minute"
-    },
-    correctAnswer: "B",
-    code: "public static final int SECONDS_IN_MINUTE = 60;",
-    explanation: "Constants dùng SCREAMING_SNAKE_CASE. 'SECONDS_IN_MINUTE' là đúng convention. Giúp phân biệt constants với variables khi đọc code."
-  },
-  {
-    question: "What naming issue exists here?\nprivate int temp;",
-    options: {
-      A: "Should be public",
-      B: "Name 'temp' is ambiguous - temperature or temporary?",
-      C: "Should be static",
-      D: "No issue"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "'temp' có thể là temperature hoặc temporary. Abbreviations gây ambiguity. Dùng 'temperature' hoặc 'temporaryValue' để rõ ràng."
-  },
-  {
-    question: "Which is the better name for a method that saves user data to database?",
-    options: {
-      A: "doIt()",
-      B: "save()",
-      C: "saveUserToDatabase()",
-      D: "handleUser()"
-    },
-    correctAnswer: "C",
-    code: null,
-    explanation: "'saveUserToDatabase()' mô tả rõ action (save), object (user), và destination (database). 'doIt()' và 'handleUser()' quá vague."
-  },
-  {
-    question: "Identify the convention issue: class userAccount { }",
-    options: {
-      A: "Should be UserAccount (PascalCase)",
-      B: "Should be USER_ACCOUNT",
-      C: "Should be user_account",
-      D: "No issue"
-    },
     correctAnswer: "A",
-    code: "class UserAccount { }",
-    explanation: "Class names trong Java dùng PascalCase (UpperCamelCase). 'userAccount' sai vì bắt đầu bằng chữ thường. Đúng là 'UserAccount'."
+    code: `public User findUser(Long id) {
+    try {
+        return userList.get(id.intValue());
+    } catch (IndexOutOfBoundsException e) {
+        return null;
+    }
+}`,
+    explanation: "Dùng exception cho flow control là anti-pattern! Exception costly về performance và làm code khó đọc. Nên check: 'if (id < userList.size()) return userList.get(id); return null;'. Exceptions cho exceptional situations, không phải business logic."
   },
   {
-    question: "What is wrong with: public void foo(int a, int b, int c, int d, int e, int f)?",
+    question: "Which practice should be avoided?",
     options: {
-      A: "Nothing wrong",
-      B: "Too many parameters with meaningless names",
-      C: "Should use static",
-      D: "Should return something"
+      A: "Throwing checked exceptions from methods",
+      B: "Catching Throwable",
+      C: "Using custom exceptions",
+      D: "Logging exception stack trace"
     },
     correctAnswer: "B",
     code: null,
-    explanation: "Quá nhiều parameters (>4) và tên a,b,c,d,e,f không có ý nghĩa. Nên dùng parameter object hoặc builder. Tên cần mô tả purpose."
+    explanation: "KHÔNG nên catch Throwable vì nó bắt cả Error (OutOfMemoryError, StackOverflowError) - những lỗi JVM mà app không nên/không thể handle. Chỉ catch Exception hoặc specific exception types. Let Errors propagate!"
   },
   {
-    question: "Which is the correct way to name a getter for the 'firstName' field?",
+    question: "What's the issue with this code?",
     options: {
-      A: "firstName()",
-      B: "getfirstname()",
-      C: "getFirstName()",
-      D: "get_first_name()"
+      A: "Finally may not execute",
+      B: "Return in finally overrides try's return",
+      C: "Finally should not have return",
+      D: "Both B and C"
+    },
+    correctAnswer: "D",
+    code: `public int getValue() {
+    try {
+        return 1;
+    } finally {
+        return 2; // NEVER do this!
+    }
+}`,
+    explanation: "Return trong finally là CRITICAL anti-pattern! Nó overrides return (và exceptions!) từ try block. Method này luôn return 2, và bất kỳ exception nào cũng bị swallowed. Finally chỉ dùng cho cleanup, không return values."
+  },
+  {
+    question: "Identify the correct exception handling:",
+    options: {
+      A: "Multi-catch syntax is wrong",
+      B: "Should catch separately",
+      C: "Multi-catch is correct",
+      D: "Should catch Exception"
     },
     correctAnswer: "C",
-    code: "public String getFirstName() { return firstName; }",
-    explanation: "JavaBeans convention: getter là 'get' + PropertyName với PascalCase. 'getFirstName()' đúng. Framework như Spring, Jackson rely on this convention."
+    code: `try {
+    process();
+} catch (IOException | SQLException e) {
+    log.error("Data access error", e);
+}`,
+    explanation: "Multi-catch (Java 7+) syntax đúng và được khuyến khích khi xử lý nhiều exception types giống nhau. Gọn hơn multiple catch blocks. Lưu ý: các exception trong multi-catch không được có quan hệ kế thừa."
   },
   {
-    question: "What naming improvement can be made?\nfor(int i=0; i<users.size(); i++) { User u = users.get(i); }",
+    question: "What should be done with this checked exception?",
     options: {
-      A: "Change i to index",
-      B: "Change u to user",
+      A: "Catch and rethrow as unchecked",
+      B: "Add throws declaration",
+      C: "Catch and handle",
+      D: "Any of the above depending on context"
+    },
+    correctAnswer: "D",
+    code: `public void readConfig() {
+    FileInputStream fis = new FileInputStream("config.txt"); // Throws FileNotFoundException
+}`,
+    explanation: "Tùy context: (1) Handle locally nếu có recovery strategy, (2) Declare throws nếu caller có thể handle, (3) Wrap trong RuntimeException nếu là fatal error. Modern Java thường prefer unchecked exceptions cho cleaner APIs."
+  },
+  {
+    question: "What's wrong with this exception class name?",
+    options: {
+      A: "Name should end with Exception",
+      B: "Name is too generic",
       C: "Both A and B",
-      D: "No improvement needed"
-    },
-    correctAnswer: "B",
-    code: "for(int i=0; i<users.size(); i++) { User user = users.get(i); }",
-    explanation: "'i' acceptable cho loop counter (convention). Nhưng 'u' nên là 'user' - object reference cần descriptive name. Hoặc dùng for-each loop."
-  },
-  {
-    question: "Which variable name violates Java conventions?",
-    options: {
-      A: "userId",
-      B: "user_id",
-      C: "userID",
-      D: "id"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Java dùng camelCase cho variables, không dùng snake_case. 'user_id' sai convention. Đúng là 'userId'. snake_case phổ biến trong Python, không phải Java."
-  },
-  {
-    question: "What is the best practice for naming a map that stores user by their ID?",
-    options: {
-      A: "map",
-      B: "userMap",
-      C: "usersById",
-      D: "m"
+      D: "Nothing wrong"
     },
     correctAnswer: "C",
-    code: "Map<Long, User> usersById = new HashMap<>();",
-    explanation: "'usersById' mô tả: plural 'users' (nhiều users), 'ById' (key là ID). Pattern 'xByY' rất clear cho maps. 'userMap' thiếu thông tin về key."
-  },
-
-  // ============ PRACTICAL EXERCISES - METHODS & STRUCTURE (141-160) ============
-  {
-    question: "What refactoring would improve this?\nif(status == 1) { ... } else if(status == 2) { ... }",
-    options: {
-      A: "Use switch statement",
-      B: "Replace magic numbers with named constants or enum",
-      C: "Add comments explaining 1 and 2",
-      D: "Nothing needs improvement"
-    },
-    correctAnswer: "B",
-    code: "if(status == Status.ACTIVE) { ... }\nelse if(status == Status.INACTIVE) { ... }",
-    explanation: "1 và 2 là magic numbers. Dùng enum hoặc constants: Status.ACTIVE, Status.INACTIVE. Code tự giải thích, không cần đoán ý nghĩa của 1, 2."
+    code: `public class ProcessError extends RuntimeException {
+    // ...
+}`,
+    explanation: "Hai vấn đề: (1) Nên dùng suffix 'Exception' thay vì 'Error' (Error dùng cho JVM errors), (2) 'ProcessError' quá generic - process nào? Nên cụ thể: 'PaymentProcessingException', 'OrderValidationException'."
   },
   {
-    question: "What is wrong with this exception handling?\ncatch(Exception e) { }",
+    question: "Identify best practice for assertion:",
     options: {
-      A: "Nothing wrong",
-      B: "Empty catch block swallows exceptions",
-      C: "Should catch Throwable",
-      D: "Should use 'ex' instead of 'e'"
-    },
-    correctAnswer: "B",
-    code: "catch(Exception e) {\n    logger.error(\"Error occurred\", e);\n}",
-    explanation: "Empty catch block 'nuốt' exception - lỗi xảy ra nhưng không ai biết. Minimum cần log exception. Swallowing exceptions làm debugging rất khó."
-  },
-  {
-    question: "How can this be improved?\npublic void process() throws Exception",
-    options: {
-      A: "Use specific exception types instead of generic Exception",
-      B: "Remove throws clause",
-      C: "Change to throw Error",
-      D: "Nothing to improve"
-    },
-    correctAnswer: "A",
-    code: "public void process() throws IOException, ValidationException",
-    explanation: "Declare specific exceptions thay vì generic Exception. Caller biết chính xác exceptions nào có thể xảy ra và handle appropriately."
-  },
-  {
-    question: "What's the issue?\nString result = obj == null ? \"default\" : obj.getValue();",
-    options: {
-      A: "Nothing wrong, good null check",
-      B: "Should use Optional",
-      C: "Should use try-catch",
-      D: "Ternary operator not allowed"
-    },
-    correctAnswer: "A",
-    code: null,
-    explanation: "Code này actually OK - kiểm tra null trước khi gọi method. Ternary operator cho null check là pattern phổ biến. Optional cũng là alternative tốt."
-  },
-  {
-    question: "What principle does this violate?\nclass UserManager { saveUser(); sendEmail(); generateReport(); }",
-    options: {
-      A: "DRY",
-      B: "Single Responsibility Principle",
-      C: "Open/Closed Principle",
-      D: "No violation"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "SRP violation: class làm quá nhiều việc (user management, email, reports). Nên tách thành: UserRepository, EmailService, ReportGenerator."
-  },
-  {
-    question: "What is wrong with this?\nfor(int i=0; i<100; i++) { /* 100 lines of code */ }",
-    options: {
-      A: "Loop count too high",
-      B: "Loop body too long, should extract to method",
-      C: "Should use while loop",
-      D: "Nothing wrong"
-    },
-    correctAnswer: "B",
-    code: "for(int i=0; i<100; i++) {\n    processItem(i);\n}",
-    explanation: "Loop body quá dài khó đọc và maintain. Extract logic vào method riêng. Method nhỏ dễ test, reuse, và understand."
-  },
-  {
-    question: "How to improve this code?\nif(a) { if(b) { if(c) { doSomething(); } } }",
-    options: {
-      A: "Add more nesting",
-      B: "Use early return or combine conditions",
-      C: "Add comments",
-      D: "Nothing to improve"
-    },
-    correctAnswer: "B",
-    code: "if(!a || !b || !c) return;\ndoSomething();",
-    explanation: "Nested ifs tạo 'arrow code' khó đọc. Dùng early return (guard clauses) hoặc combine: if(a && b && c). Giảm nesting, code dễ đọc hơn."
-  },
-  {
-    question: "What's wrong with: public class Utils { public void helper() { } }",
-    options: {
-      A: "Class name should be lowercase",
-      B: "Utility class should have static methods and private constructor",
-      C: "Should extend Object explicitly",
-      D: "Nothing wrong"
-    },
-    correctAnswer: "B",
-    code: "public final class Utils {\n    private Utils() { }\n    public static void helper() { }\n}",
-    explanation: "Utility class nên: final (prevent extension), private constructor (prevent instantiation), static methods only. Không cần create instance để dùng."
-  },
-  {
-    question: "What issue does this have?\npublic void setValues(String a, String b, String c, String d, String e, String f, String g)",
-    options: {
-      A: "Nothing wrong",
-      B: "Too many parameters, use builder pattern or parameter object",
-      C: "Should use int instead",
-      D: "Names are correct"
-    },
-    correctAnswer: "B",
-    code: "public void setValues(UserData data)",
-    explanation: "7 parameters quá nhiều và khó nhớ order. Dùng parameter object (UserData) hoặc builder pattern. Rule of thumb: max 3-4 parameters."
-  },
-  {
-    question: "What's the code smell here?\nif(type.equals(\"ADMIN\")) { ... } else if(type.equals(\"USER\")) { ... }",
-    options: {
-      A: "Should use == for strings",
-      B: "String comparisons should be replaced with enum",
-      C: "Should use switch",
-      D: "Nothing wrong"
-    },
-    correctAnswer: "B",
-    code: "enum UserType { ADMIN, USER }\nif(type == UserType.ADMIN) { ... }",
-    explanation: "Magic strings 'ADMIN', 'USER' dễ typo và không type-safe. Enum UserType đảm bảo chỉ valid values được dùng, compiler check."
-  },
-  {
-    question: "What improvement can be made?\nArrayList<String> names = new ArrayList<String>();",
-    options: {
-      A: "Use interface type: List<String> names = new ArrayList<>();",
-      B: "Use array instead",
-      C: "Remove generic type",
-      D: "Nothing to improve"
-    },
-    correctAnswer: "A",
-    code: "List<String> names = new ArrayList<>();",
-    explanation: "Program to interface, not implementation. Dùng List<String> thay vì ArrayList<String>. Cho phép thay đổi implementation sau này mà không change code."
-  },
-  {
-    question: "What's wrong?\npublic int calc(int x) {\n    // TODO: implement later\n    return 0;\n}",
-    options: {
-      A: "TODO comments are fine",
-      B: "TODO should be tracked and resolved, not left indefinitely",
-      C: "Method name is fine",
-      D: "Return 0 is correct"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "TODO comments không nên để lâu trong production code. Track trong issue system và resolve. Method name 'calc' cũng quá vague - calculateWhat?"
-  },
-  {
-    question: "How to improve this?\nboolean isValid = (age > 0 && age < 150 && name != null && name.length() > 0 && email != null && email.contains(\"@\"));",
-    options: {
-      A: "Add more conditions",
-      B: "Extract to separate validation methods",
-      C: "Use shorter variable names",
-      D: "Nothing to improve"
-    },
-    correctAnswer: "B",
-    code: "boolean isValid = isValidAge(age) && isValidName(name) && isValidEmail(email);",
-    explanation: "Complex condition khó đọc và maintain. Extract thành methods: isValidAge(), isValidName(), isValidEmail(). Code readable và reusable."
-  },
-  {
-    question: "What principle does this violate?\nclass Rectangle { protected int width, height; }\nclass Square extends Rectangle { void setWidth(int w) { width = height = w; } }",
-    options: {
-      A: "Single Responsibility",
-      B: "Liskov Substitution Principle",
-      C: "Interface Segregation",
-      D: "No violation"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "LSP violation: Square thay đổi behavior của setWidth. Code expect Rectangle sẽ surprise khi Square.setWidth() cũng thay đổi height. Classic LSP example."
-  },
-  {
-    question: "What's the issue with this?\nclass OrderService {\n    private MySQLDatabase db = new MySQLDatabase();\n}",
-    options: {
-      A: "Nothing wrong",
-      B: "Violates Dependency Inversion - should depend on interface",
-      C: "Should use static",
-      D: "Should be public"
-    },
-    correctAnswer: "B",
-    code: "class OrderService {\n    private Database db; // inject via constructor\n}",
-    explanation: "DIP violation: depend on concrete MySQLDatabase. Dùng interface Database, inject dependency. Cho phép switch to PostgreSQL, mock for testing."
-  },
-  {
-    question: "How to fix this Law of Demeter violation?\norder.getCustomer().getAddress().getCity().getName()",
-    options: {
-      A: "Add more getters",
-      B: "Create order.getCustomerCityName() method",
-      C: "Use longer chain",
-      D: "Nothing wrong"
-    },
-    correctAnswer: "B",
-    code: "order.getCustomerCityName() // hides internal structure",
-    explanation: "Chain calls dài violate Law of Demeter (don't talk to strangers). Tạo method wrapper để hide internal structure. Easier to change later."
-  },
-  {
-    question: "What's wrong with this class?\nclass DataProcessor {\n    public Connection connection;\n    public String query;\n    public ResultSet results;\n}",
-    options: {
-      A: "Nothing wrong",
-      B: "Fields should be private with getters/setters",
-      C: "Should use inheritance",
-      D: "Names are wrong"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Public fields break encapsulation. Fields nên private, expose qua getters/setters nếu cần. Cho phép validation, change implementation mà không break callers."
-  },
-  {
-    question: "What refactoring helps here?\nvoid processOrder(Order o) {\n    // 200 lines of code\n}",
-    options: {
-      A: "Add more code",
-      B: "Extract smaller methods: validateOrder(), calculateTotal(), saveOrder()",
-      C: "Add comments",
-      D: "Nothing needed"
-    },
-    correctAnswer: "B",
-    code: "void processOrder(Order o) {\n    validateOrder(o);\n    calculateTotal(o);\n    saveOrder(o);\n}",
-    explanation: "200 lines quá dài. Extract thành smaller methods với single responsibility. Code dễ đọc, test, và maintain. Method nên fit một màn hình."
-  },
-  {
-    question: "What's the issue?\nif(user != null) {\n    if(user.getRole() != null) {\n        if(user.getRole().equals(\"ADMIN\")) {\n            // do admin stuff\n        }\n    }\n}",
-    options: {
-      A: "Nothing wrong",
-      B: "Use Optional or combine null checks",
-      C: "Add more null checks",
-      D: "Remove all checks"
-    },
-    correctAnswer: "B",
-    code: "Optional.ofNullable(user)\n    .map(User::getRole)\n    .filter(\"ADMIN\"::equals)\n    .ifPresent(r -> doAdminStuff());",
-    explanation: "Nested null checks là code smell. Dùng Optional, hoặc early return: if(user == null || user.getRole() == null) return; More readable."
-  },
-  {
-    question: "Which comment is useful?\nA: i++; // increment i\nB: i++; // move to next customer in queue",
-    options: {
-      A: "Comment A is better",
-      B: "Comment B is better",
-      C: "Both are good",
-      D: "Neither is good"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Comment A states the obvious (what). Comment B explains why/context (moving to next customer). Good comments explain intent, not mechanics."
-  },
-
-  // ============ JAVASCRIPT CONVENTIONS (161-180) ============
-  {
-    question: "Which is the preferred way to declare variables in modern JavaScript?",
-    options: {
-      A: "var",
-      B: "let and const",
-      C: "No keyword needed",
-      D: "global"
-    },
-    correctAnswer: "B",
-    code: "const PI = 3.14;\nlet count = 0;",
-    explanation: "ES6+ khuyến khích let và const thay vì var. const cho values không reassign, let cho variables cần reassign. var có hoisting issues và function scope."
-  },
-  {
-    question: "What is the naming convention for React components?",
-    options: {
-      A: "camelCase",
-      B: "PascalCase",
-      C: "snake_case",
-      D: "kebab-case"
-    },
-    correctAnswer: "B",
-    code: "function UserProfile() { return <div>...</div>; }",
-    explanation: "React components dùng PascalCase để phân biệt với HTML elements. JSX cần PascalCase để biết đó là component, không phải native element."
-  },
-  {
-    question: "Which is correct for JavaScript file naming?",
-    options: {
-      A: "UserComponent.JS",
-      B: "user-component.js",
-      C: "user_component.js",
-      D: "All are acceptable, but B is most common"
+      A: "Use assert for input validation",
+      B: "Use Objects.requireNonNull for null checks",
+      C: "Assertions are disabled by default",
+      D: "Both B and C"
     },
     correctAnswer: "D",
-    code: null,
-    explanation: "kebab-case (user-component.js) phổ biến nhất cho JS files. Một số frameworks (React) dùng PascalCase. Quan trọng là consistency trong project."
+    code: `public void process(User user) {
+    Objects.requireNonNull(user, "User cannot be null");
+    // process
+}`,
+    explanation: "Objects.requireNonNull() là best practice cho null checks vì: (1) Luôn chạy (assertions disabled by default), (2) Throws NullPointerException với message rõ ràng, (3) Code ngắn gọn. Assertions dùng cho development-time checks."
   },
   {
-    question: "What is the convention for private methods in JavaScript classes (before #)?",
+    question: "What is the issue with generic exceptions?",
     options: {
-      A: "private keyword",
-      B: "_underscore prefix convention",
-      C: "UPPERCASE",
-      D: "No way to make private"
-    },
-    correctAnswer: "B",
-    code: "class User {\n    _validateEmail() { } // convention only, not enforced\n}",
-    explanation: "Trước ES2022 #, dùng _ prefix như convention (không enforced). _method() indicates 'internal use only'. Modern JS dùng #privateMethod()."
-  },
-  {
-    question: "Which is the correct way to export in ES6 modules?",
-    options: {
-      A: "module.exports = { }",
-      B: "export default và export",
-      C: "exports.name = value",
-      D: "define([ ], function() { })"
-    },
-    correctAnswer: "B",
-    code: "export default function main() { }\nexport const helper = () => { };",
-    explanation: "ES6 modules dùng export/import. export default cho main export, named exports cho multiple exports. module.exports là CommonJS (Node.js cũ)."
-  },
-  {
-    question: "What is the convention for event handler props in React?",
-    options: {
-      A: "click, submit",
-      B: "onClick, onSubmit",
-      C: "handleClick, handleSubmit",
-      D: "Both B for props, C for handler functions"
+      A: "They carry less information",
+      B: "They make catching specific errors hard",
+      C: "They hide the actual error type",
+      D: "All of the above"
     },
     correctAnswer: "D",
-    code: "<Button onClick={handleClick} />\nconst handleClick = () => { };",
-    explanation: "Props dùng 'on' prefix (onClick, onSubmit). Handler functions dùng 'handle' prefix (handleClick). Pattern: <Component onEvent={handleEvent} />."
+    code: `public void process() throws Exception {
+    // implementation
+}`,
+    explanation: "Throws Exception (generic) có nhiều vấn đề: (1) Caller không biết expect exception nào, (2) Force catch Exception (quá broad), (3) Mất type information. Nên declare specific exceptions: throws IOException, SQLException. Be specific!"
   },
   {
-    question: "Which is the preferred equality operator in JavaScript?",
+    question: "Which exception handling is correct for Optional?",
     options: {
-      A: "== (loose equality)",
-      B: "=== (strict equality)",
+      A: "Use orElseThrow with supplier",
+      B: "Check isPresent and throw manually",
+      C: "Use get() directly",
+      D: "A and B are both correct"
+    },
+    correctAnswer: "A",
+    code: `Optional<User> user = repository.findById(id);
+
+// Option A
+return user.orElseThrow(() -> new UserNotFoundException(id));
+
+// Option B
+if (!user.isPresent()) throw new UserNotFoundException(id);
+return user.get();`,
+    explanation: "orElseThrow() là idiomatic và clean hơn. Một line, no temp variable needed. isPresent() + get() verbose và không functional. NEVER call get() without checking - throws NoSuchElementException if empty."
+  },
+  {
+    question: "Find the defensive programming issue:",
+    options: {
+      A: "Should validate all parameters",
+      B: "Null check is unnecessary",
+      C: "Should use Optional",
+      D: "No issue"
+    },
+    correctAnswer: "A",
+    code: `public double calculateAverage(List<Integer> numbers) {
+    return numbers.stream()
+        .mapToInt(Integer::intValue)
+        .average()
+        .orElse(0.0);
+}`,
+    explanation: "Thiếu validation! Nếu numbers là null → NullPointerException. Defensive programming: check null đầu tiên. Thêm: 'if (numbers == null || numbers.isEmpty()) return 0.0;' hoặc throw IllegalArgumentException."
+  },
+  {
+    question: "What is wrong with this error handling?",
+    options: {
+      A: "e.printStackTrace() shouldn't be used in production",
+      B: "Should log error instead",
+      C: "Both A and B",
+      D: "Nothing wrong"
+    },
+    correctAnswer: "C",
+    code: `try {
+    process();
+} catch (Exception e) {
+    e.printStackTrace();
+}`,
+    explanation: "printStackTrace() là anti-pattern trong production code: (1) Output đi thẳng ra System.err, không qua logging framework, (2) Không có timestamp, context, (3) Có thể bị mất trong container logs. Dùng proper logging: log.error(\"Error\", e);"
+  },
+  {
+    question: "Identify the exception documentation issue:",
+    options: {
+      A: "Javadoc should list all thrown exceptions",
+      B: "@throws tag is optional",
+      C: "RuntimeExceptions don't need documentation",
+      D: "Nothing wrong"
+    },
+    correctAnswer: "A",
+    code: `/**
+ * Deletes user by ID.
+ * @param id user ID
+ */
+public void deleteUser(Long id) {
+    User user = findById(id); // throws UserNotFoundException
+    repository.delete(user);
+}`,
+    explanation: "Javadoc PHẢI document exceptions, đặc biệt unchecked exceptions như UserNotFoundException. Callers cần biết method có thể throw gì để handle. Thêm: '@throws UserNotFoundException if user not found'."
+  },
+
+  // ===== CODE STRUCTURE (76-100) =====
+  {
+    question: "What is the code structure issue here?",
+    options: {
+      A: "Method is too long",
+      B: "Too many parameters",
+      C: "Missing return statement",
+      D: "Both A and B"
+    },
+    correctAnswer: "D",
+    code: `public void processOrder(String customerName, String email, 
+    String phone, String address, String city, String country,
+    String productName, int quantity, double price, 
+    String paymentMethod, String shippingMethod) {
+    // 200 lines of code
+}`,
+    explanation: "Hai vấn đề: (1) 11 parameters quá nhiều (max nên 3-4), nên dùng parameter objects, (2) 200 lines quá dài - một method nên làm một việc và ngắn gọn. Refactor: tạo OrderRequest, CustomerInfo classes, tách thành smaller methods."
+  },
+  {
+    question: "Identify the code smell:",
+    options: {
+      A: "Magic number",
+      B: "Magic string",
+      C: "Both A and B",
+      D: "No smell"
+    },
+    correctAnswer: "C",
+    code: `if (user.getRole().equals("ADMIN") && user.getAge() > 18) {
+    grantAccess(86400000); // 24 hours in milliseconds
+}`,
+    explanation: "Hai magic values: (1) \"ADMIN\" nên là constant hoặc enum: Role.ADMIN, (2) 86400000 không rõ nghĩa, nên: TimeUnit.DAYS.toMillis(1) hoặc constant ACCESS_DURATION_MS. Magic values khó maintain và prone to errors."
+  },
+  {
+    question: "What refactoring is needed?",
+    options: {
+      A: "Extract method",
+      B: "Extract class",
+      C: "Inline method",
+      D: "No refactoring needed"
+    },
+    correctAnswer: "A",
+    code: `public void processOrder(Order order) {
+    // validate order
+    if (order.getItems().isEmpty()) throw new ValidationException("No items");
+    if (order.getTotal() <= 0) throw new ValidationException("Invalid total");
+    if (order.getCustomer() == null) throw new ValidationException("No customer");
+    
+    // calculate discount
+    double discount = 0;
+    if (order.getTotal() > 100) discount = 0.1;
+    if (order.getTotal() > 500) discount = 0.2;
+    
+    // more processing...
+}`,
+    explanation: "Nên Extract Method cho validation và discount calculation: validateOrder(order), calculateDiscount(order). Mỗi method làm một việc. Điều này improve readability, testability, và reusability. Small methods = clean code."
+  },
+  {
+    question: "What principle does this code violate?",
+    options: {
+      A: "DRY (Don't Repeat Yourself)",
+      B: "YAGNI (You Aren't Gonna Need It)",
+      C: "KISS (Keep It Simple Stupid)",
+      D: "None"
+    },
+    correctAnswer: "A",
+    code: `public void saveUser(User user) {
+    log.info("Saving user: " + user.getName());
+    validate(user);
+    userRepository.save(user);
+    log.info("User saved: " + user.getName());
+}
+
+public void saveProduct(Product product) {
+    log.info("Saving product: " + product.getName());
+    validate(product);
+    productRepository.save(product);
+    log.info("Product saved: " + product.getName());
+}`,
+    explanation: "Duplicate logic pattern! Cả hai methods có cấu trúc giống nhau. Có thể abstract thành generic method hoặc dùng Template Method pattern. DRY: mỗi knowledge piece chỉ nên có một representation trong system."
+  },
+  {
+    question: "Identify the structural issue:",
+    options: {
+      A: "Class has too many responsibilities",
+      B: "Class name is wrong",
+      C: "Methods are too short",
+      D: "No issue"
+    },
+    correctAnswer: "A",
+    code: `public class UserService {
+    public void createUser() { }
+    public void updateUser() { }
+    public void sendEmail() { }
+    public void generateReport() { }
+    public void validatePayment() { }
+    public void processOrder() { }
+}`,
+    explanation: "UserService làm quá nhiều việc không liên quan: user CRUD, email, reports, payments, orders. Vi phạm Single Responsibility Principle. Nên tách: UserService, EmailService, ReportService, PaymentService, OrderService."
+  },
+  {
+    question: "What's the issue with this code organization?",
+    options: {
+      A: "Imports should be grouped",
+      B: "Too many imports",
+      C: "Wrong import order",
+      D: "Using wildcard imports"
+    },
+    correctAnswer: "D",
+    code: `import java.util.*;
+import com.company.*;
+import org.springframework.*;`,
+    explanation: "Wildcard imports (.*) là bad practice: (1) Không biết exactly classes nào được dùng, (2) Có thể gây name conflicts, (3) IDE không auto-cleanup unused. Nên explicit import từng class. Modern IDEs handle this automatically."
+  },
+  {
+    question: "Find the nesting problem:",
+    options: {
+      A: "Too deep nesting",
+      B: "Should use early return",
+      C: "Both A and B",
+      D: "No problem"
+    },
+    correctAnswer: "C",
+    code: `public void process(User user) {
+    if (user != null) {
+        if (user.isActive()) {
+            if (user.hasPermission()) {
+                if (user.getAge() >= 18) {
+                    // actual logic here
+                }
+            }
+        }
+    }
+}`,
+    explanation: "Arrow code (deeply nested ifs) khó đọc và maintain! Dùng early returns (guard clauses) để 'flatten' code: 'if (user == null) return; if (!user.isActive()) return; ...' Mỗi level nesting tăng cognitive load."
+  },
+  {
+    question: "What is the code organization best practice?",
+    options: {
+      A: "Public methods first, then private",
+      B: "Private methods first, then public",
+      C: "Alphabetical order",
+      D: "Random order is fine"
+    },
+    correctAnswer: "A",
+    code: null,
+    explanation: "Clean Code convention: Public methods (API) đầu tiên, followed by private methods. Reader thường quan tâm public interface trước. Private helper methods đặt gần nơi được gọi (stepdown rule). Constructor thường ở đầu class."
+  },
+  {
+    question: "Identify the formatting issue:",
+    options: {
+      A: "Inconsistent spacing",
+      B: "Missing braces",
+      C: "Both A and B",
+      D: "No issue"
+    },
+    correctAnswer: "C",
+    code: `if(condition)doSomething();
+if (condition2)
+{
+    doSomethingElse();
+}`,
+    explanation: "Hai vấn đề: (1) Thiếu space sau if và thiếu braces cho single-line if (nên luôn dùng braces để tránh bugs), (2) Inconsistent brace style (same line vs new line). Chọn một style và stick with it trong toàn project."
+  },
+  {
+    question: "What's wrong with this class structure?",
+    options: {
+      A: "Field should be private",
+      B: "Missing getter/setter",
+      C: "Missing constructor",
+      D: "All of the above"
+    },
+    correctAnswer: "A",
+    code: `public class User {
+    public String name;
+    public int age;
+}`,
+    explanation: "Public fields vi phạm encapsulation! Fields nên là private với getters/setters (hoặc dùng Lombok @Data). Public fields cho phép external code modify state trực tiếp, không thể add validation, và break encapsulation principle."
+  },
+  {
+    question: "Identify the method length issue:",
+    options: {
+      A: "Method too short",
+      B: "Method has good length",
+      C: "Need more context",
+      D: "Method should be one-liner"
+    },
+    correctAnswer: "B",
+    code: `public double calculateDiscount(Order order) {
+    if (order.getTotal() > 1000) {
+        return 0.20;
+    } else if (order.getTotal() > 500) {
+        return 0.10;
+    } else if (order.getTotal() > 100) {
+        return 0.05;
+    }
+    return 0;
+}`,
+    explanation: "Method này có độ dài tốt! Làm một việc (calculate discount), dễ đọc, dễ test. Không phải mọi method cần super short. Clean code guideline: method nên fit trong một screen (~20 lines), làm một việc rõ ràng."
+  },
+  {
+    question: "What's the issue with this boolean expression?",
+    options: {
+      A: "Too complex, should extract method",
+      B: "Missing parentheses",
+      C: "Wrong operator precedence",
+      D: "No issue"
+    },
+    correctAnswer: "A",
+    code: `if (user.isActive() && user.getAge() >= 18 && 
+    (user.getRole() == Role.ADMIN || user.getRole() == Role.MANAGER) &&
+    user.getDepartment().isOperational() && !user.isSuspended()) {
+    // grant access
+}`,
+    explanation: "Condition quá phức tạp, khó đọc và maintain! Nên extract thành method có tên ý nghĩa: 'if (canGrantAccess(user))' với private method 'canGrantAccess()' chứa logic. Self-documenting code > complex expressions."
+  },
+  {
+    question: "Find the code smell:",
+    options: {
+      A: "Primitive obsession",
+      B: "Data clumps",
+      C: "Both A and B",
+      D: "No smell"
+    },
+    correctAnswer: "C",
+    code: `public void createUser(String firstName, String lastName, 
+    String street, String city, String zipCode, String country) {
+    // implementation
+}`,
+    explanation: "Hai smells: (1) Primitive Obsession - dùng String cho mọi thứ thay vì value objects, (2) Data Clumps - street/city/zipCode/country luôn đi cùng nhau → nên tạo Address class. Refactor để improve type safety và clarity."
+  },
+  {
+    question: "What principle is being followed?",
+    options: {
+      A: "Composition over inheritance",
+      B: "Inheritance over composition",
+      C: "Neither",
+      D: "Both equally"
+    },
+    correctAnswer: "A",
+    code: `public class OrderProcessor {
+    private final PaymentService paymentService;
+    private final ShippingService shippingService;
+    
+    public OrderProcessor(PaymentService ps, ShippingService ss) {
+        this.paymentService = ps;
+        this.shippingService = ss;
+    }
+}`,
+    explanation: "Composition over Inheritance! OrderProcessor 'has-a' PaymentService và ShippingService thay vì extend chúng. Composition flexible hơn, dễ test (inject mocks), và tránh tight coupling. Prefer composition in most cases."
+  },
+  {
+    question: "Identify the switch statement issue:",
+    options: {
+      A: "Missing default case",
+      B: "Should use polymorphism",
+      C: "Both A and B",
+      D: "No issue"
+    },
+    correctAnswer: "C",
+    code: `public double calculatePay(Employee e) {
+    switch (e.getType()) {
+        case HOURLY:
+            return e.getHours() * e.getRate();
+        case SALARY:
+            return e.getSalary() / 12;
+        case COMMISSION:
+            return e.getSales() * e.getCommissionRate();
+    }
+}`,
+    explanation: "Hai vấn đề: (1) Thiếu default case - nếu thêm type mới sẽ return gì? (2) Switch trên type thường là signal để dùng polymorphism - mỗi Employee subclass override calculatePay(). OCP: open for extension, closed for modification."
+  },
+  {
+    question: "What's wrong with this code?",
+    options: {
+      A: "Using System.out.println",
+      B: "Missing logger",
+      C: "Both A and B",
+      D: "Console output is fine"
+    },
+    correctAnswer: "C",
+    code: `public void processOrder(Order order) {
+    System.out.println("Processing order: " + order.getId());
+    // process logic
+    System.out.println("Order processed successfully");
+}`,
+    explanation: "System.out.println không phù hợp cho production: (1) Không có log levels, (2) Không có timestamps, (3) Không configure được destination, (4) Không có structured logging. Dùng proper logging framework: log.info(), log.debug()."
+  },
+  {
+    question: "Identify the class cohesion issue:",
+    options: {
+      A: "Low cohesion - methods don't relate",
+      B: "High cohesion - methods relate well",
+      C: "Cannot determine",
+      D: "Cohesion not applicable here"
+    },
+    correctAnswer: "A",
+    code: `public class Utility {
+    public String formatDate(Date date) { }
+    public double calculateTax(double amount) { }
+    public void sendEmail(String to, String subject) { }
+    public List<String> parseCSV(String content) { }
+}`,
+    explanation: "Low cohesion! Các methods không liên quan đến nhau - đây là 'Utility' class smell. Nên tách: DateFormatter, TaxCalculator, EmailService, CsvParser. High cohesion = methods trong class phục vụ một purpose chung."
+  },
+  {
+    question: "What is the proper way to structure constants?",
+    options: {
+      A: "Create Constants class with all constants",
+      B: "Define constants in classes that use them",
+      C: "Use interfaces for constants",
+      D: "Constants should be in properties file"
+    },
+    correctAnswer: "B",
+    code: null,
+    explanation: "Constants nên định nghĩa trong class sử dụng chúng. 'Constants' class chứa mọi thứ là anti-pattern (God class, low cohesion). Interface for constants vi phạm interface purpose. Config values (URLs, etc.) nên ở properties file."
+  },
+  {
+    question: "Find the temporal coupling issue:",
+    options: {
+      A: "Methods must be called in specific order",
+      B: "Thread safety issue",
+      C: "Both A and B",
+      D: "No issue"
+    },
+    correctAnswer: "A",
+    code: `public class ReportGenerator {
+    public void setTemplate(String template) { }
+    public void setData(List<Object> data) { }
+    public void setFormat(String format) { }
+    public Report generate() { }
+}`,
+    explanation: "Temporal coupling: phải gọi setTemplate, setData, setFormat TRƯỚC generate(), nhưng compiler không enforce. Nếu quên sẽ có bug. Better: dùng Builder pattern hoặc require all params trong constructor/generate() method."
+  },
+  {
+    question: "What's the issue with this method?",
+    options: {
+      A: "Side effects in getter",
+      B: "Getter should not modify state",
+      C: "Both A and B mean the same thing",
+      D: "This is acceptable"
+    },
+    correctAnswer: "C",
+    code: `public class Counter {
+    private int count = 0;
+    
+    public int getCount() {
+        return count++;
+    }
+}`,
+    explanation: "'getCount()' có side effect - tăng count! Getters KHÔNG nên modify state. Caller expect get không thay đổi object. Bug-prone: mỗi lần gọi getCount() kết quả khác nhau! Tách thành: getCount() và incrementCount()."
+  },
+  {
+    question: "Identify the naming and structure best practice:",
+    options: {
+      A: "Package by layer",
+      B: "Package by feature",
       C: "Both are equally good",
-      D: "= (assignment)"
-    },
-    correctAnswer: "B",
-    code: "if (value === 'test') { } // preferred",
-    explanation: "=== (strict equality) preferred vì không có type coercion. == có unexpected behaviors: '1' == 1 is true. Dùng === để tránh bugs."
-  },
-  {
-    question: "What is the convention for async/await error handling?",
-    options: {
-      A: "Ignore errors",
-      B: "Use try-catch blocks",
-      C: "Use callbacks",
-      D: "Use global error handler only"
-    },
-    correctAnswer: "B",
-    code: "async function fetchData() {\n    try {\n        const data = await api.get();\n    } catch (error) {\n        console.error('Failed:', error);\n    }\n}",
-    explanation: "async/await dùng try-catch cho error handling. Readable hơn .catch() chains. Catch block nên log error với context, không swallow silently."
-  },
-  {
-    question: "Which is the correct way to define a constant object in JavaScript?",
-    options: {
-      A: "const CONFIG = {}",
-      B: "const CONFIG = Object.freeze({})",
-      C: "A for reference immutability, B for deep immutability",
-      D: "var CONFIG = {}"
-    },
-    correctAnswer: "C",
-    code: "const CONFIG = Object.freeze({ API_URL: 'https://...' });",
-    explanation: "const ngăn reassign reference nhưng object properties vẫn mutable. Object.freeze() ngăn modify properties (shallow). Deep freeze cần recursive."
-  },
-  {
-    question: "What is the naming convention for JavaScript test files?",
-    options: {
-      A: "test.js",
-      B: "*.test.js or *.spec.js",
-      C: "TEST_*.js",
-      D: "test/*.js only"
-    },
-    correctAnswer: "B",
-    code: "userService.test.js\nuserService.spec.js",
-    explanation: "Test files thường có suffix .test.js hoặc .spec.js. Jest, Mocha auto-discover files với pattern này. Đặt cùng folder hoặc trong __tests__."
-  },
-  {
-    question: "Which is the preferred way to handle null/undefined in JavaScript?",
-    options: {
-      A: "if (value != null)",
-      B: "Optional chaining (?.) and nullish coalescing (??)",
-      C: "if (value !== null && value !== undefined)",
-      D: "All are acceptable, B is most modern"
+      D: "Depends on project size"
     },
     correctAnswer: "D",
-    code: "const name = user?.profile?.name ?? 'Anonymous';",
-    explanation: "ES2020+ có optional chaining (?.) và nullish coalescing (??). Cleaner than nested checks. ?. returns undefined if null/undefined, ?? provides default."
+    code: null,
+    explanation: "Tùy project: (1) Small projects: package by layer (controllers/, services/, repositories/) đơn giản hơn, (2) Large projects: package by feature (user/, order/, payment/) giúp modular và team independence. Microservices thường dùng feature-based."
   },
   {
-    question: "What is the convention for environment variables in JavaScript?",
+    question: "What principle does this code follow?",
     options: {
-      A: "camelCase",
-      B: "SCREAMING_SNAKE_CASE",
-      C: "PascalCase",
-      D: "kebab-case"
+      A: "Fail fast",
+      B: "Fail safe",
+      C: "Defensive programming",
+      D: "Both A and C"
     },
-    correctAnswer: "B",
-    code: "process.env.DATABASE_URL\nprocess.env.API_KEY",
-    explanation: "Environment variables dùng SCREAMING_SNAKE_CASE by convention (từ Unix). Trong code JS access qua process.env.VARIABLE_NAME."
+    correctAnswer: "D",
+    code: `public void transfer(Account from, Account to, BigDecimal amount) {
+    Objects.requireNonNull(from, "Source account required");
+    Objects.requireNonNull(to, "Target account required");
+    Objects.requireNonNull(amount, "Amount required");
+    if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+        throw new IllegalArgumentException("Amount must be positive");
+    }
+    // transfer logic
+}`,
+    explanation: "Fail Fast + Defensive Programming! Method validate inputs ĐẦU TIÊN, throw exception NGAY nếu invalid. Đây là best practice: detect problems sớm, gần nguồn gốc. Giúp debugging dễ hơn vì errors xảy ra ở nơi gây ra chúng."
   },
   {
-    question: "Which is the correct convention for arrow functions in JavaScript?",
+    question: "What's wrong with this boolean parameter?",
     options: {
-      A: "Always use function keyword",
-      B: "Use arrow functions for callbacks, regular functions for methods",
-      C: "Never use arrow functions",
-      D: "Only use arrow functions"
-    },
-    correctAnswer: "B",
-    code: "array.map(item => item.name); // arrow\nclass User { getName() { } } // regular method",
-    explanation: "Arrow functions good for callbacks (lexical this). Regular functions/methods cho class methods và functions cần own 'this'. Arrow functions không có own 'this'."
-  },
-  {
-    question: "What is the convention for destructuring in JavaScript?",
-    options: {
-      A: "Never use destructuring",
-      B: "Use for cleaner access to object/array properties",
-      C: "Only for arrays",
-      D: "Only for objects"
-    },
-    correctAnswer: "B",
-    code: "const { name, age } = user;\nconst [first, second] = array;",
-    explanation: "Destructuring làm code cleaner. Extract properties thành variables. Default values: { name = 'Unknown' } = user. Rất phổ biến trong modern JS."
-  },
-  {
-    question: "Which is the preferred way to concatenate strings in modern JavaScript?",
-    options: {
-      A: "str1 + str2",
-      B: "Template literals with backticks",
-      C: "str1.concat(str2)",
-      D: "String.format()"
-    },
-    correctAnswer: "B",
-    code: "const message = `Hello, ${name}! You have ${count} messages.`;",
-    explanation: "Template literals (backticks) preferred cho string interpolation. Readable hơn +. Supports multi-line strings và embedded expressions."
-  },
-  {
-    question: "What is the convention for default exports vs named exports?",
-    options: {
-      A: "Always use default",
-      B: "Always use named",
-      C: "Default for main thing, named for utilities",
-      D: "It doesn't matter"
+      A: "Boolean parameter makes API unclear",
+      B: "Should use two separate methods",
+      C: "Both A and B",
+      D: "Nothing wrong"
     },
     correctAnswer: "C",
-    code: "export default class UserService { }\nexport const formatDate = () => { };\nexport const parseDate = () => { };",
-    explanation: "Default export cho main functionality của module. Named exports cho utilities, helpers. Một số style guides prefer named-only để consistent imports."
+    code: `public void setActive(boolean active, boolean sendNotification) {
+    this.active = active;
+    if (sendNotification) {
+        notifyUser();
+    }
+}`,
+    explanation: "Boolean params làm call site khó đọc: setActive(true, false) nghĩa là gì? Tốt hơn: tách thành setActive() và setActiveWithNotification(), hoặc dùng fluent API / parameter object. Boolean params = code smell."
   },
   {
-    question: "Which is correct for handling promises?",
+    question: "Find the law of Demeter violation:",
     options: {
-      A: "Ignore rejections",
-      B: "Always handle with .catch() or try-catch",
-      C: "Use callbacks only",
-      D: "Use synchronous code"
+      A: "Train wreck pattern",
+      B: "Accessing nested objects directly",
+      C: "Both A and B",
+      D: "No violation"
     },
-    correctAnswer: "B",
-    code: "promise.then(result => { }).catch(error => { });\n// or\ntry { await promise; } catch (e) { }",
-    explanation: "Unhandled promise rejections gây warnings/errors. Luôn handle với .catch() hoặc try-catch. Node.js có thể crash on unhandled rejection."
-  },
-  {
-    question: "What is the convention for JSDoc in JavaScript?",
-    options: {
-      A: "Not used in JavaScript",
-      B: "Same format as Javadoc with type annotations",
-      C: "Only for libraries",
-      D: "Use TypeScript instead"
-    },
-    correctAnswer: "B",
-    code: "/**\n * @param {string} name - User name\n * @returns {Promise<User>}\n */\nasync function getUser(name) { }",
-    explanation: "JSDoc dùng để document JS code với type info. IDE dùng cho autocomplete. @param, @returns, @type. Useful even without TypeScript."
-  },
-  {
-    question: "Which is the convention for spreading objects/arrays?",
-    options: {
-      A: "Use Object.assign() only",
-      B: "Use spread operator (...) for immutable updates",
-      C: "Mutate directly",
-      D: "Use JSON.parse(JSON.stringify())"
-    },
-    correctAnswer: "B",
-    code: "const newObj = { ...oldObj, newProp: value };\nconst newArr = [...oldArr, newItem];",
-    explanation: "Spread operator tạo shallow copy. Preferred trong React/Redux cho immutable updates. Object.assign() cũng OK nhưng spread cleaner."
-  },
-  {
-    question: "What is the convention for module organization in JavaScript?",
-    options: {
-      A: "Everything in one file",
-      B: "One class/function per file, organize by feature or type",
-      C: "Random organization",
-      D: "Only use global variables"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Tổ chức theo feature (feature folders) hoặc type (services/, components/). Một class/component per file. File name matches exported name. Index files for re-exports."
-  },
-
-  // ============ ADVANCED CONVENTIONS (181-200) ============
-  {
-    question: "What is the convention for Git commit messages?",
-    options: {
-      A: "Any format is fine",
-      B: "Short imperative subject line, detailed body if needed",
-      C: "Only one word",
-      D: "Include all code changes"
-    },
-    correctAnswer: "B",
-    code: "feat: add user authentication\n\nImplement login/logout with JWT tokens.\nAdd password hashing with bcrypt.",
-    explanation: "Conventional commits: type(scope): subject. Types: feat, fix, docs, style, refactor, test. Subject imperative mood ('add' not 'added'). Body giải thích why."
-  },
-  {
-    question: "What is the convention for logging in production applications?",
-    options: {
-      A: "Use System.out.println()",
-      B: "Use proper logging framework with levels (DEBUG, INFO, ERROR)",
-      C: "Don't log anything",
-      D: "Log everything at ERROR level"
-    },
-    correctAnswer: "B",
-    code: "logger.debug(\"Processing user: {}\", userId);\nlogger.error(\"Failed to save\", exception);",
-    explanation: "Dùng logging framework (Log4j, SLF4J, Winston). Các levels: DEBUG, INFO, WARN, ERROR. Production thường INFO+. Include context và structured data."
-  },
-  {
-    question: "What is the convention for configuration values?",
-    options: {
-      A: "Hardcode in source",
-      B: "Externalize to config files or environment variables",
-      C: "Store in database only",
-      D: "Include in comments"
-    },
-    correctAnswer: "B",
-    code: "String dbUrl = System.getenv(\"DATABASE_URL\");\n// or from config file",
-    explanation: "Externalize config: environment variables, config files (application.properties, .env). Cho phép thay đổi mà không recompile. 12-factor app principle."
-  },
-  {
-    question: "What is the convention for API response format?",
-    options: {
-      A: "Return any format",
-      B: "Consistent JSON structure with data, errors, metadata",
-      C: "Return HTML always",
-      D: "Return plain text"
-    },
-    correctAnswer: "B",
-    code: "{\n    \"success\": true,\n    \"data\": { ... },\n    \"error\": null,\n    \"meta\": { \"page\": 1 }\n}",
-    explanation: "API responses nên consistent format. Bao gồm: success flag, data, error messages, metadata (pagination). HTTP status codes cũng quan trọng."
-  },
-  {
-    question: "What is the convention for database column naming?",
-    options: {
-      A: "camelCase",
-      B: "snake_case",
-      C: "PascalCase",
-      D: "UPPERCASE"
-    },
-    correctAnswer: "B",
-    code: "user_id, created_at, first_name",
-    explanation: "SQL databases thường dùng snake_case cho columns. case-insensitive trong nhiều DBs. ORM tự động map snake_case columns -> camelCase fields."
-  },
-  {
-    question: "What is the convention for RESTful API endpoints?",
-    options: {
-      A: "/getUsers, /createUser",
-      B: "/users (GET, POST), /users/{id} (GET, PUT, DELETE)",
-      C: "/user_management",
-      D: "/api_get_all_users"
-    },
-    correctAnswer: "B",
-    code: "GET /users\nPOST /users\nGET /users/{id}\nPUT /users/{id}\nDELETE /users/{id}",
-    explanation: "RESTful: nouns cho resources (users, not getUsers), HTTP methods cho actions. Plural nouns. Hierarchical paths: /users/{id}/orders."
-  },
-  {
-    question: "What is the convention for error codes in applications?",
-    options: {
-      A: "Use random numbers",
-      B: "Structured error codes with categories (USER_001, AUTH_002)",
-      C: "Only use text messages",
-      D: "Don't use error codes"
-    },
-    correctAnswer: "B",
-    code: "// USER_001: Invalid email format\n// AUTH_001: Token expired\n// DB_001: Connection failed",
-    explanation: "Structured error codes: category prefix + number. Dễ trace, document, và localize. Clients có thể handle specific errors. Include human-readable message."
-  },
-  {
-    question: "What is the convention for date/time handling?",
-    options: {
-      A: "Use String for dates",
-      B: "Use proper date types, store in UTC, format for display",
-      C: "Use integers (timestamps)",
-      D: "Use local time everywhere"
-    },
-    correctAnswer: "B",
-    code: "// Store: 2024-01-15T10:30:00Z (ISO 8601, UTC)\n// Display: formatted for user's timezone",
-    explanation: "Store dates as proper types (LocalDateTime, Date), trong UTC. Convert to user timezone khi display. ISO 8601 format cho APIs. Tránh String manipulation."
-  },
-  {
-    question: "What is the convention for password handling?",
-    options: {
-      A: "Store as plain text",
-      B: "Hash with salt using bcrypt or similar, never log passwords",
-      C: "Encrypt with reversible encryption",
-      D: "Store in source code"
-    },
-    correctAnswer: "B",
-    code: "String hashed = BCrypt.hashpw(password, BCrypt.gensalt());",
-    explanation: "Hash passwords với bcrypt/argon2, có salt. NEVER store plain text, log passwords, hoặc dùng weak hashing (MD5, SHA1). Không thể và không cần decrypt."
-  },
-  {
-    question: "What is the convention for code reviews?",
-    options: {
-      A: "Skip reviews for small changes",
-      B: "All code should be reviewed, focus on readability and conventions",
-      C: "Only senior developers review",
-      D: "Reviews are optional"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "All code nên được review trước khi merge. Check: correctness, conventions, readability, test coverage. PR nên small và focused. Constructive feedback."
-  },
-  {
-    question: "What is the convention for test naming?",
-    options: {
-      A: "test1, test2, test3",
-      B: "Descriptive names: should/given-when-then format",
-      C: "Random names",
-      D: "Same as method names"
-    },
-    correctAnswer: "B",
-    code: "@Test\nvoid shouldReturnEmptyListWhenNoUsersExist() { }\n// or\nvoid givenNoUsers_whenFindAll_thenReturnEmpty() { }",
-    explanation: "Test names nên describe behavior. Formats: shouldDoXWhenY, givenX_whenY_thenZ. Khi fail, tên cho biết ngay what's broken."
-  },
-  {
-    question: "What is the AAA pattern in testing?",
-    options: {
-      A: "Arrange, Act, Assert",
-      B: "Add, Adjust, Apply",
-      C: "Always Assert All",
-      D: "Async Await Assert"
-    },
-    correctAnswer: "A",
-    code: "@Test\nvoid testAdd() {\n    // Arrange\n    Calculator calc = new Calculator();\n    // Act\n    int result = calc.add(2, 3);\n    // Assert\n    assertEquals(5, result);\n}",
-    explanation: "AAA pattern: Arrange (setup), Act (execute), Assert (verify). Clear separation của 3 phases. Makes tests easy to read and maintain."
-  },
-  {
-    question: "What is the convention for handling null in method parameters?",
-    options: {
-      A: "Accept null silently",
-      B: "Validate early and fail fast with clear message",
-      C: "Ignore null parameters",
-      D: "Return null"
-    },
-    correctAnswer: "B",
-    code: "public void setName(String name) {\n    this.name = Objects.requireNonNull(name, \"name cannot be null\");\n}",
-    explanation: "Validate parameters early, fail fast. Objects.requireNonNull() hoặc manual check. Clear error message better than NullPointerException deep in code."
-  },
-  {
-    question: "What is the convention for thread safety documentation?",
-    options: {
-      A: "Don't document",
-      B: "Document with @ThreadSafe, @NotThreadSafe, or Javadoc",
-      C: "Assume everything is thread-safe",
-      D: "Only document if thread-safe"
-    },
-    correctAnswer: "B",
-    code: "/**\n * This class is thread-safe.\n * @ThreadSafe\n */\npublic class Counter { }",
-    explanation: "Explicitly document thread-safety. Dùng annotations hoặc Javadoc. Caller cần biết có thể share giữa threads hay không. Default assume NOT thread-safe."
-  },
-  {
-    question: "What is the convention for immutable objects?",
-    options: {
-      A: "All fields public",
-      B: "Final class, final fields, no setters, defensive copies",
-      C: "Use setters freely",
-      D: "Immutability not important"
-    },
-    correctAnswer: "B",
-    code: "public final class User {\n    private final String name;\n    public User(String name) { this.name = name; }\n    public String getName() { return name; }\n}",
-    explanation: "Immutable: final class (prevent subclass), private final fields, no setters, constructor-only initialization. Defensive copies cho mutable fields. Thread-safe by default."
-  },
-  {
-    question: "What is the convention for enum methods in Java?",
-    options: {
-      A: "Enums shouldn't have methods",
-      B: "Enums can have fields, constructors, and methods",
-      C: "Only static methods",
-      D: "Only toString()"
-    },
-    correctAnswer: "B",
-    code: "enum Status {\n    ACTIVE(\"Active\"), INACTIVE(\"Inactive\");\n    private final String display;\n    Status(String display) { this.display = display; }\n    public String getDisplay() { return display; }\n}",
-    explanation: "Java enums có thể có fields, constructor (private), methods. Rich enums thay thế magic strings với behavior. Override toString() cho display."
-  },
-  {
-    question: "What is the convention for Optional usage in Java?",
-    options: {
-      A: "Use for all return types",
-      B: "Use for return types that may be absent, never for fields/parameters",
-      C: "Never use Optional",
-      D: "Use instead of null everywhere"
-    },
-    correctAnswer: "B",
-    code: "public Optional<User> findById(int id) { }\n// Don't: Optional<String> name; // as field",
-    explanation: "Optional cho return types express 'may be absent'. Không dùng cho fields, parameters, collections. isPresent() + get() là antipattern, dùng orElse(), map(), ifPresent()."
-  },
-  {
-    question: "What is the convention for stream operations in Java?",
-    options: {
-      A: "Put everything on one line",
-      B: "One operation per line for readability",
-      C: "Avoid streams",
-      D: "Always use parallel streams"
-    },
-    correctAnswer: "B",
-    code: "users.stream()\n    .filter(u -> u.isActive())\n    .map(User::getName)\n    .sorted()\n    .collect(Collectors.toList());",
-    explanation: "Mỗi stream operation một dòng. Dễ đọc và debug. Parallel streams chỉ dùng khi cần thiết và data đủ lớn. Method references khi có thể."
-  },
-  {
-    question: "What is the convention for lambda expressions?",
-    options: {
-      A: "Always use block body { }",
-      B: "Use expression body when possible, name parameters meaningfully",
-      C: "Always use method references",
-      D: "Avoid lambdas"
-    },
-    correctAnswer: "B",
-    code: "// Good: user -> user.getName()\n// Good: User::getName\n// Avoid: u -> u.getName() // unclear 'u'\n// Avoid: x -> { return x.getName(); } // unnecessary block",
-    explanation: "Prefer expression body (no braces) khi simple. Method references khi applicable. Meaningful parameter names. Block body only khi cần multiple statements."
-  },
-  {
-    question: "What is the final best practice summary for coding conventions?",
-    options: {
-      A: "Conventions don't matter",
-      B: "Consistency, readability, and team agreement are most important",
-      C: "Follow every rule strictly",
-      D: "Each developer should have their own style"
-    },
-    correctAnswer: "B",
-    code: null,
-    explanation: "Coding conventions quan trọng vì: consistency across codebase, easier onboarding, reduce cognitive load. Team agree on conventions, enforce với linters/formatters. Conventions có thể adapt cho project."
+    correctAnswer: "C",
+    code: `public String getCustomerCity(Order order) {
+    return order.getCustomer().getAddress().getCity();
+}`,
+    explanation: "Train wreck (method chaining qua nhiều objects) vi phạm Law of Demeter: 'only talk to your immediate friends'. Code couples với internal structure của Order, Customer, Address. Nếu Address structure thay đổi, code break. Better: order.getCustomerCity()."
   }
-]
+];

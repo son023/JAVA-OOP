@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { questions } from './questions';
+import { questions as codingQuestions } from './questions';
+import { questions as solidQuestions } from './questionSOLID';
 
 function App() {
-  const [view, setView] = useState('home'); // 'home', 'quiz', 'result', 'history', 'history-detail'
+  const [view, setView] = useState('home'); // 'home', 'quiz-select', 'quiz', 'result', 'history', 'history-detail'
+  const [quizType, setQuizType] = useState(''); // 'coding' or 'solid'
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentSet, setCurrentSet] = useState(1);
   const [answeredQuestions, setAnsweredQuestions] = useState({}); // Changed to object: { questionIndex: answerData }
@@ -19,11 +21,25 @@ function App() {
     }
   }, []);
 
+  const selectQuizType = (type) => {
+    setQuizType(type);
+    setView('quiz-select');
+  };
+
+  const getQuestionsForType = (type) => {
+    return type === 'coding' ? codingQuestions : solidQuestions;
+  };
+
+  const getMaxSets = (type) => {
+    const questions = getQuestionsForType(type);
+    return Math.ceil(questions.length / 50);
+  };
 
   const startQuiz = (setNumber) => {
-    // Calculate question range: Set 1 = 1-50, Set 2 = 51-100, Set 3 = 101-150, Set 4 = 151-200
+    const questions = getQuestionsForType(quizType);
+    // Calculate question range: Set 1 = 1-50, Set 2 = 51-100, etc.
     const startIndex = (setNumber - 1) * 50;
-    const endIndex = startIndex + 50;
+    const endIndex = Math.min(startIndex + 50, questions.length);
     const selected = questions.slice(startIndex, endIndex);
     
     setQuizQuestions(selected);
@@ -61,8 +77,10 @@ function App() {
     const quizResult = {
       id: Date.now(),
       date: new Date().toLocaleString('vi-VN'),
+      quizType: quizType,
+      quizTypeName: quizType === 'coding' ? 'Coding Convention' : 'SOLID Principles',
       setNumber: currentSet,
-      questionRange: `${(currentSet - 1) * 50 + 1}-${currentSet * 50}`,
+      questionRange: `${(currentSet - 1) * 50 + 1}-${Math.min(currentSet * 50, getQuestionsForType(quizType).length)}`,
       totalQuestions: quizQuestions.length,
       answeredQuestions: answeredCount,
       score: score,
@@ -80,6 +98,11 @@ function App() {
 
   const handleRestart = () => {
     setView('home');
+    setQuizType('');
+  };
+
+  const handleBackToSelect = () => {
+    setView('quiz-select');
   };
 
   const handleFinishQuizClick = () => {
@@ -125,38 +148,28 @@ function App() {
     return Object.values(answeredQuestions).filter(a => a.isCorrect).length;
   };
 
-  // Home Screen
+  // Home Screen - Quiz Type Selection
   if (view === 'home') {
     return (
       <div className="app">
         <div className="quiz-container home-container">
           <div className="home-header">
-            <h1>Git Quiz</h1>
-            <p className="home-subtitle">Test your knowledge with 200 challenging Git questions</p>
+            <h1>Programming Quiz</h1>
+            <p className="home-subtitle">Test your knowledge with challenging questions</p>
           </div>
 
-          <div className="quiz-options">
-            <h2>Choose Question Set (50 questions each)</h2>
-            <div className="quiz-set-buttons">
-              <button className="set-button" onClick={() => startQuiz(1)}>
-                <span className="set-icon">1</span>
-                <span className="set-title">Set 1</span>
-                <span className="set-desc">Questions 1-50</span>
+          <div className="quiz-type-selection">
+            <h2>Choose Quiz Type</h2>
+            <div className="quiz-type-buttons">
+              <button className="type-button coding-type" onClick={() => selectQuizType('coding')}>
+                <span className="type-icon">📝</span>
+                <span className="type-title">Coding Convention</span>
+                <span className="type-desc">100 questions about naming, comments, structure</span>
               </button>
-              <button className="set-button" onClick={() => startQuiz(2)}>
-                <span className="set-icon">2</span>
-                <span className="set-title">Set 2</span>
-                <span className="set-desc">Questions 51-100</span>
-              </button>
-              <button className="set-button" onClick={() => startQuiz(3)}>
-                <span className="set-icon">3</span>
-                <span className="set-title">Set 3</span>
-                <span className="set-desc">Questions 101-150</span>
-              </button>
-              <button className="set-button" onClick={() => startQuiz(4)}>
-                <span className="set-icon">4</span>
-                <span className="set-title">Set 4</span>
-                <span className="set-desc">Questions 151-200</span>
+              <button className="type-button solid-type" onClick={() => selectQuizType('solid')}>
+                <span className="type-icon">🏗️</span>
+                <span className="type-title">SOLID Principles</span>
+                <span className="type-desc">200 questions about OOP design principles</span>
               </button>
             </div>
           </div>
@@ -172,6 +185,9 @@ function App() {
                 {quizHistory.map((item) => (
                   <div key={item.id} className="history-item-dashboard" onClick={() => viewHistoryDetail(item)}>
                     <div className="history-item-left">
+                      <div className={`history-type-badge ${item.quizType === 'coding' ? 'coding-badge' : 'solid-badge'}`}>
+                        {item.quizTypeName}
+                      </div>
                       <div className="history-set-badge">Set {item.setNumber}</div>
                       <div className="history-info">
                         <div className="history-date">{item.date}</div>
@@ -199,6 +215,44 @@ function App() {
     );
   }
 
+  // Quiz Set Selection Screen
+  if (view === 'quiz-select') {
+    const maxSets = getMaxSets(quizType);
+    const questions = getQuestionsForType(quizType);
+    const quizTypeName = quizType === 'coding' ? 'Coding Convention' : 'SOLID Principles';
+    
+    return (
+      <div className="app">
+        <div className="quiz-container home-container">
+          <div className="home-header">
+            <button className="back-button" onClick={handleRestart}>
+              ← Back to Home
+            </button>
+            <h1>{quizTypeName} Quiz</h1>
+            <p className="home-subtitle">{questions.length} questions available</p>
+          </div>
+
+          <div className="quiz-options">
+            <h2>Choose Question Set (50 questions each)</h2>
+            <div className="quiz-set-buttons">
+              {Array.from({ length: maxSets }, (_, i) => i + 1).map((setNum) => {
+                const startQ = (setNum - 1) * 50 + 1;
+                const endQ = Math.min(setNum * 50, questions.length);
+                return (
+                  <button key={setNum} className="set-button" onClick={() => startQuiz(setNum)}>
+                    <span className="set-icon">{setNum}</span>
+                    <span className="set-title">Set {setNum}</span>
+                    <span className="set-desc">Questions {startQ}-{endQ}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // History Detail Screen
   if (view === 'history-detail') {
     return (
@@ -210,6 +264,10 @@ function App() {
             </button>
             <h1>Quiz Details</h1>
             <div className="history-detail-info">
+              <div className="detail-item">
+                <span className="detail-label">Type</span>
+                <span className="detail-value">{selectedHistoryItem.quizTypeName}</span>
+              </div>
               <div className="detail-item">
                 <span className="detail-label">Set</span>
                 <span className="detail-value">Set {selectedHistoryItem.setNumber}</span>
@@ -278,6 +336,12 @@ function App() {
                       </strong>
                     </div>
                   )}
+                  {answer.explanation && (
+                    <div className="explanation-review">
+                      <strong>Giải thích:</strong>
+                      <p>{answer.explanation}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -301,6 +365,7 @@ function App() {
         <div className="quiz-container result-container">
           <div className="result-header">
             <h1>Quiz Completed</h1>
+            <p className="result-type">{quizType === 'coding' ? 'Coding Convention' : 'SOLID Principles'} - Set {currentSet}</p>
             <div className="score-display">
               <div className="score-circle">
                 <span className="score-number">{score}</span>
@@ -350,13 +415,14 @@ function App() {
   // Quiz Screen
   const answeredCount = getAnsweredCount();
   const currentScore = getScore();
+  const quizTypeName = quizType === 'coding' ? 'Coding Convention' : 'SOLID Principles';
 
   return (
     <div className="app">
       <div className="quiz-container quiz-view">
         <div className="quiz-header">
           <div className="quiz-header-top">
-            <h1>Git Quiz - Set {currentSet}</h1>
+            <h1>{quizTypeName} - Set {currentSet}</h1>
             <button className="finish-quiz-button" onClick={handleFinishQuizClick}>
               Kết thúc bài
             </button>
